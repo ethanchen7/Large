@@ -1,0 +1,99 @@
+/* body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+} */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  justify-content: space-between;
+  height: 100vh;
+  width: 10%;
+  border-right: 0.25px solid lightgray;
+}
+
+.nav-icon-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-icon-home {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 35px;
+}
+
+.nav-icon-home-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-icon-notification {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 35px;
+}
+
+.nav-icon-notification-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-icon-lists {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 35px;
+}
+
+.nav-icon-lists-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-icon-stories {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 35px;
+}
+
+.nav-icon-stories-icon {
+  width: 24px;
+  height: 24px;
+}
+
+hr {
+  width: 40%;
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-icon-create {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 35px;
+}
+
+.nav-icon-create-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-profile-icon-container {
+  display: flex;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 10%;
+}
+
+.nav-icon-profile {
+  padding-bottom: 35px;
+}
+
+.nav-icon-profile-icon {
+  width: 100%;
+  height: 100%;
+}

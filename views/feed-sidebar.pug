@@ -1,0 +1,24 @@
+extends layout.pug
+
+block content
+  nav(class="sidebar")
+    div(class="homepage-icon-container")
+      p Logo
+    
+    div(class="nav-icon-container")
+      a(class="nav-icon-home")
+        img(class= "nav-icon-home-icon" src="/images/home.png")
+      a(class="nav-icon-notification")
+        img(class= "nav-icon-notification-icon" src="/images/notification.png")
+      a(class="nav-icon-lists")
+        img(class= "nav-icon-lists-icon" src="/images/save.png")
+      a(class="nav-icon-stories" )
+        img(class= "nav-icon-stories-icon" src="/images/notepad.png")
+      a(class="hr-break-container" )
+        hr(class="hr-break" aria-hidden="true")
+      a(class="nav-icon-create" )
+        img(class= "nav-icon-create-icon" src="/images/write.png")
+    div(class="nav-profile-icon-container")
+      a(class="nav-icon-profile" )
+        img(class= "nav-icon-profile-icon" src="/images/avatardefault.png")
+    
