@@ -5,17 +5,17 @@ module.exports = (sequelize, DataTypes) => {
     {
       text: {
         allowNull: false,
-        type: sequelize.STRING,
+        type: DataTypes.STRING,
       },
       userId: {
         allowNull: false,
         references: { model: "Users" },
-        type: sequelize.INTEGER,
+        type: DataTypes.INTEGER,
       },
       storyId: {
         allowNull: false,
         references: { model: "Stories" },
-        type: sequelize.INTEGER,
+        type: DataTypes.INTEGER,
       },
     },
     {}

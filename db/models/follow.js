@@ -6,12 +6,12 @@ module.exports = (sequelize, DataTypes) => {
       followerId: {
         allowNull: false,
         references: { model: "Users" },
-        type: sequelize.INTEGER,
+        type: DataTypes.INTEGER,
       },
       followingId: {
         allowNull: false,
         references: { model: "Users" },
-        type: sequelize.INTEGER,
+        type: DataTypes.INTEGER,
       },
     },
     {}

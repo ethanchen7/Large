@@ -5,26 +5,26 @@ module.exports = (sequelize, DataTypes) => {
     {
       title: {
         allowNull: false,
-        type: sequelize.STRING(150),
+        type: DataTypes.STRING(150),
       },
       article: {
         allowNull: false,
-        type: sequelize.TEXT,
+        type: DataTypes.TEXT,
       },
       tagId: {
         allowNull: false,
         references: { model: "Tags" },
-        type: sequelize.INTEGER,
+        type: DataTypes.INTEGER,
       },
       userId: {
         allowNull: false,
         references: { model: "Users" },
-        type: sequelize.INTEGER,
+        type: DataTypes.INTEGER,
       },
       state: {
         allowNull: false,
         defaultValue: "draft",
-        type: sequelize.STRING,
+        type: DataTypes.STRING,
       },
     },
     {}

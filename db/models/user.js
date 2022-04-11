@@ -5,31 +5,31 @@ module.exports = (sequelize, DataTypes) => {
     {
       firstName: {
         allowNull: false,
-        type: sequelize.STRING(20),
+        type: DataTypes.STRING(20),
       },
       lastName: {
         allowNull: false,
-        type: sequelize.STRING(50),
+        type: DataTypes.STRING(50),
       },
       userName: {
         allowNull: false,
         unique: true,
-        type: sequelize.STRING(20),
+        type: DataTypes.STRING(20),
       },
       email: {
         allowNull: false,
         unique: true,
-        type: sequelize.STRING(100),
+        type: DataTypes.STRING(100),
       },
       hashedPassword: {
         allowNull: false,
-        type: sequelize.STRING.BINARY,
+        type: DataTypes.STRING.BINARY,
       },
       bio: {
-        type: sequelize.TEXT,
+        type: DataTypes.TEXT,
       },
       image: {
-        type: sequelize.STRING,
+        type: DataTypes.STRING,
       },
     },
     {}

@@ -6,12 +6,12 @@ module.exports = (sequelize, DataTypes) => {
       storyId: {
         allowNull: false,
         reference: { model: "Stories" },
-        type: sequelize.INTEGER,
+        type: DataTypes.INTEGER,
       },
       userId: {
         allowNull: false,
         reference: { model: "Users" },
-        type: sequelize.INTEGER,
+        type: DataTypes.INTEGER,
       },
     },
     {}
