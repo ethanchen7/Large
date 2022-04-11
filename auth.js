@@ -32,7 +32,7 @@ const logoutUser = (req, res) => {
 
 const requireAuth = (req, res, next) => {
   if (res.locals.authenticated === false) {
-    res.redirect("/user/login");
+    res.redirect("/"); // splash page
   } else {
     next();
   }
