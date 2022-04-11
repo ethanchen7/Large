@@ -7,17 +7,21 @@ const { csrfProtection } = require("./utils");
 
 /* GET splash page. */
 router.get("/", requireAuth, csrfProtection, function (req, res, next) {
-  if (!res.locals.authenticated) {
+  console.log(req.session.auth);
+  if (!req.session.auth) {
     const user = db.User.build();
     // change to index after
     res.render("user-register", {
-      title: "a/A Express Skeleton Home",
       user,
       csrfToken: req.csrfToken(),
     });
   } else {
-    res.render("feed", { title: "a/A Express Skeleton Home" });
+    res.render("feed");
   }
+});
+
+router.get("/login", csrfProtection, function (req, res, next) {
+  res.render("user-login", { csrfToken: req.csrfToken() });
 });
 
 module.exports = router;

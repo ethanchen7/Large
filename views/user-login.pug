@@ -1,0 +1,14 @@
+html
+body 
+  h1 Login 
+  if errors
+    each error in errors 
+     ul
+      li= error.message
+  form(method="post" action="/users/login")
+    input(type="hidden" name="_csrf" value=csrfToken)
+    label(for="email") Email 
+    input(type="email" name="email")
+    label(for="password") Password 
+    input(type="password" name="password")
+    button Submit
