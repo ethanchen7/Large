@@ -22,7 +22,7 @@ module.exports = {
       title: 'lorem ipsum second article',
       article: 'very short very concise article about lorem ipsum part 2 ',
       tagId: 4,
-      userId: 1,
+      userId: 2,
       state: 'published',
       createdAt: new Date(),
       updatedAt: new Date()
