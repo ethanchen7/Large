@@ -1,5 +1,25 @@
-html
-body 
+extends layout.pug 
+block content 
+  header(class='navbar')
+    div(class='innerNav')
+      div(class='navLeft')
+        img(src="/images/logo.png", alt="large-logo", class='navIcon')
+        h1(href="/") Large 
+      div(class='navRight')
+        ul(class='menuNav')
+          a(class = 'navItem' href='#') Our Story 
+          a(class = 'navItem' href='#') Membership 
+          a(class = 'navItem' href='#') Write 
+          a(class = 'navItem' href='#') Sign In
+        button(class='getStarted' action='#') Get Started
+    
+
+
+
+
+
+
+
   h1 Register 
   if errors
     each error in errors 
