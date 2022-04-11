@@ -10,16 +10,16 @@ module.exports = {
       */
     return queryInterface.bulkInsert('Tags', 
     [
-      {name: 'Tech'},
-      {name: 'Food'},
-      {name: 'Science'},
-      {name: 'History'},
-      {name: 'Religion'},
-      {name: 'Funny'},
-      {name: 'Social Media'},
-      {name: 'Current Events'},
-      {name: 'Romance'},
-      {name: 'Advice'},
+      {name: 'Tech', createdAt: new Date(), updatedAt: new Date()},
+      {name: 'Food', createdAt: new Date(), updatedAt: new Date()},
+      {name: 'Science', createdAt: new Date(), updatedAt: new Date()},
+      {name: 'History', createdAt: new Date(), updatedAt: new Date()},
+      {name: 'Religion', createdAt: new Date(), updatedAt: new Date()},
+      {name: 'Funny', createdAt: new Date(), updatedAt: new Date()},
+      {name: 'Social Media', createdAt: new Date(), updatedAt: new Date()},
+      {name: 'Current Events', createdAt: new Date(), updatedAt: new Date()},
+      {name: 'Romance', createdAt: new Date(), updatedAt: new Date()},
+      {name: 'Advice', createdAt: new Date(), updatedAt: new Date()},
     ], {});
   },
 
