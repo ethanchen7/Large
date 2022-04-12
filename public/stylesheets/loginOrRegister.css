@@ -1,0 +1,179 @@
+.closeX {
+    display: flex;
+    justify-content: end;
+    margin-right: 300px;
+    margin-top: 50px;
+    font-size: 20px;
+}
+
+h1 {
+    font-weight: lighter;
+}
+
+h2 {
+    font-weight: lighter;
+}
+
+.signInButton {
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    border: 0px;
+    transition:.5s;
+    padding: 5px;
+    width: 200px;
+    height: 25px;
+}
+.signInButton:hover {
+    transition: .5s;
+    border-radius: 20px;
+    background-color: #000000d4;
+}
+
+.createButton {
+    color: white;
+    background-color: rgb(48, 171, 48);
+    border-radius: 10px;
+    border: 0px;
+    transition:.5s;
+    padding: 5px;
+    width: 200px;
+    height: 25px;
+}
+.createButton:hover {
+    transition: .5s;
+    border-radius: 20px;
+    background-color: rgba(48, 171, 48, 0.7);
+}
+
+.createButtono {
+    color: white;
+    background-color: rgb(48, 171, 48);
+    border-radius: 10px;
+    border: 0px;
+    transition:.5s;
+    padding: 5px;
+    width: 200px;
+    height: 25px;
+}
+.createButtono:hover {
+    transition: .5s;
+    border-radius: 20px;
+    background-color: rgba(48, 171, 48, 0.7);
+}
+
+.loginPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.close {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 500px;
+    margin-top: 50px;
+    font-weight: lighter;
+}
+
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginForm > label {
+    margin: 10px 10px;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.loginForm > button {
+    margin: 10px;
+}
+
+.loginForm > input {
+    padding: 5px;
+}
+
+.registerPage {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    color: black;
+    font-weight: lighter;
+    text-decoration: none;
+}
+
+.registerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registerForm > label {
+    margin: 10px 10px;
+    font-size: 20px;
+}
+
+.registerForm > button {
+    margin: 10px 10px;
+}
+
+.registerForm > input {
+    padding: 5px;
+    width: 220px;
+}
+
+
+.signInButton {
+    text-align: center;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    border: 0px;
+    transition:.5s;
+    padding: 5px;
+    width: 200px;
+    height: 25px;
+}
+
+.signInButton:hover {
+    transition: .5s;
+    border-radius: 20px;
+    background-color: #000000d4
+}
+
+.signInButtono {
+    text-align: center;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    border: 0px;
+    transition:.5s;
+    padding: 5px;
+    width: 200px;
+    height: 25px;
+}
+.signInButtono:hover {
+    transition: .5s;
+    border-radius: 20px;
+    background-color: #000000d4
+}
+
+.loginPage {
+    display: flex;
+}
+
+.registerPage {
+    display: none;
+}
+
+/* .logOrRegisterPopUp {
+    display: none;
+} */

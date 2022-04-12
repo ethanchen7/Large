@@ -45,7 +45,7 @@ router.post(
 );
 
 router.post(
-  "/users/login",
+  "/login",
   csrfProtection,
   loginValidators,
   asyncHandler(async (req, res) => {
@@ -73,7 +73,6 @@ router.post(
       errors = validatorErrors.array().map((error) => error.msg);
     }
     res.render("user-login", {
-      title: "Login",
       email,
       errors,
       csrfToken: req.csrfToken(),
@@ -83,7 +82,7 @@ router.post(
 
 router.post("/users/logout", (req, res) => {
   logoutUser(req, res);
-  res.redirect("/login");
+  res.redirect("/");
 });
 
 module.exports = router;
