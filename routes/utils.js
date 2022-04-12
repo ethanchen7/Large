@@ -14,11 +14,11 @@ const splashPageQueries = async () => {
     order: [['createdAt', 'ASC']],
   });
 
-  // let newStories = []
-  // for (let i = 0; i < 6; i++) {
-  //   let story = stories.unshift();
-  //   newStories.push(story);
-  // }
+  let newStories = []
+  for (let i = 0; i < 6; i++) {
+    let story = stories.shift();
+    newStories.push(story);
+  }
 
   const tags = await db.Tag.findAll({
     order: [['createdAt', 'ASC']],
@@ -33,7 +33,7 @@ const splashPageQueries = async () => {
 
     story.date = `${month} ${story.updatedAt.getDate().toString()}`
   })
-  return {user, stories, tags}
+  return { user, stories, newStories, tags }
 }
 
 module.exports = {

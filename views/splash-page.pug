@@ -12,7 +12,7 @@ include utils.pug
     #splashContentHeader Trending on Medium
     .trend-storiesCollection
         - let count = 1;
-        each story in trending
+        each story in newStories
             .trend-story(id=`story_${story.id}`)
                 .trend-storyNumber= `0${count}`
                 - count++;

@@ -12,17 +12,18 @@ router.get("/", requireAuth, csrfProtection, asyncHandler(async (req, res, next)
   if (!req.session.auth) {
 
     const queries = await splashPageQueries();
-  
-    const {user, stories, tags} = queries
-    // change to index after
+
+    const { user, stories, newStories, tags } = queries
+
+    console.log(newStories[0]);
 
     res.render("user-register", {
       user,
-      trending: stories,
+      newStories,
       stories,
       tags,
       csrfToken: req.csrfToken(),
-      
+
     });
 
   } else {
