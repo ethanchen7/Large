@@ -1,13 +1,31 @@
 .publish-modal {
   display: flex;
   flex-direction: column;
-  margin: 20%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.overlay {
+  position: fixed;
+  top: 80px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
 }
 
 .publish-modal-close {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 70px;
+}
+
+.publish-modal-close:hover {
+  cursor: pointer;
 }
 
 .close-button {
@@ -148,8 +166,16 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.publish-now-btn:hover {
+  cursor: pointer;
+}
+
 .schedule-for-later-btn {
   margin-left: 15px;
+}
+
+.schedule-for-later-btn:hover {
+  cursor: pointer;
 }
 
 .schedule-for-later-btn-text {

@@ -2,6 +2,7 @@
 extends layout.pug
 
 block content
+ div(class="story-create")
   nav(class="story-navbar")
     div(class="story-innerNav")
       div(class="nav-logo-containerLeft")
@@ -24,4 +25,5 @@ block content
       input(type="text" class="title-input" name="title" placeholder="Title")
       textarea(type="text" class="article-input" name="article" placeholder="Tell your story...")
       input(type="submit" class="submit-btn")
+ include new-story-publish.pug
     script(src="/javascripts/new-story.js") 
