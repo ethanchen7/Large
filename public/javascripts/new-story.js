@@ -4,9 +4,17 @@ const formSubmitBtn = document.querySelector(".submit-btn");
 const storyCreateDiv = document.querySelector(".story-create");
 const closeModalBtn = document.querySelector(".publish-modal-close");
 const publishNowBtn = document.querySelector(".publish-now-btn");
+const tagInput = document.getElementById("tag-input-id");
+const ogTagInput = document.getElementById("original-tag-input-id");
+const titleInput = document.getElementById("title");
+const articleInput = document.getElementById("article");
+const titlePreviewInput = document.getElementById("title-preview");
+const articlePreviewInput = document.getElementById("article-preview");
 
 publishBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  titlePreviewInput.value = titleInput.value.slice(0, 10);
+  articlePreviewInput.value = articleInput.value.slice(0, 20);
   publishModal.classList.remove("hidden");
   publishModal.classList.add("overlay");
   storyCreateDiv.classList.add("hidden");
@@ -21,5 +29,8 @@ closeModalBtn.addEventListener("click", (e) => {
 
 publishNowBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  const tagValue = tagInput.value;
+  ogTagInput.value = tagValue;
+
   formSubmitBtn.click();
 });

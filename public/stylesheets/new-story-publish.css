@@ -85,6 +85,7 @@
 }
 
 .title-section-edit-input {
+  padding-bottom: 3px;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -98,6 +99,7 @@
 
 .description-section-edit-input {
   margin-top: 17px;
+  padding-bottom: 3px;
   border-top: none;
   border-left: none;
   border-right: none;

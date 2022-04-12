@@ -18,9 +18,20 @@ router.post(
   "/my-stories/new",
   csrfProtection,
   asyncHandler(async (req, res, next) => {
-    const { title, article } = req.body;
-    // temporary
-    const tagId = 1;
+    const { title, article, tag } = req.body;
+    let tagId;
+    const tagExists = await db.Tag.findOne({
+      where: { name: tag },
+    });
+    console.log(tagExists);
+    if (tagExists) {
+      tagId = tagExists.id;
+    } else {
+      const newTag = await db.Tag.create({
+        name: tag,
+      });
+      tagId = newTag.id;
+    }
     const userId = 1;
     const state = "published";
 

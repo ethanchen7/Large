@@ -22,8 +22,9 @@ block content
   div(class="section-content-form")  
     form(class="new-story-form" method="post" action="/my-stories/new")
       input(type="hidden" name="_csrf" value=csrfToken)
-      input(type="text" class="title-input" name="title" placeholder="Title")
-      textarea(type="text" class="article-input" name="article" placeholder="Tell your story...")
+      input(type="text" class="title-input" name="title" id="title" placeholder="Title")
+      textarea(type="text" class="article-input" name="article" id="article" placeholder="Tell your story...")
+      input(type="text" id="original-tag-input-id" class="original-tag-input hidden" name="tag")
       input(type="submit" class="submit-btn")
  include new-story-publish.pug
     script(src="/javascripts/new-story.js") 
