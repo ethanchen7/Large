@@ -6,7 +6,7 @@ const { requireAuth } = require("../auth");
 const { csrfProtection, asyncHandler } = require("./utils");
 
 router.get("/my-stories/new", csrfProtection, (req, res) => {
-  res.render("new-story", { crsfToken: req.crsfToken() });
+  res.render("new-story", { csrfToken: req.csrfToken() });
 });
 
 // NEED:

@@ -55,6 +55,10 @@
   margin-right: 10px;
 }
 
+.publish-button:hover {
+  cursor: pointer;
+}
+
 .options-button-container {
   width: 20px;
   height: 20px;
@@ -132,5 +136,5 @@ select:focus {
 }
 
 .submit-btn {
-  display: none;
+  border: 1px solid black;
 }
