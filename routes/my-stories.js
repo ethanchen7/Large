@@ -38,4 +38,9 @@ router.post(
   })
 );
 
+// TEMPORARY
+router.get("/publish", (req, res) => {
+  res.render("new-story-publish");
+});
+
 module.exports = router;

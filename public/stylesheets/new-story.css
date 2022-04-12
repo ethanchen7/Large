@@ -53,6 +53,7 @@
   font-size: 0.75em;
   color: white;
   margin-right: 10px;
+  -webkit-font-smoothing: antialiased;
 }
 
 .publish-button:hover {

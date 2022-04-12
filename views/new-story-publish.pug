@@ -1,0 +1,32 @@
+extends layout.pug
+
+block content
+ div(class="publish-modal")
+  div(class="publish-modal-close")
+    a(class="close-button")
+      img(class="close-button-icon" src="/images/close.png")
+  div(class="publish-modal-overlay")
+    div(class="left-half")
+      div(class="story-preview-section")
+        h2(class="story-preview-header") Story Preview
+        div(class="image-upload-box")
+         div(class="image-upload-directions-container")
+          p(class="image-upload-directions") Include a high-quality image in your story to make it more inviting to readers.
+      div(class="title-section")
+        input(class="title-section-edit-input")
+      div(class="description-section")
+        input(class="description-section-edit-input")
+      div(class="note-section")
+        p(class="note-text") Note: Changes here will affect how your story appears in public places like Medium's homepage and subscribers' inboxes - not the contents of the story itself.
+    div(class="right-half")
+      div(class="publishing-to-section")
+        h2 Publishing to: John Smith
+      div(class="add-tag-heading-section")
+        p(class="add-tag-heading") Add or change a tag so readers know what your story is about
+        input(class="tag-input" name="tag" placeholder="Add a tag...")
+      div(class="learn-more-section")
+        p(class="learn-more-text") Learn more about what happens to your post when you publish.
+      div(class="publish-button-section")
+        button(class="publish-now-btn") Publish now
+        div(class="schedule-for-later-btn")
+         p(class="schedule-for-later-btn-text") Schedule for later
