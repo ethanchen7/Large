@@ -56,4 +56,8 @@ router.get("/login", csrfProtection, function (req, res, next) {
   res.render("user-login", { csrfToken: req.csrfToken() });
 });
 
+router.get("/feed", (req, res) => {
+  res.render("feed");
+});
+
 module.exports = router;
