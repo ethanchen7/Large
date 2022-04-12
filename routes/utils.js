@@ -32,6 +32,8 @@ const splashPageQueries = async () => {
     const month = months[monthIndex];
 
     story.date = `${month} ${story.updatedAt.getDate().toString()}`
+
+    story.readTime = Math.max( 1 , Math.floor(story.article.split(' ').length / 250) )
   })
   return {user, stories, tags}
 }

@@ -12,15 +12,15 @@ div(class='centerHolder')
             div(class='storyContent')
                 div(class='topInfo')
                     img(class='feedprofile-img' src='/images/logo.png')
-                    a(href='#') Name of Author 
-                    p · date of published
+                    a(href='#') #{story.User.firstName} #{story.User.lastName}
+                    p · #{story.date}
                 h2(class='storyTitle')= story.title
                 div(class='storyPreview')
                     p=story.article
                 div(class='underStory')
                     div(class='underLeft')
-                        a(href="#") associated tag 
-                        p average read time · selected for you 
+                        a(href="#")= story.Tag.name 
+                        p #{story.readTime} min · selected for you 
                     div(class='underRight')
                         img(src="/images/save.png", alt="")
                         strong(href='#') ···

@@ -37,15 +37,16 @@ router.get("/login", csrfProtection, function (req, res, next) {
 });
 
 router.get("/feed", asyncHandler(async(req, res) => {
-  const stories = await db.Story.findAll({
-    include: [db.User, db.Tag],
-    order: [['createdAt', 'ASC']],
-  });
+  const queries  = await splashPageQueries()
+
+  const { user, stories, tags } = queries
 
 
 
   res.render("feed", {
-    stories
+    user,
+    stories,
+    tags
   });
 }));
 
