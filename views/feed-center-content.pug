@@ -11,7 +11,18 @@ div(class='centerHolder')
         div(class='storyDiv')
             div(class='storyContent')
                 div(class='topInfo')
-                h2= story.title 
+                    img(class='feedprofile-img' src='/images/logo.png')
+                    a(href='#') Name of Author 
+                    p · date of published
+                h2(class='storyTitle')= story.title
                 div(class='storyPreview')
-                    p=story.content 
-            img(class='imgPreview')
+                    p=story.article
+                div(class='underStory')
+                    div(class='underLeft')
+                        a(href="#") associated tag 
+                        p average read time · selected for you 
+                    div(class='underRight')
+                        img(src="/images/save.png", alt="")
+                        strong(href='#') ···
+            div(class='imgDiv')
+                img(class='imgPreview' src='/images/logo.png')
