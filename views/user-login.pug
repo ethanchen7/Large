@@ -4,7 +4,8 @@ block content
     div(id='errStatusCreate' class='hidden')= errStatusCreate
     div(class='modal-container hidden' id='modal-container')
       div(class='modal hidden')
-        img(src='/images/close.png' class='closeButton')
+        div(class='closeButton')
+          img(src='/images/close.png')
         div(class='loginPage hidden')
           h1 Welcome Back 
           if logInErrors
@@ -15,7 +16,7 @@ block content
           form(method="post" action="/login" class='loginForm')
             input(type="hidden" name="_csrf" value=csrfToken)
             label(for="email") Email 
-            input(type="email" name="email")
+            input(type="email" name="email" value=email)
             label(for="password") Password 
             input(type="password" name="password")
             button(class='signInButton') Log In
@@ -32,13 +33,13 @@ block content
           form(method="post" action="/users" class='registerForm hidden')
             input(type="hidden" name="_csrf" value=csrfToken)
             label(for="firstName") First Name 
-            input(type="text" name="firstName" )
+            input(type="text" name="firstName" value=user.firstName)
             label(for="lastName") Last Name 
-            input(type="text" name="lastName" )
+            input(type="text" name="lastName" value=user.lastName)
             label(for="userName") Username
-            input(type="text" name="userName" )
+            input(type="text" name="userName" value=user.userName)
             label(for="email") Email 
-            input(type="email" name="email" )
+            input(type="email" name="email" value=user.email)
             label(for="password") Password 
             input(type="password" name="password")
             label(for="password") Confirm Password 

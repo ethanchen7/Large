@@ -1,3 +1,5 @@
+
+
 .hidden {
     display: none;
 }
@@ -66,12 +68,6 @@ h2 {
     justify-content: center;
 }
 
-.close {
-    display: flex;
-    justify-content: flex-end;
-    font-weight: lighter;
-}
-
 
 .loginForm {
     display: flex;
@@ -120,9 +116,10 @@ h2 {
     margin: 10px 10px;
 }
 
-.registerForm > input {
+input {
     padding: 5px;
-    width: 220px;
+    width: 300px;
+    border-radius: 5px;
 }
 
 
@@ -168,16 +165,21 @@ h2 {
 .registerPage {
     display: none;
 }
-
+.errDiv {
+    width: 300px;
+    font-size: .75em;
+}
 .errDiv > ul{
-    text-align: center;
-    list-style: none;
+    text-align: left;
     color: red;
 }
 
 .closeButton {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
+}
+
+img {
     max-width: 25px;
     max-height: 25px;
 }
@@ -187,7 +189,7 @@ h2 {
     display: none;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.73);
+    background-color: rgba(255, 255, 255, 0.925);
     top: 0;
     left: 0;
     width: 100vw;
@@ -207,18 +209,9 @@ h2 {
     justify-content: center;
 }
 
-/* .backgroundTrans {
-    background-color: rgba(255, 255, 255, 0.311);
-} */
-
 .popUpButton {
     color: black;
     font-size: 10pt;
     margin-right: 20px;
     text-decoration: none;
-}
-
-.closeButton {
-    display: flex;
-    align-items: center;
 }
