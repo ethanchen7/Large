@@ -1,24 +1,37 @@
-window.addEventListener("load", (event)=>{
-    console.log("hello from javascript!")
+window.addEventListener("load", (event) => {
 
+  const hidden = document.getElementsByClassName("hidden")[0];
 
-    const register = document.getElementsByClassName('createButtono')[0]
+  hidden.classList.remove("hidden");
 
-    register.addEventListener('click', () => {
-        document.getElementsByClassName('registerPage')[0].style.display = 'flex'
-        document.getElementsByClassName('loginPage')[0].style.display = 'none'
-    });
+  const modal = document.getElementsByClassName("popUpButton")[0];
 
-    const signIn = document.getElementsByClassName('signInButtono')[0]
+  modal.addEventListener("click", () => {
+    document.getElementsByClassName("modal-container")[0].style.display =
+      "flex";
+    document.getElementsByClassName("modal")[0].style.display = "flex";
+  });
 
-    signIn.addEventListener('click', () => {
-        document.getElementsByClassName('loginPage')[0].style.display = 'flex'
-        document.getElementsByClassName('registerPage')[0].style.display = 'none'
-    })
+  const register = document.getElementsByClassName("createButtono")[0];
 
-    const closeButton = document.getElementsByClassName('closeX')[0]
+  register.addEventListener("click", () => {
+    document.getElementsByClassName("registerPage")[0].style.display = "flex";
+    document.getElementsByClassName("loginPage")[0].style.display = "none";
+  });
 
-    closeButton.addEventListener('click', () => {
-        document.getElementsByClassName('logOrRegisterPopUp')[0].style.display = 'none'
-    })
-})
+  const signIn = document.getElementsByClassName("signInButtono")[0];
+
+  signIn.addEventListener("click", () => {
+    document.getElementsByClassName("loginPage")[0].style.display = "flex";
+    document.getElementsByClassName("registerPage")[0].style.display = "none";
+  });
+
+  const closeButton = document.getElementsByClassName("closeButton")[0];
+
+  closeButton.addEventListener("click", () => {
+    document.getElementsByClassName("modal-container")[0].style.display =
+      "none";
+    document.getElementsByClassName("modal")[0].style.display = "none";
+  });
+
+});

@@ -3,7 +3,7 @@ var router = express.Router();
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 
-const { csrfProtection, asyncHandler } = require("./utils");
+const { csrfProtection, asyncHandler, splashPageQueries } = require("./utils");
 const { loginUser, logoutUser } = require("../auth.js");
 const { userValidators, loginValidators } = require("./validators");
 const db = require("../db/models");
@@ -31,14 +31,20 @@ router.post(
       loginUser(req, res, user);
       res.redirect("/");
     } else {
-      const errors = validationErrors.array().map((error) => error.msg);
-      // need pug view
-      console.log(errors);
+      const createErrors = validationErrors.array().map((error) => error.msg);
+
+      const queries = await splashPageQueries();
+      const { user, stories, tags } = queries;
+
       res.render("user-register", {
         title: "Register",
         user,
-        errors,
+        trending: stories,
+        stories,
+        tags,
+        createErrors,
         csrfToken: req.csrfToken(),
+        errStatus: true
       });
     }
   })
@@ -50,7 +56,7 @@ router.post(
   loginValidators,
   asyncHandler(async (req, res) => {
     const { email, password } = req.body;
-    let errors = [];
+    let logInErrors = [];
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
@@ -67,16 +73,26 @@ router.post(
           return res.redirect("/");
         }
       }
-      errors.push("Login failed for the provided email address and password.");
+      logInErrors.push(
+        "Login failed for the provided email address and password."
+      );
     } else {
-      console.log(errors);
-      errors = validatorErrors.array().map((error) => error.msg);
+      logInErrors = validatorErrors.array().map((error) => error.msg);
+
+      const queries = await splashPageQueries();
+
+      const { user, stories, tags } = queries;
+      res.render("user-register", {
+        email,
+        logInErrors,
+        user,
+        stories,
+        tags,
+        trending: stories,
+        csrfToken: req.csrfToken(),
+        errStatus: true,
+      });
     }
-    res.render("user-login", {
-      email,
-      errors,
-      csrfToken: req.csrfToken(),
-    });
   })
 );
 
