@@ -1,0 +1,90 @@
+.splashBanner {
+    background-color: #FFC017;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    height: 455px;
+}
+
+.mainBanner-text {
+    margin-left: 7.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#randomMgenerator {
+    display: grid;
+    grid-template-columns: repeat(25, 1fr);
+    grid-template-rows: repeat(17, 1fr);
+    width: 585px;
+}
+
+#mainBanner-title {
+    font-size: 72px;
+}
+
+#mainBanner-header {
+    width: 440px;
+    font-size: 25px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+#mainBanner-button {
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+    width: 171px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 9px;
+    border: solid black 1px;
+    border-radius: 25px;
+}
+
+#mainBanner-button:hover{
+    cursor: pointer;
+}
+
+.splashContent {
+    margin-top: 1em;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#splashContentHeader {
+    width: fit-content;
+}
+
+.trend-storiesCollection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.trend-story {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+}
+
+.trend-storyNumber {
+    display: inline-block;
+    width: 10px;
+    padding: .25em;
+}
+
+.trend-storyContent {
+    display: flex;
+    flex-direction: row;
+}
+
+.trend-storyHeaders {
+    display: flex;
+    flex-direction: column;
+}
+
+.trend-storyInformation {
+    display: flex;
+    flex-direction: column;
+}
