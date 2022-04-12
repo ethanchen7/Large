@@ -1,15 +1,92 @@
-.navbar {
-  display: flex;
-  flex-direction: row;
+.story-navbar {
   width: 100%;
   height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.navbar-container-1 {
+.nav-story-status {
+  font-size: 13px;
+}
+
+.story-innerNav {
+  width: 72%;
+  height: 100%;
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
 }
 
-.nav-logo-container {
-  width: 30%;
+.nav-logo-containerLeft {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-icon-logo-icon {
+  width: 50px;
+  height: 30px;
+  margin-right: 10px;
+}
+.nav-logo-containerRight {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.publish-button {
+  background-color: #1a8917;
+  border: #1a8917;
+  border-right: 1px solid black;
+  border-radius: 99em;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 25px;
+  width: 65px;
+  padding: 0 6px;
+  font-size: 0.75em;
+  color: white;
+  margin-right: 10px;
+}
+
+.options-button-container {
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  margin-right: 15px;
+}
+
+.options-button {
+  width: 100%;
+  height: 100%;
+}
+
+.notifications-button-container {
+  width: 20px;
+  height: 23px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.notifications-button {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-button-container {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.profile-button {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }

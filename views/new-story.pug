@@ -1,18 +1,16 @@
-html 
-body
-  nav(class="navbar")
-    div(class="nav-container-1")
-      div(class="nav-logo-container")
+extends layout.pug
+block content
+  nav(class="story-navbar")
+    div(class="story-innerNav")
+      div(class="nav-logo-containerLeft")
         a(class="nav-logo")
           img(class="nav-icon-logo-icon" src="/images/logo.png")
-      div(class="nav-story-status-container")
         p(class="nav-story-status") Draft in John Smith
-    div(class="nav-container-2")
-      div(class="nav-buttons-container")
+      div(class="nav-logo-containerRight")
         a(class="publish-button-container")
           button(class="publish-button") Publish
         a(class="options-button-container")
-          button(class="options-button") Options
+          img(class="options-button" src="/images/options.png")
         a(class="notifications-button-container")
           img(class="notifications-button" src="/images/notification.png")
         a(class="profile-button-container")
