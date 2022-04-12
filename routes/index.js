@@ -10,10 +10,12 @@ const { csrfProtection, asyncHandler, splashPageQueries } = require("./utils");
 router.get("/", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
   console.log(req.session.auth);
   if (!req.session.auth) {
+
     const queries = await splashPageQueries();
   
     const {user, stories, tags} = queries
     // change to index after
+
     res.render("user-register", {
       user,
       trending: stories,
@@ -29,8 +31,13 @@ router.get("/", requireAuth, csrfProtection, asyncHandler(async (req, res, next)
 }));
 
 
+
 router.get("/login", csrfProtection, function (req, res, next) {
   res.render("user-register", { csrfToken: req.csrfToken() });
+});
+
+router.get("/feed", (req, res) => {
+  res.render("feed");
 });
 
 module.exports = router;

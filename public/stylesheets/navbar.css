@@ -9,7 +9,7 @@
 }
 
 .innerNav{
-    width: 85%;
+    width: 64%;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -47,7 +47,7 @@
 
 .navItem {
     color: black;
-    font-size: 10pt;
+    font-size: 9pt;
     margin-right: 20px;
     text-decoration: none;
 }

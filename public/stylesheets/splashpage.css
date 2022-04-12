@@ -60,10 +60,11 @@
     color: #FFC017;
 }
 
-.splashContent {
+.splashTrending {
     margin-left: 18%;
     margin-right: 18%;
     padding-top: 40px;
+
 }
 
 #splashContentHeader {
@@ -116,4 +117,52 @@
 .trend-storyInformation {
     color: #757575;
     padding: .2em;
+}
+
+.splashScroll {
+    margin-top: 56px;
+    margin-left: 18%;
+    margin-right: 18%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* add story styles */
+
+#scroll-information {
+    width: 33%;
+}
+
+#scroll-informationHeader {
+    padding-bottom: 1em;
+    text-transform: uppercase;
+    font-size: .75em;
+    font-weight: bold;
+}
+
+.scroll-tags {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 24px;
+}
+.scroll-tag {
+    box-sizing: border-box;
+    color: #757575;
+    border: 1px solid rgba(230, 230, 230, 1);
+    border-radius: 3px;
+    margin: .25em;
+    padding: 5px;
+}
+
+.scroll-informationLinks {
+    border-top: 1px solid rgba(230, 230, 230, 1);
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 24px;
+    padding-right: 25%;
+}
+
+.infoLinks {
+    color: #757575;
+    padding: .6em;
 }

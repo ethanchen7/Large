@@ -19,7 +19,16 @@ module.exports = {
       {name: 'Social Media', createdAt: new Date(), updatedAt: new Date()},
       {name: 'Current Events', createdAt: new Date(), updatedAt: new Date()},
       {name: 'Romance', createdAt: new Date(), updatedAt: new Date()},
-      {name: 'Advice', createdAt: new Date(), updatedAt: new Date()},
+      {name: 'Productivity', createdAt: new Date(), updatedAt: new Date()},
+      {name: 'Data Science', createdAt: new Date(), updatedAt: new Date() },
+      {name: 'Javascript', createdAt: new Date(), updatedAt: new Date() },
+      {name: 'Health', createdAt: new Date(), updatedAt: new Date() },
+      {name: 'Politics', createdAt: new Date(), updatedAt: new Date() },
+      {name: 'Machine Learning', createdAt: new Date(), updatedAt: new Date() },
+      {name: 'Cooking', createdAt: new Date(), updatedAt: new Date()},
+      {name: 'Finance', createdAt: new Date(), updatedAt: new Date() },
+      {name: 'Crypto', createdAt: new Date(), updatedAt: new Date() },
+      {name: 'Start Up', createdAt: new Date(), updatedAt: new Date() },
     ], {});
   },
 
