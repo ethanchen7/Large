@@ -10,7 +10,19 @@ router.get("/", requireAuth, csrfProtection, asyncHandler(async (req, res, next)
   console.log(req.session.auth);
   if (!req.session.auth) {
     const user = db.User.build();
-    const stories = await db.Story.findAll({ include: [db.User, db.Tag] });
+    const stories = await db.Story.findAll({
+      include: [db.User, db.Tag],
+      order: [['createdAt', 'ASC']],
+    });
+
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',]
+    stories.forEach(story => {
+      const monthIndex = story.updatedAt.getMonth();
+      const month = months[monthIndex];
+
+      story.date = `${month} ${story.updatedAt.getDate().toString()}`
+    })
     // change to index after
     res.render("user-register", {
       user,
