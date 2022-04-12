@@ -16,6 +16,17 @@ router.get("/", requireAuth, csrfProtection, asyncHandler(async (req, res, next)
       order: [['createdAt', 'ASC']],
     });
 
+    // let newStories = []
+    // for (let i = 0; i < 6; i++) {
+    //   let story = stories.unshift();
+    //   newStories.push(story);
+    // }
+
+    const tags = await db.Tag.findAll({
+      order: [['createdAt', 'ASC']],
+      limit: 9,
+    });
+
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',]
     stories.forEach(story => {
@@ -24,10 +35,11 @@ router.get("/", requireAuth, csrfProtection, asyncHandler(async (req, res, next)
 
       story.date = `${month} ${story.updatedAt.getDate().toString()}`
     })
-    // change to index after
     res.render("user-register", {
       user,
       trending: stories,
+      stories,
+      tags,
       csrfToken: req.csrfToken(),
     });
   } else {
