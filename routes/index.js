@@ -15,8 +15,6 @@ router.get("/", requireAuth, csrfProtection, asyncHandler(async (req, res, next)
 
     const { user, stories, newStories, tags } = queries
 
-    console.log(newStories[0]);
-
     res.render("user-register", {
       user,
       newStories,
@@ -30,8 +28,6 @@ router.get("/", requireAuth, csrfProtection, asyncHandler(async (req, res, next)
     res.render("feed");
   }
 }));
-
-
 
 router.get("/login", csrfProtection, function (req, res, next) {
   res.render("user-register", { csrfToken: req.csrfToken() });
