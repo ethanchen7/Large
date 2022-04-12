@@ -1,20 +1,16 @@
 window.addEventListener("load", (event) => {
 
-  const hidden = document.getElementsByClassName("hidden")[0];
+  const signInButton = document.getElementsByClassName("popUpButton")[0];
 
-  hidden.classList.remove("hidden");
-
-  const modal = document.getElementsByClassName("popUpButton")[0];
-
-  modal.addEventListener("click", () => {
+  signInButton.addEventListener("click", () => {
     document.getElementsByClassName("modal-container")[0].style.display =
       "flex";
     document.getElementsByClassName("modal")[0].style.display = "flex";
   });
 
-  const register = document.getElementsByClassName("createButtono")[0];
+  const createUserButton = document.getElementsByClassName("createButtono")[0];
 
-  register.addEventListener("click", () => {
+  createUserButton.addEventListener("click", () => {
     document.getElementsByClassName("registerPage")[0].style.display = "flex";
     document.getElementsByClassName("loginPage")[0].style.display = "none";
   });
@@ -32,6 +28,7 @@ window.addEventListener("load", (event) => {
     document.getElementsByClassName("modal-container")[0].style.display =
       "none";
     document.getElementsByClassName("modal")[0].style.display = "none";
+    window.location.href='/'
   });
 
 });

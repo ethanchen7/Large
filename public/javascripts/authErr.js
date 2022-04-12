@@ -3,18 +3,18 @@ window.addEventListener("DOMContentLoaded", () => {
   const create = document.getElementById("errStatusCreate");
 
 
-  if (logIn.hidden === true) {
+  if (logIn.innerText === "true") {
     document.getElementsByClassName("modal-container")[0].style.display = "flex";
     document.getElementsByClassName("modal")[0].style.display = "flex";
-    logIn.classList.remove('hidden');
+    document.getElementsByClassName("registerPage")[0].style.display = "none";
+    document.getElementsByClassName("loginPage")[0].style.display = "flex";
   }
 
-  if (create.hidden === true) {
+  if (create.innerText === "true") {
     document.getElementsByClassName("modal-container")[0].style.display = "flex";
     document.getElementsByClassName("modal")[0].style.display = "flex";
-
-    
-    create.classList.add('hidden');
+    document.getElementsByClassName("registerPage")[0].style.display = "flex";
+    document.getElementsByClassName("loginPage")[0].style.display = "none";
   }
 
 });

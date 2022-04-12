@@ -20,6 +20,7 @@ router.get("/", requireAuth, csrfProtection, asyncHandler(async (req, res, next)
       stories,
       tags,
       csrfToken: req.csrfToken(),
+      
     });
 
   } else {

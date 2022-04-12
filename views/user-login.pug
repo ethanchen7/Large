@@ -1,7 +1,7 @@
 extends layout.pug 
 block content
-    div(hidden=errStatus id='errStatusLog' class='hidden' )
-    div(hidden=errStatus id='errStatusCreate' class='hidden' )
+    div(id='errStatusLog' class='hidden')= errStatusLog
+    div(id='errStatusCreate' class='hidden')= errStatusCreate
     div(class='modal-container hidden' id='modal-container')
       div(class='modal hidden')
         img(src='/images/close.png' class='closeButton')
@@ -13,7 +13,6 @@ block content
                 ul
                   li= error
           form(method="post" action="/login" class='loginForm')
-            //- input(type='hidden' id='errStatusLog' class='hidden' value=errStatus)
             input(type="hidden" name="_csrf" value=csrfToken)
             label(for="email") Email 
             input(type="email" name="email")
@@ -31,7 +30,6 @@ block content
                 ul
                   li= error
           form(method="post" action="/users" class='registerForm hidden')
-            //- input(type='hidden' id='errStatusCreate' class='hidden' value=errStatus)
             input(type="hidden" name="_csrf" value=csrfToken)
             label(for="firstName") First Name 
             input(type="text" name="firstName" )

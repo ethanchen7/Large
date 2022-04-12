@@ -44,7 +44,7 @@ router.post(
         tags,
         createErrors,
         csrfToken: req.csrfToken(),
-        errStatus: true
+        errStatusCreate: true
       });
     }
   })
@@ -90,7 +90,7 @@ router.post(
         tags,
         trending: stories,
         csrfToken: req.csrfToken(),
-        errStatus: true,
+        errStatusLog: true,
       });
     }
   })
