@@ -1,35 +1,20 @@
 
-
 .hidden {
     display: none;
 }
 
 h1 {
-    font-weight: lighter;
-    margin: 5px;
+    -webkit-font-smoothing: antialiased;
 }
 
 h2 {
-    font-weight: lighter;
-}
-
-.signInButton {
-    color: white;
-    background-color: black;
-    border-radius: 10px;
-    border: 0px;
-    transition:.5s;
-    padding: 5px;
-    width: 200px;
-    height: 25px;
-}
-.signInButton:hover {
-    transition: .5s;
-    border-radius: 20px;
-    background-color: #000000d4;
+    /* font-weight: lighter; */
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 15px;
 }
 
 .createButton {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
     color: white;
     background-color: rgb(48, 171, 48);
     border-radius: 10px;
@@ -40,12 +25,14 @@ h2 {
     height: 25px;
 }
 .createButton:hover {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
     transition: .5s;
     border-radius: 20px;
     background-color: rgba(48, 171, 48, 0.7);
 }
 
 .createButtono {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
     color: white;
     background-color: rgb(48, 171, 48);
     border-radius: 10px;
@@ -54,8 +41,11 @@ h2 {
     padding: 5px;
     width: 200px;
     height: 25px;
+    margin-bottom: 10px;
+    margin-left: 10px;
 }
 .createButtono:hover {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
     transition: .5s;
     border-radius: 20px;
     background-color: rgba(48, 171, 48, 0.7);
@@ -72,6 +62,8 @@ h2 {
 .loginForm {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .loginForm > label {
@@ -79,10 +71,6 @@ h2 {
     display: flex;
     justify-content: center;
     font-size: 20px;
-}
-
-.loginForm > button {
-    margin: 10px;
 }
 
 .loginForm > input {
@@ -117,13 +105,21 @@ h2 {
 }
 
 input {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 20px;
     padding: 5px;
     width: 300px;
-    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.515);
 }
 
 
 .signInButton {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     color: white;
     background-color: black;
@@ -133,15 +129,18 @@ input {
     padding: 5px;
     width: 200px;
     height: 25px;
+    margin: 10px;
 }
 
 .signInButton:hover {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
     transition: .5s;
     border-radius: 20px;
     background-color: #000000d4
 }
 
 .signInButtono {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
     text-align: center;
     color: white;
     background-color: black;
@@ -153,6 +152,7 @@ input {
     height: 25px;
 }
 .signInButtono:hover {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
     transition: .5s;
     border-radius: 20px;
     background-color: #000000d4
@@ -167,16 +167,17 @@ input {
 }
 .errDiv {
     width: 300px;
-    font-size: .75em;
 }
-.errDiv > ul{
+.errDiv > ul > li{
     text-align: left;
     color: red;
+    font-size: smaller;
 }
 
 .closeButton {
     display: flex;
     justify-content: flex-end;
+    margin: 0px;
 }
 
 img {
@@ -185,6 +186,7 @@ img {
 }
 
 .modal-container {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
     position:fixed;
     display: none;
     align-items: center;
@@ -198,15 +200,20 @@ img {
 
 
 .modal {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
     display: none;
     flex-direction: column;
+    justify-content: center;
     background-color: white;
-    box-shadow: 0px 0px 10px rgb(101, 101, 101);
+    box-shadow: 0px 0px 10px rgba(101, 101, 101, 0.537);
     border-radius: 5px;
     padding: 10px 10px;
     width: 600px;
     max-width: 100%;
-    justify-content: center;
+}
+
+.welcome {
+    margin-bottom: 30px;
 }
 
 .popUpButton {

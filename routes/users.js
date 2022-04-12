@@ -58,42 +58,41 @@ router.post(
     let logInErrors = [];
     const validatorErrors = validationResult(req);
     if (validatorErrors.isEmpty()) {
-      const user = await db.User.findOne({
+      const user1 = await db.User.findOne({
         where: { email },
       });
-      console.log(user);
-      if (user !== null) {
+      if (user1 !== null) {
         const passwordMatch = await bcrypt.compare(
           password,
-          user.hashedPassword.toString()
+          user1.hashedPassword.toString()
         );
         console.log(passwordMatch);
         if (passwordMatch) {
-          loginUser(req, res, user);
+          loginUser(req, res, user1);
           return res.redirect("/");
         }
-        // console.log('password check')
       }
       logInErrors.push(
         "Login failed for the provided email address and password."
       );
       res.render("user-register", {
+        user,
         email,
         logInErrors,
-        user,
         stories,
         tags,
         trending: stories,
         csrfToken: req.csrfToken(),
         errStatusLog: true,
       });
+
     } else {
       logInErrors = validatorErrors.array().map((error) => error.msg);
-
+      
       res.render("user-register", {
+        user,
         email,
         logInErrors,
-        user,
         stories,
         tags,
         trending: stories,

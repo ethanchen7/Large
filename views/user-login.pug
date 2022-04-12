@@ -7,7 +7,7 @@ block content
         div(class='closeButton')
           img(src='/images/close.png')
         div(class='loginPage hidden')
-          h1 Welcome Back 
+          h1(class='welcome') Welcome Back. 
           if logInErrors
             div(class='errDiv')
               each error in logInErrors 
@@ -21,10 +21,10 @@ block content
             input(type="password" name="password")
             button(class='signInButton') Log In
           h2 No account?
-          button(class='createButtono') Create One
+            a(class='createButtono') Create One
     
         div(class='registerPage hidden')
-          h1 Join Medium 
+          h1 Join Medium. 
           if createErrors
             div(class='errDiv')
               each error in createErrors 
