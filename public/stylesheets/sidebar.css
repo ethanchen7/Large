@@ -14,6 +14,22 @@
   border-right: 0.25px solid lightgray;
 }
 
+.homepage-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-logo-home {
+  padding-top: 35px;
+  width: 50%;
+}
+
+.nav-icon-logo-icon {
+  width: 100%;
+}
+
 .nav-icon-container {
   display: flex;
   flex-direction: column;

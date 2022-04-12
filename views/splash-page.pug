@@ -1,3 +1,4 @@
+include utils.pug 
 .splashBanner 
     .mainBanner-text
         #mainBanner-title Stay curious.
@@ -7,7 +8,7 @@
         - for (let rows = 0; rows < 17; rows++)
             - for (let cols = 0; cols < 25; cols++)
                 .disappearingM M
-.splashContent
+.splashTrending
     #splashContentHeader Trending on Medium
     .trend-storiesCollection
         - let count = 1;
@@ -21,3 +22,29 @@
                         .trend-storyHeaderInfo= `${story.User.firstName} ${story.User.lastName} in ${story.Tag.name}`
                     .trend-storyTitle= story.title
                     .trend-storyInformation= `${story.date} · 5 min read`
+.splashScroll 
+    .scroll-stories
+        each story in stories 
+            .scroll-story 
+                .scroll-storyContent 
+                    .scroll-storyHeader 
+                        .scroll-storyHeaderImage Img 
+                        .scroll-storyHeaderInfo= `${story.User.firstName} ${story.User.lastName} in ${story.Tag.name}`
+                    .scroll-storyTitle= story.title 
+                    .scroll-storyInformation= `${story.date} · 5 min read`
+    #scroll-information
+        #scroll-informationHeader Discover more of what matters to you
+        .scroll-tags
+            each tag in tags
+                //- should be a link to see stories with these tags.
+                .scroll-tag= tag.name
+        .scroll-informationLinks
+            +field('This', 'infoLinks')
+            +field('is', 'infoLinks')
+            +field('a', 'infoLinks')
+            +field('Medium', 'infoLinks')
+            +field('Clone.', 'infoLinks')
+            +field('All', 'infoLinks')
+            +field('data', 'infoLinks')
+            +field('is', 'infoLinks')
+            +field('fake', 'infoLinks')
