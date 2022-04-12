@@ -7,35 +7,29 @@
 }
 
 .mainBanner-text {
-    margin-left: 7.5%;
+    margin-left: 18%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-#randomMgenerator {
-    display: grid;
-    grid-template-columns: repeat(25, 1fr);
-    grid-template-rows: repeat(17, 1fr);
-    width: 585px;
-}
-
 #mainBanner-title {
-    font-size: 72px;
+    font-size: 90px;
 }
 
 #mainBanner-header {
     width: 440px;
-    font-size: 25px;
+    font-size: 20px;
     padding-top: 1em;
-    padding-bottom: 1em;
+    padding-bottom: 2.5em;
 }
 
 #mainBanner-button {
     box-sizing: border-box;
     background-color: black;
     color: white;
-    width: 171px;
+    width: 213px;
+    font-size: 20px;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 7px;
@@ -48,43 +42,78 @@
     cursor: pointer;
 }
 
+#randomMgenerator {
+    display: grid;
+    grid-template-columns: repeat(25, 1fr);
+    grid-template-rows: repeat(17, 1fr);
+    width: 585px;
+}
+
+.disappearingM {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    font-size: 20px;
+}
+
+.hiddenByColor {
+    color: #FFC017;
+}
+
 .splashContent {
-    margin-top: 1em;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 18%;
+    margin-right: 18%;
+    padding-top: 40px;
 }
 
 #splashContentHeader {
     width: fit-content;
+    margin-bottom: 16px;
 }
 
 .trend-storiesCollection {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .trend-story {
-    display: grid;
-    grid-template-columns: 20px 1fr;
+    box-sizing: border-box;
+    display: flex;
+    padding-right: 1em;
 }
 
 .trend-storyNumber {
-    display: inline-block;
-    width: 10px;
-    padding: .25em;
+    box-sizing: border-box;
+    color: #E6E6E6;
+    font-size: 1.75em;
+    font-weight: bold;
+
 }
 
 .trend-storyContent {
-    display: flex;
-    flex-direction: row;
+    padding-left: .5em;
 }
 
-.trend-storyHeaders {
+.trend-storyHeader {
     display: flex;
-    flex-direction: column;
+    padding: .2em;
+}
+
+.trend-storyHeaderImage {
+    padding-right: .5em;
+}
+
+.trend-storyHeaderInfo {
+    font-size: .75em;
+}
+
+.trend-storyTitle {
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: .2em;
 }
 
 .trend-storyInformation {
-    display: flex;
-    flex-direction: column;
+    color: #757575;
+    padding: .2em;
 }

@@ -6,21 +6,18 @@
     #randomMgenerator
         - for (let rows = 0; rows < 17; rows++)
             - for (let cols = 0; cols < 25; cols++)
-                .hidden#disappearingM M
+                .disappearingM M
 .splashContent
     #splashContentHeader Trending on Medium
     .trend-storiesCollection
         - let count = 1;
         each story in trending
             .trend-story(id=`story_${story.id}`)
-                .trend-storyNumber= count
+                .trend-storyNumber= `0${count}`
                 - count++;
                 .trend-storyContent 
-                    .trend-storyHeaders 
-                        .trend-storyHeadersImage Img
-                        .trend-storyHeadersAuthor= `${story.userId.firstName} ${story.userId.lastName}`
-                        .trend-storyHeadersTag= `${story.tagId.name}`
+                    .trend-storyHeader 
+                        .trend-storyHeaderImage Img
+                        .trend-storyHeaderInfo= `${story.User.firstName} ${story.User.lastName} in ${story.Tag.name}`
                     .trend-storyTitle= story.title
-                    .trend-storyInformation 
-                        .trend-storyPublishedDate= story.updatedAt 
-                        .trend-expectedTime 5 min read
+                    .trend-storyInformation= `${story.date} · 5 min read`
