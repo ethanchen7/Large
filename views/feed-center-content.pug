@@ -1,0 +1,17 @@
+div(class='centerHolder')
+    div(id='keepup')
+        a(href="#") +
+        p Keep up with the latest in any topic
+
+    div(id='feedChoice')
+        p Following 
+        p Recommended
+
+    each story in stories
+        div(class='storyDiv')
+            div(class='storyContent')
+                div(class='topInfo')
+                h2= story.title 
+                div(class='storyPreview')
+                    p=story.content 
+            img(class='imgPreview')

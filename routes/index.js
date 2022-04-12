@@ -16,11 +16,11 @@ router.get("/", requireAuth, csrfProtection, asyncHandler(async (req, res, next)
       order: [['createdAt', 'ASC']],
     });
 
-    // let newStories = []
-    // for (let i = 0; i < 6; i++) {
-    //   let story = stories.unshift();
-    //   newStories.push(story);
-    // }
+    let newStories = []
+    for (let i = 0; i < 6; i++) {
+      let story = stories.unshift();
+      newStories.push(story);
+    }
 
     const tags = await db.Tag.findAll({
       order: [['createdAt', 'ASC']],
@@ -53,8 +53,17 @@ router.get("/login", csrfProtection, function (req, res, next) {
   res.render("user-login", { csrfToken: req.csrfToken() });
 });
 
-router.get("/feed", (req, res) => {
-  res.render("feed");
-});
+router.get("/feed", asyncHandler(async(req, res) => {
+  const stories = await db.Story.findAll({
+    include: [db.User, db.Tag],
+    order: [['createdAt', 'ASC']],
+  });
+
+
+
+  res.render("feed", {
+    stories
+  });
+}));
 
 module.exports = router;
