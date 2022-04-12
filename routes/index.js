@@ -48,6 +48,7 @@ router.get("/", requireAuth, csrfProtection, asyncHandler(async (req, res, next)
 }));
 
 
+
 router.get("/login", csrfProtection, function (req, res, next) {
   res.render("user-login", { csrfToken: req.csrfToken() });
 });
