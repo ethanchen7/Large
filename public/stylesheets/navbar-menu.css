@@ -1,0 +1,22 @@
+#nav-profile-icon-menu-container {
+    justify-content: center;
+    border: .2px solid black;
+    width: 100%;
+    height: 100%;
+
+}
+
+#logoutButton {
+    border: 0;
+    color: black;
+    background-color: white;
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    transition: .5s;
+}
+
+#logoutButton:hover {
+    transition: .5s;
+    background-color: rgba(128, 128, 128, 0.315);
+    border-radius: 10px;
+}
