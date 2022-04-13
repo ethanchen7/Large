@@ -8,12 +8,10 @@ const { csrfProtection, asyncHandler, splashPageQueries } = require("./utils");
 /* GET splash page. */
 
 router.get("/", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
-  console.log(req.session.auth);
+  const queries = await splashPageQueries();
+  const { user, stories, newStories, tags } = queries
+
   if (!req.session.auth) {
-
-    const queries = await splashPageQueries();
-
-    const { user, stories, newStories, tags } = queries
 
     res.render("user-register", {
       user,
@@ -21,11 +19,17 @@ router.get("/", requireAuth, csrfProtection, asyncHandler(async (req, res, next)
       stories,
       tags,
       csrfToken: req.csrfToken(),
-
     });
 
   } else {
-    res.render("feed");
+    res.render("feed", {
+      user,
+      newStories,
+      stories,
+      tags,
+      csrfToken: req.csrfToken(),
+
+    });
   }
 }));
 
@@ -33,8 +37,8 @@ router.get("/login", csrfProtection, function (req, res, next) {
   res.render("user-register", { csrfToken: req.csrfToken() });
 });
 
-router.get("/feed", asyncHandler(async(req, res) => {
-  const queries  = await splashPageQueries()
+router.get("/feed", asyncHandler(async (req, res) => {
+  const queries = await splashPageQueries()
 
   const { user, stories, tags } = queries
 

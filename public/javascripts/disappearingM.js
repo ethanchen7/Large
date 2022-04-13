@@ -11,16 +11,16 @@ addEventListener('DOMContentLoaded', () => {
         };
     };
 
-    visibleCollection.forEach(async (el) => {
+    visibleCollection.forEach((el) => {
         const rand = Math.random();
         if (rand < .15) {
-            await setTimeout(toggleElement(el), 100);
+            setTimeout(toggleElement(el), 3000);
         }
     });
 });
 
 const toggleElement = element => {
-    setInterval( () => {
+    setInterval(() => {
         element.classList.toggle('hiddenByColor');
     }, 1000);
 };
