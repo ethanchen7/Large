@@ -1,0 +1,50 @@
+extends layout.pug
+
+block content
+  link(rel='stylesheet' href='/stylesheets/tag-feed.css')
+  div(id='feed-main-layout')
+    include feed-sidebar.pug
+
+    div(class='centerHolder')
+      div(id='keepup')
+          img(src="/images/tag-icon.png" class='tagIcon')
+          h1=tagName.name
+
+      div(id='topButtons')
+        a(id='fullB' href='#') Follow
+        a(id='hollowB' href='/my-stories/new') Start Writing
+
+      div(id='feedChoice')
+          //- p(id='following') Following 
+          p(id='recommended') Most Recent #{tagName.name} Stories
+      div(id= 'contentDisplayed')
+          div(id= 'recommendedStories')
+              each story in stories.reverse()
+                  div(class='storyDiv')
+                      div(class='storyContent')
+                          div(class='topInfo')
+                              img(class='feedprofile-img' src='/images/logo.png')
+                              a(href=`/users/${story.User.id}`) #{story.User.firstName} #{story.User.lastName}
+                              p · #{story.date}
+                          a(href=`/stories/${story.id}` class='storyTitle')= story.title
+                          div(class='storyPreview')
+                              a(href=`/stories/${story.id}`)= `${story.article.split(' ').splice(0,25).join(' ')}... `
+                          div(class='underStory')
+                              div(class='underLeft')
+                                  a(href=`/tags/${story.Tag.id}`)= story.Tag.name 
+                                  p #{story.readTime} min · selected for you 
+                              div(class='underRight')
+                                  img(src="/images/save.png", alt="")
+                                  strong(href='#') ···
+                      div(class='imgDiv')
+                          img(class='imgPreview' src='/images/logo.png')
+
+
+
+
+
+
+    script(src='/javascripts/feed.js')
+
+
+
