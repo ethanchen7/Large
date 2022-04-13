@@ -91,6 +91,33 @@ const followingArticles = async(req, res) => {
 
 }
 
+const storiesByTags = async(tag) => {
+  const stories = await db.Story.findAll({
+    include: [db.User, db.Tag],
+    order: [['createdAt', 'ASC']],
+    where: { tagId: `${tag}` }
+  })
+
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',]
+  stories.forEach(story => {
+    const monthIndex = story.updatedAt.getMonth();
+    const month = months[monthIndex];
+
+    story.date = `${month} ${story.updatedAt.getDate().toString()}`
+
+    const article = story.article;
+    const articleWords = article.split(' ');
+    const blurb = articleWords.slice(0, 15).join(' ');
+    story.blurb = blurb;
+    story.readTime = Math.max(1, Math.floor(articleWords.length / 250))
+
+  })
+
+  console.log(stories)
+  return { stories }
+}
+
 
 
 module.exports = {
@@ -98,4 +125,5 @@ module.exports = {
   asyncHandler,
   splashPageQueries,
   followingArticles,
+  storiesByTags,
 };
