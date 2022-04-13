@@ -1,13 +1,10 @@
-.closeX {
-    display: flex;
-    justify-content: end;
-    margin-right: 300px;
-    margin-top: 50px;
-    font-size: 20px;
+.hidden {
+    display: none;
 }
 
 h1 {
     font-weight: lighter;
+    margin: 5px;
 }
 
 h2 {
@@ -72,8 +69,6 @@ h2 {
 .close {
     display: flex;
     justify-content: flex-end;
-    margin-right: 500px;
-    margin-top: 50px;
     font-weight: lighter;
 }
 
@@ -174,6 +169,56 @@ h2 {
     display: none;
 }
 
-/* .logOrRegisterPopUp {
+.errDiv > ul{
+    text-align: center;
+    list-style: none;
+    color: red;
+}
+
+.closeButton {
+    display: flex;
+    justify-content: end;
+    max-width: 25px;
+    max-height: 25px;
+}
+
+.modal-container {
+    position:fixed;
     display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.73);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.modal {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgb(101, 101, 101);
+    border-radius: 5px;
+    padding: 10px 10px;
+    width: 600px;
+    max-width: 100%;
+    justify-content: center;
+}
+
+/* .backgroundTrans {
+    background-color: rgba(255, 255, 255, 0.311);
 } */
+
+.popUpButton {
+    color: black;
+    font-size: 9pt;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+.closeButton {
+    display: flex;
+    align-items: center;
+}

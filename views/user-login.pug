@@ -1,48 +1,49 @@
-html
-
-head 
-  link(rel="stylesheet", href="/stylesheets/loginOrRegister.css")
-  script(src="/javascripts/signInReg.js") 
-body
-  div(class='logOrRegisterPopUp')
-    p(class='closeX') X
-    div(class='loginPage')
-      h1 Welcome Back 
-      if errors
-        each error in errors 
-          ul
-            li= error.message
-      form(method="post" action="/login" class='loginForm')
-        input(type="hidden" name="_csrf" value=csrfToken)
-        label(for="email") Email 
-        input(type="email" name="email")
-        label(for="password") Password 
-        input(type="password" name="password")
-        button(class='signInButton') Log In
-      h2 No account?
-      button(class='createButtono') Create One
-
-    div(class='registerPage')
-      h1 Join Medium 
-      if errors
-        each error in errors 
-          ul
-            li= error.message
-      form(method="post" action="/users" class='registerForm')
-        input(type="hidden" name="_csrf" value=csrfToken)
-        label(for="firstName") First Name 
-        input(type="text" name="firstName" )
-        label(for="lastName") Last Name 
-        input(type="text" name="lastName" )
-        label(for="userName") Username
-        input(type="text" name="userName" )
-        label(for="email") Email 
-        input(type="email" name="email" )
-        label(for="password") Password 
-        input(type="password" name="password")
-        label(for="password") Confirm Password 
-        input(type="password" name="confirmedPassword")
-        button(class='createButton') Create Account
-      h2 Already have an account?
-      button(class='signInButtono') Sign In
+extends layout.pug 
+block content
+    div(id='errStatusLog' class='hidden')= errStatusLog
+    div(id='errStatusCreate' class='hidden')= errStatusCreate
+    div(class='modal-container hidden' id='modal-container')
+      div(class='modal hidden')
+        img(src='/images/close.png' class='closeButton')
+        div(class='loginPage hidden')
+          h1 Welcome Back 
+          if logInErrors
+            div(class='errDiv')
+              each error in logInErrors 
+                ul
+                  li= error
+          form(method="post" action="/login" class='loginForm')
+            input(type="hidden" name="_csrf" value=csrfToken)
+            label(for="email") Email 
+            input(type="email" name="email")
+            label(for="password") Password 
+            input(type="password" name="password")
+            button(class='signInButton') Log In
+          h2 No account?
+          button(class='createButtono') Create One
+    
+        div(class='registerPage hidden')
+          h1 Join Medium 
+          if createErrors
+            div(class='errDiv')
+              each error in createErrors 
+                ul
+                  li= error
+          form(method="post" action="/users" class='registerForm hidden')
+            input(type="hidden" name="_csrf" value=csrfToken)
+            label(for="firstName") First Name 
+            input(type="text" name="firstName" )
+            label(for="lastName") Last Name 
+            input(type="text" name="lastName" )
+            label(for="userName") Username
+            input(type="text" name="userName" )
+            label(for="email") Email 
+            input(type="email" name="email" )
+            label(for="password") Password 
+            input(type="password" name="password")
+            label(for="password") Confirm Password 
+            input(type="password" name="confirmedPassword")
+            button(class='createButton') Create Account
+          h2 Already have an account?
+          button(class='signInButtono') Sign In
 
