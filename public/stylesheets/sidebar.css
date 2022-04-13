@@ -6,12 +6,13 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  position: sticky;
   justify-content: space-between;
   align-items: center;
   height: 100vh;
   width: 6%;
   border-right: 0.25px solid lightgray;
+  position: sticky;
+  top: 0;
 }
 
 .homepage-icon-container {
