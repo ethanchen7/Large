@@ -40,7 +40,7 @@ router.post(
         tagId = newTag.id;
       }
       //temporary
-      const userId = 1;
+      const userId = 44;
       const state = "published";
 
       story.tagId = tagId;
