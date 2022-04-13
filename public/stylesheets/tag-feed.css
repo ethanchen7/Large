@@ -41,6 +41,38 @@
   -webkit-font-smoothing: antialiased;
 }
 
+#topButtons{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+#topButtons > a{
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+
+  font-size: 10pt;
+  margin: 10px;
+  border-radius: 25px;
+}
+
+#fullB{
+  background-color: rgba(26, 137, 23, 1);
+  color: white;
+}
+
+#fullB:hover{
+  background-color: rgb(21, 109, 18);
+}
+
+#hollowB{
+  border: solid rgba(26, 137, 23, 1) 1px;
+  color: rgba(26, 137, 23, 1);;
+}
+
 #feedChoice {
   margin-top: 6px;
   width: 100%;
