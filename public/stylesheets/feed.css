@@ -6,6 +6,7 @@
 .centerHolder{
     width: 63.5%;
     height: 100%;
+    min-height: 100vh;
     border-right: 0.25px solid lightgray;
     padding-left: 5%;
     padding-right: 5%;
@@ -51,18 +52,48 @@
     align-items: center;
 }
 
+#recommended {
+    border-bottom: solid black 0.25px;
+    color: rgb(58, 58, 58);
+    display: flex;
+    align-items: center;
+    margin-right: 25px;
+    height: 100%;
+    font-size: 10pt;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 0px;
+    padding-bottom: 15px;
+}
+
+#following {
+    color: rgba(117, 117, 117, 1);;
+    display: flex;
+    align-items: center;
+    margin-right: 25px;
+    height: 100%;
+    font-size: 10pt;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 0px;
+    padding-bottom: 15px;
+}
+
+
+/* 
 #feedChoice > p {
     display: flex;
     align-items: center;
     margin-right: 25px;
     height: 100%;
     font-size: 10pt;
-    color: rgb(58, 58, 58);
+    color: lightgrey;
     border-bottom: solid black 0.25px;
     -webkit-font-smoothing: antialiased;
     margin-bottom: 0px;
     padding-bottom: 15px;
-}
+} */
+
+
+
 
 #feedChoice > p:hover{
     cursor: pointer;
@@ -183,4 +214,9 @@
 .imgPreview{
     width: 70px;
     height: 70px;
+}
+
+
+#followingStories{
+    visibility: hidden;
 }
