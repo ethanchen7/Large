@@ -1,224 +1,221 @@
-
+/* 
 .hidden {
     display: none;
-}
+} */
 
 h1 {
-    -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
 }
 
 h2 {
-    /* font-weight: lighter; */
-    -webkit-font-smoothing: antialiased;
-    margin-bottom: 15px;
+  /* font-weight: lighter; */
+  -webkit-font-smoothing: antialiased;
+  margin-bottom: 15px;
 }
 
 .createButton {
-    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
-    color: white;
-    background-color: rgb(48, 171, 48);
-    border-radius: 10px;
-    border: 0px;
-    transition:.5s;
-    padding: 5px;
-    width: 200px;
-    height: 25px;
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+  color: white;
+  background-color: rgb(48, 171, 48);
+  border-radius: 10px;
+  border: 0px;
+  transition: 0.5s;
+  padding: 5px;
+  width: 200px;
+  height: 25px;
 }
 .createButton:hover {
-    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
-    transition: .5s;
-    border-radius: 20px;
-    background-color: rgba(48, 171, 48, 0.7);
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+  transition: 0.5s;
+  border-radius: 20px;
+  background-color: rgba(48, 171, 48, 0.7);
 }
 
 .createButtono {
-    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
-    color: white;
-    background-color: rgb(48, 171, 48);
-    border-radius: 10px;
-    border: 0px;
-    transition:.5s;
-    padding: 5px;
-    width: 200px;
-    height: 25px;
-    margin-bottom: 10px;
-    margin-left: 10px;
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+  color: white;
+  background-color: rgb(48, 171, 48);
+  border-radius: 10px;
+  border: 0px;
+  transition: 0.5s;
+  padding: 5px;
+  width: 200px;
+  height: 25px;
+  margin-bottom: 10px;
+  margin-left: 10px;
 }
 .createButtono:hover {
-    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
-    transition: .5s;
-    border-radius: 20px;
-    background-color: rgba(48, 171, 48, 0.7);
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+  transition: 0.5s;
+  border-radius: 20px;
+  background-color: rgba(48, 171, 48, 0.7);
 }
 
 .loginPage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-
 .loginForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .loginForm > label {
-    margin: 10px 10px;
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
+  margin: 10px 10px;
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
 }
 
 .loginForm > input {
-    padding: 5px;
+  padding: 5px;
 }
 
 .registerPage {
-    margin-top: 20px;
-    margin-bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    display: flex;
-    color: black;
-    font-weight: lighter;
-    text-decoration: none;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  color: black;
+  font-weight: lighter;
+  text-decoration: none;
 }
 
 .registerForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .registerForm > label {
-    margin: 10px 10px;
-    font-size: 20px;
+  margin: 10px 10px;
+  font-size: 20px;
 }
 
 .registerForm > button {
-    margin: 10px 10px;
+  margin: 10px 10px;
 }
 
 input {
-    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
-    font-size: 20px;
-    padding: 5px;
-    width: 300px;
-    border: 0;
-    outline: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.515);
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 20px;
+  padding: 5px;
+  width: 300px;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.515);
 }
 
-
 .signInButton {
-    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    color: white;
-    background-color: black;
-    border-radius: 10px;
-    border: 0px;
-    transition:.5s;
-    padding: 5px;
-    width: 200px;
-    height: 25px;
-    margin: 10px;
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  border: 0px;
+  transition: 0.5s;
+  padding: 5px;
+  width: 200px;
+  height: 25px;
+  margin: 10px;
 }
 
 .signInButton:hover {
-    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
-    transition: .5s;
-    border-radius: 20px;
-    background-color: #000000d4
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+  transition: 0.5s;
+  border-radius: 20px;
+  background-color: #000000d4;
 }
 
 .signInButtono {
-    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
-    text-align: center;
-    color: white;
-    background-color: black;
-    border-radius: 10px;
-    border: 0px;
-    transition:.5s;
-    padding: 5px;
-    width: 200px;
-    height: 25px;
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+  text-align: center;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  border: 0px;
+  transition: 0.5s;
+  padding: 5px;
+  width: 200px;
+  height: 25px;
 }
 .signInButtono:hover {
-    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
-    transition: .5s;
-    border-radius: 20px;
-    background-color: #000000d4
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+  transition: 0.5s;
+  border-radius: 20px;
+  background-color: #000000d4;
 }
 
 .loginPage {
-    display: flex;
+  display: flex;
 }
 
 .registerPage {
-    display: none;
+  display: none;
 }
 .errDiv {
-    width: 300px;
+  width: 300px;
 }
-.errDiv > ul > li{
-    text-align: left;
-    color: red;
-    font-size: smaller;
+.errDiv > ul > li {
+  text-align: left;
+  color: red;
+  font-size: smaller;
 }
 
 .closeButton {
-    display: flex;
-    justify-content: flex-end;
-    margin: 0px;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0px;
 }
 
 img {
-    max-width: 25px;
-    max-height: 25px;
+  max-width: 25px;
+  max-height: 25px;
 }
 
 .modal-container {
-    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
-    position:fixed;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.925);
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.925);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
-
 .modal {
-    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    background-color: white;
-    box-shadow: 0px 0px 10px rgba(101, 101, 101, 0.537);
-    border-radius: 5px;
-    padding: 10px 10px;
-    width: 600px;
-    max-width: 100%;
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(101, 101, 101, 0.537);
+  border-radius: 5px;
+  padding: 10px 10px;
+  width: 600px;
+  max-width: 100%;
 }
 
 .welcome {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .popUpButton {
-    color: black;
-    font-size: 9pt;
-    margin-right: 20px;
-    text-decoration: none;
+  color: black;
+  font-size: 9pt;
+  margin-right: 20px;
+  text-decoration: none;
 }
