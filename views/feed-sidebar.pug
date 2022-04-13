@@ -1,11 +1,26 @@
 extends layout.pug
 
 block content
+  div(class='hidden nav-profile-icon-menu-container')
+    div(class='mediumPrograms')
+      a(class='menu-item one' href='#') Medium Partner Program 
+      a(class='menu-item two' href='#') Gift a membership 
+      a(class='menu-item three' href='#') Get unlimited access
+    div(class='userFuncs')
+      form(action="/users/logout" method="post" class='userFuncs')
+        input(type="submit" id="logoutButton" value="Sign out")
+      a(class='menu-item' href='#') Medium Partner Program 
+      a(class='menu-item five' href='#') Medium Partner Program 
+    div(class='userProfile')
+      a(class='menu-item six' href=`/users/${user.id}`)= `${user.firstName} ${user.lastName}`
+      a(class='menu-item seven' href=`/users/${user.id}`)= `${user.userName}`
+
+
   nav(class="sidebar")
     div(class="homepage-icon-container")
       a(class="nav-logo-home" href="/")
         img(class= "nav-icon-logo-icon" src="/images/logo.png")
-    
+
     div(class="nav-icon-container")
       a(class="nav-icon-home" href="/")
         img(class= "nav-icon-home-icon" src="/images/home.png")

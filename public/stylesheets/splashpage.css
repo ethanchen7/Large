@@ -64,7 +64,7 @@
     margin-left: 18%;
     margin-right: 18%;
     padding-top: 40px;
-
+    padding-bottom: 25px
 }
 
 #splashContentHeader {
@@ -120,17 +120,50 @@
 }
 
 .splashScroll {
-    margin-top: 56px;
-    margin-left: 18%;
-    margin-right: 18%;
+    padding-top: 56px;
+    padding-left: 18%;
+    padding-right: 18%;
     display: flex;
     justify-content: space-between;
+    border-top: 1px solid #757575;
 }
 
-/* add story styles */
+.scroll-stories {
+    padding-right: 8.3%;
+}
+
+.storyDiv {
+    border: none;
+}
+
+.topInfo {
+    padding-bottom: .4em;
+}
+
+.storyContent {
+    width: 550px;
+    padding-top: 1m;
+    padding-right: 1em;
+}
+
+.scroll-tag {
+    padding-left: 1em;
+}
+
+.scroll-story {
+    padding-top: 0;
+}
+
+.underStory {
+    width: 100%;
+}
+
+.storyPreview > p {
+    width: 75%;
+}
 
 #scroll-information {
-    width: 33%;
+    width: 38%;
 }
 
 #scroll-informationHeader {

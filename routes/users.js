@@ -32,11 +32,11 @@ router.post(
       const createErrors = validationErrors.array().map((error) => error.msg);
 
       const queries = await splashPageQueries();
-      const { stories, tags } = queries;
+      const { user, stories, newStories, tags } = queries;
 
       res.render("user-register", {
         user,
-        trending: stories,
+        newStories,
         stories,
         tags,
         createErrors,
@@ -88,11 +88,16 @@ router.post(
 
     } else {
       logInErrors = validatorErrors.array().map((error) => error.msg);
-      
+
+      const queries = await splashPageQueries();
+
+      const { user, stories, newStories, tags } = queries;
+
       res.render("user-register", {
         user,
         email,
         logInErrors,
+        newStories,
         stories,
         tags,
         trending: stories,
@@ -107,5 +112,7 @@ router.post("/users/logout", (req, res) => {
   logoutUser(req, res);
   res.redirect("/");
 });
+
+
 
 module.exports = router;

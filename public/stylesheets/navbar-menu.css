@@ -1,0 +1,79 @@
+.mediumPrograms {
+    display: flex;
+    flex-direction: column;
+}
+
+.userFuncs {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+}
+
+.userProfile {
+    margin: 5px;
+    width: 100%;
+}
+
+.menu-item {
+    text-decoration: none;
+    padding: 10px 10px;
+    margin: 10px;
+    font-size: 13px;
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.three {
+    color: rgb(0, 138, 37);
+    border-bottom: 1px solid rgb(109, 109, 109);
+
+}
+
+.five {
+    border-bottom: 1px solid rgb(109, 109, 109);
+}
+
+.six {
+    display: flex;
+    margin-bottom: 0px;
+}
+.seven {
+    display: flex;
+    margin-top: 0px;
+}
+
+.nav-profile-icon-menu-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: start;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    width: fit-content;
+    height: fit-content;
+    top: 380px;
+    left: 10px;
+    background-color: white;
+    box-shadow:0px 0px 3px rgba(143, 143, 143, 0.542);
+    z-index: 1;
+}
+
+#logoutButton {
+    left: 15px;
+    position: relative;
+    border: 0;
+    color: black;
+    background-color: white;
+    width: fit-content;
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    transition: .5s;
+}
+
+#logoutButton:hover {
+    transition: .5s;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.261);
+}
+
+.hidden {
+    display: none;
+}
