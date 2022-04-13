@@ -6,7 +6,12 @@
 .userFuncs {
     display: flex;
     flex-direction: column;
-    
+    padding-top: 5px;
+}
+
+.userProfile {
+    margin: 5px;
+    width: 100%;
 }
 
 .menu-item {
@@ -21,6 +26,19 @@
     color: rgb(0, 138, 37);
     border-bottom: 1px solid rgb(109, 109, 109);
 
+}
+
+.five {
+    border-bottom: 1px solid rgb(109, 109, 109);
+}
+
+.six {
+    display: flex;
+    margin-bottom: 0px;
+}
+.seven {
+    display: flex;
+    margin-top: 0px;
 }
 
 .nav-profile-icon-menu-container {
@@ -41,9 +59,12 @@
 }
 
 #logoutButton {
+    left: 15px;
+    position: relative;
     border: 0;
     color: black;
     background-color: white;
+    width: fit-content;
     font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
     transition: .5s;
 }

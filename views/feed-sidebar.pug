@@ -10,10 +10,10 @@ block content
       form(action="/users/logout" method="post" class='userFuncs')
         input(type="submit" id="logoutButton" value="Sign out")
       a(class='menu-item' href='#') Medium Partner Program 
-      a(class='menu-item' href='#') Medium Partner Program 
-      a(class='menu-item' href=`/users/${user.id}`)= `${user.firstName} ${user.lastName}`
-
+      a(class='menu-item five' href='#') Medium Partner Program 
     div(class='userProfile')
+      a(class='menu-item six' href=`/users/${user.id}`)= `${user.firstName} ${user.lastName}`
+      a(class='menu-item seven' href=`/users/${user.id}`)= `${user.userName}`
 
 
   nav(class="sidebar")
