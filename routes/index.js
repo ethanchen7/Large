@@ -2,12 +2,12 @@ var express = require("express");
 var router = express.Router();
 
 const db = require("../db/models");
-const { requireAuth } = require("../auth");
+const { requireAuth, restoreUser } = require("../auth");
 const { csrfProtection, asyncHandler, splashPageQueries } = require("./utils");
 
 /* GET splash page. */
 
-router.get("/", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
+router.get("/", requireAuth, csrfProtection, restoreUser, asyncHandler(async (req, res, next) => {
   console.log(req.session.auth);
   if (!req.session.auth) {
 

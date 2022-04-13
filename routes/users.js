@@ -29,7 +29,7 @@ router.post(
       console.log("after", user);
       await user.save();
       loginUser(req, res, user);
-      res.redirect("/");
+      res.redirect("/", );
     } else {
       const createErrors = validationErrors.array().map((error) => error.msg);
 
@@ -100,5 +100,7 @@ router.post("/users/logout", (req, res) => {
   logoutUser(req, res);
   res.redirect("/");
 });
+
+
 
 module.exports = router;
