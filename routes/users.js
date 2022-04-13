@@ -53,7 +53,7 @@ router.post(
   loginValidators,
   asyncHandler(async (req, res) => {
     const queries = await splashPageQueries();
-    const { user, stories, tags } = queries;
+    const { user, stories, newStories, tags } = queries;
     const { email, password } = req.body;
     let logInErrors = [];
     const validatorErrors = validationResult(req);
@@ -69,7 +69,8 @@ router.post(
         console.log(passwordMatch);
         if (passwordMatch) {
           loginUser(req, res, user1);
-          return res.redirect("/");
+          console.log("*********,before redirect in /login POST ", req.session.auth)
+          return req.session.save(() => res.redirect("/"));
         }
       }
       logInErrors.push(
@@ -80,6 +81,7 @@ router.post(
         email,
         logInErrors,
         stories,
+        newStories,
         tags,
         trending: stories,
         csrfToken: req.csrfToken(),
