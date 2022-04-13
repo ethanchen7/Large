@@ -113,6 +113,21 @@ router.post("/users/logout", (req, res) => {
   res.redirect("/");
 });
 
+// router.post("/users/:id/follow", async(req,res) => {
+//   const followingId = req.url.split('/')[1]
+  
+//   const followerId = req.session.auth
+  
+//   const newFollow = db.Follow.build({
+//     followerId,
+//     followingId
+//   })
+
+//   await newFollow.save()
+  
+//   res.redirect('/')
+// })
+
 
 
 module.exports = router;

@@ -3,7 +3,7 @@ var router = express.Router();
 
 const db = require("../db/models");
 const { requireAuth, restoreUser } = require("../auth");
-const { csrfProtection, asyncHandler, splashPageQueries } = require("./utils");
+const { csrfProtection, asyncHandler, splashPageQueries, followingArticles } = require("./utils");
 
 /* GET splash page. */
 
@@ -42,14 +42,19 @@ router.get("/login", csrfProtection, function (req, res, next) {
 router.get("/feed", asyncHandler(async (req, res) => {
   const queries = await splashPageQueries()
 
+  const followingQueries = await followingArticles(req, res)
+
   const { user, stories, tags } = queries
+
+  const { followingStories } = followingQueries
 
 
 
   res.render("feed", {
     user,
     stories,
-    tags
+    tags,
+    followingStories
   });
 }));
 
