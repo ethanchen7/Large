@@ -109,6 +109,7 @@
 .storyContent {
   display: flex;
   flex-direction: column;
+  min-width: 90%;
 }
 
 .topInfo {
@@ -142,6 +143,7 @@
   font-weight: bolder;
   font-size: 15pt;
   -webkit-font-smoothing: antialiased;
+  text-decoration: none;
 }
 
 .storyPreview {
@@ -150,10 +152,11 @@
   overflow-y: hidden;
 }
 
-.storyPreview > p {
+.storyPreview > a {
   color: rgb(58, 58, 58);
-  font-size: 9pt;
+  font-size: 9.5pt;
   -webkit-font-smoothing: antialiased;
+  text-decoration: none;
 }
 
 .underStory {

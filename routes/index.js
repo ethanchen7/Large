@@ -2,8 +2,10 @@ var express = require("express");
 var router = express.Router();
 
 const db = require("../db/models");
-const { restoreUser } = require("../auth");
-const { csrfProtection, asyncHandler, splashPageQueries } = require("./utils");
+
+const { requireAuth, restoreUser } = require("../auth");
+const { csrfProtection, asyncHandler, splashPageQueries, followingArticles } = require("./utils");
+
 
 /* GET splash page. */
 
@@ -47,6 +49,9 @@ router.get(
 
     const { user, recommendedUsers, stories, newStories, tags } = queries;
 
+    const followingQueries = await followingArticles(req, res)
+    const { followingStories } = followingQueries
+
     const contentBarStories = newStories.slice(0, 3);
     const contentBarTags = tags.slice(0, 7);
     res.render("feed", {
@@ -56,6 +61,7 @@ router.get(
       contentBarStories,
       tags,
       contentBarTags,
+      followingStories
     });
   })
 );
