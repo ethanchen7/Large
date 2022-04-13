@@ -2,18 +2,20 @@ var express = require("express");
 var router = express.Router();
 
 const db = require("../db/models");
+
 const { requireAuth, restoreUser } = require("../auth");
 const { csrfProtection, asyncHandler, splashPageQueries, followingArticles } = require("./utils");
+
 
 /* GET splash page. */
 
 
-router.get("/", requireAuth, csrfProtection, restoreUser, asyncHandler(async (req, res, next) => {
+router.get("/", csrfProtection, restoreUser, asyncHandler(async (req, res, next) => {
 
   const queries = await splashPageQueries();
   const { user, stories, newStories, tags } = queries
-
-  if (!req.session.auth) {
+  // console.log("line 15 ********", res.locals.authenticated);
+  if (!res.locals.authenticated) {
 
     res.render("user-register", {
       user,
@@ -24,6 +26,7 @@ router.get("/", requireAuth, csrfProtection, restoreUser, asyncHandler(async (re
     });
 
   } else {
+    // console.log('line 27 *************', res.locals.user.id)
     res.render("feed", {
       user,
       newStories,
