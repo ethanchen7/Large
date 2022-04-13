@@ -34,7 +34,7 @@ div(class="content-bar")
             h3(class="recommended-topics-title") Recommend topics
         div(class="recommend-topics-tags")
             each tag in contentBarTags 
-                button(class="recommended-tag-button" href='#' id=`${tag.name}-btn`) #{tag.name}
+                button(class="recommended-tag-button" id=`btn-${tag.id}`) #{tag.name}
     div(class="recommended-follows-container")
         div(class="recommended-follows-header")
             h3(class="recommended-follows-title") Who to follow

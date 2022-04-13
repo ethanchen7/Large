@@ -428,7 +428,7 @@
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
-  background-color: rgb(240, 240, 240);
+  background-color: rgba(223, 223, 223, 0.69);
 }
 
 .recommended-tag-button:hover {
