@@ -3,13 +3,13 @@ div(class='centerHolderUser')
         a(href=`/users/${user.id}`)
             h1= `${user.firstName} ${user.lastName}`
     div(id='feedChoiceUser')
-        p(id='homeUser') Home 
-        p(id='listsUser') Lists
-        p(id='aboutUser') About 
+        a(id='homeButton' href=`/users/${user.id}`) Home 
+        a(href=`/users/${user.id}/lists`) Lists
+        a(href=`/users/${user.id}/about`) About 
     div(id= 'contentDisplayed')
-        div(id= 'recommendedStories')
+        div(id= 'userStories')
             each story in userStories
-                div(class='storyDivUserUser')
+                div(class='storyDivUser')
                     div(class='storyContentUser')
                         div(class='topInfoUser')
                             //- img(class='feedprofile-img' src='/images/logo.png')
@@ -22,11 +22,9 @@ div(class='centerHolderUser')
                             div(class='underLeftUser')
                                 div(class='ownClap')
                                     p(class='clapErr') You cannot applaud your own story
-                                    img(src="/images/clap.png" id='clapIcon')
+                                    img(src="/images/clap.png" class='clapIcon')
                                 img(src="/images/comment-bubble.png", alt="")
             
                             div(class='underRightUser')
                                 img(src="/images/save.png", alt="")
                                 strong(href='#') ···
-                    div(class='imgDivUser')
-                        img(class='imgPreviewUser' src='/images/logo.png')

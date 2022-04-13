@@ -117,7 +117,6 @@ router.get(
   "/users/:id(\\d+)",
   csrfProtection,
   asyncHandler(async (req, res, next) => {
-    const queries = await splashPageQueries();
     const currUser = req.session.auth;
     const user = await db.User.findByPk(currUser.userId);
     const userStories = await db.Story.findAll({
@@ -128,6 +127,41 @@ router.get(
     console.log(userStories);
 
     res.render("user-page", { user, userStories});
+  })
+);
+
+router.get(
+  "/users/:id(\\d+)/about",
+  csrfProtection,
+  asyncHandler(async (req, res, next) => {
+    const currUser = req.session.auth;
+    const user = await db.User.findByPk(currUser.userId);
+    const userStories = await db.Story.findAll({
+      include: [db.User, db.Tag],
+      where: [currUser],
+    });
+
+    console.log(userStories);
+
+    res.render("user-page-about", { user, userStories});
+  })
+);
+
+router.post(
+  "/users/:id(\\d+)/about",
+  csrfProtection,
+  asyncHandler(async (req, res, next) => {
+    
+    const currUser = req.session.auth;
+    const user = await db.User.findByPk(currUser.userId);
+    const userStories = await db.Story.findAll({
+      include: [db.User, db.Tag],
+      where: [currUser],
+    });
+
+    console.log(userStories);
+
+    res.render("user-page-about", { user, userStories});
   })
 );
 
