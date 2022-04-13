@@ -59,4 +59,18 @@ const loginValidators = [
     .withMessage("Please enter a password."),
 ];
 
-module.exports = { userValidators, loginValidators };
+const storyValidators = [
+  check("title")
+    .exists({ checkFalsy: true })
+    .withMessage("Please enter a story title.")
+    .isLength({ max: 150 })
+    .withMessage(
+      "Title is too long. Please enter a story title no greater than 150 characters."
+    ),
+  check("article")
+    .exists({ checkFalsy: true })
+    .withMessage("Cannot publish an empty article."),
+  check("tag").exists({ checkFalsy: true }).withMessage("Please enter a tag."),
+];
+
+module.exports = { userValidators, loginValidators, storyValidators };

@@ -12,7 +12,7 @@ include utils.pug
     #splashContentHeader Trending on Medium
     .trend-storiesCollection
         - let count = 1;
-        each story in trending
+        each story in newStories
             .trend-story(id=`story_${story.id}`)
                 .trend-storyNumber= `0${count}`
                 - count++;
@@ -21,17 +21,26 @@ include utils.pug
                         .trend-storyHeaderImage Img
                         .trend-storyHeaderInfo= `${story.User.firstName} ${story.User.lastName} in ${story.Tag.name}`
                     .trend-storyTitle= story.title
-                    .trend-storyInformation= `${story.date} · 5 min read`
+                    .trend-storyInformation= `${story.date} · ${story.readTime} min`
 .splashScroll 
     .scroll-stories
-        each story in stories 
-            .scroll-story 
-                .scroll-storyContent 
-                    .scroll-storyHeader 
-                        .scroll-storyHeaderImage Img 
-                        .scroll-storyHeaderInfo= `${story.User.firstName} ${story.User.lastName} in ${story.Tag.name}`
-                    .scroll-storyTitle= story.title 
-                    .scroll-storyInformation= `${story.date} · 5 min read`
+        each story in stories
+            div(class='storyDiv')
+                div(class='storyContent')
+                    div(class='topInfo')
+                        img(class='feedprofile-img' src='/images/logo.png')
+                        a(href='#') #{story.User.firstName} #{story.User.lastName}
+                    h2(class='storyTitle')= story.title
+                    div(class='storyPreview')
+                        p= `${story.blurb}...`
+                    div(class='underStory')
+                        div(class='underLeft')
+                            p= `${story.date} · ${story.readTime} min · selected for you`
+                            a(href="#" class='scroll-tag')= story.Tag.name 
+                        div(class='underRight')
+                            img(src="/images/save.png", alt="")
+                div(class='imgDiv')
+                    img(class='imgPreview' src='/images/logo.png')
     #scroll-information
         #scroll-informationHeader Discover more of what matters to you
         .scroll-tags

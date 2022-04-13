@@ -34,12 +34,12 @@ router.post(
       const createErrors = validationErrors.array().map((error) => error.msg);
 
       const queries = await splashPageQueries();
-      const { user, stories, tags } = queries;
+      const { user, stories, newStories, tags } = queries;
 
       res.render("user-register", {
         title: "Register",
         user,
-        trending: stories,
+        newStories,
         stories,
         tags,
         createErrors,
@@ -81,11 +81,12 @@ router.post(
 
       const queries = await splashPageQueries();
 
-      const { user, stories, tags } = queries;
+      const { user, stories, newStories, tags } = queries;
       res.render("user-register", {
         email,
         logInErrors,
         user,
+        newStories,
         stories,
         tags,
         trending: stories,
