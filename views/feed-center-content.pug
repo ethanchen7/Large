@@ -8,19 +8,19 @@ div(class='centerHolder')
         p(id='recommended') Recommended
     div(id= 'contentDisplayed')
         div(id= 'recommendedStories')
-            each story in stories
+            each story in stories.reverse()
                 div(class='storyDiv')
                     div(class='storyContent')
                         div(class='topInfo')
                             img(class='feedprofile-img' src='/images/logo.png')
-                            a(href='#') #{story.User.firstName} #{story.User.lastName}
+                            a(href=`/users/${story.User.id}`) #{story.User.firstName} #{story.User.lastName}
                             p · #{story.date}
-                        h2(class='storyTitle')= story.title
+                        a(href=`/stories/${story.id}` class='storyTitle')= story.title
                         div(class='storyPreview')
-                            p=story.article
+                            a(href=`/stories/${story.id}`)= `${story.article.split(' ').splice(0,25).join(' ')}... `
                         div(class='underStory')
                             div(class='underLeft')
-                                a(href="#")= story.Tag.name 
+                                a(href=`/tags/${story.Tag.id}`)= story.Tag.name 
                                 p #{story.readTime} min · selected for you 
                             div(class='underRight')
                                 img(src="/images/save.png", alt="")
@@ -28,20 +28,19 @@ div(class='centerHolder')
                     div(class='imgDiv')
                         img(class='imgPreview' src='/images/logo.png')
         div(id='followingStories')
-            h1 hello these are stories from ppl u follow
-            //- each story in stories
+            each story in followingStories.reverse()
                 div(class='storyDiv')
                     div(class='storyContent')
                         div(class='topInfo')
                             img(class='feedprofile-img' src='/images/logo.png')
-                            a(href='#') #{story.User.firstName} #{story.User.lastName}
+                            a(href=`/users/${story.User.id}`) #{story.User.firstName} #{story.User.lastName}
                             p · #{story.date}
-                        h2(class='storyTitle')= story.title
+                        a(href=`/stories/${story.id}` class='storyTitle')= story.title
                         div(class='storyPreview')
-                            p=story.article
+                            a(href=`/stories/${story.id}`)=`${story.article.split(' ').splice(0,25).join(' ')}... `
                         div(class='underStory')
                             div(class='underLeft')
-                                a(href="#")= story.Tag.name 
+                                a(href=`/tags/${story.Tag.id}`)= story.Tag.name 
                                 p #{story.readTime} min · selected for you 
                             div(class='underRight')
                                 img(src="/images/save.png", alt="")

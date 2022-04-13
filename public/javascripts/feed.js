@@ -8,7 +8,7 @@ window.addEventListener('load', (event) => {
     let parentDiv = document.getElementById('contentDisplayed')
     recommendedButton.style.borderBottom = 'solid black 0.25px'
 
-
+    parentDiv.removeChild(followingStories)
 
     async function getRecommended(){
         parentDiv.prepend(recommendedStories)
