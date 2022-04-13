@@ -242,6 +242,10 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.unlimited-access-btn:hover {
+  cursor: pointer;
+}
+
 .recent-article-text {
   color: green;
   font-weight: normal;
