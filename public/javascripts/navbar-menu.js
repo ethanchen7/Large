@@ -7,7 +7,7 @@ window.addEventListener("load", (event) => {
     const menu = document.getElementsByClassName('nav-profile-icon-menu-container')[0];
     
     icon.addEventListener('click', () => {
-        menu.classList.remove('hidden');
+        menu.classList.remove('hiddenMenuBar');
         
     });
 
