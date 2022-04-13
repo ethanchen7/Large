@@ -14,8 +14,6 @@ router.get("/my-stories/new", csrfProtection, (req, res) => {
 
 // NEED:
 // requireAuth
-// validators
-// additional inputs from modal (tags)
 // userId when logged in
 router.post(
   "/my-stories/new",
@@ -62,10 +60,5 @@ router.post(
     }
   })
 );
-
-// TEMPORARY
-router.get("/publish", (req, res) => {
-  res.render("new-story-publish");
-});
 
 module.exports = router;
