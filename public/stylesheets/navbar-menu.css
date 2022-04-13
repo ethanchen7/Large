@@ -1,12 +1,15 @@
 .mediumPrograms {
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid rgba(109, 109, 109, 0.391);
+  width: 100%;
 }
 
 .userFuncs {
   display: flex;
   flex-direction: column;
   padding-top: 5px;
+  border-bottom: 1px solid rgba(109, 109, 109, 0.382);
 }
 
 .userProfile {
@@ -24,11 +27,6 @@
 
 .three {
   color: rgb(0, 138, 37);
-  border-bottom: 1px solid rgb(109, 109, 109);
-}
-
-.five {
-  border-bottom: 1px solid rgb(109, 109, 109);
 }
 
 .six {
@@ -40,17 +38,17 @@
   margin-top: 0px;
 }
 
+.signOut {
+  padding: 0px;
+}
 .nav-profile-icon-menu-container {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: start;
+    display: none;
+  position: absolute;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 2px;
-  width: fit-content;
+  width: 250px;
   height: fit-content;
-  top: 380px;
+  top: 300px;
   left: 10px;
   background-color: white;
   box-shadow: 0px 0px 3px rgba(143, 143, 143, 0.542);
@@ -58,12 +56,9 @@
 }
 
 #logoutButton {
-  left: 15px;
-  position: relative;
   border: 0;
   color: black;
   background-color: white;
-  width: fit-content;
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   transition: 0.5s;
 }
@@ -73,6 +68,6 @@
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.261);
 }
 
-.hiddenMenuBar {
+/* .hiddenMenuBar {
   display: none;
-}
+} */

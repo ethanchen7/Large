@@ -4,15 +4,17 @@ window.addEventListener("load", (event) => {
 
     const icon = document.getElementsByClassName('nav-profile-icon-container')[0]
     // console.log(menu)
-    const menu = document.getElementsByClassName('nav-profile-icon-menu-container')[0];
-    
+    const menu = document.getElementsByClassName('nav-profile-icon-menu-container');
+    console.log(menu)
     icon.addEventListener('click', () => {
-        menu.classList.remove('hiddenMenuBar');
-        
+         menu[0].style.display = 'block'
+
     });
 
-    body.addEventListener('hover', () => {
+    const center = document.getElementsByClassName('centerHolder')[0]
 
+    center.addEventListener('click', () => {
+        menu[0].style.display = 'none'
     })
 
 
