@@ -31,4 +31,9 @@ window.addEventListener("load", (event) => {
     window.location.href='/'
   });
 
+//   const modalContainer = document.getElementsByClassName('modal-container')[0]
+
+//     modalContainer.addEventListener('click', () => {
+//         window.location.href='/'
+//     })  
 });

@@ -21,12 +21,10 @@ router.post(
       userName,
       email,
     });
-    console.log("before", user);
     const validationErrors = validationResult(req);
     if (validationErrors.isEmpty()) {
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;
-      console.log("after", user);
       await user.save();
       loginUser(req, res, user);
       res.redirect("/");
@@ -37,14 +35,13 @@ router.post(
       const { user, stories, newStories, tags } = queries;
 
       res.render("user-register", {
-        title: "Register",
         user,
         newStories,
         stories,
         tags,
         createErrors,
         csrfToken: req.csrfToken(),
-        errStatusCreate: true
+        errStatusCreate: true,
       });
     }
   })
@@ -55,37 +52,51 @@ router.post(
   csrfProtection,
   loginValidators,
   asyncHandler(async (req, res) => {
+    const queries = await splashPageQueries();
+    const { user, stories, tags } = queries;
     const { email, password } = req.body;
     let logInErrors = [];
     const validatorErrors = validationResult(req);
-
     if (validatorErrors.isEmpty()) {
-      const user = await db.User.findOne({
+      const user1 = await db.User.findOne({
         where: { email },
       });
-      if (user !== null) {
+      if (user1 !== null) {
         const passwordMatch = await bcrypt.compare(
           password,
-          user.hashedPassword.toString()
+          user1.hashedPassword.toString()
         );
+        console.log(passwordMatch);
         if (passwordMatch) {
-          loginUser(req, res, user);
+          loginUser(req, res, user1);
           return res.redirect("/");
         }
       }
       logInErrors.push(
         "Login failed for the provided email address and password."
       );
+      res.render("user-register", {
+        user,
+        email,
+        logInErrors,
+        stories,
+        tags,
+        trending: stories,
+        csrfToken: req.csrfToken(),
+        errStatusLog: true,
+      });
+
     } else {
       logInErrors = validatorErrors.array().map((error) => error.msg);
 
       const queries = await splashPageQueries();
 
       const { user, stories, newStories, tags } = queries;
+
       res.render("user-register", {
+        user,
         email,
         logInErrors,
-        user,
         newStories,
         stories,
         tags,

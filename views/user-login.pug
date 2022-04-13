@@ -4,9 +4,10 @@ block content
     div(id='errStatusCreate' class='hidden')= errStatusCreate
     div(class='modal-container hidden' id='modal-container')
       div(class='modal hidden')
-        img(src='/images/close.png' class='closeButton')
+        div(class='closeButton')
+          img(src='/images/close.png')
         div(class='loginPage hidden')
-          h1 Welcome Back 
+          h1(class='welcome') Welcome Back. 
           if logInErrors
             div(class='errDiv')
               each error in logInErrors 
@@ -15,15 +16,15 @@ block content
           form(method="post" action="/login" class='loginForm')
             input(type="hidden" name="_csrf" value=csrfToken)
             label(for="email") Email 
-            input(type="email" name="email")
+            input(type="email" name="email" value=email)
             label(for="password") Password 
             input(type="password" name="password")
             button(class='signInButton') Log In
           h2 No account?
-          button(class='createButtono') Create One
+            a(class='createButtono') Create One
     
         div(class='registerPage hidden')
-          h1 Join Medium 
+          h1 Join Medium. 
           if createErrors
             div(class='errDiv')
               each error in createErrors 
@@ -32,13 +33,13 @@ block content
           form(method="post" action="/users" class='registerForm hidden')
             input(type="hidden" name="_csrf" value=csrfToken)
             label(for="firstName") First Name 
-            input(type="text" name="firstName" )
+            input(type="text" name="firstName" value=user.firstName)
             label(for="lastName") Last Name 
-            input(type="text" name="lastName" )
+            input(type="text" name="lastName" value=user.lastName)
             label(for="userName") Username
-            input(type="text" name="userName" )
+            input(type="text" name="userName" value=user.userName)
             label(for="email") Email 
-            input(type="email" name="email" )
+            input(type="email" name="email" value=user.email)
             label(for="password") Password 
             input(type="password" name="password")
             label(for="password") Confirm Password 
