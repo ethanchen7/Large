@@ -14,12 +14,6 @@ const splashPageQueries = async () => {
     order: [['createdAt', 'ASC']],
   });
 
-  // let newStories = []
-  // for (let i = 0; i < 6; i++) {
-  //   let story = stories.unshift();
-  //   newStories.push(story);
-  // }
-
   const tags = await db.Tag.findAll({
     order: [['createdAt', 'ASC']],
     limit: 9,
@@ -33,9 +27,19 @@ const splashPageQueries = async () => {
 
     story.date = `${month} ${story.updatedAt.getDate().toString()}`
 
-    story.readTime = Math.max( 1 , Math.floor(story.article.split(' ').length / 250) )
+    const article = story.article;
+    const articleWords = article.split(' ');
+    const blurb = articleWords.slice(0, 15).join(' ');
+    story.blurb = blurb;
+    story.readTime = Math.max(1, Math.floor(articleWords.length / 250))
+
   })
-  return {user, stories, tags}
+  let newStories = []
+  for (let i = 0; i < 6; i++) {
+    let story = stories.shift();
+    newStories.push(story);
+  }
+  return { user, stories, newStories, tags }
 }
 
 module.exports = {
