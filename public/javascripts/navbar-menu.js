@@ -6,10 +6,23 @@ window.addEventListener("load", (event) => {
     // console.log(menu)
     const menu = document.getElementsByClassName('nav-profile-icon-menu-container');
     console.log(menu)
-    icon.addEventListener('click', () => {
-         menu[0].style.display = 'block'
+
+    // icon.addEventListener('click', (e) => {
+    //      menu[0].style.display = 'block'
+
+    // });
+
+    icon.addEventListener('click', (e) => {
+        const currStyle = window.getComputedStyle(menu[0]).getPropertyValue('display')
+
+        if (currStyle === 'none') {
+            menu[0].style.display = 'block'
+        } else {
+            menu[0].style.display = 'none'
+        }
 
     });
+
 
     const center = document.getElementsByClassName('centerHolder')[0]
 

@@ -43,13 +43,13 @@
 }
 .nav-profile-icon-menu-container {
     display: none;
-  position: absolute;
+  position: fixed;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 2px;
-  width: 250px;
+  width: 200px;
   height: fit-content;
-  top: 300px;
-  left: 10px;
+  top: 220px;
+  left: 15px;
   background-color: white;
   box-shadow: 0px 0px 3px rgba(143, 143, 143, 0.542);
   z-index: 1;
