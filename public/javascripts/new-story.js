@@ -1,4 +1,4 @@
-const publishBtn = document.querySelector(".publish-button");
+const publishBtn = document.getElementById("publish-btn");
 const publishModal = document.querySelector(".publish-modal");
 const formSubmitBtn = document.querySelector(".submit-btn");
 const storyCreateDiv = document.querySelector(".story-create");
@@ -10,6 +10,32 @@ const titleInput = document.getElementById("title");
 const articleInput = document.getElementById("article");
 const titlePreviewInput = document.getElementById("title-preview");
 const articlePreviewInput = document.getElementById("article-preview");
+
+let titleFilled = false;
+let articleFilled = false;
+
+if (titleInput.value != "") titleFilled = true;
+if (articleInput.value != "") articleFilled = true;
+
+if (titleFilled && articleFilled) {
+  publishBtn.classList.remove("disabled");
+} else {
+  publishBtn.classList.add("disabled");
+}
+
+titleInput.addEventListener("keyup", (e) => {
+  titleFilled = true;
+  if (titleFilled && articleFilled) {
+    publishBtn.classList.remove("disabled");
+  }
+});
+
+articleInput.addEventListener("keyup", (e) => {
+  articleFilled = true;
+  if (titleFilled && articleFilled) {
+    publishBtn.classList.remove("disabled");
+  }
+});
 
 publishBtn.addEventListener("click", (e) => {
   e.preventDefault();
