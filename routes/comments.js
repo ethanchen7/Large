@@ -21,7 +21,17 @@ router.post("/comment", restoreUser, requireAuth, commentValidators, asyncHandle
         // console.log("$$$$ req.session: ", req.session.auth.userId)
         const userId = req.session.auth.userId;
         // console.log("%%%%%% text, userId, storyId", text, userId, storyId)
-        await db.Comment.create({ text, userId, storyId })
+        await db.Comment.create({ text, userId, storyId });
+
+        // const response = {
+        //     message: "success",
+        //     userId,
+        // };
+        res.json({
+            message: "success",
+            userId,
+        });
+        console.log("THIS IS STILL PRINTING")
     } else {
         const errors = validationErrors.array().map((error) => error.msg);
     }
