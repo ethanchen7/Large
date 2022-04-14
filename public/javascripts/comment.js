@@ -45,37 +45,42 @@ addEventListener("DOMContentLoaded", e => {
                     storyId,
                 }),
             })
-            // .then(res => console.log("##### res: ", res))
-            console.log("THIS DOES NOT PRINT")
+
             const data = await res.json();
-            console.log("^^^^^^ res: ", data);
-            if (res.message === 'success') {
-                const userId = res.userId;
+
+            const { message, user } = data;
+
+            if (message === 'success') {
+                const userId = user.id;
 
                 // comment container
                 const newComment = document.createElement("div");
                 newComment.setAttribute("class", "comment-container");
                 // comment header
                 const commentHeader = document.createElement("div");
-                commentHeader.setAttribute("class", "comment-container-header")
+                commentHeader.setAttribute("class", "comment-container-header");
                 // comment user image container
                 const commentUserImg = document.createElement("div");
-                commentUserImg.setAttribute("class", "comment-user-img")
+                commentUserImg.setAttribute("class", "comment-user-img");
                 // actual image
                 const img = document.createElement("img");
+                img.setAttribute("src", "/images/logo.png");
                 // user info container
                 const commentUserInfo = document.createElement("div");
-                commentUserInfo.setAttribute("class", "comment-user-info")
+                commentUserInfo.setAttribute("class", "comment-user-info");
                 // author of comment
                 const commentAuthor = document.createElement("a");
-                commentAuthor.setAttribute("class", "comment-author")
-                commentAuthor.setAttribute("href", `/users/${userId}`)
+                commentAuthor.setAttribute("class", "comment-author");
+                commentAuthor.setAttribute("href", `/users/${userId}`);
+                commentAuthor.innerText = `${user.firstName} ${user.lastName}`;
                 // days ago
                 const commentDaysAgo = document.createElement("div");
-                commentDaysAgo.setAttribute("class", "comment-daysAgo")
+                commentDaysAgo.setAttribute("class", "comment-daysAgo");
+                commentDaysAgo.innerText = "3 days ago"; // need to change
                 // comment content
                 const commentContent = document.createElement("div");
-                commentContent.setAttribute("class", "comment-content")
+                commentContent.setAttribute("class", "comment-content");
+                commentContent.innerText = text;
 
                 // append children as necessary
                 newComment.appendChild(commentHeader);
@@ -88,12 +93,8 @@ addEventListener("DOMContentLoaded", e => {
 
                 // put this new comment at top of list
                 const commentList = document.getElementById("comment-list");
-                const firstComment = commentList[0];
-
-                console.log("@@@@ comment list: ", commentList)
-                console.log("**** first comment: ", firstComment)
-                console.log("%%%% new comment: ", newComment)
-                document.insertBefore(newComment, firstComment);
+                const firstComment = commentList.children[0];
+                firstComment.insertAdjacentElement("beforebegin", newComment);
             };
         };
     });
