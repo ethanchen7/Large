@@ -85,6 +85,7 @@ a {
     box-sizing: border-box;
     display: flex;
     padding-right: 1em;
+    padding-bottom: 1.5em;
 }
 
 .trend-storyNumber {
