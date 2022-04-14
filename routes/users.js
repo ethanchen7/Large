@@ -9,6 +9,7 @@ const { userValidators, loginValidators } = require("./validators");
 const db = require("../db/models");
 
 /* Register users listing. */
+
 router.post(
   "/users",
   csrfProtection,
@@ -69,7 +70,10 @@ router.post(
         console.log(passwordMatch);
         if (passwordMatch) {
           loginUser(req, res, user1);
-          console.log("*********,before redirect in /login POST ", req.session.auth)
+          console.log(
+            "*********,before redirect in /login POST ",
+            req.session.auth
+          );
           return req.session.save(() => res.redirect("/"));
         }
       }
@@ -87,7 +91,6 @@ router.post(
         csrfToken: req.csrfToken(),
         errStatusLog: true,
       });
-
     } else {
       logInErrors = validatorErrors.array().map((error) => error.msg);
 
@@ -110,10 +113,63 @@ router.post(
   })
 );
 
+router.get(
+  "/users/:id(\\d+)",
+  csrfProtection,
+  asyncHandler(async (req, res, next) => {
+    const currUser = req.session.auth;
+    const user = await db.User.findByPk(currUser.userId);
+    const userStories = await db.Story.findAll({
+      include: [db.User, db.Tag],
+      where: [currUser],
+    });
+
+    console.log(userStories);
+
+    res.render("user-page", { user, userStories});
+  })
+);
+
+router.get(
+  "/users/:id(\\d+)/about",
+  csrfProtection,
+  asyncHandler(async (req, res, next) => {
+    const currUser = req.session.auth;
+    const user = await db.User.findByPk(currUser.userId);
+    const userStories = await db.Story.findAll({
+      include: [db.User, db.Tag],
+      where: [currUser],
+    });
+
+    console.log(userStories);
+
+    res.render("user-page-about", { user, userStories});
+  })
+);
+
+router.post(
+  "/users/:id(\\d+)/about",
+  csrfProtection,
+  asyncHandler(async (req, res, next) => {
+    
+    const currUser = req.session.auth;
+    const user = await db.User.findByPk(currUser.userId);
+    const userStories = await db.Story.findAll({
+      include: [db.User, db.Tag],
+      where: [currUser],
+    });
+
+    console.log(userStories);
+
+    res.render("user-page-about", { user, userStories});
+  })
+);
+
 router.post("/users/logout", (req, res) => {
   logoutUser(req, res);
   req.session.save(() => res.redirect("/"));
 });
+
 
 // router.post("/users/:id/follow", async(req,res) => {
 //   const followingId = req.url.split('/')[1]
@@ -129,7 +185,5 @@ router.post("/users/logout", (req, res) => {
 
 //   res.redirect('/')
 // })
-
-
 
 module.exports = router;

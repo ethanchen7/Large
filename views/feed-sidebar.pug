@@ -1,18 +1,5 @@
 link(rel='stylesheet' href='/stylesheets/sidebar.css')
 link(rel='stylesheet' href='/stylesheets/navbar-menu.css')
-div(class='hiddenMenuBar nav-profile-icon-menu-container')
-  div(class='mediumPrograms')
-    a(class='menu-item one' href='#') Medium Partner Program 
-    a(class='menu-item two' href='#') Gift a membership 
-    a(class='menu-item three' href='#') Get unlimited access
-  div(class='userFuncs')
-    form(action="/users/logout" method="post" class='userFuncs')
-      input(type="submit" id="logoutButton" value="Sign out")
-    a(class='menu-item' href='#') Medium Partner Program 
-    a(class='menu-item five' href='#') Medium Partner Program 
-  div(class='userProfile')
-    a(class='menu-item six' href=`/users/${user.id}`)= `${user.firstName} ${user.lastName}`
-    a(class='menu-item seven' href=`/users/${user.id}`)= `${user.userName}`
 
 block content
   div(class='hiddenMenuBar nav-profile-icon-menu-container')
