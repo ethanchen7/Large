@@ -4,51 +4,24 @@ div(class="content-bar")
             
     div(class="search-bar-container")
         div(class="search-bar")
-    div(class="currently-reading-container")
-        div(class="currently-reading-title")
-            span(class="recent-article-text") 
-                li Recent Articles: 
-                    span(class="what-reading-text") What We're Reading
-        div(class="currently-reading-articles-container")
-            each story in contentBarStories
-                div(class="story-preview-container")
-                    div(class="story-owner-header")
-                        img(class="story-owner-img" src="/images/avatardefault.png")
-                        a(class="story-owner-profile" href="#") #{story.User.firstName} #{story.User.lastName}
-                    a(class="story-preview-title" href="#")= story.title
-        a(href='#' class="see-the-full-list") See the full list
-    div(class="writing-container")
-        div(class="writing-on-medium-container")
-            div(class="container-header")
-                img(class="close-box-button" src="/images/close2.png")
-            div(class="inner-writing-container")
-                h3(class="writing-title") Writing on Medium
-                div(class="sub-container")
-                    a(id="new-writer-faq" href="#") New writer FAQ
-                    a(id="expert-writing-advice" href="#") Expert writing advice
-                    a(id="grow-readership" href="#") Grow your readership
-                button(class="start-writing-btn" id="start-writing-btn") Start writing
-    div(class="border-div")
-    div(class="recommended-topics-container")
-        div(class="recommended-topics-header")
-            h3(class="recommended-topics-title") Recommend topics
-        div(class="recommend-topics-tags")
-            each tag in contentBarTags 
-                button(class="recommended-tag-button" id=`btn-${tag.id}`) #{tag.name}
-    div(class="recommended-follows-container")
-        div(class="recommended-follows-header")
-            h3(class="recommended-follows-title") Who to follow
-        div(class="recommended-users-container")
-            each user in recommendedUsers
-                div(class="user-div")
-                    div(class="user-icon-container")
-                        a(href="#")
-                            img(class="user-icon" src="/images/avatardefault.png")
-                    div(class="user-text-container")
-                        a(class='rec-user-name' href="#") #{user.firstName} #{user.lastName}
-                        p(class="rec-user-bio-text") Writer, blogger, activist. 
-                    button(class="follow-btn" id=`${user.id}-follow-btn`) Follow
-        a(href="#" class="suggestions-link") See more suggestions
+    div(class="userInfo")
+        <img class='userIcon' src="/images/avatardefault.png">
+        div(class="userRName")
+            a(class='userLinking' href=`/users/${user.id}`)= `${user.firstName} ${user.lastName}`
+    
+        a(href='#' class="see-the-full-list") Edit Info
+
+    div(class='bottLinks')
+        a(class='botLink' href='#') Help
+        a(class='botLink' href='#') Status 
+        a(class='botLink' href='#') Writer
+        a(class='botLink' href='#') Blog 
+        a(class='botLink' href='#') Careers 
+        a(class='botLink' href='#') Privacy
+        a(class='botLink' href='#') Terms 
+        a(class='botLink' href='#') About 
+        a(class='botLink' href='#') Knowable
+
 
 
             
