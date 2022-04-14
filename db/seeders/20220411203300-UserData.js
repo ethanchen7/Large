@@ -1,5 +1,5 @@
 "use strict";
-const { faker } = require("@faker-js/faker");
+const faker = require("faker");
 const bcrypt = require("bcryptjs");
 
 module.exports = {
@@ -355,6 +355,15 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          firstName: 'Ethan',
+          lastName: 'Chen',
+          userName: 'ethanchen',
+          email: 'ethanfake@gmail.com',
+          hashedPassword: bcrypt.hashSync(faker.internet.password()),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        }, // added this .
       ],
       { returning: true }
     );
