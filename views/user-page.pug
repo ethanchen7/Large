@@ -1,0 +1,9 @@
+extends layout.pug 
+
+block content
+    div(id='feed-main-layout')
+        include feed-sidebar.pug
+
+
+        include user-center-content.pug
+        script(src='/javascripts/user-page.js')

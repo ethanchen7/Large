@@ -1,0 +1,30 @@
+div(class='centerHolderUser')
+    div(id='keepupUser')
+        a(href=`/users/${user.id}`)
+            h1= `${user.firstName} ${user.lastName}`
+    div(id='feedChoiceUser')
+        a(id='homeButton' href=`/users/${user.id}`) Home 
+        a(href=`/users/${user.id}/lists`) Lists
+        a(href=`/users/${user.id}/about`) About 
+    div(id= 'contentDisplayed')
+        div(id= 'userStories')
+            each story in userStories
+                div(class='storyDivUser')
+                    div(class='storyContentUser')
+                        div(class='topInfoUser')
+                            //- img(class='feedprofile-img' src='/images/logo.png')
+                            //- a(href='#') #{story.User.firstName} #{story.User.lastName}
+                            p 5 days ago `${story.date}`
+                        h2(class='storyTitleUser')= story.title
+                        div(class='storyPreviewUser')
+                            p=story.article
+                        div(class='underStoryUser')
+                            div(class='underLeftUser')
+                                div(class='ownClap')
+                                    p(class='clapErr') You cannot applaud your own story
+                                    img(src="/images/clap.png" class='clapIcon')
+                                img(src="/images/comment-bubble.png", alt="")
+            
+                            div(class='underRightUser')
+                                img(src="/images/save.png", alt="")
+                                strong(href='#') ···
