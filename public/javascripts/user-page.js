@@ -15,44 +15,41 @@ window.addEventListener("load", (event) => {
     });
   });
 
-//   const homeButton = document.getElementById("homeButton");
-//   const userCenter = document.getElementsByClassName("user-center-content")[0];
-//   const userAbout = document.getElementsByClassName("user-page-about")[0];
+  const createBio = document.getElementsByClassName("getStartedButton")[0];
+  const nobio = document.getElementsByClassName("noBio")[0];
+  const bioEdit = document.getElementsByClassName("bioEdit")[0];
 
-//   homeButton.addEventListener("click", () => {
-//     userCenter.style.display = "block";
-//     userAbout.style.display = "none";
-//   });
+  createBio.addEventListener("click", () => {
+    const currStyle = window
+      .getComputedStyle(nobio)
+      .getPropertyValue("display");
 
-  // clapIcon.addEventListener('mouseover', () => {
-  //     const currStyle = window.getComputedStyle(clapErr).getPropertyValue('display')
+    if (currStyle === "flex") {
+      nobio.classList.add("hideBio");
+      bioEdit.classList.remove("hideBio");
+    }
+  });
 
-  //     if (currStyle === 'none') {
-  //         clapErr.style.display = 'block'
-  //     } else {
-  //         clapErr.style.display = 'none'
-  //     }
+  const editButton = document.getElementsByClassName("editButton")[0];
+  const bio = document.querySelector("#editBioText");
 
-  // })
+  editButton.addEventListener("click", async () => {
+    const userId = editButton.dataset.userid;
+    console.log(userId)
+    const newBio = bio.value;
+    
 
-  // clapIcon.addEventListener('mouseout', () => {
-  //     clapErr.style.display = 'none'
-  // })
+    const res = await fetch(`/users/${userId}/about`, {
+      method: "PUT",
+      body: JSON.stringify({newBio}),
+      headers: {'Content-Type': 'application/json'}
+    });
 
-  // const screen = document.getElementsByClassName('centerHolderUser')[0]
+    const data = await res.json();
+    
+    bio.value = data.newBio
 
-  // screen.addEventListener('mouseover', () => {
-  //     clapErr.style.display = 'none'
-  // })
+  });
 
-  // icon.addEventListener('click', (e) => {
-  //     const currStyle = window.getComputedStyle(menu[0]).getPropertyValue('display')
 
-  //     if (currStyle === 'none') {
-  //         menu[0].style.display = 'block'
-  //     } else {
-  //         menu[0].style.display = 'none'
-  //     }
-
-  // });
 });

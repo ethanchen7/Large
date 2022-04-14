@@ -112,7 +112,7 @@
   width: 100%;
   overflow-wrap: normal;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.466);
+  border-bottom: 1px solid rgba(117, 117, 117, 0.466);
 }
 
 .storyContentUser {
@@ -134,24 +134,13 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* .topInfoUser > a {
-  font-size: 9pt;
-  margin-left: 5px;
-  text-decoration: none;
-  -webkit-font-smoothing: antialiased;
-} */
-
-/* .feedprofile-img {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-} */
 
 .storyTitleUser {
   max-width: 75vh;
   font-weight: bolder;
   font-size: 15pt;
   -webkit-font-smoothing: antialiased;
+  text-decoration: none;
 }
 
 .storyPreviewUser {
@@ -253,24 +242,44 @@
     flex-direction: row-reverse;
 }
 
-.editButton {
-    margin-top: 5px;
-    background-color: transparent;
-    border: 0;
-    color: green;
-    transition: .5s;
+.bioEdit {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.bioEdit > textarea {
+  border: 0;
+  outline: 0;
+  margin: 20px;
+  font-size: 20px;
+  resize: none;
 }
 
 .getStartedButton {
-  padding: 5px 10px;
+  padding: 8px 30px;
   color: white;
   background-color: green;
   border: 0;
   border-radius: 20px;
-  margin-bottom: 40px;
+  font-size: 13px;
 }
-.editButton:hover {
-    color: black;
+
+.getStartedButton:hover {
+  background-color: rgb(0, 73, 0);
+}
+
+.editButton {
+  position: relative;
+  left: 85%;
+  padding: 8px 30px;
+  color: white;
+  width: fit-content;
+  background-color: black;
+  border: 0;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
 }
 
 #contentDisplayed {
@@ -281,7 +290,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
+    margin: 30px;
 }
 
 .h2Bio {
@@ -294,4 +303,21 @@
   text-align: center;
   font-size: 15px;
   color: rgba(0, 0, 0, 0.415);
+}
+
+.editButtonGreen {
+  position: relative;
+  left: 85%;
+  padding: 8px 30px;
+  color: white;
+  width: fit-content;
+  background-color: green;
+  border: 0;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.hideBio {
+  display: none;
 }

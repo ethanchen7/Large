@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 
 const { csrfProtection, asyncHandler, splashPageQueries } = require("./utils");
-const { loginUser, logoutUser } = require("../auth.js");
+const { loginUser, logoutUser, requireAuth } = require("../auth.js");
 const { userValidators, loginValidators } = require("./validators");
 const db = require("../db/models");
 
@@ -124,7 +124,21 @@ router.get(
       where: [currUser],
     });
 
-    console.log(userStories);
+    const assignStoryDate = (story) => {
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',]
+    
+      const monthIndex = story.updatedAt.getMonth();
+      const month = months[monthIndex];
+    
+      return `${month} ${story.updatedAt.getDate().toString()}`
+    }
+
+    userStories.forEach(story => {
+
+      story.date = assignStoryDate(story); //`${month} ${story.updatedAt.getDate().toString()}`
+  
+    })
 
     res.render("user-page", { user, userStories});
   })
@@ -136,29 +150,26 @@ router.get(
   asyncHandler(async (req, res, next) => {
     const currUser = req.session.auth;
     const user = await db.User.findByPk(currUser.userId);
-    // const userStories = await db.Story.findAll({
-    //   include: [db.User, db.Tag],
-    //   where: [currUser],
-    // });
     res.render("user-page-about", { user});
   })
 );
 
-router.post(
+router.put(
   "/users/:id(\\d+)/about",
-  csrfProtection,
+  requireAuth,
   asyncHandler(async (req, res, next) => {
-    
-    const currUser = req.session.auth;
-    const user = await db.User.findByPk(currUser.userId);
-    const userStories = await db.Story.findAll({
-      include: [db.User, db.Tag],
-      where: [currUser],
-    });
+    const {newBio} = req.body
+    console.log(req.body)
+    const currUserId = req.session.auth.userId;
+    const user = await db.User.findByPk(currUserId);
+    user.bio = newBio
+    console.log(user.bio)
+    await user.save();
 
-    console.log(userStories);
-
-    res.render("user-page-about", { user, userStories});
+    if (res.ok) {
+      res.json({newBio})
+    }
+    // res.render("user-page-about", { user, userStories});
   })
 );
 

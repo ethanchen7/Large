@@ -2,6 +2,7 @@ extends layout.pug
 
 block content
     link(rel='stylesheet' href='/stylesheets/user-content-bar.css')
+    script(src='/javascripts/user-page.js')
     div(id='feed-main-layout')
         include feed-sidebar.pug
 
@@ -19,28 +20,12 @@ block content
                         div(class='noBio')  
                             h2(class='h2Bio') Tell the world about yourself
                             p(class='bioText') Here's where you can share more about yourself: your history, work experience, accomplishments, interests, dreams, and more. You can even add images and use rich text to personalize your bio.
-                            form(class='editForm' action=`/users/${user.id}/about` method='post')
-                                button(class='getStartedButton') Get Started
-                        div(class='editBio')
+                            a(class='getStartedButton') Get Started
+                        div(class='bioEdit hideBio')
+                            a(class='editButton' data-userId=`${user.id}`) Edit
+                            textarea(id='editBioText' name="bioText", cols="1", rows="5")
+                        div(class='showBio hideBio')
+                            a(class='editButtonGreen') Edit
+                            p= `${user.bio}`
+
         include user-content-bar.pug
-
-                    //- each story in userStories
-                    //-     div(class='storyDivUser')
-                    //-         div(class='storyContentUser')
-                    //-             div(class='topInfoUser')
-                    //-                 //- img(class='feedprofile-img' src='/images/logo.png')
-                    //-                 //- a(href='#') #{story.User.firstName} #{story.User.lastName}
-                    //-                 p 5 days ago `${story.date}`
-                    //-             h2(class='storyTitleUser')= story.title
-                    //-             div(class='storyPreviewUser')
-                    //-                 p=story.article
-                    //-             div(class='underStoryUser')
-                    //-                 div(class='underLeftUser')
-                    //-                     div(class='ownClap')
-                    //-                         p(class='clapErr') You cannot applaud your own story
-                    //-                         img(src="/images/clap.png" class='clapIcon')
-                    //-                     img(src="/images/comment-bubble.png", alt="")
-
-                    //-                 div(class='underRightUser')
-                    //-                     img(src="/images/save.png", alt="")
-                    //-                     strong(href='#') ···

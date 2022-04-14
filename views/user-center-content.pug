@@ -4,7 +4,7 @@ div(class='centerHolderUser')
             h1= `${user.firstName} ${user.lastName}`
     div(id='feedChoiceUser')
         a(id='homeButton' href=`/users/${user.id}`) Home 
-        a(href=`/users/${user.id}/lists`) Lists
+        a(href='#') Lists
         a(href=`/users/${user.id}/about`) About 
     div(id= 'contentDisplayed')
         div(id= 'userStories')
@@ -14,8 +14,8 @@ div(class='centerHolderUser')
                         div(class='topInfoUser')
                             //- img(class='feedprofile-img' src='/images/logo.png')
                             //- a(href='#') #{story.User.firstName} #{story.User.lastName}
-                            p 5 days ago `${story.date}`
-                        h2(class='storyTitleUser')= story.title
+                            p= `${story.date}`
+                        a(class='storyTitleUser' href=`/stories/${story.id}`)= story.title
                         div(class='storyPreviewUser')
                             p=story.article
                         div(class='underStoryUser')
