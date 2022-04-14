@@ -20,7 +20,7 @@ block content
         p(class="note-text") Note: Changes here will affect how your story appears in public places like Medium's homepage and subscribers' inboxes - not the contents of the story itself.
     div(class="right-half")
       div(class="publishing-to-section")
-        h2 Publishing to: John Smith
+        h2= `Publishing to: ${user.firstName} ${user.lastName}`
       div(class="add-tag-heading-section")
         p(class="add-tag-heading") Add or change a tag so readers know what your story is about
         input(class="tag-input" id="tag-input-id" name="tag" placeholder="Add a tag...")

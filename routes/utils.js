@@ -1,4 +1,4 @@
-const db = require('../db/models');
+const db = require("../db/models");
 
 const csrf = require("csurf");
 
@@ -9,13 +9,19 @@ const asyncHandler = (handler) => (req, res, next) =>
 
 const splashPageQueries = async () => {
   const user = db.User.build();
+
+  const recommendedUsers = await db.User.findAll({
+    order: [["createdAt", "ASC"]],
+    limit: 3,
+  });
+
   const stories = await db.Story.findAll({
     include: [db.User, db.Tag],
-    order: [['createdAt', 'ASC']],
+    order: [["createdAt", "ASC"]],
   });
 
   const tags = await db.Tag.findAll({
-    order: [['createdAt', 'ASC']],
+    order: [["createdAt", "ASC"]],
     limit: 9,
   });
 
@@ -30,8 +36,8 @@ const splashPageQueries = async () => {
     let story = stories.shift();
     newStories.push(story);
   }
-  return { user, stories, newStories, tags }
-}
+  return { user, recommendedUsers, stories, newStories, tags };
+};
 
 
 const assignStoryDate = (story) => {

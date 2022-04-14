@@ -8,7 +8,7 @@ block content
       div(class="nav-logo-containerLeft")
         a(class="nav-logo" href="/")
           img(class="nav-icon-logo-icon" src="/images/logo.png")
-        p(class="nav-story-status") Draft in John Smith
+        p(class="nav-story-status")= `Draft in ${user.firstName} ${user.lastName}`
       div(class="nav-logo-containerRight")
         a(class="publish-button-container")
           button(class="publish-button disabled" id="publish-btn") Publish

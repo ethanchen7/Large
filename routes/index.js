@@ -4,48 +4,56 @@ var router = express.Router();
 const db = require("../db/models");
 
 const { requireAuth, restoreUser } = require("../auth");
-const { csrfProtection, asyncHandler, splashPageQueries, followingArticles } = require("./utils");
-
+const {
+  csrfProtection,
+  asyncHandler,
+  splashPageQueries,
+  followingArticles,
+} = require("./utils");
 
 /* GET splash page. */
 
-
 router.get("/", csrfProtection, restoreUser, asyncHandler(async (req, res, next) => {
 
-  const queries = await splashPageQueries();
-  const { user, stories, newStories, tags } = queries
-  // console.log("line 15 ********", res.locals.authenticated);
-  if (!res.locals.authenticated) {
+    const queries = await splashPageQueries();
+    const { user, stories, newStories, tags } = queries
+    if (!res.locals.authenticated) {
 
-    res.render("user-register", {
-      user,
-      newStories,
-      stories,
-      tags,
-      csrfToken: req.csrfToken(),
-    });
+        res.render("user-register", {
+            user,
+            newStories,
+            stories,
+            tags,
+            csrfToken: req.csrfToken(),
+        });
 
-  } else {
-    const queries = await splashPageQueries()
+    } else {
+        const queries = await splashPageQueries()
 
-    const followingQueries = await followingArticles(req, res)
+        const followingQueries = await followingArticles(req, res)
 
-    const { stories, tags } = queries
+        const { stories, tags } = queries
 
-    const { followingStories } = followingQueries
+        const { followingStories } = followingQueries
 
-    const userId = req.session.auth.userId
+        const userId = req.session.auth.userId
 
-    const user = await db.User.findByPk(userId)
+        const user = await db.User.findByPk(userId)
 
-
-    res.render("feed", {
-      user,
-      stories,
-      tags,
-      followingStories
-    });
-  }
+        const contentBarStories = newStories.slice(0, 3);
+        const contentBarTags = tags.slice(0, 7);
+        
+        res.render("feed", {
+            user,
+            newStories,
+            recommendedUsers,
+            stories,
+            tags,
+            contentBarStories,
+            contentBarTags,
+            followingStories,
+        });
+    }
 }));
 
 router.get("/login", csrfProtection, function (req, res, next) {
