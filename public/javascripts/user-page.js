@@ -3,7 +3,7 @@ window.addEventListener("load", (event) => {
   const clapErr = document.getElementsByClassName("clapErr")[0];
 
   clapIcon.forEach((ele) => {
-    ele.addEventListener("mouseover", () => {
+    ele.addEventListener("mousover", () => {
       const currStyle = window
         .getComputedStyle(clapErr)
         .getPropertyValue("display");
@@ -15,18 +15,14 @@ window.addEventListener("load", (event) => {
     });
   });
 
+//   const homeButton = document.getElementById("homeButton");
+//   const userCenter = document.getElementsByClassName("user-center-content")[0];
+//   const userAbout = document.getElementsByClassName("user-page-about")[0];
 
-  const homeButton = document.getElementById('homeButton')
-  const userCenter = document.getElementsByClassName('user-center-content')[0]
-  const userAbout = document.getElementsByClassName('user-page-about')[0]
-
-  homeButton.addEventListener('click', () => {
-      userCenter.style.display = 'block'
-      userAbout.style.display = 'none'
-  })
-
-
-
+//   homeButton.addEventListener("click", () => {
+//     userCenter.style.display = "block";
+//     userAbout.style.display = "none";
+//   });
 
   // clapIcon.addEventListener('mouseover', () => {
   //     const currStyle = window.getComputedStyle(clapErr).getPropertyValue('display')

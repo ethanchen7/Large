@@ -99,6 +99,10 @@
   cursor: pointer;
 }
 
+#feedChoiceUser {
+    margin-bottom: 10px;
+}
+
 .storyDivUser {
   display: flex;
   flex-direction: row;
@@ -114,6 +118,7 @@
 .storyContentUser {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .topInfoUser {
@@ -211,13 +216,13 @@
 }
 
 .ownClap > img:hover {
-    cursor: pointer
+    cursor: not-allowed
   }
 
 .underRightUser {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .underRightUser > img {
@@ -263,3 +268,14 @@
 #contentDisplayed {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
+
+.noBio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.h2Bio {
+    font-size: 16px;
+}
+

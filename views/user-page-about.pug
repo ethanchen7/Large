@@ -15,11 +15,12 @@ block content
             div(id= 'contentDisplayed')
                 div(id= 'userAbout')
                     div(id = 'userBio')
+                        div(class='noBio')  
+                            h2(class='h2Bio') Tell the world about yourself
+                            p= `${user.bio}`
                         div(class='editBio')
                             form(class='editForm' action=`/users/${user.id}/about` method='post')
                                 button(class='editButton') Edit
-                                
-                            p= `${user.bio}`
         
 
                     //- each story in userStories
