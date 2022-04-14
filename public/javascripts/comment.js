@@ -6,14 +6,11 @@ addEventListener("DOMContentLoaded", e => {
 
     let text;
 
-    console.log(submit)
-
     cancel.addEventListener("click", () => {
         comment.value = "";
     })
 
     comment.addEventListener("keyup", () => {
-        console.log('comment.value', comment.value)
         text = comment.value;
         if (text) {
             submit.style.backgroundColor = "rgba(27, 137, 23)";
@@ -34,8 +31,23 @@ addEventListener("DOMContentLoaded", e => {
         }
     })
 
-    submit.addEventListener("click", () => {
-        const url = 
-    })
+    submit.addEventListener("click", async () => {
 
-})
+        const url = window.location.href;
+        const storyId = url.slice(url.length - 1);
+
+        if (text) {
+            const res = await fetch("/comment", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    text,
+                    storyId,
+                }),
+            });
+        } else {
+
+        }
+
+    });
+});

@@ -10,8 +10,8 @@ router.get('/stories', asyncHandler(async (req, res, next) => {
     res.redirect('/');
 }));
 
-router.get('/stories/:id(\\d+)', restoreUser, requireAuth, asyncHandler(async (req, res, next) => {
-    const storyId = req.params.id;
+router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(async (req, res, next) => {
+    const storyId = req.params.storyId;
     const userId = req.session.auth.userId;
 
     const story = await db.Story.findByPk(storyId, {

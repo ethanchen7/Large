@@ -11,12 +11,17 @@ const db = require("../db/models");
 router.post("/comment", restoreUser, requireAuth, commentValidators, asyncHandler(async (req, res) => {
 
     const { text, storyId } = req.body;
+    // console.log("@@@@ text: ", text);
+    // console.log("**** storyId: ", storyId);
 
     const validationErrors = validationResult(req);
+    console.log(validationErrors.isEmpty());
 
     if (validationErrors.isEmpty()) {
+        // console.log("$$$$ req.session: ", req.session.auth.userId)
         const userId = req.session.auth.userId;
-        await db.Comment.save({ text, userId, storyId })
+        // console.log("%%%%%% text, userId, storyId", text, userId, storyId)
+        await db.Comment.create({ text, userId, storyId })
     } else {
         const errors = validationErrors.array().map((error) => error.msg);
     }
