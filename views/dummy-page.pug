@@ -1,0 +1,73 @@
+extends dummy-page-head.pug
+
+block content
+    div(class="center-block-container")
+        div(class="header-logo-container")
+            a(href="/")
+                img(id="header-logo" src='/images/logo.png')
+            a(href="/" id="large-logo-a")
+                h3(id="large-logo-text") Large
+        div(class="text-container")
+            h2(id="thanks-header") Thanks for visiting Large. 
+            p(class="paragraph-text") You landed on a feature that is not quite available yet!
+            p(class="paragraph-text") In case you were curious, these are the technologies we used:
+            ul(class="technologies-list")
+                li
+                    p(class="technology") Node JS
+                li
+                    p(class="technology") Express JS
+                li
+                    p(class="technology") PostgreSQL
+                li
+                    p(class="technology") Sequelize JS
+                li
+                    p(class="technology") PUG
+                li
+                    p(class="technology") HTML
+                li
+                    p(class="technology") CSS
+        div(class="meet-the-developers")
+            div(id="developer-header")
+                h2(id="developer-header-title") Meet the Developers
+            div(class="profile-container animate glow delay-1")
+                div(class="profile-inner-container")
+                    img(src="/images/jonathon.jpeg" class="profile-img")
+                    h3(class="profile-name") Aaron Tufts
+                    p(class="profile-location") Cincinnati, OH
+                    div(class="logo-inner-container")
+                        a(href="https://github.com/jonathontufts")
+                            img(src="/images/github.png" class="github-logo")
+                        a(href="https://www.linkedin.com/in/aaron-tufts-010759219/")
+                            img(src="/images/linkedin.png" class="linkedin-logo")
+                            
+                div(class="profile-inner-container animate glow delay-2")
+                    img(src="/images/david.png" class="profile-img")
+                    h3(class="profile-name") David Forster
+                    p(class="profile-location") Baltimore, MD 
+                    div(class="logo-inner-container")
+                        a(href="https://github.com/da5idf")
+                            img(src="/images/github.png" class="github-logo")
+                        a(href="https://www.linkedin.com/in/david-forster-70b44673/")
+                            img(src="/images/linkedin.png" class="linkedin-logo")
+                            
+                div(class="profile-inner-container animate glow delay-3")
+                    img(src="/images/agustin.jpeg" class="profile-img")
+                    h3(class="profile-name") Agustin Zucca
+                    p(class="profile-location") Houston, TX
+                    div(class="logo-inner-container")
+                        a(href="https://github.com/AgustinZucca")
+                            img(src="/images/github.png" class="github-logo")
+                        a(href="https://www.linkedin.com/in/agustinzucca/")
+                            img(src="/images/linkedin.png" class="linkedin-logo")
+                            
+                div(class="profile-inner-container animate glow delay-4")
+                    img(src="/images/ethan.jpeg" class="profile-img")
+                    h3(class="profile-name") Ethan Chen
+                    p(class="profile-location") Los Angeles, CA
+                    div(class="logo-inner-container")
+                        a(href="https://github.com/ethanchen7")
+                            img(src="/images/github.png" class="github-logo")
+                        a(href="https://www.linkedin.com/in/ethan-chen-3b7070127/")
+                            img(src="/images/linkedin.png" class="linkedin-logo")
+        
+
