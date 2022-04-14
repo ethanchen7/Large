@@ -30,10 +30,13 @@ router.get("/", csrfProtection, restoreUser, asyncHandler(async (req, res, next)
 
     const followingQueries = await followingArticles(req, res)
 
-    const { user, stories, tags } = queries
+    const { stories, tags } = queries
 
     const { followingStories } = followingQueries
 
+    const userId = req.session.auth.userId
+
+    const user = await db.User.findByPk(userId)
 
 
     res.render("feed", {
