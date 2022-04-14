@@ -7,10 +7,12 @@ const { csrfProtection, asyncHandler } = require("./utils");
 const { storyValidators } = require("./validators");
 const { validationResult } = require("express-validator");
 
-router.get("/my-stories/new", csrfProtection, (req, res) => {
+router.get("/my-stories/new", csrfProtection, asyncHandler(async(req, res) => {
   const story = db.Story.build({});
-  res.render("new-story", { story, csrfToken: req.csrfToken() });
-});
+  const userId= req.session.auth.userId
+  const user = await db.User.findByPk(userId)
+  res.render("new-story", { user, story, csrfToken: req.csrfToken() });
+}));
 
 // NEED:
 // requireAuth
@@ -40,7 +42,7 @@ router.post(
         tagId = newTag.id;
       }
       //temporary
-      const userId = 44;
+      const userId = req.session.auth.userId
       const state = "published";
 
       story.tagId = tagId;
@@ -49,7 +51,7 @@ router.post(
 
       await story.save();
       console.log("New Story created");
-      res.redirect("/feed");
+      res.redirect("/");
     } else {
       const errors = validationErrors.array().map((error) => error.msg);
       res.render("new-story", {
