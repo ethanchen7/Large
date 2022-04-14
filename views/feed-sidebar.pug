@@ -14,6 +14,23 @@ div(class='hiddenMenuBar nav-profile-icon-menu-container')
     a(class='menu-item six' href=`/users/${user.id}`)= `${user.firstName} ${user.lastName}`
     a(class='menu-item seven' href=`/users/${user.id}`)= `${user.userName}`
 
+block content
+  div(class='hiddenMenuBar nav-profile-icon-menu-container')
+    div(class='mediumPrograms')
+      a(class='menu-item one' href='#') Medium Partner Program 
+      a(class='menu-item two' href='#') Gift a membership 
+      a(class='menu-item three' href='#') Get unlimited access
+    div(class='userFuncs')
+      form(action="/users/logout" method="post" class='menu-item')
+        input(class='signOut' type="submit" id="logoutButton" value="Sign out")
+      a(class='menu-item' href='#') Refine recommendations
+      a(class='menu-item five' href='#') Manage publications 
+      a(class='menu-item five' href='#') Stats 
+      a(class='menu-item five' href='#') Settings 
+    div(class='userProfile')
+      a(class='menu-item six' href=`/users/${user.id}`)= `${user.firstName} ${user.lastName}`
+      a(class='menu-item seven' href=`/users/${user.id}`)= `${user.userName}`
+
 
 nav(class="sidebar")
   div(class="homepage-icon-container")

@@ -27,7 +27,7 @@ router.post(
       user.hashedPassword = hashedPassword;
       await user.save();
       loginUser(req, res, user);
-      res.redirect("/");
+      return req.session.save(() => res.redirect("/"));
     } else {
       const createErrors = validationErrors.array().map((error) => error.msg);
 
@@ -112,8 +112,23 @@ router.post(
 
 router.post("/users/logout", (req, res) => {
   logoutUser(req, res);
-  res.redirect("/");
+  req.session.save(() => res.redirect("/"));
 });
+
+// router.post("/users/:id/follow", async(req,res) => {
+//   const followingId = req.url.split('/')[1]
+
+//   const followerId = req.session.auth
+
+//   const newFollow = db.Follow.build({
+//     followerId,
+//     followingId
+//   })
+
+//   await newFollow.save()
+
+//   res.redirect('/')
+// })
 
 
 
