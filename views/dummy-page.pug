@@ -3,8 +3,10 @@ extends dummy-page-head.pug
 block content
     div(class="center-block-container")
         div(class="header-logo-container")
-            img(id="header-logo" src='/images/logo.png')
-            h3(id="large-logo-text") Large
+            a(href="/")
+                img(id="header-logo" src='/images/logo.png')
+            a(href="/" id="large-logo-a")
+                h3(id="large-logo-text") Large
         div(class="text-container")
             h2(id="thanks-header") Thanks for visiting Large. 
             p(class="paragraph-text") You landed on a feature that is not quite available yet!

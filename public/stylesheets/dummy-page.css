@@ -20,7 +20,12 @@
     margin-right: 15px;
 }
 
+#large-logo-a {
+    text-decoration: none;
+}
+
 #large-logo-text{
+    
     font-weight: bold;
     font-size: 30px;
     -webkit-font-smoothing: antialiased;
