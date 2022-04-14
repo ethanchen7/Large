@@ -5,8 +5,7 @@ const recommendedTopicsTags = document.querySelector(
 ).children;
 
 unlimitedAccessBtn.addEventListener("click", (e) => {
-  window.location.href =
-    "https://medium.com/plans?source=upgrade_membership---nav_full-------------------------------------";
+  window.location.href = '/thanks';
 });
 
 startWritingBtn.addEventListener("click", (e) => {
