@@ -26,14 +26,21 @@ router.get("/", csrfProtection, restoreUser, asyncHandler(async (req, res, next)
     });
 
   } else {
-    // console.log('line 27 *************', res.locals.user.id)
+    const queries = await splashPageQueries()
+
+    const followingQueries = await followingArticles(req, res)
+
+    const { user, stories, tags } = queries
+
+    const { followingStories } = followingQueries
+
+
+
     res.render("feed", {
       user,
-      newStories,
       stories,
       tags,
-      csrfToken: req.csrfToken(),
-
+      followingStories
     });
   }
 }));
@@ -41,24 +48,5 @@ router.get("/", csrfProtection, restoreUser, asyncHandler(async (req, res, next)
 router.get("/login", csrfProtection, function (req, res, next) {
   res.render("user-register", { csrfToken: req.csrfToken() });
 });
-
-router.get("/feed", asyncHandler(async (req, res) => {
-  const queries = await splashPageQueries()
-
-  const followingQueries = await followingArticles(req, res)
-
-  const { user, stories, tags } = queries
-
-  const { followingStories } = followingQueries
-
-
-
-  res.render("feed", {
-    user,
-    stories,
-    tags,
-    followingStories
-  });
-}));
 
 module.exports = router;
