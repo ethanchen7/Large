@@ -363,7 +363,7 @@ module.exports = {
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           createdAt: new Date(),
           updatedAt: new Date(),
-        }, // added this
+        }, // added this .
       ],
       { returning: true }
     );
