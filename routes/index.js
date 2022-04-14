@@ -13,46 +13,48 @@ const {
 
 /* GET splash page. */
 
-router.get(
-  "/",
-  csrfProtection,
-  restoreUser,
-  asyncHandler(async (req, res, next) => {
+router.get("/", csrfProtection, restoreUser, asyncHandler(async (req, res, next) => {
+
     const queries = await splashPageQueries();
-    const { user, stories, newStories, tags } = queries;
-    // console.log("line 15 ********", res.locals.authenticated);
+    const { user, stories, newStories, tags } = queries
     if (!res.locals.authenticated) {
-      res.render("user-register", {
-        user,
-        newStories,
-        stories,
-        tags,
-        csrfToken: req.csrfToken(),
-      });
+
+        res.render("user-register", {
+            user,
+            newStories,
+            stories,
+            tags,
+            csrfToken: req.csrfToken(),
+        });
+
     } else {
-      const queries = await splashPageQueries();
+        const queries = await splashPageQueries()
 
-      const { user, recommendedUsers, stories, newStories, tags } = queries;
+        const followingQueries = await followingArticles(req, res)
 
-      const followingQueries = await followingArticles(req, res);
-      const { followingStories } = followingQueries;
+        const { stories, tags } = queries
 
-      const contentBarStories = newStories.slice(0, 3);
-      const contentBarTags = tags.slice(0, 7);
-      // console.log('line 27 *************', res.locals.user.id)
-      res.render("feed", {
-        user,
-        newStories,
-        recommendedUsers,
-        stories,
-        tags,
-        contentBarStories,
-        contentBarTags,
-        followingStories,
-      });
+        const { followingStories } = followingQueries
+
+        const userId = req.session.auth.userId
+
+        const user = await db.User.findByPk(userId)
+
+        const contentBarStories = newStories.slice(0, 3);
+        const contentBarTags = tags.slice(0, 7);
+        
+        res.render("feed", {
+            user,
+            newStories,
+            recommendedUsers,
+            stories,
+            tags,
+            contentBarStories,
+            contentBarTags,
+            followingStories,
+        });
     }
-  })
-);
+}));
 
 router.get("/login", csrfProtection, function (req, res, next) {
   res.render("user-register", { csrfToken: req.csrfToken() });
