@@ -76,7 +76,7 @@ addEventListener("DOMContentLoaded", e => {
                 // days ago
                 const commentDaysAgo = document.createElement("div");
                 commentDaysAgo.setAttribute("class", "comment-daysAgo");
-                commentDaysAgo.innerText = "3 days ago"; // need to change
+                commentDaysAgo.innerText = "posted just now.";
                 // comment content
                 const commentContent = document.createElement("div");
                 commentContent.setAttribute("class", "comment-content");

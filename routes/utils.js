@@ -59,8 +59,8 @@ const assignReadTime = (story) => {
 }
 
 
-const followingArticles = async(req, res) => {
-  
+const followingArticles = async (req, res) => {
+
   // const user = req.session.auth;
   const user = req.session.auth;
   console.log('yeeeeee', user.userId)
@@ -71,17 +71,17 @@ const followingArticles = async(req, res) => {
   });
 
   const following = await db.Follow.findAll({
-    where: {followerId: user.userId }
+    where: { followerId: user.userId }
   })
 
-  const followingArr = following.map(follow =>{
+  const followingArr = following.map(follow => {
     return follow.followingId
   })
 
   const followingStories = stories.filter(story => {
     return (followingArr.indexOf(story.User.id) !== -1)
   })
-  
+
   followingStories.forEach(story => {
 
     story.date = assignStoryDate(story); //`${month} ${story.updatedAt.getDate().toString()}`
@@ -93,18 +93,18 @@ const followingArticles = async(req, res) => {
     order: [['createdAt', 'ASC']],
     limit: 9,
   });
-  
+
   return { user, followingStories, tags }
 
 }
 
-const storiesByTags = async(tag) => {
+const storiesByTags = async (tag) => {
   const stories = await db.Story.findAll({
     include: [db.User, db.Tag],
     order: [['createdAt', 'ASC']],
     where: { tagId: `${tag}` }
   })
-  
+
   stories.forEach(story => {
 
     story.date = assignStoryDate(story); //`${month} ${story.updatedAt.getDate().toString()}`
@@ -116,6 +116,19 @@ const storiesByTags = async(tag) => {
   return { stories }
 }
 
+const assignDaysAgo = async (story) => {
+  const today = newDate();
+
+  const postDate = story.createdAt;
+
+  const differeence = today.getTime() - postDate.getTime();
+
+  let daysAgo = Math.floor(differeence / (1000 * 3600 * 24));
+
+  if (daysAgo >= 1) return daysAgo
+  else return "Posted today"
+}
+
 
 module.exports = {
   csrfProtection,
@@ -125,4 +138,5 @@ module.exports = {
   assignReadTime,
   followingArticles,
   storiesByTags,
+  assignDaysAgo,
 };
