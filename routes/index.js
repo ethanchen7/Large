@@ -9,6 +9,7 @@ const {
   asyncHandler,
   splashPageQueries,
   followingArticles,
+  getRecommended,
 } = require("./utils");
 
 /* GET splash page. */
@@ -32,7 +33,7 @@ router.get("/", csrfProtection, restoreUser, asyncHandler(async (req, res, next)
 
     const followingQueries = await followingArticles(req, res)
 
-    const { recommendedUsers, stories, tags } = queries
+    const { stories, tags } = queries
 
     const { followingStories } = followingQueries
 
@@ -43,10 +44,15 @@ router.get("/", csrfProtection, restoreUser, asyncHandler(async (req, res, next)
     const contentBarStories = newStories.slice(0, 3);
     const contentBarTags = tags.slice(0, 7);
 
+
+    const nonFollowedAccounts = await getRecommended(user.id)
+
+    console.log(nonFollowedAccounts)
+
     res.render("feed", {
       user,
       newStories,
-      recommendedUsers,
+      nonFollowedAccounts,
       stories,
       tags,
       contentBarStories,

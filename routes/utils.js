@@ -10,11 +10,6 @@ const asyncHandler = (handler) => (req, res, next) =>
 const splashPageQueries = async () => {
   const user = db.User.build();
 
-  const recommendedUsers = await db.User.findAll({
-    order: [["createdAt", "ASC"]],
-    limit: 3,
-  });
-
   const stories = await db.Story.findAll({
     include: [db.User, db.Tag],
     order: [["createdAt", "ASC"]],
@@ -36,7 +31,7 @@ const splashPageQueries = async () => {
     let story = stories.shift();
     newStories.push(story);
   }
-  return { user, recommendedUsers, stories, newStories, tags };
+  return { user, stories, newStories, tags };
 };
 
 
@@ -116,6 +111,31 @@ const storiesByTags = async(tag) => {
   return { stories }
 }
 
+const getRecommended = async (userId) =>{
+  const recommendedUsers = await db.User.findAll({
+    order: [["createdAt", "ASC"]],
+    // limit: 3,
+  });
+  
+  const following = await db.Follow.findAll({
+    where: { followerId: userId }
+  })
+  
+  const followingArr = following.map(follow => {
+    return follow.followingId
+  })
+  
+  let nonFollowedAccounts = recommendedUsers.filter(user1 => {
+    return (followingArr.indexOf(user1.id) === -1)
+  })
+  
+  nonFollowedAccounts = nonFollowedAccounts.splice(0, 3)
+
+  return nonFollowedAccounts
+
+}
+
+
 
 module.exports = {
   csrfProtection,
@@ -125,4 +145,5 @@ module.exports = {
   assignReadTime,
   followingArticles,
   storiesByTags,
+  getRecommended,
 };

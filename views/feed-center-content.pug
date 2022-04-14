@@ -9,7 +9,9 @@ div(class='centerHolder')
         p(id='recommended') Recommended
     div(id= 'contentDisplayed')
         div(id= 'recommendedStories')
+            -let n = 0
             each story in stories.reverse()
+                -n++
                 div(class='storyDiv')
                     div(class='storyContent')
                         div(class='topInfo')
@@ -27,9 +29,11 @@ div(class='centerHolder')
                                 img(src="/images/save.png", alt="")
                                 strong(href='#') ···
                     div(class='imgDiv')
-                        img(class='imgPreview' src='/images/logo.png')
+                        img(class='imgPreview' src= `https://picsum.photos/20${n}`)
         div(id='followingStories')
+            -let m = 0
             each story in followingStories.reverse()
+                -m++
                 div(class='storyDiv')
                     div(class='storyContent')
                         div(class='topInfo')
@@ -47,4 +51,4 @@ div(class='centerHolder')
                                 img(src="/images/save.png", alt="")
                                 strong(href='#') ···
                     div(class='imgDiv')
-                        img(class='imgPreview' src='/images/logo.png')
+                        img(class='imgPreview' src=`https://picsum.photos/20${m}`)

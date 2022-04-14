@@ -10,10 +10,12 @@ div(class="content-bar")
                 li Recent Articles: 
                     span(class="what-reading-text") What We're Reading
         div(class="currently-reading-articles-container")
+            -let k = 0
             each story in contentBarStories
+                -k++
                 div(class="story-preview-container")
                     div(class="story-owner-header")
-                        img(class="story-owner-img" src="/images/avatardefault.png")
+                        img(class="story-owner-img" src=`https://picsum.photos/20${k}`)
                         a(class="story-owner-profile" href="#") #{story.User.firstName} #{story.User.lastName}
                     a(class="story-preview-title" href="#")= story.title
         a(href='#' class="see-the-full-list") See the full list
@@ -39,11 +41,13 @@ div(class="content-bar")
         div(class="recommended-follows-header")
             h3(class="recommended-follows-title") Who to follow
         div(class="recommended-users-container")
-            each user in recommendedUsers
+            - let j = 0
+            each user in nonFollowedAccounts
+                -j++
                 div(class="user-div")
                     div(class="user-icon-container")
                         a(href="#")
-                            img(class="user-icon" src="/images/avatardefault.png")
+                            img(class="user-icon" src=`https://picsum.photos/20${j}`)
                     div(class="user-text-container")
                         a(class='rec-user-name' href="#") #{user.firstName} #{user.lastName}
                         p(class="rec-user-bio-text") Writer, blogger, activist. 
