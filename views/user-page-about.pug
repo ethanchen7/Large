@@ -1,6 +1,7 @@
 extends layout.pug 
 
 block content
+    link(rel='stylesheet' href='/stylesheets/user-content-bar.css')
     div(id='feed-main-layout')
         include feed-sidebar.pug
 
@@ -17,11 +18,11 @@ block content
                     div(id = 'userBio')
                         div(class='noBio')  
                             h2(class='h2Bio') Tell the world about yourself
-                            p= `${user.bio}`
-                        div(class='editBio')
+                            p(class='bioText') Here's where you can share more about yourself: your history, work experience, accomplishments, interests, dreams, and more. You can even add images and use rich text to personalize your bio.
                             form(class='editForm' action=`/users/${user.id}/about` method='post')
-                                button(class='editButton') Edit
-        
+                                button(class='getStartedButton') Get Started
+                        div(class='editBio')
+        include user-content-bar.pug
 
                     //- each story in userStories
                     //-     div(class='storyDivUser')

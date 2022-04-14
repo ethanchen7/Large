@@ -136,14 +136,11 @@ router.get(
   asyncHandler(async (req, res, next) => {
     const currUser = req.session.auth;
     const user = await db.User.findByPk(currUser.userId);
-    const userStories = await db.Story.findAll({
-      include: [db.User, db.Tag],
-      where: [currUser],
-    });
-
-    console.log(userStories);
-
-    res.render("user-page-about", { user, userStories});
+    // const userStories = await db.Story.findAll({
+    //   include: [db.User, db.Tag],
+    //   where: [currUser],
+    // });
+    res.render("user-page-about", { user});
   })
 );
 
