@@ -34,7 +34,7 @@ const logoutUser = (req, res) => {
 };
 
 const requireAuth = (req, res, next) => {
-  if (res.locals.authenticated === false) {
+  if (!res.locals.authenticated) {
     res.redirect("/"); // splash page
   } else {
     next();
