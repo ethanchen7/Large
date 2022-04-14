@@ -17,13 +17,19 @@ router.get('/stories/:id(\\d+)', restoreUser, requireAuth, asyncHandler(async (r
     const story = await db.Story.findByPk(storyId, {
         include: [db.User, db.Tag]
     });
-    const user = db.User.findByPk(userId);
-
     story.date = assignStoryDate(story);
     story.readTime = assignReadTime(story);
 
+    const user = db.User.findByPk(userId);
+
+    const contentBarStories = db.Stories.findAll();
+
     console.log(story.User.firstName);
-    res.render('single-story', { story, user });
+    res.render('single-story', {
+        story,
+        user,
+
+    });
 }))
 
 module.exports = router;
