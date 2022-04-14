@@ -7,6 +7,9 @@ div(class='centerHolderUser')
         a(href='#') Lists
         a(href=`/users/${user.id}/about`) About 
     div(id= 'contentDisplayed')
+        if (userStories.length === 0)
+            div(class='noStoriesToShow')
+                a(href='/my-stories/new') Create your first story
         div(id= 'userStories')
             each story in userStories
                 div(class='storyDivUser')
@@ -24,7 +27,7 @@ div(class='centerHolderUser')
                                     p(class='clapErr') You cannot applaud your own story
                                     img(src="/images/clap.png" class='clapIcon')
                                 img(src="/images/comment-bubble.png", alt="")
-            
                             div(class='underRightUser')
                                 img(src="/images/save.png", alt="")
                                 strong(href='#') ···
+        

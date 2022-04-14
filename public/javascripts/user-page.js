@@ -1,69 +1,40 @@
-window.addEventListener("load", async (event) => {
-  
-  const checkforBio = document.querySelector('.centerHolderUser').dataset.userbio
-  const createBio = document.getElementsByClassName("getStartedButton")[0];
-  const nobio = document.getElementsByClassName("noBio")[0];
+window.addEventListener("load", (event) => {
+ 
+  const createBioBtn = document.getElementsByClassName('getStartedButton')[0]
+  const editBtn = document.getElementById("editButton");
+  const noBio = document.getElementsByClassName("noBio")[0];
   const bioEdit = document.getElementsByClassName("bioEdit")[0];
-  const showBio = document.getElementsByClassName('showBio')[0]
+  const showBio = document.getElementsByClassName("showBio")[0];
 
-  if (checkforBio) {
-    showBio.classList.remove("hideBio");
-    nobio.classList.add("hideBio");
-    bioEdit.classList.add("hideBio");
-  } else {
-  
-  createBio.addEventListener("click", () => {
-    const currStyle = window
-      .getComputedStyle(nobio)
-      .getPropertyValue("display");
-
-    if (currStyle === "flex") {
-      nobio.classList.add("hideBio");
-      bioEdit.classList.remove("hideBio");
-    }
-  });
-
-  const editButton = document.getElementsByClassName("editButton")[0];
-  const bio = document.querySelector("#editBioText");
+  createBioBtn.addEventListener('click', (e) => {
+    noBio.classList.add('hideBio')
+    bioEdit.classList.remove('hideBio')
+  })
 
 
-  editButton.addEventListener("click", async () => {
-    const userId = editButton.dataset.userid;
-    const newBio = bio.value;
-    
-    showBio.classList.remove("hideBio");
-    bioEdit.classList.add("hideBio");
-    
+  editBtn.addEventListener("click", async (e) => {
+    const userId = editBtn.dataset.userid;
+    const bio = document.querySelector("#editBioText").value;
+
     const res = await fetch(`/users/${userId}/about`, {
       method: "PUT",
-      body: JSON.stringify({newBio}),
-      headers: {'Content-Type': 'application/json'}
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        bio,
+      }),
     });
-    
+
     const data = await res.json();
-    
-    bio.value = data.newBio
-    
+
+    if (data.message === "Success") {
+      // console.log(data)
+      const newBio = document.querySelector("#editBioText");
+      newBio.value = user.bio;
+    }
+    bioEdit.classList.add('hideBio')
+    showBio.classList.remove('hideBio')
 
   });
 
-  // const editExistingBio = document.getElementsByClassName('editButtonGreen')[0]
-
-  // editExistingBio.addEventListener('click', () => {
-  //   const userId = editButton.dataset.userid;
-  //   console.log(userId)
-  //   const newBio = bio.value;
-    
-  //   const res = await fetch(`/users/${userId}/about`, {
-  //     method: "PUT",
-  //     body: JSON.stringify({newBio}),
-  //     headers: {'Content-Type': 'application/json'}
-  //   });
-    
-  //   const data = await res.json();
-    
-  //   bio.value = data.newBio
-  // })
-  }
 
 });

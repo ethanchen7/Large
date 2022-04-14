@@ -12,7 +12,7 @@ block content
                     h1= `${user.firstName} ${user.lastName}`
             div(id='feedChoiceUser')
                 a(href=`/users/${user.id}`) Home 
-                a(href=`/users/${user.id}/lists`) Lists
+                a(href='#') Lists
                 a(href=`/users/${user.id}/about`) About 
             div(id= 'contentDisplayed')
                 div(id= 'userAbout')
@@ -22,10 +22,10 @@ block content
                             p(class='bioText') Here's where you can share more about yourself: your history, work experience, accomplishments, interests, dreams, and more. You can even add images and use rich text to personalize your bio.
                             a(class='getStartedButton') Get Started
                         div(class='bioEdit hideBio')
-                            a(class='editButton' data-userId=`${user.id}`) Edit
-                            textarea(id='editBioText' name="bioText", cols="1", rows="5")
+                            a(id='editButton' data-userId=`${user.id}`) Edit
+                            textarea(placeholder='Type your story' id='editBioText' name="bioText", cols="1", rows="5")
                         div(class='showBio hideBio')
-                            a(class='editButtonGreen') Edit
+                            a(id='editButton' data-userId=`${user.id}`) Edit
                             p= `${user.bio}`
 
         include user-content-bar.pug

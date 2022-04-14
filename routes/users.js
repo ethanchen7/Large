@@ -156,19 +156,14 @@ router.get(
 
 router.put(
   "/users/:id(\\d+)/about",
-  requireAuth,
   asyncHandler(async (req, res, next) => {
-    const {newBio} = req.body
-    console.log(req.body)
+    const {bio} = req.body
     const currUserId = req.session.auth.userId;
     const user = await db.User.findByPk(currUserId);
-    user.bio = newBio
-    console.log(user.bio)
+    user.bio = bio
     await user.save();
 
-    if (res.ok) {
-      res.json({newBio})
-    }
+    res.json({user, message:'Success'})
   })
 );
 
