@@ -1,6 +1,6 @@
 addEventListener('DOMContentLoaded', () => {
-    const collection = document.querySelectorAll('.disappearingM');
 
+    const collection = document.querySelectorAll('.disappearingM');
     let visibleCollection = [];
     for (let i = 0; i < (17 * 25); i++) {
         const rand = Math.random();
@@ -15,11 +15,12 @@ addEventListener('DOMContentLoaded', () => {
         const rand = Math.random();
         if (rand < .15) {
             setTimeout(toggleElement(el), 3000);
+            // toggleElement(el);
         }
     });
 });
 
-const toggleElement = element => {
+function toggleElement(element) {
     setInterval(() => {
         element.classList.toggle('hiddenByColor');
     }, 1000);

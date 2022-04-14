@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 .splashBanner {
     background-color: #FFC017;
     display: flex;
