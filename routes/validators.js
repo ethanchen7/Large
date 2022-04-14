@@ -73,4 +73,10 @@ const storyValidators = [
   check("tag").exists({ checkFalsy: true }).withMessage("Please enter a tag."),
 ];
 
-module.exports = { userValidators, loginValidators, storyValidators };
+const commentValidators = [
+  check("text")
+    .exists({ checkFalsy: true })
+    .withMessage("Please enter a comment.")
+]
+
+module.exports = { userValidators, loginValidators, storyValidators, commentValidators };
