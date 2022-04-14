@@ -22,8 +22,26 @@ router.get('/stories/:id(\\d+)', restoreUser, requireAuth, asyncHandler(async (r
     story.date = assignStoryDate(story);
     story.readTime = assignReadTime(story);
 
-    console.log(story.User.firstName);
-    res.render('single-story', { story, user });
+    const allClapsOfStory = await db.StoryClap.findAll({
+        where: {storyId}
+    })
+    const allClapsOfStoryCount = allClapsOfStory.length
+    res.render('single-story', { story, user, allClapsOfStoryCount });
+}))
+
+router.post('/stories/:id(\\d+)/clap/new', requireAuth, asyncHandler(async (req, res, next) => {
+    const storyId = req.params.id
+    const userId = req.session.auth.userId;
+    const newClap = db.StoryClap.build({
+        storyId,
+        userId
+    })
+    await newClap.save()
+    const allClapsOfStory = await db.StoryClap.findAll({
+        where: {storyId}
+    })
+    updatedClapCount = allClapsOfStory.length
+    res.json({updatedClapCount})
 }))
 
 module.exports = router;

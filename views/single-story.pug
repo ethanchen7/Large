@@ -7,6 +7,7 @@ html(lang="en")
         title= story.title
         link(rel='stylesheet' href='/stylesheets/single-story-resource.css')
         script(src="/javascripts/single-resource.js" type="module")
+        script(src="/javascripts/clap.js" type="module")
     body
         #single-story-layout
             include feed-sidebar.pug
@@ -30,9 +31,9 @@ html(lang="en")
                 #story-title= story.title 
                 #story-article= story.article
         #clap-comment-modal 
-            #clap 
+            div(id="clap" data-storyId=`${story.id}`)
                 img#clapButton(src="/images/clap.png")
-                #clap-count= 3
+                #clap-count= allClapsOfStoryCount
             div |
             #comment 
                 img#commentButton(src="/images/comment-bubble.png")
