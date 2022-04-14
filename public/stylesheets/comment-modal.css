@@ -6,12 +6,14 @@
     background-color: white;
     position: fixed;
     top: 0px;
-    right: 0px;
+    right: -30%;
     height: 100%;
     width: 30%;
     padding-top: 30px;
     padding-left: 50px;
     padding-right: 50px;
+    overflow-y: scroll;
+    transition: .25s;
 }
 
 #comment-modal-header {

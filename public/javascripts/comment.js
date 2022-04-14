@@ -1,4 +1,8 @@
 addEventListener("DOMContentLoaded", e => {
+
+    handleModalPopUp();
+
+    // handle comment creation
     const commentModal = document.getElementById("comment-modal")
     const comment = document.getElementById("new-comment-box");
     const submit = document.getElementById("new-comment-submit");
@@ -99,3 +103,13 @@ addEventListener("DOMContentLoaded", e => {
         };
     });
 });
+
+
+const handleModalPopUp = () => {
+    const commentButton = document.getElementById('commentButton');
+
+    commentButton.addEventListener("click", () => {
+        const commentModal = document.getElementById("comment-modal");
+        commentModal.style.right = "0%";
+    })
+}

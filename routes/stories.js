@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const { asyncHandler } = require("./utils");
+const { asyncHandler, assignDaysAgo } = require("./utils");
 const { restoreUser, requireAuth } = require('../auth')
 
 const db = require("../db/models");
@@ -15,12 +15,20 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     const userId = req.session.auth.userId;
 
     const story = await db.Story.findByPk(storyId, {
-        include: [db.User, db.Tag]
+        include: [db.User, db.Tag, db.Comment]
     });
     story.date = assignStoryDate(story);
     story.readTime = assignReadTime(story);
 
     const user = db.User.findByPk(userId);
+    const comments = story.Comments;
+
+    comments.forEach(async comment => {
+        assignDaysAgo(comment);
+        const user = await db.User.findByPk(comment.userId);
+        comment.firstName = user.firstName;
+        comment.lastName = user.lastName;
+    })
 
     // For Content Bar
     const queries = await splashPageQueries()
@@ -34,7 +42,8 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
         user,
         contentBarStories,
         contentBarTags,
-        recommendedUsers
+        recommendedUsers,
+        comments,
     });
 }))
 

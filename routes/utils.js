@@ -116,17 +116,17 @@ const storiesByTags = async (tag) => {
   return { stories }
 }
 
-const assignDaysAgo = async (story) => {
-  const today = newDate();
+const assignDaysAgo = async (comment) => {
+  const today = new Date();
 
-  const postDate = story.createdAt;
+  const postDate = comment.createdAt;
 
-  const differeence = today.getTime() - postDate.getTime();
+  const difference = today.getTime() - postDate.getTime();
 
-  let daysAgo = Math.floor(differeence / (1000 * 3600 * 24));
+  let daysAgo = Math.floor(difference / (1000 * 3600 * 24));
 
-  if (daysAgo >= 1) return daysAgo
-  else return "Posted today"
+  if (daysAgo >= 1) comment.daysAgo = daysAgo
+  else comment.daysAgo = "Posted today"
 }
 
 
