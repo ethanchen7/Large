@@ -1,0 +1,42 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= story.title
+        link(rel='stylesheet' href='/stylesheets/single-story-resource.css')
+        script(src="/javascripts/single-resource.js" type="module")
+    body
+        #single-story-layout
+            include feed-sidebar.pug
+            #single-story-resource
+                #story-header
+                    #story-header-left 
+                        #story-user-img 
+                            img(src="/images/logo.png")
+                        #story-info 
+                            #story-author= `${story.User.firstName} ${story.User.lastName}`
+                            #story-date-readTime= `${story.date} · ${story.readTime} min read`
+                    #links-nav 
+                        a.button(href="https://twitter.com")
+                            img#twitterButtonBlack.blacks(src="/images/twitter.png")
+                        a.button(href="https://linkedin.com")
+                            img#linkedInButtonBlack.blacks(src="/images/linkedIn.png")
+                        a.button#copyButton
+                            img#linkButtonBlack.blacks(src="/images/link.png")
+                        a.button
+                            img#saveButton(src="/images/save.png")
+                #story-title= story.title 
+                #story-article= story.article
+        #clap-comment-modal 
+            #clap 
+                img#clapButton(src="/images/clap.png")
+                #clap-count= 3
+            div |
+            #comment 
+                img#commentButton(src="/images/comment-bubble.png")
+                #comment-count= 4
+                //- need to include right side bar
+                        
+                        

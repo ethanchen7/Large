@@ -19,9 +19,9 @@ include utils.pug
                 - count++;
                 .trend-storyContent 
                     .trend-storyHeader 
-                        .trend-storyHeaderImage Img
+                        Img.trend-storyHeaderImage(src="/images/logo.png")
                         .trend-storyHeaderInfo= `${story.User.firstName} ${story.User.lastName} in ${story.Tag.name}`
-                    .trend-storyTitle= story.title
+                    a.trend-storyTitle(href= `http://localhost:8080/stories/${story.id}`)= story.title
                     .trend-storyInformation= `${story.date} · ${story.readTime} min`
 .splashScroll 
     .scroll-stories
@@ -31,7 +31,7 @@ include utils.pug
                     div(class='topInfo')
                         img(class='feedprofile-img' src='/images/logo.png')
                         a(href='#') #{story.User.firstName} #{story.User.lastName}
-                    h2(class='storyTitle')= story.title
+                    a(class='storyTitle' href= `http://localhost:8080/stories/${story.id}`)= story.title
                     div(class='storyPreview')
                         p= `${story.blurb}...`
                     div(class='underStory')
@@ -58,3 +58,5 @@ include utils.pug
             +field('data', 'infoLinks')
             +field('is', 'infoLinks')
             +field('fake', 'infoLinks')
+script(src="/javascripts/disappearingM.js") 
+script(src="/javascripts/splashpagelink.js" type="module") 
