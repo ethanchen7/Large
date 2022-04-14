@@ -19,19 +19,19 @@ const splashPageQueries = async () => {
     limit: 9,
   });
 
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',]
+  // const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  //   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',]
   stories.forEach(story => {
-    const monthIndex = story.updatedAt.getMonth();
-    const month = months[monthIndex];
+    // const monthIndex = story.updatedAt.getMonth();
+    // const month = months[monthIndex];
 
-    story.date = `${month} ${story.updatedAt.getDate().toString()}`
+    story.date = assignStoryDate(story); //`${month} ${story.updatedAt.getDate().toString()}`
 
-    const article = story.article;
-    const articleWords = article.split(' ');
-    const blurb = articleWords.slice(0, 15).join(' ');
-    story.blurb = blurb;
-    story.readTime = Math.max(1, Math.floor(articleWords.length / 250))
+    // const article = story.article;
+    // const articleWords = article.split(' ');
+    // const blurb = articleWords.slice(0, 15).join(' ');
+    // story.blurb = blurb;
+    story.readTime = assignReadTime(story);
 
   })
   let newStories = []
@@ -42,8 +42,28 @@ const splashPageQueries = async () => {
   return { user, stories, newStories, tags }
 }
 
+const assignStoryDate = (story) => {
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',]
+
+  const monthIndex = story.updatedAt.getMonth();
+  const month = months[monthIndex];
+
+  return `${month} ${story.updatedAt.getDate().toString()}`
+}
+
+const assignReadTime = (story) => {
+  const article = story.article;
+  const articleWords = article.split(' ');
+  const blurb = articleWords.slice(0, 15).join(' ');
+  story.blurb = blurb;
+  return Math.max(1, Math.floor(articleWords.length / 250))
+}
+
 module.exports = {
   csrfProtection,
   asyncHandler,
   splashPageQueries,
+  assignStoryDate,
+  assignReadTime
 };
