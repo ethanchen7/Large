@@ -12,20 +12,23 @@ include utils.pug
 .splashTrending
     #splashContentHeader Trending on Medium
     .trend-storiesCollection
+        -let n = 0
         - let count = 1;
         each story in newStories
+            -n++
             .trend-story(id=`story_${story.id}`)
                 .trend-storyNumber= `0${count}`
                 - count++;
                 .trend-storyContent 
                     .trend-storyHeader 
-                        Img.trend-storyHeaderImage(src="/images/logo.png")
+                        Img.trend-storyHeaderImage(src=`https://picsum.photos/20${n}` style='border-radius:50%;')
                         .trend-storyHeaderInfo= `${story.User.firstName} ${story.User.lastName} in ${story.Tag.name}`
                     a.trend-storyTitle(href= `http://localhost:8080/stories/${story.id}`)= story.title
                     .trend-storyInformation= `${story.date} · ${story.readTime} min`
 .splashScroll 
     .scroll-stories
         each story in stories
+            -n++
             div(class='storyDiv')
                 div(class='storyContent')
                     div(class='topInfo')
@@ -41,7 +44,7 @@ include utils.pug
                         div(class='underRight')
                             img(src="/images/save.png", alt="")
                 div(class='imgDiv')
-                    img(class='imgPreview' src='/images/logo.png')
+                    img(class='imgPreview' src=`https://picsum.photos/20${n}`)
     #scroll-information
         #scroll-informationHeader Discover more of what matters to you
         .scroll-tags
