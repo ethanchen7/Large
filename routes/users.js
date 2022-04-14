@@ -169,7 +169,6 @@ router.put(
     if (res.ok) {
       res.json({newBio})
     }
-    // res.render("user-page-about", { user, userStories});
   })
 );
 

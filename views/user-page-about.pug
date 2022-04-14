@@ -6,7 +6,7 @@ block content
     div(id='feed-main-layout')
         include feed-sidebar.pug
 
-        div(class='centerHolderUser')
+        div(class='centerHolderUser' data-userBio=`${user.bio}`)
             div(id='keepupUser')
                 a(href=`/users/${user.id}`)
                     h1= `${user.firstName} ${user.lastName}`
