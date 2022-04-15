@@ -24,7 +24,7 @@ html(lang="en")
                         #story-header-left 
                             #story-user-img
                                 #story-authorImgContainer
-                                    img#story-authorImg(src="https://picsum.photos/200")
+                                    img#story-authorImg(src=`https://picsum.photos/${Math.floor(Math.random() * 50)}`)
                             #story-info 
                                 a#story-author(href="/users/${story.User.id}")= `${story.User.firstName} ${story.User.lastName}`
                                 #story-date-readTime= `${story.date} · ${story.readTime} min read`

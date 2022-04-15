@@ -74,7 +74,8 @@ addEventListener("DOMContentLoaded", e => {
                 commentUserImg.setAttribute("class", "comment-user-img");
                 // actual image
                 const img = document.createElement("img");
-                img.setAttribute("src", "/images/logo.png");
+                img.setAttribute("src", `https://picsum.photos/${Math.floor(Math.random() * 50)}`);
+                img.setAttribute("class", "comment-user-img");
                 // user info container
                 const commentUserInfo = document.createElement("div");
                 commentUserInfo.setAttribute("class", "comment-user-info");

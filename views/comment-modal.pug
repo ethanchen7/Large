@@ -15,8 +15,7 @@
         each comment in comments
             .comment-container 
                 .comment-container-header 
-                    .comment-user-img 
-                        img(src="/images/logo.png")
+                    img.comment-user-img(src=`https://picsum.photos/${Math.floor(Math.random() * 50)}`)
                     .comment-user-info 
                         a.comment-author(href=`/users/${comment.userId}`)= `${comment.firstName} ${comment.lastName}`
                         .comment-daysAgo= `${comment.daysAgo}`
