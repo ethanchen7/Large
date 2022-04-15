@@ -15,35 +15,36 @@ html(lang="en")
         script(src="/javascripts/comment.js" type="module")
         script(src="/javascripts/clap.js" type="module")
     body
-        #single-story-layout
-            include feed-sidebar.pug
-            #single-story-resource
-                #story-header
-                    #story-header-left 
-                        #story-user-img 
-                            img(src="/images/logo.png")
-                        #story-info 
-                            #story-author= `${story.User.firstName} ${story.User.lastName}`
-                            #story-date-readTime= `${story.date} · ${story.readTime} min read`
-                    #links-nav 
-                        a.button(href="https://twitter.com")
-                            img#twitterButtonBlack.blacks(src="/images/twitter.png")
-                        a.button(href="https://linkedin.com")
-                            img#linkedInButtonBlack.blacks(src="/images/linkedIn.png")
-                        a.button#copyButton
-                            img#linkButtonBlack.blacks(src="/images/link.png")
-                        a.button
-                            img#saveButton(src="/images/save.png")
-                #story-title= story.title 
-                #story-article= story.article
-            include content-bar.pug                        
-        #clap-comment-modal 
-            div(id="clap" data-storyId=`${story.id}`)
-                img#clapButton(src="/images/clap.png")
-                #clap-count= allClapsOfStoryCount
-            div |
-            #comment 
-                img#commentButton(src="/images/comment-bubble.png")
-                #comment-count= 4
+        #comment-modal-greyOut
+            #single-story-layout
+                include feed-sidebar.pug
+                #single-story-resource
+                    #story-header
+                        #story-header-left 
+                            #story-user-img 
+                                img(src="/images/logo.png")
+                            #story-info 
+                                #story-author= `${story.User.firstName} ${story.User.lastName}`
+                                #story-date-readTime= `${story.date} · ${story.readTime} min read`
+                        #links-nav 
+                            a.button(href="https://twitter.com")
+                                img#twitterButtonBlack.blacks(src="/images/twitter.png")
+                            a.button(href="https://linkedin.com")
+                                img#linkedInButtonBlack.blacks(src="/images/linkedIn.png")
+                            a.button#copyButton
+                                img#linkButtonBlack.blacks(src="/images/link.png")
+                            a.button
+                                img#saveButton(src="/images/save.png")
+                    #story-title= story.title 
+                    #story-article= story.article
+                include story-content-bar.pug                        
+            #clap-comment-modal 
+                div(id="clap" data-storyId=`${story.id}`)
+                    img#clapButton(src="/images/clap.png")
+                    #clap-count= allClapsOfStoryCount
+                div |
+                #comment 
+                    img#commentButton(src="/images/comment-bubble.png")
+                    #comment-count= `${story.Comments.length}`
         include comment-modal.pug
                         

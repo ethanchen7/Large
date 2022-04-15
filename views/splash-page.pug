@@ -4,7 +4,7 @@ include utils.pug
     .mainBanner-text
         #mainBanner-title Stay curious.
         #mainBanner-header Discover stories, thinking, and expertise from writers on any topic.
-        button(id="mainBanner-button") Start reading
+        a(id="mainBanner-button") Start reading
     #randomMgenerator
         - for (let rows = 0; rows < 17; rows++)
             - for (let cols = 0; cols < 25; cols++)
@@ -21,36 +21,36 @@ include utils.pug
                 - count++;
                 .trend-storyContent 
                     .trend-storyHeader 
-                        Img.trend-storyHeaderImage(src=`https://picsum.photos/20${n}` style='border-radius:50%;')
-                        .trend-storyHeaderInfo= `${story.User.firstName} ${story.User.lastName} in ${story.Tag.name}`
-                    a.trend-storyTitle(href= `http://localhost:8080/stories/${story.id}`)= story.title
+                        img.trend-storyHeaderImage(src=`https://picsum.photos/20${n}` style='border-radius:50%;')
+                        a.trend-storyHeaderInfo= `${story.User.firstName} ${story.User.lastName} in ${story.Tag.name}`
+                    a.trend-storyTitle= story.title
                     .trend-storyInformation= `${story.date} · ${story.readTime} min`
 .splashScroll 
     .scroll-stories
         each story in stories
             -n++
             div(class='storyDiv')
-                div(class='storyContent')
+                div(class='splash-storyContent')
                     div(class='topInfo')
                         img(class='feedprofile-img' src='/images/logo.png')
-                        a(href='#') #{story.User.firstName} #{story.User.lastName}
-                    a(class='storyTitle' href= `http://localhost:8080/stories/${story.id}`)= story.title
+                        a #{story.User.firstName} #{story.User.lastName}
+                    a(class='storyTitle')= story.title
                     div(class='storyPreview')
                         p= `${story.blurb}...`
-                    div(class='underStory')
-                        div(class='underLeft')
+                    div(class='splash-underStory')
+                        div(class='splash-underLeft')
                             p= `${story.date} · ${story.readTime} min · selected for you`
                             a(href="#" class='scroll-tag')= story.Tag.name 
                         div(class='underRight')
                             img(src="/images/save.png", alt="")
-                div(class='imgDiv')
-                    img(class='imgPreview' src=`https://picsum.photos/20${n}`)
+                img(class='scroll-stories-preivew-img' src=`https://picsum.photos/20${n}`)
+   
     #scroll-information
         #scroll-informationHeader Discover more of what matters to you
         .scroll-tags
             each tag in tags
                 //- should be a link to see stories with these tags.
-                .scroll-tag= tag.name
+                a.scroll-tag= tag.name
         .scroll-informationLinks
             +field('This', 'infoLinks')
             +field('is', 'infoLinks')
@@ -62,4 +62,3 @@ include utils.pug
             +field('is', 'infoLinks')
             +field('fake', 'infoLinks')
 script(src="/javascripts/disappearingM.js") 
-script(src="/javascripts/splashpagelink.js" type="module") 

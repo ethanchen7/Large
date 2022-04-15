@@ -221,11 +221,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  width: 500px;
+  min-height: 70vh;
+  width: 30%;
   padding: 0 32px 0 16px;
   position: sticky;
   top: 0;
+  right: 0%;
 }
 
 
@@ -272,6 +273,7 @@
 }
 
 .currently-reading-container {
+  margin-top: 10px;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -282,7 +284,7 @@
 .currently-reading-articles-container {
   margin-top: 20px;
   width: 100%;
-  height: 330px;
+  height: 270px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -322,7 +324,6 @@
 }
 
 .see-the-full-list {
-  margin-top: 10px;
   text-decoration: none;
   color: green;
   font-size: 12px;
@@ -336,7 +337,7 @@
 }
 
 .writing-on-medium-container {
-  margin-top: 55px;
+  margin-top: 14px;
   width: 75%;
   height: 220px;
   background-color: #e1f0ff;
@@ -409,13 +410,14 @@
 }
 
 .border-div {
-  height: 60px;
+  height: 30px;
   width: 80%;
   border-bottom: 0.25px solid lightgray;
 }
 
 .recommended-topics-container {
-  margin-top: 40px;
+  margin-top: 25px;
+  position: sticky;
   width: 80%;
   -webkit-font-smoothing: antialiased;
 }
@@ -424,7 +426,12 @@
   font-weight: bold;
 }
 .recommend-topics-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   margin-top: 13px;
+  height: 170px;
+  width: 100%;
 }
 
 .recommended-tag-button {
@@ -449,7 +456,7 @@
 .recommended-follows-container {
   width: 80%;
   height: 250px;
-  margin-top: 40px;
+  margin-top: 25px;
 }
 
 .recommended-follows-header {
@@ -654,4 +661,10 @@ button{
 
 .reference:hover {
   cursor: pointer;
+}
+
+.bottom-wrapper{
+  width: 100%;
+  position: sticky;
+  top: 0px;
 }
