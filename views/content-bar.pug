@@ -1,9 +1,6 @@
 div(class="content-bar")
     div(class="unlimited-access-container")
         button(class="unlimited-access-btn") Upgrade
-            
-    div(class="search-bar-container")
-        div(class="search-bar")
     div(class="currently-reading-container")
         div(class="currently-reading-title")
             span(class="recent-article-text") 
@@ -18,7 +15,11 @@ div(class="content-bar")
                         img(class="story-owner-img" src=`https://picsum.photos/20${k}`)
                         a(class="story-owner-profile" href=`/users/${story.User.id}`) #{story.User.firstName} #{story.User.lastName}
                     a(class="story-preview-title" href=`/stories/${story.id}`)= story.title
+<<<<<<< HEAD
         a(href='#' class="see-the-full-list") See the full list
+=======
+        a(href='/thanks' class="see-the-full-list") See the full list
+>>>>>>> main
     div(class="writing-container")
         div(class="writing-on-medium-container")
             div(class="container-header")

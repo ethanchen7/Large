@@ -179,7 +179,7 @@ input {
   margin: 0px;
 }
 
-img {
+#login-modal-close-button {
   max-width: 25px;
   max-height: 25px;
 }
