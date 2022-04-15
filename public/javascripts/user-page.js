@@ -1,10 +1,18 @@
 window.addEventListener("load", (event) => {
  
+  const checkBio = document.getElementsByClassName('centerHolderUser')[0].dataset.userbio
   const createBioBtn = document.getElementsByClassName('getStartedButton')[0]
-  const editBtn = document.getElementById("editButton");
+  const submitBtn = document.getElementById("submitButton");
+  const editBtn = document.getElementById('editButton')
   const noBio = document.getElementsByClassName("noBio")[0];
   const bioEdit = document.getElementsByClassName("bioEdit")[0];
   const showBio = document.getElementsByClassName("showBio")[0];
+
+  if (checkBio !== 'null') {
+    noBio.classList.add('hideBio')
+    bioEdit.classList.add('hideBio')
+    showBio.classList.remove('hideBio')
+  }
 
   createBioBtn.addEventListener('click', (e) => {
     noBio.classList.add('hideBio')
@@ -12,10 +20,10 @@ window.addEventListener("load", (event) => {
   })
 
 
-  editBtn.addEventListener("click", async (e) => {
+  submitBtn.addEventListener("click", async (e) => {
     const userId = editBtn.dataset.userid;
     const bio = document.querySelector("#editBioText").value;
-
+    
     const res = await fetch(`/users/${userId}/about`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -23,18 +31,23 @@ window.addEventListener("load", (event) => {
         bio,
       }),
     });
-
+    
     const data = await res.json();
-
-    if (data.message === "Success") {
-      // console.log(data)
-      const newBio = document.querySelector("#editBioText");
-      newBio.value = user.bio;
+    
+    if (data) {
+      const newBio = document.getElementsByClassName("AZ")[0];
+      newBio.innerText = data.user.bio
+      showBio.classList.remove('hideBio');
+      bioEdit.classList.add('hideBio');
     }
-    bioEdit.classList.add('hideBio')
-    showBio.classList.remove('hideBio')
-
+    
   });
+
+
+  editBtn.addEventListener('click', () => {
+    bioEdit.classList.remove('hideBio')
+    showBio.classList.add('hideBio')
+  })
 
 
 });

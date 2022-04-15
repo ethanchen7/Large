@@ -20,7 +20,7 @@ div(class='centerHolderUser')
                             p= `${story.date}`
                         a(class='storyTitleUser' href=`/stories/${story.id}`)= story.title
                         div(class='storyPreviewUser')
-                            p=story.article
+                            a(href=`/stories/${story.id}`)= `${story.article.split(' ').splice(0,25).join(' ')}...`
                         div(class='underStoryUser')
                             div(class='underLeftUser')
                                 div(class='ownClap')

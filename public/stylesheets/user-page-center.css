@@ -3,6 +3,19 @@
   flex-direction: row;
 }
 
+.storyPreviewUser {
+  max-width: 75vh;
+  max-height: 10vh;
+  overflow-y: hidden;
+}
+
+.storyPreviewUser > a {
+  color: rgb(58, 58, 58);
+  font-size: 9.5pt;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+}
+
 .centerHolderUser {
   width: 63.5%;
   height: 100%;
@@ -270,13 +283,26 @@
   background-color: rgb(0, 73, 0);
 }
 
-#editButton {
+#submitButton {
   position: relative;
   left: 85%;
   padding: 8px 30px;
   color: white;
   width: fit-content;
   background-color: black;
+  border: 0;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#editButton {
+  position: relative;
+  left: 85%;
+  padding: 8px 30px;
+  color: white;
+  width: fit-content;
+  background-color: green;
   border: 0;
   border-radius: 20px;
   font-size: 13px;
@@ -307,19 +333,6 @@
   color: rgba(0, 0, 0, 0.415);
 }
 
-.editButtonGreen {
-  position: relative;
-  left: 85%;
-  padding: 8px 30px;
-  color: white;
-  width: fit-content;
-  background-color: green;
-  border: 0;
-  border-radius: 20px;
-  font-size: 13px;
-  cursor: pointer;
-}
-
 
 .noStoriesToShow {
   display: flex;
@@ -341,4 +354,10 @@
 
 .hideBio {
   display: none;
+}
+
+.showBio > p{
+  padding: 5px;
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 20px;
 }
