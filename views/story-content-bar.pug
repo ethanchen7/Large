@@ -1,0 +1,41 @@
+div(class="content-bar")
+    div(class="unlimited-access-container")
+        button(class="unlimited-access-btn") Upgrade
+            
+    div(class="search-bar-container")
+        div(class="search-bar")
+    div(class="story-user-profile-container")
+        div(class="story-user-profile-icon" data-userid=`${story.User.id}`)
+            img(class="story-user-icon" src=`https://picsum.photos/20`)
+        div(class="story-user-name")
+            a(class="story-user-name-text" href=`/users/${story.User.id}`) #{story.User.firstName} #{story.User.lastName}
+            p(class="user-follower-count-text") 46 Followers
+        div(class="story-user-bio")
+            p(class="story-user-bio-text") #{story.User.bio}
+        div(class="story-user-buttons-container")
+            button(id="story-user-follow-btn" data-userid=`${story.User.id}`) Follow
+            button(id="story-user-email-btn")
+                img(src="/images/mail.png")
+    div(class="more-from-medium-container")
+        div(class="currently-reading-title")
+            h2(class="recent-article-text") More from Medium 
+        div(class="currently-reading-articles-container")
+            -let k = 0
+            each story in storyContentBarStories
+                -k++
+                div(class="story-preview-container")
+                    div(class="story-owner-header")
+                        img(class="story-owner-img" src=`https://picsum.photos/20${k}`)
+                        a(class="story-owner-profile" href=`/users/${story.User.id}`) #{story.User.firstName} #{story.User.lastName}
+                    a(class="story-preview-title" href=`/stories/${story.id}`)= story.title
+    div(class="reference-links")
+        a(class="reference" href="/thanks") Node JS
+        a(class="reference" href="/thanks") Express JS
+        a(class="reference" href="/thanks") PostgreSQL
+        a(class="reference" href="/thanks") Sequelize JS
+        a(class="reference" href="/thanks") PUG
+        a(class="reference" href="/thanks") HTML
+        a(class="reference" href="/thanks") CSS
+
+
+            

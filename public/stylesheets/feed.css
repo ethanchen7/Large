@@ -223,7 +223,10 @@
   min-height: 100vh;
   width: 500px;
   padding: 0 32px 0 16px;
+  position: sticky;
+  top: 0;
 }
+
 
 .unlimited-access-container {
   margin-top: 20px;
@@ -250,8 +253,9 @@
 }
 
 .recent-article-text {
-  color: green;
-  font-weight: normal;
+  font-size: 15px;
+  color: black;
+  font-weight: bolder;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -277,7 +281,10 @@
 .currently-reading-articles-container {
   margin-top: 20px;
   width: 100%;
-  height: 200px;
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .story-owner-profile {
@@ -286,7 +293,7 @@
 }
 
 .story-preview-container {
-  height: 33%;
+  height: 25%;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -512,4 +519,131 @@
   text-decoration: none;
   font-size: 12px;
   color: green;
+}
+
+.story-user-profile-container {
+  height: 200px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.story-user-profile-icon {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.story-user-profile-icon:hover{
+  cursor: pointer;
+}
+
+.story-user-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.story-user-name {
+  margin-top: 13px;
+}
+
+.story-user-name-text {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bolder;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+.story-user-follow-count {
+  height: 10%;
+}
+
+.user-follower-count-text {
+  margin-top: 9px;
+  font-size: 14px;
+  font-weight: lighter;
+  -webkit-font-smoothing: antialiased;
+}
+
+.story-user-bio-text {
+  margin: 0;
+  font-size: 12px;
+  font-weight: lighter;
+  -webkit-font-smoothing: antialiased;
+}
+
+.story-user-buttons-container {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 30px;
+}
+
+#story-user-follow-btn {
+  background-color: rgb(2, 148, 2);
+  border: none;
+  color: white;
+  border-radius: 25px;
+  padding: 10px;
+  width: 22%;
+  height: 70%;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+#story-user-follow-btn:hover {
+  cursor: pointer;
+}
+
+#story-user-email-btn {
+  margin-left: 9px;
+  background-color: rgb(2, 148, 2);
+  border: none;
+  color: white;
+  border-radius: 50%;
+  padding: 10px;
+  width: 11%;
+  height: 70%;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+#story-user-email-btn:hover {
+  cursor: pointer;
+}
+
+button{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.more-from-medium-container {
+  margin-top: 40px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+.reference-links {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.reference {
+  text-decoration: none;
+  font-size: 9px;
+  color:rgba(117, 117, 117, 1)
+}
+
+.reference:hover {
+  cursor: pointer;
 }

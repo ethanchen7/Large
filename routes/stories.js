@@ -37,6 +37,7 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     const queries = await splashPageQueries()
     const { recommendedUsers, newStories, tags } = queries
     const contentBarStories = newStories.slice(0, 3);
+    const storyContentBarStories = newStories.slice(0, 4);
     const contentBarTags = tags.slice(0, 7);
 
     const allClapsOfStory = await db.StoryClap.findAll({
@@ -49,6 +50,7 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
         story,
         user,
         contentBarStories,
+        storyContentBarStories,
         contentBarTags,
         recommendedUsers,
         nonFollowedAccounts,
