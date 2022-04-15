@@ -1,12 +1,14 @@
 window.addEventListener("load", (event) => {
 
-  const signInButton = document.getElementsByClassName("popUpButton")[0];
+  const links = document.querySelectorAll("a");
 
-  signInButton.addEventListener("click", () => {
-    document.getElementsByClassName("modal-container")[0].style.display =
-      "flex";
-    document.getElementsByClassName("modal")[0].style.display = "flex";
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+      document.getElementsByClassName("modal-container")[0].style.display = "flex";
+      document.getElementsByClassName("modal")[0].style.display = "flex";
+    });
   });
+
 
   const createUserButton = document.getElementsByClassName("createButtono")[0];
 
@@ -28,12 +30,6 @@ window.addEventListener("load", (event) => {
     document.getElementsByClassName("modal-container")[0].style.display =
       "none";
     document.getElementsByClassName("modal")[0].style.display = "none";
-    window.location.href='/'
+    window.location.href = '/'
   });
-
-//   const modalContainer = document.getElementsByClassName('modal-container')[0]
-
-//     modalContainer.addEventListener('click', () => {
-//         window.location.href='/'
-//     })  
 });

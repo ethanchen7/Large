@@ -109,7 +109,6 @@
 .storyContent {
   display: flex;
   flex-direction: column;
-  min-width: 90%;
 }
 
 .topInfo {
@@ -205,11 +204,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.imgPreview {
-  width: 70px;
-  height: 70px;
 }
 
 #followingStories {
