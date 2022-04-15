@@ -125,7 +125,21 @@ router.get(
       where: { userId: user.id},
     });
 
-    console.log(userStories);
+    const assignStoryDate = (story) => {
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',]
+    
+      const monthIndex = story.updatedAt.getMonth();
+      const month = months[monthIndex];
+    
+      return `${month} ${story.updatedAt.getDate().toString()}`
+    }
+
+    userStories.forEach(story => {
+
+      story.date = assignStoryDate(story); //`${month} ${story.updatedAt.getDate().toString()}`
+  
+    })
 
     res.render("user-page", { currUser, user, userStories});
   })
@@ -135,6 +149,7 @@ router.get(
   "/users/:id(\\d+)/about",
   csrfProtection,
   asyncHandler(async (req, res, next) => {
+    
     let currUser = req.session.auth;
 
     currUser = await db.User.findByPk(currUser.userId)
@@ -145,31 +160,21 @@ router.get(
       include: [db.User, db.Tag],
       where: { userId: user.id },
     });
-
-    console.log(userStories);
 
     res.render("user-page-about", { currUser, user, userStories});
   })
 );
 
-router.post(
+router.put(
   "/users/:id(\\d+)/about",
-  csrfProtection,
   asyncHandler(async (req, res, next) => {
-    let currUser = req.session.auth;
+    const {bio} = req.body
+    const currUserId = req.session.auth.userId;
+    const user = await db.User.findByPk(currUserId);
+    user.bio = bio
+    await user.save();
 
-    currUser = await db.User.findByPk(currUser.userId)
-
-    const user = await db.User.findByPk(req.url.split('/')[2]);
-
-    const userStories = await db.Story.findAll({
-      include: [db.User, db.Tag],
-      where: { userId: user.id },
-    });
-
-    console.log(userStories);
-
-    res.render("user-page-about", { currUser, user, userStories});
+    res.json({user, message:'Success'})
   })
 );
 
@@ -202,8 +207,6 @@ router.post("/users/:id(\\d+)/follow", async (req, res) => {
     })
   
     await newFollow.save()
-
-    // res.redirect('back')
   }
 
 })
