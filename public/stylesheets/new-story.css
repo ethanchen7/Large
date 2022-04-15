@@ -120,6 +120,7 @@
   height: 100vh;
   display: flex;
   justify-content: center;
+  z-index: 0;
 }
 
 .new-story-form {
