@@ -15,11 +15,13 @@ block content
                 a(id='listsButton' href=`/users/${user.id}/lists`) Lists
                 a(id='aboutButton' href=`/users/${user.id}/about`) About 
             div(id= 'contentDisplayed')
-                if (userStories.length === 0)
+                if (userTags.length === 0)
                     div(class='noStoriesToShow')
                         a(href='#') No Tags Followed
-                div(id= 'userStories')
-                    each story in userStories
+                div(id= 'userTagsContainer')
+                    each tag in userTags
+                        a(href='#')= `${tag.id}`
+                        
                         div(class='storyDivUser')
                             div(class='storyContentUser')
                                 div(class='topInfoUser')

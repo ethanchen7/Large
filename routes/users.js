@@ -3,7 +3,7 @@ var router = express.Router();
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 
-const { csrfProtection, asyncHandler, splashPageQueries } = require("./utils");
+const { csrfProtection, asyncHandler, splashPageQueries, storiesByTags } = require("./utils");
 const { loginUser, logoutUser, demoUser } = require("../auth.js");
 const { userValidators, loginValidators } = require("./validators");
 const db = require("../db/models");
@@ -156,9 +156,22 @@ router.get(
 
     const user = await db.User.findByPk(req.url.split('/')[2]);
 
+    const userTags = await db.UserTag.findAll({
+      where: {userId: user.id}
+    })
+
+
+    userTags.forEach(el => {
+      el
+    })
+
+    console.log(userTagsIds)
+
     const userStories = await db.Story.findAll({
       include: [db.User, db.Tag],
-      where: { userId: user.id},
+      where: { 
+        userId: user.id,
+      },
     });
 
     const assignStoryDate = (story) => {
@@ -173,11 +186,11 @@ router.get(
 
     userStories.forEach(story => {
 
-      story.date = assignStoryDate(story); //`${month} ${story.updatedAt.getDate().toString()}`
+      story.date = assignStoryDate(story);
   
     })
 
-    res.render("user-page-lists", { currUser, user, userStories});
+    res.render("user-page-lists", { currUser, user, userStories, userTags});
   })
 );
 
