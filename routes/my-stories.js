@@ -23,7 +23,10 @@ router.post(
   storyValidators,
   asyncHandler(async (req, res, next) => {
     const { title, article, tag } = req.body;
+    const userId = req.session.auth.userId;
+    const user = await db.User.findByPk(userId)
     const story = db.Story.build({
+      userId,
       title,
       article,
     });
@@ -42,11 +45,10 @@ router.post(
         tagId = newTag.id;
       }
       //temporary
-      const userId = req.session.auth.userId
+      
       const state = "published";
 
       story.tagId = tagId;
-      story.userId = userId;
       story.state = state;
 
       await story.save();
@@ -54,7 +56,9 @@ router.post(
       res.redirect("/");
     } else {
       const errors = validationErrors.array().map((error) => error.msg);
+      console.log(story.article)
       res.render("new-story", {
+        user,
         story,
         errors,
         csrfToken: req.csrfToken(),

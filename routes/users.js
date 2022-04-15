@@ -70,10 +70,6 @@ router.post(
         console.log(passwordMatch);
         if (passwordMatch) {
           loginUser(req, res, user1);
-          console.log(
-            "*********,before redirect in /login POST ",
-            req.session.auth
-          );
           return req.session.save(() => res.redirect("/"));
         }
       }
@@ -117,11 +113,16 @@ router.get(
   "/users/:id(\\d+)",
   csrfProtection,
   asyncHandler(async (req, res, next) => {
-    const currUser = req.session.auth;
-    const user = await db.User.findByPk(currUser.userId);
+
+    let currUser = req.session.auth;
+
+    currUser = await db.User.findByPk(currUser.userId)
+
+    const user = await db.User.findByPk(req.url.split('/')[2]);
+
     const userStories = await db.Story.findAll({
       include: [db.User, db.Tag],
-      where: [currUser],
+      where: { userId: user.id},
     });
 
     const assignStoryDate = (story) => {
@@ -140,7 +141,7 @@ router.get(
   
     })
 
-    res.render("user-page", { user, userStories});
+    res.render("user-page", { currUser, user, userStories});
   })
 );
 
@@ -148,9 +149,19 @@ router.get(
   "/users/:id(\\d+)/about",
   csrfProtection,
   asyncHandler(async (req, res, next) => {
-    const currUser = req.session.auth;
-    const user = await db.User.findByPk(currUser.userId);
-    res.render("user-page-about", { user});
+    
+    let currUser = req.session.auth;
+
+    currUser = await db.User.findByPk(currUser.userId)
+
+    const user = await db.User.findByPk(req.url.split('/')[2]);
+
+    const userStories = await db.Story.findAll({
+      include: [db.User, db.Tag],
+      where: { userId: user.id },
+    });
+
+    res.render("user-page-about", { currUser, user, userStories});
   })
 );
 
@@ -173,19 +184,55 @@ router.post("/users/logout", (req, res) => {
 });
 
 
-// router.post("/users/:id/follow", async(req,res) => {
-//   const followingId = req.url.split('/')[1]
+router.post("/users/:id(\\d+)/follow", async (req, res) => {
 
-//   const followerId = req.session.auth
+  const followingId = req.url.split('/')[2]
 
-//   const newFollow = db.Follow.build({
-//     followerId,
-//     followingId
-//   })
 
-//   await newFollow.save()
+  const followerId = req.session.auth.userId
 
-//   res.redirect('/')
-// })
+  const followCheck = await db.Follow.findAll({
+    where: { 
+      followerId: followerId,
+      followingId: followingId
+     },
+  })
+
+  if (followCheck.length){
+    res.redirect('back')
+  }else{
+    const newFollow = await db.Follow.create({
+      followerId,
+      followingId
+    })
+  
+    await newFollow.save()
+  }
+
+})
+
+router.delete("/users/:id(\\d+)/follow", async (req, res) => {
+
+  const followingId = req.url.split('/')[2]
+
+
+  const followerId = req.session.auth.userId
+
+  const followCheck = await db.Follow.findAll({
+    where: {
+      followerId: followerId,
+      followingId: followingId
+    },
+  })
+
+  if (followCheck.length) {
+    followCheck[0].destroy()
+    return
+  } else {
+    return
+  }
+
+})
+
 
 module.exports = router;
