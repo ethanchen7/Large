@@ -45,6 +45,6 @@ html(lang="en")
             div |
             #comment 
                 img#commentButton(src="/images/comment-bubble.png")
-                #comment-count= 4
+                #comment-count= `${story.Comments.length}`
         include comment-modal.pug
                         

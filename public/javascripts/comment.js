@@ -53,8 +53,8 @@ addEventListener("DOMContentLoaded", e => {
                 }),
             })
 
+            // create DOM content
             const data = await res.json();
-
             const { message, user } = data;
 
             if (message === 'success') {
@@ -111,6 +111,7 @@ addEventListener("DOMContentLoaded", e => {
 
                 removeWowEmpty();
                 updateResponseNumber();
+                updateCommentCount();
             };
         };
     });
@@ -176,4 +177,10 @@ const toggleFooter = () => {
         footer.style.display = "none";
         footerCount++;
     }
+}
+
+const updateCommentCount = () => {
+    const commentCount = document.getElementById("comment-count");
+    const commentCountInt = parseInt(commentCount.innerText) + 1;
+    commentCount.innerText = commentCountInt;
 }
