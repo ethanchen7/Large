@@ -39,6 +39,11 @@
     padding-bottom: 1em;
 }
 
+#comment-close-out {
+    width: 30px;
+    height: 30px;
+}
+
 #new-comment-container {
     margin-left: 15px;
     margin-right: 15px;
@@ -117,7 +122,13 @@
 .comment-container-header {
     display: flex;
     align-items: center;
-    padding-bottom: 1em;
+    padding-bottom: .5em;
+}
+
+.comment-user-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 45px;
 }
 
 .comment-user-info {
@@ -131,10 +142,13 @@
 
 .comment-daysAgo {
     color: #757575;
+    font-size: .8em;
+    padding-top: .25em;
 }
 
 .comment-content {
     padding-bottom: 1.5em;
+    padding-left: 53px;
 }
 
 #wow-empty {
