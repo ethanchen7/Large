@@ -4,7 +4,7 @@ const { asyncHandler, assignDaysAgo } = require("./utils");
 const { restoreUser, requireAuth } = require('../auth')
 
 const db = require("../db/models");
-const { splashPageQueries, assignStoryDate, assignReadTime } = require('./utils');
+const { splashPageQueries, assignStoryDate, assignReadTime, getRecommended } = require('./utils');
 
 router.get('/stories', asyncHandler(async (req, res, next) => {
     res.redirect('/');
@@ -23,6 +23,8 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
 
     const user = db.User.findByPk(userId);
     const comments = story.Comments;
+
+    const nonFollowedAccounts = await getRecommended(userId)
 
     comments.forEach(async comment => {
         assignDaysAgo(comment);
@@ -44,6 +46,7 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
         contentBarStories,
         contentBarTags,
         recommendedUsers,
+        nonFollowedAccounts,
         comments,
     });
 
