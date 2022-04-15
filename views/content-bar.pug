@@ -16,9 +16,9 @@ div(class="content-bar")
                 div(class="story-preview-container")
                     div(class="story-owner-header")
                         img(class="story-owner-img" src=`https://picsum.photos/20${k}`)
-                        a(class="story-owner-profile" href="#") #{story.User.firstName} #{story.User.lastName}
-                    a(class="story-preview-title" href="#")= story.title
-        a(href='#' class="see-the-full-list") See the full list
+                        a(class="story-owner-profile" href=`/users/${story.User.id}`) #{story.User.firstName} #{story.User.lastName}
+                    a(class="story-preview-title" href=`/stories/${story.id}`)= story.title
+        a(href='/thanks' class="see-the-full-list") See the full list
     div(class="writing-container")
         div(class="writing-on-medium-container")
             div(class="container-header")
@@ -49,7 +49,7 @@ div(class="content-bar")
                         a(href="#")
                             img(class="user-icon" src=`https://picsum.photos/20${j}`)
                     div(class="user-text-container")
-                        a(class='rec-user-name' href="#") #{user.firstName} #{user.lastName}
+                        a(class='rec-user-name' href=`/users/${user.id}`) #{user.firstName} #{user.lastName}
                         p(class="rec-user-bio-text") Writer, blogger, activist. 
                     button(class="follow-btn" id=`${user.id}-follow-btn`) Follow
         a(href="#" class="suggestions-link") See more suggestions
