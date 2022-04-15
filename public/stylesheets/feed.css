@@ -109,7 +109,7 @@
 .storyContent {
   display: flex;
   flex-direction: column;
-  min-width: 90%;
+  min-width: 80%;
 }
 
 .topInfo {
@@ -164,6 +164,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 90%;
 }
 
 .underLeft {
@@ -208,8 +209,8 @@
 }
 
 .imgPreview {
-  width: 70px;
-  height: 70px;
+  width: 110px;
+  height: 110px;
 }
 
 #followingStories {

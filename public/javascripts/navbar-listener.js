@@ -7,8 +7,12 @@ window.addEventListener("load", (event) => {
     function (e) {
       if (window.scrollY > 325) {
         nav.style.backgroundColor = "white";
+        getStarted.style.backgroundColor = "rgb(26, 137, 23)"
+        getStarted.style.border = "solid rgb(26, 137, 23) 1px"
       } else {
         nav.style.backgroundColor = "#FFC017";
+        getStarted.style.backgroundColor = "black"
+        getStarted.style.border = 'solid black 1px'
       }
     },
     true
