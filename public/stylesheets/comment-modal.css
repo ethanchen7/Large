@@ -6,7 +6,6 @@
     background-color: white;
     position: fixed;
     top: 0px;
-    right: -30%;
     height: 100%;
     width: 30%;
     padding-top: 30px;
@@ -14,6 +13,14 @@
     padding-right: 50px;
     overflow-y: scroll;
     transition: .25s;
+}
+
+.showCommentModal {
+    right: 0%;
+}
+
+.hideCommentModal {
+    right: -30%;
 }
 
 #comment-modal-header {
@@ -70,12 +77,16 @@
 
 #comment-list {
     border-top: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .comment-container {
     padding-top: 1em;
     padding-bottom: 1em;
     border-bottom: 1px solid #757575;
+    width: 100%;
 }
 
 .comment-container-header {
@@ -90,6 +101,7 @@
 
 .comment-author {
     padding-bottom: .5em;
+    text-decoration: none;
 }
 
 .comment-daysAgo {
@@ -98,6 +110,10 @@
 
 .comment-content {
     padding-bottom: 1.5em;
+}
+
+#wow-empty {
+    margin-top: 2em;
 }
 
 .hiddenOnComments {

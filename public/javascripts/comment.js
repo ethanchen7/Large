@@ -37,8 +37,8 @@ addEventListener("DOMContentLoaded", e => {
 
     submit.addEventListener("click", async (e) => {
 
-        const url = window.location.href;
-        const storyId = url.slice(url.length - 1);
+        const url = window.location.href.split("/");
+        const storyId = url[url.length - 1];
 
         if (text) {
             const res = await fetch("/comment", {
@@ -98,7 +98,13 @@ addEventListener("DOMContentLoaded", e => {
                 // put this new comment at top of list
                 const commentList = document.getElementById("comment-list");
                 const firstComment = commentList.children[0];
-                firstComment.insertAdjacentElement("beforebegin", newComment);
+                if (firstComment) {
+                    firstComment.insertAdjacentElement("beforebegin", newComment);
+                } else {
+                    commentList.appendChild(newComment);
+                }
+
+                updateResponseNumber();
             };
         };
     });
@@ -106,10 +112,34 @@ addEventListener("DOMContentLoaded", e => {
 
 
 const handleModalPopUp = () => {
+    const commentModal = document.getElementById("comment-modal");
+
+    // comment button toggle
     const commentButton = document.getElementById('commentButton');
 
+    let count = 0;
     commentButton.addEventListener("click", () => {
-        const commentModal = document.getElementById("comment-modal");
-        commentModal.style.right = "0%";
+
+        commentModal.classList.toggle("hideCommentModal");
+        commentModal.classList.toggle("showCommentModal");
+
+        //     if (count % 2 === 0) commentModal.style.right = "0%";
+        //     else commentModal.style.right = "-30%";
     })
+
+    // cancel button
+    const cancelButton = document.getElementById("new-comment-cancel")
+    cancelButton.addEventListener("click", () => {
+        commentModal.style.right = "-30%";
+    })
+}
+
+const updateResponseNumber = () => {
+    const modalTitle = document.getElementById("comment-modal-title");
+    const modalTitleText = modalTitle.innerText
+    const openParen = modalTitleText.indexOf("(")
+    const closeParen = modalTitleText.indexOf(")")
+    const number = parseInt(modalTitle.innerText.slice(openParen + 1, closeParen)) + 1;
+
+    modalTitle.innerText = `Responses (${number})`
 }
