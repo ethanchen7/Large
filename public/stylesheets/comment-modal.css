@@ -41,12 +41,17 @@
     box-shadow: 0px 0px 10px 2px #75757541;
 }
 
-#new-comment-box {
+#new-comment-box-container {
     width: 100%;
-    height: 100%;
+    height: 100px;
+}
+
+#new-comment-box {
+    width: 90%;
+    height: 90%;
     border: none;
-    resize: vertical;
-    margin-bottom: 3em;
+    resize: none;
+    padding: 1em;
 }
 
 #new-comment-box:focus {

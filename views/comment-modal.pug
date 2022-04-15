@@ -3,7 +3,8 @@
         #comment-modal-title= `Responses (${comments.length})` 
         Img#comment-close-out(src="/images/close.png")
     #new-comment-container
-        textarea(type="text" placeholder="what are your thoughts?" spellcheck=true)#new-comment-box
+        #new-comment-box-container
+            textarea(type="text" placeholder="what are your thoughts?" spellcheck=true)#new-comment-box
         #new-comment-container-footer
             #new-comment-cancel Cancel
             #new-comment-submit Respond
