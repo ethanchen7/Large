@@ -16,8 +16,8 @@ div(class="content-bar")
                 div(class="story-preview-container")
                     div(class="story-owner-header")
                         img(class="story-owner-img" src=`https://picsum.photos/20${k}`)
-                        a(class="story-owner-profile" href="#") #{story.User.firstName} #{story.User.lastName}
-                    a(class="story-preview-title" href="#")= story.title
+                        a(class="story-owner-profile" href=`/users/${story.User.id}`) #{story.User.firstName} #{story.User.lastName}
+                    a(class="story-preview-title" href=`/stories/${story.id}`)= story.title
         a(href='#' class="see-the-full-list") See the full list
     div(class="writing-container")
         div(class="writing-on-medium-container")
@@ -31,28 +31,29 @@ div(class="content-bar")
                     a(id="grow-readership" href="/thanks") Grow your readership
                 button(class="start-writing-btn" id="start-writing-btn") Start writing
     div(class="border-div")
-    div(class="recommended-topics-container")
-        div(class="recommended-topics-header")
-            h3(class="recommended-topics-title") Recommend topics
-        div(class="recommend-topics-tags")
-            each tag in contentBarTags 
-                button(class="recommended-tag-button" id=`btn-${tag.id}`) #{tag.name}
-    div(class="recommended-follows-container")
-        div(class="recommended-follows-header")
-            h3(class="recommended-follows-title") Who to follow
-        div(class="recommended-users-container")
-            - let j = 0
-            each user in nonFollowedAccounts
-                -j++
-                div(class="user-div")
-                    div(class="user-icon-container")
-                        a(href="#")
-                            img(class="user-icon" src=`https://picsum.photos/20${j}`)
-                    div(class="user-text-container")
-                        a(class='rec-user-name' href="#") #{user.firstName} #{user.lastName}
-                        p(class="rec-user-bio-text") Writer, blogger, activist. 
-                    button(class="follow-btn" id=`${user.id}-follow-btn`) Follow
-        a(href="#" class="suggestions-link") See more suggestions
+    div(class='bottom-wrapper')
+        div(class="recommended-topics-container")
+            div(class="recommended-topics-header")
+                h3(class="recommended-topics-title") Recommend topics
+            div(class="recommend-topics-tags")
+                each tag in contentBarTags 
+                    button(class="recommended-tag-button" id=`btn-${tag.id}`) #{tag.name}
+        div(class="recommended-follows-container")
+            div(class="recommended-follows-header")
+                h3(class="recommended-follows-title") Who to follow
+            div(class="recommended-users-container")
+                - let j = 0
+                each user in nonFollowedAccounts
+                    -j++
+                    div(class="user-div")
+                        div(class="user-icon-container")
+                            a(href=`/users/${user.id}`)
+                                img(class="user-icon" src=`https://picsum.photos/20${j}`)
+                        div(class="user-text-container")
+                            a(class='rec-user-name' href=`/users/${user.id}`) #{user.firstName} #{user.lastName}
+                            p(class="rec-user-bio-text") Writer, blogger, activist. 
+                        button(class="follow-btn" id=`${user.id}-follow-btn`) Follow
+            a(href="#" class="suggestions-link") See more suggestions
 
 
             
