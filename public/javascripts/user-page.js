@@ -37,6 +37,7 @@ window.addEventListener("load", (event) => {
     if (data) {
       const newBio = document.getElementsByClassName("AZ")[0];
       newBio.innerText = data.user.bio
+      
       if(newBio.innerText !== '') {
         showBio.classList.remove('hideBio');
         bioEdit.classList.add('hideBio');
@@ -60,9 +61,6 @@ window.addEventListener("load", (event) => {
   const listBtn = document.getElementById('listsButton')
   const aboutBtn = document.getElementById('aboutButton')
 
-  console.log(homeBtn)
-  console.log(listBtn)
-  console.log(aboutBtn)
 
   homeBtn.addEventListener('click', () => {
     homeBtn.style.borderBottom = 'solid black 0.25px';
