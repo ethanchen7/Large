@@ -21,4 +21,5 @@ window.addEventListener("load", (event) => {
   getStarted.addEventListener('click', e => {
     window.location.href = '/demo'
   })
+
 });

@@ -139,6 +139,7 @@ a:hover {
     padding-right: 18%;
     display: flex;
     justify-content: space-between;
+    flex-direction: row;
     border-top: 1px solid #757575;
 }
 
