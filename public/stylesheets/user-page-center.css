@@ -357,7 +357,8 @@
 }
 
 .showBio > p{
-  padding: 5px;
+  padding: 5px 5px;
   font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 20px;
+
 }
