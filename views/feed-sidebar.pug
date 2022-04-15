@@ -4,16 +4,16 @@ link(rel='stylesheet' href='/stylesheets/navbar-menu.css')
 block content
   div(class='hiddenMenuBar nav-profile-icon-menu-container')
     div(class='mediumPrograms')
-      a(class='menu-item one' href='#') Medium Partner Program 
-      a(class='menu-item two' href='#') Gift a membership 
-      a(class='menu-item three' href='#') Get unlimited access
+      a(class='menu-item one' href='/thanks') Medium Partner Program 
+      a(class='menu-item two' href='/thanks') Gift a membership 
+      a(class='menu-item three' href='/thanks') Get unlimited access
     div(class='userFuncs')
       form(action="/users/logout" method="post" class='menu-item')
         input(class='signOut' type="submit" id="logoutButton" value="Sign out")
-      a(class='menu-item' href='#') Refine recommendations
-      a(class='menu-item five' href='#') Manage publications 
-      a(class='menu-item five' href='#') Stats 
-      a(class='menu-item five' href='#') Settings 
+      a(class='menu-item' href='/thanks') Refine recommendations
+      a(class='menu-item five' href='/thanks') Manage publications 
+      a(class='menu-item five' href='/thanks') Stats 
+      a(class='menu-item five' href='/thanks') Settings 
     div(class='userProfile')
       a(class='menu-item six' href=`/users/${user.id}`)= `${user.firstName} ${user.lastName}`
       a(class='menu-item seven' href=`/users/${user.id}`)= `${user.userName}`
@@ -27,13 +27,13 @@ nav(class="sidebar")
   div(class="nav-icon-container")
     a(class="nav-icon-home" href="/")
       img(class= "nav-icon-home-icon" src="/images/home.png")
-    a(class="nav-icon-notification")
+    a(class="nav-icon-notification" href="/thanks")
       img(class= "nav-icon-notification-icon" src="/images/notification.png")
-    a(class="nav-icon-lists")
+    a(class="nav-icon-lists" href="/thanks")
       img(class= "nav-icon-lists-icon" src="/images/save.png")
-    a(class="nav-icon-stories")
+    a(class="nav-icon-stories" href="/thanks")
       img(class= "nav-icon-stories-icon" src="/images/notepad.png")
-    a(class="hr-break-container" )
+    a(class="hr-break-container" href="/thanks")
       hr(class="hr-break" aria-hidden="true")
     a(class="nav-icon-create" href="/my-stories/new")
       img(class= "nav-icon-create-icon" src="/images/write.png")

@@ -20,6 +20,7 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     story.date = assignStoryDate(story);
     story.readTime = assignReadTime(story);
 
+
     const user = db.User.findByPk(userId);
     const comments = story.Comments;
 
@@ -45,6 +46,28 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
         recommendedUsers,
         comments,
     });
+
+    const allClapsOfStory = await db.StoryClap.findAll({
+        where: {storyId}
+    })
+    const allClapsOfStoryCount = allClapsOfStory.length
+    res.render('single-story', { story, user, allClapsOfStoryCount });
+}))
+
+router.post('/stories/:id(\\d+)/clap/new', requireAuth, asyncHandler(async (req, res, next) => {
+    const storyId = req.params.id
+    const userId = req.session.auth.userId;
+    const newClap = db.StoryClap.build({
+        storyId,
+        userId
+    })
+    await newClap.save()
+    const allClapsOfStory = await db.StoryClap.findAll({
+        where: {storyId}
+    })
+    updatedClapCount = allClapsOfStory.length
+    res.json({updatedClapCount})
+
 }))
 
 module.exports = router;

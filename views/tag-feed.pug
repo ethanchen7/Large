@@ -11,7 +11,7 @@ block content
           h1=tagName.name
 
       div(id='topButtons')
-        a(id='fullB' href='#') Follow
+        a(class=`fullB` id=`${tagName.id}` href='#') Follow
         a(id='hollowB' href='/my-stories/new') Start Writing
 
       div(id='feedChoice')
@@ -19,7 +19,9 @@ block content
           p(id='recommended') Most Recent #{tagName.name} Stories
       div(id= 'contentDisplayed')
           div(id= 'recommendedStories')
+              -let n = 0 
               each story in stories.reverse()
+                  -n++
                   div(class='storyDiv')
                       div(class='storyContent')
                           div(class='topInfo')
@@ -37,14 +39,12 @@ block content
                                   img(src="/images/save.png", alt="")
                                   strong(href='#') ···
                       div(class='imgDiv')
-                          img(class='imgPreview' src='/images/logo.png')
+                          img(class='imgPreview' src=`https://picsum.photos/20${n}`)
 
 
 
-
-
-
-    script(src='/javascripts/feed.js')
+    //- script(src='/javascripts/feed.js')
+    script(src='/javascripts/tag-feed.js')
 
 
 
