@@ -50,4 +50,32 @@ window.addEventListener("load", (event) => {
   })
 
 
+  const homeBtn = document.getElementById('homeButton')
+  const listBtn = document.getElementById('listsButton')
+  const aboutBtn = document.getElementById('aboutButton')
+
+  console.log(homeBtn)
+  console.log(listBtn)
+  console.log(aboutBtn)
+
+  homeBtn.addEventListener('click', () => {
+    homeBtn.style.borderBottom = 'solid black 0.25px';
+    listBtn.style.borderBottom = 'none'
+    aboutBtn.style.borderBottom = 'none'
+  })
+
+  listBtn.addEventListener('click', () => {
+    listBtn.style.borderBottom = 'solid black 0.25px'
+    homeBtn.style.borderBottom = 'none'
+    aboutBtn.style.borderBottom = 'none'
+  })
+
+  aboutBtn.addEventListener('click', () => {
+    aboutBtn.style.borderBottom = 'solid black 0.25px';
+    listBtn.style.borderBottom = 'none'
+    homeBtn.style.borderBottom = 'none'
+  })
+
+
+
 });

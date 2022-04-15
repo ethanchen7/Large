@@ -39,18 +39,18 @@ router.get("/", csrfProtection, restoreUser, asyncHandler(async (req, res, next)
 
     const userId = req.session.auth.userId
 
-    const user = await db.User.findByPk(userId)
+    const currUser = await db.User.findByPk(userId)
 
     const contentBarStories = newStories.slice(0, 3);
     const contentBarTags = tags.slice(0, 7);
 
 
-    const nonFollowedAccounts = await getRecommended(user.id)
+    const nonFollowedAccounts = await getRecommended(currUser.id)
 
     console.log(nonFollowedAccounts)
 
     res.render("feed", {
-      user,
+      currUser,
       newStories,
       nonFollowedAccounts,
       stories,

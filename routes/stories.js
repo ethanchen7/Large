@@ -21,7 +21,7 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     story.readTime = assignReadTime(story);
 
 
-    const user = db.User.findByPk(userId);
+    const currUser = db.User.findByPk(userId);
     const comments = story.Comments;
 
     const nonFollowedAccounts = await getRecommended(userId)
@@ -37,6 +37,7 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     const queries = await splashPageQueries()
     const { recommendedUsers, newStories, tags } = queries
     const contentBarStories = newStories.slice(0, 3);
+    const storyContentBarStories = newStories.slice(0, 4);
     const contentBarTags = tags.slice(0, 7);
 
     const allClapsOfStory = await db.StoryClap.findAll({
@@ -44,16 +45,26 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     })
     const allClapsOfStoryCount = allClapsOfStory.length
 
-    console.log(story.User.firstName);
+    let follows = false;
+    const followCheck = await db.Follow.findAll({
+        where: { 
+          followerId: userId,
+          followingId: story.User.id
+         },
+      })   
+    if(followCheck.length) follows = true; 
+
     res.render('single-story', {
         story,
-        user,
+        currUser,
         contentBarStories,
+        storyContentBarStories,
         contentBarTags,
         recommendedUsers,
         nonFollowedAccounts,
         allClapsOfStoryCount, 
         comments,
+        follows,
     });
 }))
 
