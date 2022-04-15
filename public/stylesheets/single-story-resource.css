@@ -1,6 +1,17 @@
-img {
+.singleStoryImg {
     height: 30px;
     width: 30px;
+}
+
+#story-authorImgContainer {
+    display: flex;
+    align-items: center;
+    width: 50px;
+}
+
+#story-authorImg {
+    width: 100%;
+    border-radius: 45px;
 }
 
 #single-story-layout {
@@ -34,6 +45,7 @@ img {
 #story-author {
     padding-bottom: .5em;
     font-size: 1.5em;
+    text-decoration: none;
 }
 
 #story-date-readTime {
