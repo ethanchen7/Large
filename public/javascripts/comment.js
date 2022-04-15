@@ -11,6 +11,7 @@ addEventListener("DOMContentLoaded", e => {
 
     cancel.addEventListener("click", () => {
         comment.value = "";
+        submit.style.backgroundColor = "rgba(27, 137, 23, 0.339)"
     })
 
     comment.addEventListener("click", toggleFooter)
