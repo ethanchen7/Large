@@ -3,9 +3,8 @@ window.addEventListener("load", (event) => {
   const signInButton = document.getElementsByClassName("popUpButton")[0];
 
   signInButton.addEventListener("click", () => {
-    document.getElementsByClassName("modal-container")[0].style.display =
-      "flex";
-    document.getElementsByClassName("modal")[0].style.display = "flex";
+    document.getElementsByClassName("modal-container")[0].style.display= 'flex';
+    document.getElementsByClassName("modal")[0].style.top= 0;
   });
 
   const createUserButton = document.getElementsByClassName("createButtono")[0];
