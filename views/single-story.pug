@@ -25,7 +25,7 @@ html(lang="en")
                             #story-user-img 
                                 img(src="/images/logo.png")
                             #story-info 
-                                #story-author= `${story.User.firstName} ${story.User.lastName}`
+                                a(id='story-author' href=`/users/${story.User.id}`)= `${story.User.firstName} ${story.User.lastName}`
                                 #story-date-readTime= `${story.date} · ${story.readTime} min read`
                         #links-nav 
                             a.button(href="https://twitter.com")
