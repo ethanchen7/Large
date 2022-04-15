@@ -30,15 +30,15 @@ include utils.pug
         each story in stories
             -n++
             div(class='storyDiv')
-                div(class='storyContent')
+                div(class='splash-storyContent')
                     div(class='topInfo')
                         img(class='feedprofile-img' src='/images/logo.png')
                         a #{story.User.firstName} #{story.User.lastName}
                     a(class='storyTitle')= story.title
                     div(class='storyPreview')
                         p= `${story.blurb}...`
-                    div(class='underStory')
-                        div(class='underLeft')
+                    div(class='splash-underStory')
+                        div(class='splash-underLeft')
                             p= `${story.date} · ${story.readTime} min · selected for you`
                             a(href="#" class='scroll-tag')= story.Tag.name 
                         div(class='underRight')

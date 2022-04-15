@@ -109,10 +109,7 @@
 .storyContent {
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
-=======
   min-width: 80%;
->>>>>>> main
 }
 
 .topInfo {
@@ -211,14 +208,11 @@
   align-items: center;
 }
 
-<<<<<<< HEAD
-=======
 .imgPreview {
   width: 110px;
   height: 110px;
 }
 
->>>>>>> main
 #followingStories {
   visibility: hidden;
 }

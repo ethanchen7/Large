@@ -150,21 +150,47 @@ a:hover {
     padding-bottom: .4em;
 }
 
-.storyContent {
-    padding-top: 1m;
-    padding-right: 1em;
+.splash-storyContent {
+    display: flex;
+    flex-direction: column;
+    min-width: 80%;
 }
 
 .scroll-tag {
-    padding-left: 1em;
+    padding-left: 2em;
 }
 
 .scroll-story {
     padding-top: 0;
 }
 
-.underStory {
-    width: 100%;
+.splash-underStory {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.splash-underLeft {
+    display: flex;
+    align-items: center;
+}
+
+.splash-underLeft > p {
+    font-size: 9pt;
+    color: rgb(143, 143, 143);
+    -webkit-font-smoothing: antialiased;
+}
+
+.splash-underLeft > a {
+    margin-left: 1em;
+    text-decoration: none;
+    background-color: rgba(223, 223, 223, 0.69);
+    font-size: 9.5pt;
+    padding: 5px;
+    border-radius: 15px;
+    -webkit-font-smoothing: antialiased;
 }
 
 .storyPreview > p {
