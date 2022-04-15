@@ -4,9 +4,12 @@ div(class='centerHolderUser')
             h1= `${user.firstName} ${user.lastName}`
     div(id='feedChoiceUser')
         a(id='homeButton' href=`/users/${user.id}`) Home 
-        a(href=`/users/${user.id}/lists`) Lists
+        a(href='#') Lists
         a(href=`/users/${user.id}/about`) About 
     div(id= 'contentDisplayed')
+        if (userStories.length === 0)
+            div(class='noStoriesToShow')
+                a(href='/my-stories/new') Create your first story
         div(id= 'userStories')
             each story in userStories
                 div(class='storyDivUser')
@@ -14,17 +17,17 @@ div(class='centerHolderUser')
                         div(class='topInfoUser')
                             //- img(class='feedprofile-img' src='/images/logo.png')
                             //- a(href='#') #{story.User.firstName} #{story.User.lastName}
-                            p 5 days ago `${story.date}`
-                        h2(class='storyTitleUser')= story.title
+                            p= `${story.date}`
+                        a(class='storyTitleUser' href=`/stories/${story.id}`)= story.title
                         div(class='storyPreviewUser')
-                            p=story.article
+                            a(href=`/stories/${story.id}`)= `${story.article.split(' ').splice(0,25).join(' ')}...`
                         div(class='underStoryUser')
                             div(class='underLeftUser')
                                 div(class='ownClap')
                                     p(class='clapErr') You cannot applaud your own story
                                     img(src="/images/clap.png" class='clapIcon')
                                 img(src="/images/comment-bubble.png", alt="")
-            
                             div(class='underRightUser')
                                 img(src="/images/save.png", alt="")
                                 strong(href='#') ···
+        
