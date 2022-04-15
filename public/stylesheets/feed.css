@@ -221,11 +221,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  width: 500px;
+  min-height: 70vh;
+  width: 30%;
   padding: 0 32px 0 16px;
   position: sticky;
   top: 0;
+  right: 0%;
 }
 
 
@@ -272,6 +273,7 @@
 }
 
 .currently-reading-container {
+  margin-top: 10px;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -335,7 +337,7 @@
 }
 
 .writing-on-medium-container {
-  margin-top: 55px;
+  margin-top: 14px;
   width: 75%;
   height: 220px;
   background-color: #e1f0ff;
@@ -408,13 +410,14 @@
 }
 
 .border-div {
-  height: 60px;
+  height: 30px;
   width: 80%;
   border-bottom: 0.25px solid lightgray;
 }
 
 .recommended-topics-container {
-  margin-top: 40px;
+  margin-top: 25px;
+  position: sticky;
   width: 80%;
   -webkit-font-smoothing: antialiased;
 }
@@ -453,7 +456,7 @@
 .recommended-follows-container {
   width: 80%;
   height: 250px;
-  margin-top: 40px;
+  margin-top: 25px;
 }
 
 .recommended-follows-header {
