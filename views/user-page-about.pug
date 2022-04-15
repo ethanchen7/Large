@@ -25,7 +25,10 @@ block content
                                 a(class='getStartedButton') Get Started
                             div(class='bioEdit hideBio')
                                 a(id='submitButton' data-userId=`${user.id}`) Save
-                                textarea(placeholder='Type your story' id='editBioText' name="bioText", cols="1", rows="5")= `${user.bio}`
+                                if (user.bio === 'null' || '')
+                                    textarea(placeholder='Type your story' id='editBioText' name="bioText", cols="1", rows="5")
+                                else
+                                    textarea(placeholder='Type your story' id='editBioText' name="bioText", cols="1", rows="5")= `${user.bio}`
                             div(class='showBio hideBio')
                                 a(id='editButton' data-userId=`${user.id}`) Edit
                                 p(class='AZ')= `${user.bio}`

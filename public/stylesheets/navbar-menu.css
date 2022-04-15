@@ -81,3 +81,7 @@
 /* .hiddenMenuBar {
   display: none;
 } */
+
+.nav-profile-icon-container:hover{
+  cursor: pointer;
+}
