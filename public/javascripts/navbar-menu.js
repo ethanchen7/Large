@@ -15,6 +15,35 @@ window.addEventListener("load", (event) => {
 
     });
 
+    const centerFeed = document.getElementsByClassName('centerHolder')[0]
+    const contentBarFeed = document.querySelectorAll('.content-bar')
+
+
+    centerFeed.addEventListener('click', () => {
+
+        menu[0].style.display = 'none'
+    
+
+    })
+
+    contentBarFeed.forEach((el) => {
+        el.addEventListener('click', () => {    
+           
+            menu[0].style.display = 'none'
+            
+        });
+    })
+    
+
+
+    const centerUser = document.getElementsByClassName('centerHolderUser')[0]
+
+    centerUser.addEventListener('click', () => {
+        
+        menu[0].style.display = 'none'
+
+    });
+
 
     
 

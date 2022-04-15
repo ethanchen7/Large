@@ -11,8 +11,7 @@ html(lang="en")
         link(rel='stylesheet' href='/stylesheets/single-story-resource.css')
         link(rel='stylesheet' href='/stylesheets/comment-modal.css')
         script(src="/javascripts/single-resource.js" type="module")
-        script(src="/javascripts/storyContentBar.js" type="module")
-        script(src="/javascripts/navbar-menu.js" type="module")
+        script(src="/javascripts/contentBar.js" type="module")
         script(src="/javascripts/comment.js" type="module")
         script(src="/javascripts/clap.js" type="module")
     body
@@ -47,6 +46,5 @@ html(lang="en")
                 #comment 
                     img#commentButton(src="/images/comment-bubble.png")
                     #comment-count= `${story.Comments.length}`
-
         include comment-modal.pug
                         

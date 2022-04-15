@@ -8,7 +8,7 @@ window.addEventListener("load", (event) => {
   const bioEdit = document.getElementsByClassName("bioEdit")[0];
   const showBio = document.getElementsByClassName("showBio")[0];
 
-  if (checkBio !== 'null') {
+  if (checkBio !== 'null' && checkBio !== '') {
     noBio.classList.add('hideBio')
     bioEdit.classList.add('hideBio')
     showBio.classList.remove('hideBio')
@@ -37,8 +37,15 @@ window.addEventListener("load", (event) => {
     if (data) {
       const newBio = document.getElementsByClassName("AZ")[0];
       newBio.innerText = data.user.bio
-      showBio.classList.remove('hideBio');
-      bioEdit.classList.add('hideBio');
+      
+      if(newBio.innerText !== '') {
+        showBio.classList.remove('hideBio');
+        bioEdit.classList.add('hideBio');
+      } else {
+        noBio.classList.remove('hideBio')
+        bioEdit.classList.add('hideBio')
+        showBio.classList.add('hideBio')
+      }
     }
     
   });
@@ -54,9 +61,6 @@ window.addEventListener("load", (event) => {
   const listBtn = document.getElementById('listsButton')
   const aboutBtn = document.getElementById('aboutButton')
 
-  console.log(homeBtn)
-  console.log(listBtn)
-  console.log(aboutBtn)
 
   homeBtn.addEventListener('click', () => {
     homeBtn.style.borderBottom = 'solid black 0.25px';

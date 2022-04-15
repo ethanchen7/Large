@@ -13,19 +13,22 @@ block content
                     h1= `${user.firstName} ${user.lastName}`
             div(id='feedChoiceUser')
                 a(id='homeButton'  href=`/users/${user.id}`) Home 
-                a(id='listsButton' href='#') Lists
+                a(id='listsButton' href=`/users/${user.id}/lists`) Lists
                 a(id='aboutButton' href=`/users/${user.id}/about`) About 
             div(id= 'contentDisplayed')
                 if currUser.id === user.id
                     div(id= 'userAbout')
                         div(id = 'userBio')
-                            div(class='noBio')  
-                                h2(class='h2Bio') Tell the world about yourself
-                                p(class='bioText') Here's where you can share more about yourself: your history, work experience, accomplishments, interests, dreams, and more. You can even add images and use rich text to personalize your bio.
-                                a(class='getStartedButton') Get Started
+                            div(class='noBio')
+                                    h2(class='h2Bio') Tell the world about yourself
+                                    p(class='bioText') Here's where you can share more about yourself: your history, work experience, accomplishments, interests, dreams, and more. You can even add images and use rich text to personalize your bio.
+                                    a(class='getStartedButton') Get Started
                             div(class='bioEdit hideBio')
                                 a(id='submitButton' data-userId=`${user.id}`) Save
-                                textarea(placeholder='Type your story' id='editBioText' name="bioText", cols="1", rows="5")= `${user.bio}`
+                                if (user.bio === 'null' || '')
+                                    textarea(placeholder='Type your story' id='editBioText' name="bioText", cols="1", rows="5")
+                                else
+                                    textarea(placeholder='Type your story' id='editBioText' name="bioText", cols="1", rows="5")= `${user.bio}`
                             div(class='showBio hideBio')
                                 a(id='editButton' data-userId=`${user.id}`) Edit
                                 p(class='AZ')= `${user.bio}`
