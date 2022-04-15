@@ -1,5 +1,6 @@
 window.addEventListener("load", (event) => {
   const nav = document.getElementById("navbar");
+  const getStarted = document.getElementsByClassName('getStarted')[0]
 
   document.addEventListener(
     "scroll",
@@ -12,4 +13,8 @@ window.addEventListener("load", (event) => {
     },
     true
   );
+
+  getStarted.addEventListener('click', e => {
+    window.location.href = '/demo'
+  })
 });

@@ -39,6 +39,11 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     const contentBarStories = newStories.slice(0, 3);
     const contentBarTags = tags.slice(0, 7);
 
+    const allClapsOfStory = await db.StoryClap.findAll({
+        where: {storyId}
+    })
+    const allClapsOfStoryCount = allClapsOfStory.length
+
     console.log(story.User.firstName);
     res.render('single-story', {
         story,
@@ -47,14 +52,9 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
         contentBarTags,
         recommendedUsers,
         nonFollowedAccounts,
+        allClapsOfStoryCount, 
         comments,
     });
-
-    const allClapsOfStory = await db.StoryClap.findAll({
-        where: {storyId}
-    })
-    const allClapsOfStoryCount = allClapsOfStory.length
-    res.render('single-story', { story, user, allClapsOfStoryCount });
 }))
 
 router.post('/stories/:id(\\d+)/clap/new', requireAuth, asyncHandler(async (req, res, next) => {

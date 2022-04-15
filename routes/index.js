@@ -66,7 +66,7 @@ router.get("/login", csrfProtection, function (req, res, next) {
   res.render("user-register", { csrfToken: req.csrfToken() });
 });
 
-router.get('/thanks', (req,res,next) => {
+router.get('/thanks', requireAuth, (req,res,next) => {
   res.render('dummy-page')
 })
 

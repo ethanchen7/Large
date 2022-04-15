@@ -3,6 +3,8 @@ const startWritingBtn = document.getElementById("start-writing-btn");
 const recommendedTopicsTags = document.querySelector(
   ".recommend-topics-tags"
 ).children;
+const closeBoxButton = document.querySelector('close-box-button')
+const writingOnMediumCont = document.querySelector('writing-on-medium-container')
 
 unlimitedAccessBtn.addEventListener("click", (e) => {
   window.location.href = '/thanks';
@@ -125,3 +127,6 @@ followButtons[2].addEventListener('click', async (e) => {
   }
 })
 
+closeBoxButton.addEventListener('click', e => {
+  writingOnMediumCont.remove()
+})

@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 
 const { csrfProtection, asyncHandler, splashPageQueries } = require("./utils");
-const { loginUser, logoutUser } = require("../auth.js");
+const { loginUser, logoutUser, demoUser } = require("../auth.js");
 const { userValidators, loginValidators } = require("./validators");
 const db = require("../db/models");
 
@@ -70,10 +70,6 @@ router.post(
         console.log(passwordMatch);
         if (passwordMatch) {
           loginUser(req, res, user1);
-          console.log(
-            "*********,before redirect in /login POST ",
-            req.session.auth
-          );
           return req.session.save(() => res.redirect("/"));
         }
       }
@@ -233,6 +229,11 @@ router.delete("/users/:id(\\d+)/follow", async (req, res) => {
     return
   }
 
+})
+
+router.get('/demo', (req, res) => {
+  demoUser(req, res);
+  return req.session.save(() => res.redirect("/"));
 })
 
 

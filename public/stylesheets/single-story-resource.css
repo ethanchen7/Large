@@ -115,5 +115,6 @@ img {
 
 #clap:hover,
 #comment:hover {
+    cursor: pointer;
     filter: opacity(100%);
 }
