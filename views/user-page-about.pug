@@ -25,7 +25,7 @@ block content
                                     a(class='getStartedButton') Get Started
                             div(class='bioEdit hideBio')
                                 a(id='submitButton' data-userId=`${user.id}`) Save
-                                if (user.bio === 'null' || '')
+                                if (user.bio === null || '')
                                     textarea(placeholder='Type your story' id='editBioText' name="bioText", cols="1", rows="5")
                                 else
                                     textarea(placeholder='Type your story' id='editBioText' name="bioText", cols="1", rows="5")= `${user.bio}`
