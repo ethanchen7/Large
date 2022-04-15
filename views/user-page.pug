@@ -2,12 +2,11 @@ extends layout.pug
 
 block content
     link(rel='stylesheet' href='/stylesheets/user-content-bar.css')
+    link(rel='styelsheet' href='/stylesheets/user-page-center.css')
 
 
     div(id='feed-main-layout')
+        script(src='/javascripts/user-page.js')
         include feed-sidebar.pug
-
-
         include user-center-content.pug
         include user-content-bar.pug
-        script(src='/javascripts/user-page.js')
