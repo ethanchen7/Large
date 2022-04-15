@@ -148,6 +148,12 @@ const handleModalPopUp = () => {
         commentModal.classList.toggle("hideCommentModal");
         commentModal.classList.toggle("showCommentModal");
     })
+
+    // clicking greyOut
+    const sideBar = document.getElementsByClassName("sidebar")[0];
+    const singleStory = document.getElementById("single-story-resource");
+    sideBar.addEventListener("click", closeCommentModalOnGreyClick, commentModal)
+    singleStory.addEventListener("click", closeCommentModalOnGreyClick, commentModal)
 }
 
 const updateResponseNumber = () => {
@@ -202,5 +208,16 @@ const toggleGreyOut = () => {
     } else {
         greyOut.style.backgroundColor = "";
         greyOutCount++;
+    }
+}
+
+const closeCommentModalOnGreyClick = () => {
+    const commentModal = document.getElementById("comment-modal");
+
+    console.log(commentModal.classList)
+    if (commentModal.classList.contains("showCommentModal")) {
+        toggleGreyOut();
+        commentModal.classList.toggle("hideCommentModal");
+        commentModal.classList.toggle("showCommentModal");
     }
 }
