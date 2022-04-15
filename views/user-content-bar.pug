@@ -9,7 +9,7 @@ div(class="content-bar")
         div(class="userRName")
             a(class='userLinking' href=`/users/${user.id}`)= `${user.firstName} ${user.lastName}`
     
-        a(href='#' class="see-the-full-list") Edit Info
+        a(href=`/users/${user.id}/about` class="see-the-full-list") Edit Info
 
     div(class='bottLinks')
         a(class='botLink' href='#') Help
