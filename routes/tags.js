@@ -14,13 +14,27 @@ router.get('/tags/:id', asyncHandler(async(req,res, next) =>{
 
     const user = await db.User.findByPk(req.session.auth.userId)
 
+    let doesFollowTag = await db.UserTag.findAll({
+        where: {
+            userId: user.id,
+            tagId: tag
+        }
+    })
+
+    if(doesFollowTag.length){
+        doesFollowTag = true
+    }else{
+        doesFollowTag = false
+    }
+
     const {stories} = tagStories
 
     res.render('tag-feed', {
         stories,
         user,
         tagName,
-        tag
+        tag,
+        doesFollowTag
     })
 }))
 
