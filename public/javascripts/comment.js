@@ -9,12 +9,14 @@ addEventListener("DOMContentLoaded", e => {
 
     let text;
 
-    cancel.addEventListener("click", () => {
+    cancel.addEventListener("click", (e) => {
+        e.stopImmediatePropagation
         comment.value = "";
         submit.style.backgroundColor = "rgba(27, 137, 23, 0.339)"
+        toggleFooter();
     })
 
-    comment.addEventListener("click", toggleFooter)
+    comment.addEventListener("click", showFooter)
 
     comment.addEventListener("keyup", () => {
         text = comment.value;
@@ -52,8 +54,8 @@ addEventListener("DOMContentLoaded", e => {
                 }),
             })
 
+            // create DOM content
             const data = await res.json();
-
             const { message, user } = data;
 
             if (message === 'success') {
@@ -110,6 +112,7 @@ addEventListener("DOMContentLoaded", e => {
 
                 removeWowEmpty();
                 updateResponseNumber();
+                updateCommentCount();
             };
         };
     });
@@ -117,13 +120,14 @@ addEventListener("DOMContentLoaded", e => {
 
 
 const handleModalPopUp = () => {
+
     const commentModal = document.getElementById("comment-modal");
 
     // comment button toggle
-    const commentButton = document.getElementById('commentButton');
+    const commentButton = document.getElementById('comment');
 
     commentButton.addEventListener("click", () => {
-
+        toggleGreyOut();
         commentModal.classList.toggle("hideCommentModal");
         commentModal.classList.toggle("showCommentModal");
 
@@ -132,7 +136,7 @@ const handleModalPopUp = () => {
     // cancel button
     const cancelButton = document.getElementById("new-comment-cancel")
     cancelButton.addEventListener("click", () => {
-
+        toggleGreyOut();
         commentModal.classList.toggle("hideCommentModal");
         commentModal.classList.toggle("showCommentModal");
     })
@@ -140,10 +144,16 @@ const handleModalPopUp = () => {
     // x out button
     const xOut = document.getElementById("comment-close-out");
     xOut.addEventListener("click", () => {
-
+        toggleGreyOut();
         commentModal.classList.toggle("hideCommentModal");
         commentModal.classList.toggle("showCommentModal");
     })
+
+    // clicking greyOut
+    const sideBar = document.getElementsByClassName("sidebar")[0];
+    const singleStory = document.getElementById("single-story-resource");
+    sideBar.addEventListener("click", closeCommentModalOnGreyClick, commentModal)
+    singleStory.addEventListener("click", closeCommentModalOnGreyClick, commentModal)
 }
 
 const updateResponseNumber = () => {
@@ -164,7 +174,50 @@ const removeWowEmpty = () => {
     }
 }
 
+let footerCount = 0;
 const toggleFooter = () => {
     const footer = document.getElementById("new-comment-container-footer");
+    if (footerCount % 2 === 0) {
+        footer.style.display = "flex";
+        footerCount++;
+    } else {
+        footer.style.display = "none";
+        footerCount++;
+    }
+}
+
+const updateCommentCount = () => {
+    const commentCount = document.getElementById("comment-count");
+    const commentCountInt = parseInt(commentCount.innerText) + 1;
+    commentCount.innerText = commentCountInt;
+}
+
+const showFooter = () => {
+    const footer = document.getElementById("new-comment-container-footer");
     footer.style.display = "flex";
+    footerCount++;
+}
+
+let greyOutCount = 0;
+const toggleGreyOut = () => {
+    const greyOut = document.getElementById("comment-modal-greyOut");
+
+    if (greyOutCount % 2 === 0) {
+        greyOut.style.backgroundColor = "rgba(0, 0, 0, 0.08)";
+        greyOutCount++;
+    } else {
+        greyOut.style.backgroundColor = "";
+        greyOutCount++;
+    }
+}
+
+const closeCommentModalOnGreyClick = () => {
+    const commentModal = document.getElementById("comment-modal");
+
+    console.log(commentModal.classList)
+    if (commentModal.classList.contains("showCommentModal")) {
+        toggleGreyOut();
+        commentModal.classList.toggle("hideCommentModal");
+        commentModal.classList.toggle("showCommentModal");
+    }
 }
