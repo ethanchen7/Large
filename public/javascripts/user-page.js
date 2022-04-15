@@ -37,8 +37,14 @@ window.addEventListener("load", (event) => {
     if (data) {
       const newBio = document.getElementsByClassName("AZ")[0];
       newBio.innerText = data.user.bio
-      showBio.classList.remove('hideBio');
-      bioEdit.classList.add('hideBio');
+      if(newBio.innerText !== '') {
+        showBio.classList.remove('hideBio');
+        bioEdit.classList.add('hideBio');
+      } else {
+        noBio.classList.remove('hideBio')
+        bioEdit.classList.add('hideBio')
+        showBio.classList.add('hideBio')
+      }
     }
     
   });
