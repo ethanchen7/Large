@@ -2,7 +2,7 @@ link(rel='stylesheet' href='/stylesheets/sidebar.css')
 link(rel='stylesheet' href='/stylesheets/navbar-menu.css')
 
 block content
-  div(class='hiddenMenuBar nav-profile-icon-menu-container')
+  div(class='nav-profile-icon-menu-container')
     div(class='mediumPrograms')
       a(class='menu-item one' href='/thanks') Medium Partner Program 
       a(class='menu-item two' href='/thanks') Gift a membership 
@@ -19,7 +19,7 @@ block content
         img(class='navBarUserIcon' src='https://picsum.photos/200')
       div(class='navBarUserLinks')
         a(class='menu-item six' href=`/users/${currUser.id}`)= `${currUser.firstName} ${currUser.lastName}`
-        a(class='menu-item seven' href=`/users/${currUser.id}`)= `${currUser.userName}`
+        a(class='menu-item seven' href=`/users/${currUser.id}`)= `@${currUser.userName}`
 
 
 nav(class="sidebar")
