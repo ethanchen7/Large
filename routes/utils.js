@@ -131,6 +131,7 @@ const getRecommended = async (userId) =>{
     order: [["createdAt", "ASC"]],
     // limit: 3,
   });
+  console.log('userid on 134', userId)
   
   const following = await db.Follow.findAll({
     where: { followerId: userId }

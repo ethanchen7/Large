@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 
 const { csrfProtection, asyncHandler, splashPageQueries } = require("./utils");
-const { loginUser, logoutUser, requireAuth } = require("../auth.js");
+const { loginUser, logoutUser, demoUser } = require("../auth.js");
 const { userValidators, loginValidators } = require("./validators");
 const db = require("../db/models");
 
@@ -232,6 +232,11 @@ router.delete("/users/:id(\\d+)/follow", async (req, res) => {
     return
   }
 
+})
+
+router.get('/demo', (req, res) => {
+  demoUser(req, res);
+  return req.session.save(() => res.redirect("/"));
 })
 
 

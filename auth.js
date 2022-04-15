@@ -6,10 +6,16 @@ const loginUser = (req, res, user) => {
   };
 };
 
+const demoUser = (req, res) => {
+  req.session.auth = {
+    userId: 39
+  }
+}
+
 const restoreUser = async (req, res, next) => {
-  // console.log('%%%%%%%%%%%%% are we in restoreUser?')
+
   if (req.session.auth) {
-    // console.log("********* restoreUser sessionAuth", req.session.auth)
+
     const { userId } = req.session.auth;
     try {
       const user = await db.User.findByPk(userId);
@@ -23,7 +29,7 @@ const restoreUser = async (req, res, next) => {
       next(err);
     }
   } else {
-    // console.log("$$$$$$$$$$$$$$ are we in else of restoreUser")
+
     res.locals.authenticated = false;
     next();
   }
@@ -41,4 +47,4 @@ const requireAuth = (req, res, next) => {
   }
 };
 
-module.exports = { loginUser, restoreUser, logoutUser, requireAuth };
+module.exports = { loginUser, restoreUser, logoutUser, requireAuth, demoUser };

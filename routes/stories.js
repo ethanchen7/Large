@@ -4,7 +4,7 @@ const { asyncHandler, assignDaysAgo } = require("./utils");
 const { restoreUser, requireAuth } = require('../auth')
 
 const db = require("../db/models");
-const { splashPageQueries, assignStoryDate, assignReadTime } = require('./utils');
+const { splashPageQueries, assignStoryDate, assignReadTime, getRecommended } = require('./utils');
 
 router.get('/stories', asyncHandler(async (req, res, next) => {
     res.redirect('/');
@@ -24,6 +24,8 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     const user = db.User.findByPk(userId);
     const comments = story.Comments;
 
+    const nonFollowedAccounts = await getRecommended(userId)
+
     comments.forEach(async comment => {
         assignDaysAgo(comment);
         const user = await db.User.findByPk(comment.userId);
@@ -37,6 +39,11 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     const contentBarStories = newStories.slice(0, 3);
     const contentBarTags = tags.slice(0, 7);
 
+    const allClapsOfStory = await db.StoryClap.findAll({
+        where: {storyId}
+    })
+    const allClapsOfStoryCount = allClapsOfStory.length
+
     console.log(story.User.firstName);
     res.render('single-story', {
         story,
@@ -44,14 +51,10 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
         contentBarStories,
         contentBarTags,
         recommendedUsers,
+        nonFollowedAccounts,
+        allClapsOfStoryCount, 
         comments,
     });
-
-    const allClapsOfStory = await db.StoryClap.findAll({
-        where: {storyId}
-    })
-    const allClapsOfStoryCount = allClapsOfStory.length
-    res.render('single-story', { story, user, allClapsOfStoryCount });
 }))
 
 router.post('/stories/:id(\\d+)/clap/new', requireAuth, asyncHandler(async (req, res, next) => {
