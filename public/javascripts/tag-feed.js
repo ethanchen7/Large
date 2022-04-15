@@ -3,6 +3,12 @@ window.addEventListener('load', (event) => {
 
     const tagId = followButton.getAttribute('id')
 
+    if (followButton.innerHTML === 'Following Collection') {
+        followButton.style.backgroundColor = 'white'
+        followButton.style.color = 'rgba(26, 137, 23, 1)'
+        followButton.style.border = 'solid rgba(26, 137, 23, 1) 1px'
+    }
+
     followButton.addEventListener('click', (e) =>{
 
         if (followButton.innerHTML === 'Follow'){

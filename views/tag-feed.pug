@@ -11,7 +11,12 @@ block content
           h1=tagName.name
 
       div(id='topButtons')
-        a(class=`fullB` id=`${tagName.id}` href='#') Follow
+        -if (doesFollowTag){
+            a(class=`fullB` id=`${tagName.id}` href='#') Following Collection
+        -}else{
+            a(class=`fullB` id=`${tagName.id}` href='#') Follow
+
+        -}
         a(id='hollowB' href='/my-stories/new') Start Writing
 
       div(id='feedChoice')

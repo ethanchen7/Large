@@ -2,11 +2,17 @@ window.addEventListener("load", (event) => {
 
   const links = document.querySelectorAll("a");
 
+<<<<<<< HEAD
   links.forEach(link => {
     link.addEventListener("click", () => {
       document.getElementsByClassName("modal-container")[0].style.display = "flex";
       document.getElementsByClassName("modal")[0].style.display = "flex";
     });
+=======
+  signInButton.addEventListener("click", () => {
+    document.getElementsByClassName("modal-container")[0].style.display= 'flex';
+    document.getElementsByClassName("modal")[0].style.top= 0;
+>>>>>>> main
   });
 
 

@@ -15,8 +15,8 @@ block content
       a(class='menu-item five' href='/thanks') Stats 
       a(class='menu-item five' href='/thanks') Settings 
     div(class='userProfile')
-      a(class='menu-item six' href=`/users/${user.id}`)= `${user.firstName} ${user.lastName}`
-      a(class='menu-item seven' href=`/users/${user.id}`)= `${user.userName}`
+      a(class='menu-item six' href=`/users/${currUser.id}`)= `${currUser.firstName} ${currUser.lastName}`
+      a(class='menu-item seven' href=`/users/${currUser.id}`)= `${currUser.userName}`
 
 
 nav(class="sidebar")
