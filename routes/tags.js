@@ -12,11 +12,11 @@ router.get('/tags/:id', asyncHandler(async(req,res, next) =>{
 
     const tagStories = await storiesByTags(tag);
 
-    const user = await db.User.findByPk(req.session.auth.userId)
+    const currUser = await db.User.findByPk(req.session.auth.userId)
 
     let doesFollowTag = await db.UserTag.findAll({
         where: {
-            userId: user.id,
+            userId: currUser.id,
             tagId: tag
         }
     })
@@ -31,7 +31,7 @@ router.get('/tags/:id', asyncHandler(async(req,res, next) =>{
 
     res.render('tag-feed', {
         stories,
-        user,
+        currUser,
         tagName,
         tag,
         doesFollowTag
