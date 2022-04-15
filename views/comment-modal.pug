@@ -1,0 +1,26 @@
+#comment-modal
+    #comment-modal-header
+        #comment-modal-title= `Responses (16)` 
+        Img#comment-close-out(src="/images/close.png")
+    #new-comment-container
+        textarea#new-comment-box(placeholder="what are your thoughts?" spellcheck=true  )
+        #new-comment-container-footer.hiddenOnComments
+            #new-comment-cancel Cancel
+            #new-comment-submit Respond
+    #sort-by Top comments
+    #comment-list 
+        each comment in comments
+            .comment-container 
+                .comment-container-header 
+                    .comment-user-img 
+                        img(src="/images/logo.png")
+                    .comment-user-info 
+                        a.comment-author(href=`/users/${comment.userId}`)= `${comment.firstName} ${comment.lastName}`
+                        .comment-daysAgo= `${comment.daysAgo}`
+                .comment-content= comment.text
+            //- .comment-container-footer 
+            //-     .comment-clap
+            //-         img(src="/images/clap.png", alt="")
+            //-         .comment-clap-count= `1`
+            //-     a(href="").comment-reply Reply
+

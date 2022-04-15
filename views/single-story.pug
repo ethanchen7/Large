@@ -5,8 +5,15 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title= story.title
+        link(rel='stylesheet' href='/stylesheets/feed.css')
+        link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/navbar-menu.css')
         link(rel='stylesheet' href='/stylesheets/single-story-resource.css')
+        link(rel='stylesheet' href='/stylesheets/comment-modal.css')
         script(src="/javascripts/single-resource.js" type="module")
+        script(src="/javascripts/contentBar.js" type="module")
+        script(src="/javascripts/navbar-menu.js" type="module")
+        script(src="/javascripts/comment.js" type="module")
         script(src="/javascripts/clap.js" type="module")
     body
         #single-story-layout
@@ -30,6 +37,7 @@ html(lang="en")
                             img#saveButton(src="/images/save.png")
                 #story-title= story.title 
                 #story-article= story.article
+            include content-bar.pug                        
         #clap-comment-modal 
             div(id="clap" data-storyId=`${story.id}`)
                 img#clapButton(src="/images/clap.png")
@@ -38,6 +46,5 @@ html(lang="en")
             #comment 
                 img#commentButton(src="/images/comment-bubble.png")
                 #comment-count= 4
-                //- need to include right side bar
-                        
+        include comment-modal.pug
                         
