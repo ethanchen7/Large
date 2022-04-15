@@ -95,12 +95,13 @@
     text-transform: uppercase;
     padding-top: 2em;
     padding-bottom: 1em;
+    padding-left: 1.25em;
 }
 
 #comment-list {
     padding-left: 15px;
     padding-right: 15px;
-    border-top: 1px solid grey;
+    border-top: 1px solid rgba(128, 128, 128, 0.4);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,7 +110,7 @@
 .comment-container {
     padding-top: 1em;
     padding-bottom: 1em;
-    border-bottom: 1px solid #757575;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.4);
     width: 100%;
 }
 
