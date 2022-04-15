@@ -2,6 +2,12 @@
     box-sizing: border-box;
 }
 
+#comment-modal-greyOut {
+    width: 100vw;
+    height: 100vh;
+    transition: .25s;
+}
+
 #comment-modal {
     background-color: white;
     position: fixed;
@@ -64,7 +70,6 @@
     align-items: center;
     margin-bottom: 1em;
     margin-right: 1em;
-    transition: 3s;
 }
 
 #new-comment-cancel {

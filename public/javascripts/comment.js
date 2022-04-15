@@ -120,13 +120,14 @@ addEventListener("DOMContentLoaded", e => {
 
 
 const handleModalPopUp = () => {
+
     const commentModal = document.getElementById("comment-modal");
 
     // comment button toggle
     const commentButton = document.getElementById('comment');
 
     commentButton.addEventListener("click", () => {
-
+        toggleGreyOut();
         commentModal.classList.toggle("hideCommentModal");
         commentModal.classList.toggle("showCommentModal");
 
@@ -135,7 +136,7 @@ const handleModalPopUp = () => {
     // cancel button
     const cancelButton = document.getElementById("new-comment-cancel")
     cancelButton.addEventListener("click", () => {
-
+        toggleGreyOut();
         commentModal.classList.toggle("hideCommentModal");
         commentModal.classList.toggle("showCommentModal");
     })
@@ -143,7 +144,7 @@ const handleModalPopUp = () => {
     // x out button
     const xOut = document.getElementById("comment-close-out");
     xOut.addEventListener("click", () => {
-
+        toggleGreyOut();
         commentModal.classList.toggle("hideCommentModal");
         commentModal.classList.toggle("showCommentModal");
     })
@@ -189,4 +190,17 @@ const showFooter = () => {
     const footer = document.getElementById("new-comment-container-footer");
     footer.style.display = "flex";
     footerCount++;
+}
+
+let greyOutCount = 0;
+const toggleGreyOut = () => {
+    const greyOut = document.getElementById("comment-modal-greyOut");
+
+    if (greyOutCount % 2 === 0) {
+        greyOut.style.backgroundColor = "rgba(0, 0, 0, 0.08)";
+        greyOutCount++;
+    } else {
+        greyOut.style.backgroundColor = "";
+        greyOutCount++;
+    }
 }
