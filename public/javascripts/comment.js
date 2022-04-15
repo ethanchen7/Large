@@ -12,6 +12,7 @@ addEventListener("DOMContentLoaded", e => {
     cancel.addEventListener("click", () => {
         comment.value = "";
         submit.style.backgroundColor = "rgba(27, 137, 23, 0.339)"
+        toggleFooter();
     })
 
     comment.addEventListener("click", toggleFooter)
@@ -164,7 +165,15 @@ const removeWowEmpty = () => {
     }
 }
 
+let footerCount = 0;
 const toggleFooter = () => {
     const footer = document.getElementById("new-comment-container-footer");
-    footer.style.display = "flex";
+    console.log(footerCount)
+    if (footerCount % 2 === 0) {
+        footer.style.display = "flex";
+        footerCount++;
+    } else {
+        footer.style.display = "none";
+        footerCount++;
+    }
 }
