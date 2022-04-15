@@ -21,7 +21,7 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     story.readTime = assignReadTime(story);
 
 
-    const user = db.User.findByPk(userId);
+    const currUser = db.User.findByPk(userId);
     const comments = story.Comments;
 
     const nonFollowedAccounts = await getRecommended(userId)
@@ -47,7 +47,7 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     console.log(story.User.firstName);
     res.render('single-story', {
         story,
-        user,
+        currUser,
         contentBarStories,
         contentBarTags,
         recommendedUsers,
