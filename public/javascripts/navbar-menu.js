@@ -20,26 +20,17 @@ window.addEventListener("load", (event) => {
 
 
     centerFeed.addEventListener('click', () => {
-        const currStyle = window.getComputedStyle(menu[0]).getPropertyValue('display')
 
-        if (currStyle === 'none') {
-            menu[0].style.display = 'block'
-        } else {
-            menu[0].style.display = 'none'
-        }
+        menu[0].style.display = 'none'
+    
 
     })
 
     contentBarFeed.forEach((el) => {
-        el.addEventListener('click', () => {
-            const currStyle = window.getComputedStyle(menu[0]).getPropertyValue('display')
-    
-            if (currStyle === 'none') {
-                menu[0].style.display = 'block'
-            } else {
-                menu[0].style.display = 'none'
-            }
-    
+        el.addEventListener('click', () => {    
+           
+            menu[0].style.display = 'none'
+            
         });
     })
     
@@ -48,13 +39,8 @@ window.addEventListener("load", (event) => {
     const centerUser = document.getElementsByClassName('centerHolderUser')[0]
 
     centerUser.addEventListener('click', () => {
-        const currStyle = window.getComputedStyle(menu[0]).getPropertyValue('display')
-
-        if (currStyle === 'none') {
-            menu[0].style.display = 'block'
-        } else {
-            menu[0].style.display = 'none'
-        }
+        
+        menu[0].style.display = 'none'
 
     });
 
