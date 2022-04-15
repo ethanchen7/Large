@@ -3,7 +3,6 @@ addEventListener("DOMContentLoaded", e => {
     handleModalPopUp();
 
     // handle comment creation
-    const commentModal = document.getElementById("comment-modal")
     const comment = document.getElementById("new-comment-box");
     const submit = document.getElementById("new-comment-submit");
     const cancel = document.getElementById("new-comment-cancel");
@@ -12,7 +11,10 @@ addEventListener("DOMContentLoaded", e => {
 
     cancel.addEventListener("click", () => {
         comment.value = "";
+        submit.style.backgroundColor = "rgba(27, 137, 23, 0.339)"
     })
+
+    comment.addEventListener("click", toggleFooter)
 
     comment.addEventListener("keyup", () => {
         text = comment.value;
@@ -35,10 +37,10 @@ addEventListener("DOMContentLoaded", e => {
         }
     })
 
-    submit.addEventListener("click", async (e) => {
+    submit.addEventListener("click", async () => {
 
-        const url = window.location.href;
-        const storyId = url.slice(url.length - 1);
+        const url = window.location.href.split("/");
+        const storyId = url[url.length - 1];
 
         if (text) {
             const res = await fetch("/comment", {
@@ -55,6 +57,8 @@ addEventListener("DOMContentLoaded", e => {
             const { message, user } = data;
 
             if (message === 'success') {
+                comment.value = "";
+
                 const userId = user.id;
 
                 // comment container
@@ -98,7 +102,14 @@ addEventListener("DOMContentLoaded", e => {
                 // put this new comment at top of list
                 const commentList = document.getElementById("comment-list");
                 const firstComment = commentList.children[0];
-                firstComment.insertAdjacentElement("beforebegin", newComment);
+                if (firstComment) {
+                    firstComment.insertAdjacentElement("beforebegin", newComment);
+                } else {
+                    commentList.appendChild(newComment);
+                }
+
+                removeWowEmpty();
+                updateResponseNumber();
             };
         };
     });
@@ -106,10 +117,54 @@ addEventListener("DOMContentLoaded", e => {
 
 
 const handleModalPopUp = () => {
+    const commentModal = document.getElementById("comment-modal");
+
+    // comment button toggle
     const commentButton = document.getElementById('commentButton');
 
     commentButton.addEventListener("click", () => {
-        const commentModal = document.getElementById("comment-modal");
-        commentModal.style.right = "0%";
+
+        commentModal.classList.toggle("hideCommentModal");
+        commentModal.classList.toggle("showCommentModal");
+
     })
+
+    // cancel button
+    const cancelButton = document.getElementById("new-comment-cancel")
+    cancelButton.addEventListener("click", () => {
+
+        commentModal.classList.toggle("hideCommentModal");
+        commentModal.classList.toggle("showCommentModal");
+    })
+
+    // x out button
+    const xOut = document.getElementById("comment-close-out");
+    xOut.addEventListener("click", () => {
+
+        commentModal.classList.toggle("hideCommentModal");
+        commentModal.classList.toggle("showCommentModal");
+    })
+}
+
+const updateResponseNumber = () => {
+    const modalTitle = document.getElementById("comment-modal-title");
+    const modalTitleText = modalTitle.innerText
+    const openParen = modalTitleText.indexOf("(")
+    const closeParen = modalTitleText.indexOf(")")
+    const number = parseInt(modalTitle.innerText.slice(openParen + 1, closeParen)) + 1;
+
+    modalTitle.innerText = `Responses (${number})`
+}
+
+const removeWowEmpty = () => {
+    const wowEmpty = document.getElementById("wow-empty")
+
+    if (wowEmpty) {
+        wowEmpty.remove();
+    }
+}
+
+const toggleFooter = () => {
+    const footer = document.getElementById("new-comment-container-footer");
+    footer.style.display = "flex";
 }

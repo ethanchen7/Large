@@ -1,14 +1,16 @@
-#comment-modal
+#comment-modal.hideCommentModal
     #comment-modal-header
-        #comment-modal-title= `Responses (16)` 
+        #comment-modal-title= `Responses (${comments.length})` 
         Img#comment-close-out(src="/images/close.png")
     #new-comment-container
-        textarea#new-comment-box(placeholder="what are your thoughts?" spellcheck=true  )
-        #new-comment-container-footer.hiddenOnComments
+        textarea(type="text" placeholder="what are your thoughts?" spellcheck=true)#new-comment-box
+        #new-comment-container-footer
             #new-comment-cancel Cancel
             #new-comment-submit Respond
     #sort-by Top comments
     #comment-list 
+        - if (comments.length === 0)
+            #wow-empty Wow, such empty :/
         each comment in comments
             .comment-container 
                 .comment-container-header 

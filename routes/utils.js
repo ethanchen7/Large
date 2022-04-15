@@ -121,7 +121,7 @@ const assignDaysAgo = async (comment) => {
 
   let daysAgo = Math.floor(difference / (1000 * 3600 * 24));
 
-  if (daysAgo >= 1) comment.daysAgo = daysAgo
+  if (daysAgo >= 1) comment.daysAgo = `${daysAgo} days ago`
   else comment.daysAgo = "Posted today"
 }
 
