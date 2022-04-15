@@ -14,6 +14,7 @@ storyUserProfileIcon.addEventListener('click', e=> {
 
 
 
+
 followButton.addEventListener('click', async(e) =>{
   const followUserId = followButton.dataset.userid
 

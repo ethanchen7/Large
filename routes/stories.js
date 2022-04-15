@@ -45,7 +45,15 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     })
     const allClapsOfStoryCount = allClapsOfStory.length
 
-    console.log(story.User.firstName);
+    let follows = false;
+    const followCheck = await db.Follow.findAll({
+        where: { 
+          followerId: userId,
+          followingId: story.User.id
+         },
+      })   
+    if(followCheck.length) follows = true; 
+
     res.render('single-story', {
         story,
         user,
@@ -56,6 +64,7 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
         nonFollowedAccounts,
         allClapsOfStoryCount, 
         comments,
+        follows,
     });
 }))
 

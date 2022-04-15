@@ -582,8 +582,15 @@
   margin-top: 30px;
 }
 
-#story-user-follow-btn {
+.state-following-btn {
+  background-color: black;
+}
+
+.state-follow-btn {
   background-color: rgb(2, 148, 2);
+}
+
+#story-user-follow-btn {
   border: none;
   color: white;
   border-radius: 25px;
