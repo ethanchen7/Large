@@ -3,7 +3,6 @@ addEventListener("DOMContentLoaded", e => {
     handleModalPopUp();
 
     // handle comment creation
-    const commentModal = document.getElementById("comment-modal")
     const comment = document.getElementById("new-comment-box");
     const submit = document.getElementById("new-comment-submit");
     const cancel = document.getElementById("new-comment-cancel");
@@ -13,6 +12,8 @@ addEventListener("DOMContentLoaded", e => {
     cancel.addEventListener("click", () => {
         comment.value = "";
     })
+
+    comment.addEventListener("click", toggleFooter)
 
     comment.addEventListener("keyup", () => {
         text = comment.value;
@@ -35,7 +36,7 @@ addEventListener("DOMContentLoaded", e => {
         }
     })
 
-    submit.addEventListener("click", async (e) => {
+    submit.addEventListener("click", async () => {
 
         const url = window.location.href.split("/");
         const storyId = url[url.length - 1];
@@ -55,6 +56,8 @@ addEventListener("DOMContentLoaded", e => {
             const { message, user } = data;
 
             if (message === 'success') {
+                comment.value = "";
+
                 const userId = user.id;
 
                 // comment container
@@ -104,6 +107,7 @@ addEventListener("DOMContentLoaded", e => {
                     commentList.appendChild(newComment);
                 }
 
+                removeWowEmpty();
                 updateResponseNumber();
             };
         };
@@ -117,20 +121,27 @@ const handleModalPopUp = () => {
     // comment button toggle
     const commentButton = document.getElementById('commentButton');
 
-    let count = 0;
     commentButton.addEventListener("click", () => {
 
         commentModal.classList.toggle("hideCommentModal");
         commentModal.classList.toggle("showCommentModal");
 
-        //     if (count % 2 === 0) commentModal.style.right = "0%";
-        //     else commentModal.style.right = "-30%";
     })
 
     // cancel button
     const cancelButton = document.getElementById("new-comment-cancel")
     cancelButton.addEventListener("click", () => {
-        commentModal.style.right = "-30%";
+
+        commentModal.classList.toggle("hideCommentModal");
+        commentModal.classList.toggle("showCommentModal");
+    })
+
+    // x out button
+    const xOut = document.getElementById("comment-close-out");
+    xOut.addEventListener("click", () => {
+
+        commentModal.classList.toggle("hideCommentModal");
+        commentModal.classList.toggle("showCommentModal");
     })
 }
 
@@ -142,4 +153,17 @@ const updateResponseNumber = () => {
     const number = parseInt(modalTitle.innerText.slice(openParen + 1, closeParen)) + 1;
 
     modalTitle.innerText = `Responses (${number})`
+}
+
+const removeWowEmpty = () => {
+    const wowEmpty = document.getElementById("wow-empty")
+
+    if (wowEmpty) {
+        wowEmpty.remove();
+    }
+}
+
+const toggleFooter = () => {
+    const footer = document.getElementById("new-comment-container-footer");
+    footer.style.display = "flex";
 }
