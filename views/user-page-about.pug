@@ -19,10 +19,10 @@ block content
                 if currUser.id === user.id
                     div(id= 'userAbout')
                         div(id = 'userBio')
-                            div(class='noBio')  
-                                h2(class='h2Bio') Tell the world about yourself
-                                p(class='bioText') Here's where you can share more about yourself: your history, work experience, accomplishments, interests, dreams, and more. You can even add images and use rich text to personalize your bio.
-                                a(class='getStartedButton') Get Started
+                            div(class='noBio')
+                                    h2(class='h2Bio') Tell the world about yourself
+                                    p(class='bioText') Here's where you can share more about yourself: your history, work experience, accomplishments, interests, dreams, and more. You can even add images and use rich text to personalize your bio.
+                                    a(class='getStartedButton') Get Started
                             div(class='bioEdit hideBio')
                                 a(id='submitButton' data-userId=`${user.id}`) Save
                                 if (user.bio === 'null' || '')
