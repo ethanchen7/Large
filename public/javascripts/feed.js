@@ -1,5 +1,3 @@
-// const { splashPageQueries } = require('../routes/utils')
-
 window.addEventListener('load', (event) => {
     let recommendedButton = document.getElementById('recommended')
     let followingButton = document.getElementById('following')

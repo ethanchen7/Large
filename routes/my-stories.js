@@ -14,12 +14,10 @@ router.get("/my-stories/new", csrfProtection, asyncHandler(async(req, res) => {
   res.render("new-story", { user, story, csrfToken: req.csrfToken() });
 }));
 
-// NEED:
-// requireAuth
-// userId when logged in
 router.post(
   "/my-stories/new",
   csrfProtection,
+  requireAuth,
   storyValidators,
   asyncHandler(async (req, res, next) => {
     const { title, article, tag } = req.body;
@@ -44,19 +42,16 @@ router.post(
         });
         tagId = newTag.id;
       }
-      //temporary
-      
+
       const state = "published";
 
       story.tagId = tagId;
       story.state = state;
 
       await story.save();
-      console.log("New Story created");
       res.redirect("/");
     } else {
       const errors = validationErrors.array().map((error) => error.msg);
-      console.log(story.article)
       res.render("new-story", {
         user,
         story,

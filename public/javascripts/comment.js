@@ -215,7 +215,6 @@ const toggleGreyOut = () => {
 const closeCommentModalOnGreyClick = () => {
     const commentModal = document.getElementById("comment-modal");
 
-    console.log(commentModal.classList)
     if (commentModal.classList.contains("showCommentModal")) {
         toggleGreyOut();
         commentModal.classList.toggle("hideCommentModal");

@@ -3,9 +3,9 @@ var router = express.Router();
 
 const db = require("../db/models");
 const { requireAuth } = require("../auth");
-const { csrfProtection, asyncHandler, storiesByTags } = require("./utils");
+const { asyncHandler, storiesByTags } = require("./utils");
 
-router.get('/tags/:id', asyncHandler(async(req,res, next) =>{
+router.get('/tags/:id', requireAuth, asyncHandler(async(req,res, next) =>{
     const tag = req.params.id
 
     const tagName = await db.Tag.findByPk(tag)
@@ -38,7 +38,7 @@ router.get('/tags/:id', asyncHandler(async(req,res, next) =>{
     })
 }))
 
-router.post('/tags/:id/follow', asyncHandler(async (req, res, next) => {
+router.post('/tags/:id/follow', requireAuth, asyncHandler(async (req, res, next) => {
     const tag = req.params.id
 
     const tagName = await db.Tag.findByPk(tag)
@@ -68,7 +68,7 @@ router.post('/tags/:id/follow', asyncHandler(async (req, res, next) => {
 
 }))
 
-router.delete('/tags/:id/follow', asyncHandler(async (req, res, next) => {
+router.delete('/tags/:id/follow', requireAuth, asyncHandler(async (req, res, next) => {
     const tag = req.params.id
 
     const tagName = await db.Tag.findByPk(tag)

@@ -12,16 +12,10 @@ storyUserProfileIcon.addEventListener('click', e=> {
     window.location.href = `/users/${userId}`
 })
 
-
-
-
 followButton.addEventListener('click', async(e) =>{
   const followUserId = followButton.dataset.userid
 
   const currentColor = window.getComputedStyle(followButton).backgroundColor
-
-  console.log(currentColor)
-
 
   if (currentColor === 'rgb(2, 148, 2)'){
     fetch(`/users/${followUserId}/follow`, {
