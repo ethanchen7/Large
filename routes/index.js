@@ -12,8 +12,6 @@ const {
   getRecommended,
 } = require("./utils");
 
-/* GET splash page. */
-
 router.get("/", csrfProtection, restoreUser, asyncHandler(async (req, res, next) => {
 
   const queries = await splashPageQueries();
@@ -46,8 +44,6 @@ router.get("/", csrfProtection, restoreUser, asyncHandler(async (req, res, next)
 
 
     const nonFollowedAccounts = await getRecommended(currUser.id)
-
-    console.log(nonFollowedAccounts)
 
     res.render("feed", {
       currUser,

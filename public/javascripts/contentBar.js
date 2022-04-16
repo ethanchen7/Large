@@ -31,9 +31,6 @@ followButtons[0].addEventListener('click', async(e) =>{
 
   const currentColor = window.getComputedStyle(btn).backgroundColor
 
-  console.log(currentColor)
-
-
   if (currentColor === 'rgb(255, 255, 255)'){
     fetch(`/users/${followUserId}/follow`, {
       method: 'POST',
@@ -65,9 +62,6 @@ followButtons[1].addEventListener('click', async (e) => {
 
   const currentColor = window.getComputedStyle(btn).backgroundColor
 
-  console.log(currentColor)
-
-
   if (currentColor === 'rgb(255, 255, 255)') {
     fetch(`/users/${followUserId}/follow`, {
       method: 'POST',
@@ -98,9 +92,6 @@ followButtons[2].addEventListener('click', async (e) => {
   const followUserId = followButtons[0].getAttribute('id').split('-')[0]
 
   const currentColor = window.getComputedStyle(btn).backgroundColor
-
-  console.log(currentColor)
-
 
   if (currentColor === 'rgb(255, 255, 255)') {
     fetch(`/users/${followUserId}/follow`, {

@@ -8,7 +8,6 @@ const { loginUser, logoutUser, demoUser } = require("../auth.js");
 const { userValidators, loginValidators } = require("./validators");
 const db = require("../db/models");
 
-/* Register users listing. */
 
 router.post(
   "/users",
@@ -67,7 +66,6 @@ router.post(
           password,
           user1.hashedPassword.toString()
         );
-        console.log(passwordMatch);
         if (passwordMatch) {
           loginUser(req, res, user1);
           return req.session.save(() => res.redirect("/"));

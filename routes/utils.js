@@ -58,7 +58,6 @@ const followingArticles = async (req, res) => {
 
   // const user = req.session.auth;
   const user = req.session.auth;
-  console.log('yeeeeee', user.userId)
 
   const stories = await db.Story.findAll({
     include: [db.User, db.Tag],
@@ -107,7 +106,6 @@ const storiesByTags = async (tag) => {
 
   })
 
-  console.log(stories)
   return { stories }
 }
 
@@ -129,9 +127,7 @@ const assignDaysAgo = async (comment) => {
 const getRecommended = async (userId) =>{
   const recommendedUsers = await db.User.findAll({
     order: [["createdAt", "ASC"]],
-    // limit: 3,
   });
-  console.log('userid on 134', userId)
   
   const following = await db.Follow.findAll({
     where: { followerId: userId }
