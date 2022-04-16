@@ -13,7 +13,6 @@ block content
                     h1= `${user.firstName} ${user.lastName}`
             div(id='feedChoiceUser')
                 a(id='homeButton'  href=`/users/${user.id}`) Home 
-                a(id='listsButton' href=`/users/${user.id}/lists`) Lists
                 a(id='aboutButton' href=`/users/${user.id}/about`) About 
             div(id= 'contentDisplayed')
                 if currUser.id === user.id
@@ -25,7 +24,7 @@ block content
                                     a(class='getStartedButton') Get Started
                             div(class='bioEdit hideBio')
                                 a(id='submitButton' data-userId=`${user.id}`) Save
-                                if (user.bio === 'null' || '')
+                                if (user.bio === null || '')
                                     textarea(placeholder='Type your story' id='editBioText' name="bioText", cols="1", rows="5")
                                 else
                                     textarea(placeholder='Type your story' id='editBioText' name="bioText", cols="1", rows="5")= `${user.bio}`

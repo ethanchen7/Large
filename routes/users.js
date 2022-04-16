@@ -145,54 +145,6 @@ router.get(
   })
 );
 
-router.get(
-  "/users/:id(\\d+)/lists",
-  csrfProtection,
-  asyncHandler(async (req, res, next) => {
-
-    let currUser = req.session.auth;
-
-    currUser = await db.User.findByPk(currUser.userId)
-
-    const user = await db.User.findByPk(req.url.split('/')[2]);
-
-    const userTags = await db.UserTag.findAll({
-      where: {userId: user.id}
-    })
-
-
-    userTags.forEach(el => {
-      el
-    })
-
-    console.log(userTagsIds)
-
-    const userStories = await db.Story.findAll({
-      include: [db.User, db.Tag],
-      where: { 
-        userId: user.id,
-      },
-    });
-
-    const assignStoryDate = (story) => {
-      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',]
-    
-      const monthIndex = story.updatedAt.getMonth();
-      const month = months[monthIndex];
-    
-      return `${month} ${story.updatedAt.getDate().toString()}`
-    }
-
-    userStories.forEach(story => {
-
-      story.date = assignStoryDate(story);
-  
-    })
-
-    res.render("user-page-lists", { currUser, user, userStories, userTags});
-  })
-);
 
 router.get(
   "/users/:id(\\d+)/about",

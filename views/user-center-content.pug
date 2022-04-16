@@ -4,7 +4,6 @@ div(class='centerHolderUser')
             h1= `${user.firstName} ${user.lastName}`
     div(id='feedChoiceUser')
         a(id='homeButton' href=`/users/${user.id}`) Home 
-        a(id='listsButton' href=`/users/${user.id}/lists`) Lists
         a(id='aboutButton' href=`/users/${user.id}/about`) About 
     div(id= 'contentDisplayed')
         if (userStories.length === 0)
