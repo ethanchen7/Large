@@ -9,7 +9,7 @@ div(class="content-bar")
             img(class="story-user-icon" src=`https://picsum.photos/20`)
         div(class="story-user-name")
             a(class="story-user-name-text" href=`/users/${story.User.id}`) #{story.User.firstName} #{story.User.lastName}
-            p(class="user-follower-count-text") 46 Followers
+            p(class="user-follower-count-text") #{followerCount} Followers
         div(class="story-user-bio")
             p(class="story-user-bio-text") #{story.User.bio}
         div(class="story-user-buttons-container")

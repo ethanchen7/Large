@@ -151,6 +151,15 @@ const getRecommended = async (userId) =>{
 
 }
 
+const getFollowerCount = async(user) => {
+  const follows = await db.Follow.findAll({
+    where: {
+      followingId: user.id
+    }
+  })
+  return follows.length
+}
+
 
 
 
@@ -164,4 +173,5 @@ module.exports = {
   storiesByTags,
   assignDaysAgo,
   getRecommended,
+  getFollowerCount,
 };
