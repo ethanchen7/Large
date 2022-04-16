@@ -1,4 +1,5 @@
 .publish-modal {
+  font-family: medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif!important;
   display: flex;
   flex-direction: column;
   margin-left: 20%;
@@ -92,12 +93,12 @@
 .image-upload-directions {
   text-align: center;
   font-size: 12px;
-  font-weight: lighter;
   color: rgb(112, 112, 112);
   -webkit-font-smoothing: antialiased;
 }
 
 .title-section-edit-input {
+  font-family: medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif!important;
   padding-bottom: 3px;
   border-top: none;
   border-left: none;
@@ -120,7 +121,6 @@
   outline: none;
   width: 100%;
   font-size: 13px;
-  font-weight: lighter;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -130,7 +130,6 @@
 
 .note-text {
   font-size: 13px;
-  font-weight: lighter;
   color: rgb(112, 112, 112);
   -webkit-font-smoothing: antialiased;
 }
@@ -138,6 +137,17 @@
 .right-half {
   width: 50%;
   padding: 50px;
+}
+
+.publishing-to-section {
+  font-family: medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif!important;
+  letter-spacing: 0.001em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.publishing-second-half {
+  font-style: bold;
+  font-weight: 900;
 }
 
 .add-tag-heading {
@@ -170,10 +180,10 @@
 }
 
 .publish-now-btn {
+  font-family: medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif!important;
   background-color: #1a8917;
   color: white;
   border: #1a8917;
-  border-right: 1px solid black;
   border-radius: 99em;
   padding-left: 20px;
   padding-right: 20px;
@@ -195,7 +205,6 @@
 
 .schedule-for-later-btn-text {
   font-size: 12px;
-  font-weight: lighter;
   color: rgb(112, 112, 112);
   -webkit-font-smoothing: antialiased;
 }
