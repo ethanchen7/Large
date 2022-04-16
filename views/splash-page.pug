@@ -1,5 +1,4 @@
 
-include utils.pug 
 .splashBanner 
     .mainBanner-text
         #mainBanner-title Stay curious.
@@ -52,13 +51,5 @@ include utils.pug
                 //- should be a link to see stories with these tags.
                 a.scroll-tag= tag.name
         .scroll-informationLinks
-            +field('This', 'infoLinks')
-            +field('is', 'infoLinks')
-            +field('a', 'infoLinks')
-            +field('Medium', 'infoLinks')
-            +field('Clone.', 'infoLinks')
-            +field('All', 'infoLinks')
-            +field('data', 'infoLinks')
-            +field('is', 'infoLinks')
-            +field('fake', 'infoLinks')
+            p(class="disclaimer") *This is a Medium Clone. All data is fake.
 script(src="/javascripts/disappearingM.js") 
