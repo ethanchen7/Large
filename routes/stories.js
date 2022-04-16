@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const { asyncHandler, assignDaysAgo } = require("./utils");
+const { asyncHandler, assignDaysAgo, getFollowerCount } = require("./utils");
 const { restoreUser, requireAuth } = require('../auth')
 
 const db = require("../db/models");
@@ -54,6 +54,7 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
       })   
     if(followCheck.length) follows = true; 
 
+    const followerCount = await getFollowerCount(story.User)
     res.render('single-story', {
         story,
         currUser,
@@ -65,6 +66,7 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
         allClapsOfStoryCount, 
         comments,
         follows,
+        followerCount,
     });
 }))
 

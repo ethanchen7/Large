@@ -11,7 +11,7 @@ html(lang="en")
         link(rel='stylesheet' href='/stylesheets/single-story-resource.css')
         link(rel='stylesheet' href='/stylesheets/comment-modal.css')
         script(src="/javascripts/single-resource.js" type="module")
-        script(src="/javascripts/contentBar.js" type="module")
+        script(src="/javascripts/storyContentBar.js" type="module")
         script(src="/javascripts/comment.js" type="module")
         script(src="/javascripts/clap.js" type="module")
     body
@@ -25,7 +25,7 @@ html(lang="en")
                                 #story-authorImgContainer
                                     img#story-authorImg(src=`https://picsum.photos/${Math.floor(Math.random() * 50)}`)
                             #story-info 
-                                a#story-author(href="/users/${story.User.id}")= `${story.User.firstName} ${story.User.lastName}`
+                                a#story-author(href=`/users/${story.User.id}`)= `${story.User.firstName} ${story.User.lastName}`
                                 #story-date-readTime= `${story.date} · ${story.readTime} min read`
                         #links-nav 
                             a.button(href="https://twitter.com")
