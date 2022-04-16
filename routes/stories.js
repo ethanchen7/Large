@@ -22,7 +22,7 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
 
 
     const currUser = await db.User.findByPk(userId);
-    const comments = story.Comments;
+    const comments = story.Comments.reverse();
 
     const nonFollowedAccounts = await getRecommended(userId)
 
