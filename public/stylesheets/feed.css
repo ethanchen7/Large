@@ -638,7 +638,7 @@ button{
 }
 
 .more-from-medium-container {
-  margin-top: 40px;
+  margin-top: 100px;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -647,16 +647,18 @@ button{
 }
 
 .reference-links {
+  margin-top: 100px;
   display: flex;
   flex-direction: row;
-  width: 80%;
-  justify-content: space-between;
+  width: 100%;
+  justify-content: center;
 }
 
 .reference {
   text-decoration: none;
   font-size: 9px;
-  color:rgba(117, 117, 117, 1)
+  color:rgba(117, 117, 117, 1);
+  margin-right: 10px;
 }
 
 .reference:hover {
@@ -670,4 +672,16 @@ button{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.story-content-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 70vh;
+  width: 30%;
+  padding: 0 32px 0 16px;
+  position: fixed;
+  top: 0;
+  right: 0%;
 }
