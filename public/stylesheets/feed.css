@@ -1,6 +1,7 @@
 #feed-main-layout {
   display: flex;
   flex-direction: row;
+  -webkit-font-smoothing: antialiased;
 }
 
 .centerHolder {
@@ -501,7 +502,6 @@
 
 .rec-user-bio-text {
   font-size: 12px;
-  font-weight: lighter;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -572,14 +572,12 @@
 .user-follower-count-text {
   margin-top: 9px;
   font-size: 14px;
-  font-weight: lighter;
   -webkit-font-smoothing: antialiased;
 }
 
 .story-user-bio-text {
   margin: 0;
   font-size: 12px;
-  font-weight: lighter;
   -webkit-font-smoothing: antialiased;
 }
 

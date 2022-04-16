@@ -36,13 +36,20 @@
 }
 
 #comment-modal-title {
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 1000;
     font-size: 2em;
+    font-style: bold;
     padding-bottom: 1em;
 }
 
 #comment-close-out {
     width: 30px;
     height: 30px;
+}
+
+#comment-close-out:hover {
+    cursor: pointer;
 }
 
 #new-comment-container {
@@ -64,6 +71,7 @@
     border: none;
     resize: none;
     padding: 1em;
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #new-comment-box:focus {

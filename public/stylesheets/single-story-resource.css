@@ -44,12 +44,20 @@
 
 #story-author {
     padding-bottom: .5em;
-    font-size: 1.5em;
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 24px;
+    font-size: 16px;
     text-decoration: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
 }
 
 #story-date-readTime {
-    color: #757575;
+    line-height: 20px;
+    font-size: 14px;
+    color: rgba(117, 117, 117, 1);
+    font-weight: 400;
 }
 
 #links-nav {
@@ -86,13 +94,25 @@
 }
 
 #story-title {
-    padding-bottom: 1em;
-    font-size: 3em;
+    line-height: 40px;
+    letter-spacing: -0.016em;
+    margin-top: 0.6em;
+    margin-bottom: -0.27em;
+    font-size: 32px;
     font-weight: bold;
+    color: rgba(41, 41, 41, 1);
 }
 
 #story-article {
-    font-size: 1.5em;
+    font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 20px;
+    font-style: normal;
+    line-height: 32px;
+    letter-spacing: -0.003em;
+    -webkit-font-smoothing: antialiased;
+    margin-top: 2em;
+    margin-bottom: -0.46em;
+    font-weight: 400;
 }
 
 #clap-comment-modal {

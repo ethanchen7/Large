@@ -6,6 +6,12 @@ a:hover {
     cursor: pointer;
 }
 
+.large-logo-title {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 33px;
+    font-style: bolder;
+}
+
 .splashBanner {
     background-color: #FFC017;
     display: flex;
@@ -22,6 +28,14 @@ a:hover {
 }
 
 #mainBanner-title {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.05em;
+    line-height: 95px;
+    font-size: 106px;
+    color: rgba(8, 8, 8, 1);
     font-size: 90px;
 }
 
@@ -37,6 +51,7 @@ a:hover {
     background-color: black;
     color: white;
     width: 213px;
+    line-height: 24px;
     font-size: 20px;
     padding-left: 20px;
     padding-right: 20px;
@@ -45,6 +60,8 @@ a:hover {
     border: solid black 1px;
     border-radius: 25px;
     text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
 }
 
 #mainBanner-button:hover{
@@ -130,6 +147,9 @@ a:hover {
 
 .trend-storyInformation {
     color: #757575;
+    font-size: 13px;
+    line-height: 20px;
+    margin-top: 5px;
     padding: .2em;
 }
 
@@ -219,8 +239,10 @@ a:hover {
     color: #757575;
     border: 1px solid rgba(230, 230, 230, 1);
     border-radius: 3px;
-    margin: .25em;
-    padding: 5px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
 }
 
 img.scroll-stories-preivew-img {
@@ -233,10 +255,10 @@ img.scroll-stories-preivew-img {
     border-top: 1px solid rgba(230, 230, 230, 1);
     display: flex;
     flex-wrap: wrap;
-    padding-top: 24px;
 }
 
-.infoLinks {
+.disclaimer {
     color: #757575;
-    padding: .6em;
+    font-size: 12px;
+    letter-spacing: 0.03em;
 }
