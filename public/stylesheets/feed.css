@@ -224,7 +224,7 @@
   min-height: 70vh;
   width: 30%;
   padding: 0 32px 0 16px;
-  position: fixed;
+  position: sticky;
   top: 0;
   right: 0%;
 }
@@ -672,4 +672,16 @@ button{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.story-content-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 70vh;
+  width: 30%;
+  padding: 0 32px 0 16px;
+  position: fixed;
+  top: 0;
+  right: 0%;
 }
