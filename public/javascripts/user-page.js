@@ -9,9 +9,9 @@ window.addEventListener("load", (event) => {
   const showBio = document.getElementsByClassName("showBio")[0];
 
   if (checkBio !== 'null' && checkBio !== '') {
+    showBio.classList.remove('hideBio')
     noBio.classList.add('hideBio')
     bioEdit.classList.add('hideBio')
-    showBio.classList.remove('hideBio')
   }
 
   createBioBtn.addEventListener('click', (e) => {

@@ -69,6 +69,8 @@
 }
 
 .bottLinks {
+  position: absolute;
+  bottom: 10px;
   align-items: flex-end;
   justify-content: center;
   width: fit-content;
@@ -81,4 +83,16 @@
   margin-right: 5px;
 }
 
+.userRName {
+  margin-top: 5px;
+}
 
+.see-the-full-list {
+  margin-top: 20px;
+}
+
+.user-bio {
+  margin-top: 5px;
+  word-break: break-all;
+  white-space: normal;
+}
