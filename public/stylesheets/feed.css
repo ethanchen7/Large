@@ -559,7 +559,7 @@
 
 .story-user-name-text {
   text-decoration: none;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bolder;
   -webkit-font-smoothing: antialiased;
 }
@@ -570,14 +570,18 @@
 }
 
 .user-follower-count-text {
+  color: rgba(117, 117, 117, 1);
   margin-top: 9px;
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 24px;
   -webkit-font-smoothing: antialiased;
 }
 
 .story-user-bio-text {
+  color: rgba(117, 117, 117, 1);
   margin: 0;
-  font-size: 12px;
+  line-height: 20px;
+  font-size: 14px;
   -webkit-font-smoothing: antialiased;
 }
 
