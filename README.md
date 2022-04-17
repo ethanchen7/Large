@@ -9,3 +9,27 @@
 # Technologies Used
 
 Large is built on Node JS, HTML, CSS for its frontend, and Express and Sequelize for its backend, and a PostgreSQL database.
+
+# Getting Started
+
+1. Clone this repository <br />
+
+&ensp;&ensp;`git clone git@github.com:ethanchen7/Large.git`
+
+2. Install dependencies  <br />
+
+&ensp;&ensp;`npm install`
+
+3. Create a .env file in the root direction based on the .env.example given.  <br />
+
+4. Create a user in psql based on your .env DATABASE_URL app_name   <br />
+
+&ensp;&ensp;`psql -c "CREATE USER <username> PASSWORD '<password>' CREATEDB"`
+
+5. Create a database in psql based on your .env DATABASE_URL db_name.  <br />
+
+6. Start your shell and migrate and seed the database.   <br />
+
+&ensp;&ensp;`npx dotenv sequelize db:migrate`   <br />
+
+&ensp;&ensp;`npx dotenv sequelize db:seed:all`
