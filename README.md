@@ -44,7 +44,7 @@ Large is built on Node JS, HTML, and CSS for its frontend, Express and Sequelize
 ## User Following/Followers Feature
 &ensp;Users are able to follow and unfollow other users. This involved associated User instances with other User instances in a self-joining association: 
 
-```
+```js
 const columnMappingOne = {
       // User -> User, through Follow as follower
       through: "Follow",
