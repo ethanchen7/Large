@@ -39,17 +39,23 @@ Large is built on Node JS, HTML, CSS for its frontend, and Express and Sequelize
 ## Dynamic Clap and Comment Rendering
 &ensp;Users are able to like and comment on a story without being redirected from the page. This allows for a seamless reading and interactive experience.
 
-Welcome (Splash Page for unauthenticated users)
+![](https://media.giphy.com/media/ndjICdYqwbQ7WnkJNx/giphy.gif)
+
+### Welcome (Splash Page for unauthenticated users) <br />
+
 ![Screen Shot 2022-04-16 at 10 29 50 PM](https://user-images.githubusercontent.com/60331384/163701872-a00527e8-cd50-4c1b-8af9-0940f8c8ddcf.png)
 ![Screen Shot 2022-04-16 at 10 30 12 PM](https://user-images.githubusercontent.com/60331384/163701882-3dbc1bf0-9629-4232-8744-e648ab45c4ab.png)
 
-Story Feed
+### Story Feed <br />
+
 ![Screen Shot 2022-04-16 at 10 30 47 PM](https://user-images.githubusercontent.com/60331384/163701887-50a58ca4-e3e1-46f0-9614-6f3b0676b115.png)
 
-Single Story Page
+### Single Story Page <br />
+
 ![Screen Shot 2022-04-16 at 10 31 18 PM](https://user-images.githubusercontent.com/60331384/163701899-49d95cf1-9a57-4f1f-a2cd-14a22bed70bb.png)
 
-Comment Modal
+### Comment Modal <br />
+
 ![Screen Shot 2022-04-16 at 10 31 50 PM](https://user-images.githubusercontent.com/60331384/163701913-07983341-1235-480e-8185-d8ab3aa09816.png)
 
 
