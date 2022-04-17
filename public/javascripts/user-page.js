@@ -63,19 +63,12 @@ window.addEventListener("load", (event) => {
 
 
   const homeBtn = document.getElementById('homeButton')
-  const listBtn = document.getElementById('listsButton')
   const aboutBtn = document.getElementById('aboutButton')
 
 
   homeBtn.addEventListener('click', () => {
     homeBtn.style.borderBottom = 'solid black 0.25px';
     listBtn.style.borderBottom = 'none'
-    aboutBtn.style.borderBottom = 'none'
-  })
-
-  listBtn.addEventListener('click', () => {
-    listBtn.style.borderBottom = 'solid black 0.25px'
-    homeBtn.style.borderBottom = 'none'
     aboutBtn.style.borderBottom = 'none'
   })
 

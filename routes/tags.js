@@ -3,7 +3,7 @@ var router = express.Router();
 
 const db = require("../db/models");
 const { requireAuth } = require("../auth");
-const { asyncHandler, storiesByTags } = require("./utils");
+const { asyncHandler, storiesByTags, splashPageQueries, getRecommended } = require("./utils");
 
 router.get('/tags/:id', requireAuth, asyncHandler(async(req,res, next) =>{
     const tag = req.params.id
@@ -13,6 +13,15 @@ router.get('/tags/:id', requireAuth, asyncHandler(async(req,res, next) =>{
     const tagStories = await storiesByTags(tag);
 
     const currUser = await db.User.findByPk(req.session.auth.userId)
+
+    const queries = await splashPageQueries()
+
+    const { newStories, tags } = queries
+
+    const contentBarStories = newStories.slice(0, 3);
+    const contentBarTags = tags.slice(0, 7);
+
+    const nonFollowedAccounts = await getRecommended(currUser.id)
 
     let doesFollowTag = await db.UserTag.findAll({
         where: {
@@ -30,6 +39,9 @@ router.get('/tags/:id', requireAuth, asyncHandler(async(req,res, next) =>{
     const {stories} = tagStories
 
     res.render('tag-feed', {
+        nonFollowedAccounts,
+        contentBarStories,
+        contentBarTags,
         stories,
         currUser,
         tagName,

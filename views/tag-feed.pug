@@ -21,7 +21,7 @@ block content
 
       div(id='feedChoice')
           //- p(id='following') Following 
-          p(id='recommended') Most Recent #{tagName.name} Stories
+          p(id='recommended') Trending
       div(id= 'contentDisplayed')
           div(id= 'recommendedStories')
               -let n = 0 
@@ -41,14 +41,14 @@ block content
                                   a(href=`/tags/${story.Tag.id}`)= story.Tag.name 
                                   p #{story.readTime} min · selected for you 
                               div(class='underRight')
-                                  img(src="/images/save.png", alt="")
-                                  strong(href='#') ···
+                                  img(src="/images/save3.png", alt="")
+                                  strong(href='/thanks') ···
                       div(class='imgDiv')
                           img(class='imgPreview' src=`https://picsum.photos/20${n}`)
 
+    include content-bar.pug
 
-
-    //- script(src='/javascripts/feed.js')
+    script(src='/javascripts/contentBar.js')
     script(src='/javascripts/tag-feed.js')
 
 

@@ -34,11 +34,13 @@
 }
 
 #keepup > h1 {
-  color: black;
-  font-size: 30pt;
-  font-weight:bolder;
+  color: rgba(41, 41, 41, 1);
+  font-size: 42px;
+  line-height: 52px;
+  max-height: 52px;
+  font-weight: 700;
   -webkit-font-smoothing: antialiased;
-  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 #topButtons{
@@ -55,7 +57,7 @@
   padding-bottom: 7px;
 
   font-size: 10pt;
-  margin: 10px;
+  margin: 5px;
   border-radius: 25px;
 }
 
@@ -150,16 +152,20 @@
 }
 
 .topInfo > p {
-  font-size: 9pt;
+  font-size: 14px;
+  line-height: 20px;
   margin-left: 5px;
-  color: rgb(58, 58, 58);
+  max-height: 20px;
+  color: rgba(117, 117, 117, 1);
   -webkit-font-smoothing: antialiased;
 }
 
 .topInfo > a {
-  font-size: 9pt;
+  font-size: 14px;
+  line-height: 20px;
   margin-left: 5px;
-  text-decoration: none;
+  max-height: 20px;
+  color: rgba(41, 41, 41, 1);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -184,8 +190,12 @@
 }
 
 .storyPreview > a {
-  color: rgb(58, 58, 58);
-  font-size: 9.5pt;
+  font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
+  max-height: 72px;
+  line-height: 24px;
+  font-size: 16px;
+  color: rgba(41, 41, 41, 1);
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
 }
@@ -207,15 +217,15 @@
 .underLeft > a {
   text-decoration: none;
   background-color: rgba(223, 223, 223, 0.69);
-  margin-right: 15px;
-  font-size: 9.5pt;
+  margin-right: 10px;
+  font-size: 13px;
   padding: 5px;
   border-radius: 15px;
   -webkit-font-smoothing: antialiased;
 }
 
 .underLeft > p {
-  font-size: 9pt;
+  font-size: 13px;
   color: rgb(143, 143, 143);
   -webkit-font-smoothing: antialiased;
 }
