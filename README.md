@@ -1,6 +1,11 @@
-# Express Project Skeleton
+# Large (A Clone of Medium)
 
-Use this project skeleton as a starting point for structuring your app. Things to note
-* Sequelize configuration has not yet been added -- you will need to set that up yourself
-* You may find yourself wanting to use javascript -- js files can be added in `public/javascripts` and should be appended to the Pug templates as needed
-* CSS files can go in `public/stylesheets` and also will need to be added to Pug templates
+![Screen Shot 2022-04-16 at 9 53 41 PM](https://user-images.githubusercontent.com/60331384/163701001-c43a0edf-69bc-4bfc-a0ad-f986d7336607.png)
+
+[Large](https://large-medium-clone.herokuapp.com/) is a platform where users can share diverse thoughts, read and write stories of any topic, follow certain topics of interest, as well as follow other users. It is inspired by the the social publishing platform Medium.
+
+| [Live Site](https://large-medium-clone.herokuapp.com/) | [MVP Feature List](https://github.com/ethanchen7/Large/wiki/Features-List) | [Database Schema](https://github.com/ethanchen7/Large/wiki/Database-Schema) | [Frontend Routes](https://github.com/ethanchen7/Large/wiki/Front-End-Routes) | [API Documentation](https://github.com/ethanchen7/Large/wiki/API-Documentation) | [User Stories](https://github.com/ethanchen7/Large/wiki/User-Stories) |
+
+# Technologies Used
+
+Large is built on Node JS, HTML, CSS for its frontend, and Express and Sequelize for its backend, and a PostgreSQL database.
