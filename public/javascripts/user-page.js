@@ -7,7 +7,12 @@ window.addEventListener("load", (event) => {
   const noBio = document.getElementsByClassName("noBio")[0];
   const bioEdit = document.getElementsByClassName("bioEdit")[0];
   const showBio = document.getElementsByClassName("showBio")[0];
+  const unlimitedAccessBtn = document.querySelector(".unlimited-access-btn");
 
+  unlimitedAccessBtn.addEventListener("click", (e) => {
+    window.location.href = '/thanks';
+  });
+  
   if (checkBio !== 'null' && checkBio !== '') {
     showBio.classList.remove('hideBio')
     noBio.classList.add('hideBio')
