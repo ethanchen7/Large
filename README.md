@@ -62,6 +62,8 @@ const columnMappingTwo = {
 User.belongsToMany(models.User, columnMappingOne);
 User.belongsToMany(models.User, columnMappingTwo);
 ```
+![Screen Shot 2022-04-17 at 11 08 07 AM](https://user-images.githubusercontent.com/60331384/163726974-46a20af7-5205-4b5e-b538-96a28f4d52a7.png)
+
 
 ### Welcome (Splash Page for unauthenticated users) <br />
 
