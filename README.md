@@ -36,7 +36,7 @@ Large is built on Node JS, HTML, and CSS for its frontend, Express and Sequelize
 
 # Features Highlight
 
-## Dynamic Clap and Comment Rendering
+## Dynamic Clap, Comment, and Edit Bio Rendering
 &ensp;Users are able to like and comment on a story without being redirected from the page. This allows for a seamless reading and interactive experience.
 
 ![](https://media.giphy.com/media/ndjICdYqwbQ7WnkJNx/giphy.gif)
