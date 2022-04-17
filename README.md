@@ -10,6 +10,9 @@
 
 Large is built on Node JS, HTML, and CSS for its frontend, Express and Sequelize for its backend, and a PostgreSQL database.
 
+
+
+
 # Getting Started
 
 1. Clone this repository <br />
