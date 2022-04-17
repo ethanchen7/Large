@@ -10,7 +10,7 @@ block content
         div(class='centerHolderUser' data-userBio=`${user.bio}`)
             div(id='keepupUser')
                 a(href=`/users/${user.id}`)
-                    h1= `${user.firstName} ${user.lastName}`
+                    p(class="user-full-name")= `${user.firstName} ${user.lastName}`
             div(id='feedChoiceUser')
                 a(id='homeButton'  href=`/users/${user.id}`) Home 
                 a(id='aboutButton' href=`/users/${user.id}/about`) About 

@@ -1,7 +1,7 @@
 div(class='centerHolderUser')
     div(id='keepupUser')
         a(href=`/users/${user.id}`)
-            h1= `${user.firstName} ${user.lastName}`
+            p(class='user-full-name')= `${user.firstName} ${user.lastName}`
     div(id='feedChoiceUser')
         a(id='homeButton' href=`/users/${user.id}`) Home 
         a(id='aboutButton' href=`/users/${user.id}/about`) About 
@@ -19,7 +19,7 @@ div(class='centerHolderUser')
                             p= `${story.date}`
                         a(class='storyTitleUser' href=`/stories/${story.id}`)= story.title
                         div(class='storyPreviewUser')
-                            a(href=`/stories/${story.id}`)= `${story.article.split(' ').splice(0,25).join(' ')}...`
+                            p(href=`/stories/${story.id}`)= `${story.article.split(' ').splice(0,25).join(' ')}...`
                         div(class='underStoryUser')
                             div(class='underLeftUser')
                                 div(class='ownClap')
