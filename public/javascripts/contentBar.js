@@ -117,7 +117,3 @@ followButtons[2].addEventListener('click', async (e) => {
     followButtons[2].style.color = 'black'
   }
 })
-
-closeBoxButton.addEventListener('click', e => {
-  writingOnMediumCont.remove()
-})
