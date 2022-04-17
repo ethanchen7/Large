@@ -68,6 +68,11 @@ User.belongsToMany(models.User, columnMappingTwo);
 
 ![](https://media.giphy.com/media/TvQ1xdtxd2xEdO5vL4/giphy.gif)
 
+## Publishing a Story <br />
+&ensp;Users are able to publish a story and tag with a topic of their choice. This feature deviates from a traditional form due to the modal pop up and publish buttons being outside of the form element.
+
+![](https://media.giphy.com/media/7Vqlnlzt5J7hqP1BI5/giphy.gif)
+
 ### Welcome (Splash Page for unauthenticated users) <br />
 
 ![Screen Shot 2022-04-16 at 10 29 50 PM](https://user-images.githubusercontent.com/60331384/163701872-a00527e8-cd50-4c1b-8af9-0940f8c8ddcf.png)
