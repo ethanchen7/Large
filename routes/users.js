@@ -155,14 +155,16 @@ router.get(
 
     currUser = await db.User.findByPk(currUser.userId)
 
+    
     const user = await db.User.findByPk(req.url.split('/')[2]);
+    const followerCount = await getFollowerCount(user)
 
     const userStories = await db.Story.findAll({
       include: [db.User, db.Tag],
       where: { userId: user.id },
     });
 
-    res.render("user-page-about", { currUser, user, userStories});
+    res.render("user-page-about", { currUser, user, userStories, followerCount});
   })
 );
 
