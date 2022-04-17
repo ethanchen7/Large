@@ -8,19 +8,26 @@ div(class="content-bar")
         img(class='userIcon' src="https://picsum.photos/200")
         div(class="userRName")
             a(class='userLinking' href=`/users/${user.id}`)= `${user.firstName} ${user.lastName}`
-    
-        a(href=`/users/${user.id}/about` class="see-the-full-list") Edit Info
+            if (followerCount === 1)
+                p(class="user-follower-count-text") #{followerCount} Follower
+            else 
+                p(class="user-follower-count-text") #{followerCount} Followers
+        if (currUser.id !== user.id)
+            div(class="user-bio")
+                p(class="story-user-bio-text") #{user.bio}
+        if (currUser.id === user.id)
+            a(href=`/users/${user.id}/about` class="see-the-full-list") Edit Info
 
     div(class='bottLinks')
-        a(class='botLink' href='#') Help
-        a(class='botLink' href='#') Status 
-        a(class='botLink' href='#') Writer
-        a(class='botLink' href='#') Blog 
-        a(class='botLink' href='#') Careers 
-        a(class='botLink' href='#') Privacy
-        a(class='botLink' href='#') Terms 
-        a(class='botLink' href='#') About 
-        a(class='botLink' href='#') Knowable
+        a(class='botLink' href='/thanks') Help
+        a(class='botLink' href='/thanks') Status 
+        a(class='botLink' href='/thanks') Writer
+        a(class='botLink' href='/thanks') Blog 
+        a(class='botLink' href='/thanks') Careers 
+        a(class='botLink' href='/thanks') Privacy
+        a(class='botLink' href='/thanks') Terms 
+        a(class='botLink' href='/thanks') About 
+        a(class='botLink' href='/thanks') Knowable
 
 
 

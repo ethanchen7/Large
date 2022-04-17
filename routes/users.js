@@ -3,7 +3,7 @@ var router = express.Router();
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 
-const { csrfProtection, asyncHandler, splashPageQueries, storiesByTags } = require("./utils");
+const { csrfProtection, asyncHandler, splashPageQueries, getFollowerCount } = require("./utils");
 const { loginUser, logoutUser, demoUser } = require("../auth.js");
 const { userValidators, loginValidators } = require("./validators");
 const db = require("../db/models");
@@ -118,6 +118,8 @@ router.get(
 
     const user = await db.User.findByPk(req.url.split('/')[2]);
 
+    const followerCount = await getFollowerCount(user)
+
     const userStories = await db.Story.findAll({
       include: [db.User, db.Tag],
       where: { userId: user.id},
@@ -139,7 +141,7 @@ router.get(
   
     })
 
-    res.render("user-page", { currUser, user, userStories});
+    res.render("user-page", { currUser, user, userStories, followerCount});
   })
 );
 
