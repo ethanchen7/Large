@@ -83,4 +83,9 @@ User.belongsToMany(models.User, columnMappingTwo);
 
 ![Screen Shot 2022-04-16 at 10 31 50 PM](https://user-images.githubusercontent.com/60331384/163701913-07983341-1235-480e-8185-d8ab3aa09816.png)
 
+### Profile Page <br />
+
+![Screen Shot 2022-04-17 at 11 32 00 AM](https://user-images.githubusercontent.com/60331384/163727770-e76b8337-c252-470c-a74a-7a77fc77d12b.png)
+
+![Screen Shot 2022-04-17 at 11 32 34 AM](https://user-images.githubusercontent.com/60331384/163727790-b8196cd1-0d91-4130-805a-6be502fa7455.png)
 
