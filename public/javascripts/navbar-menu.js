@@ -19,12 +19,12 @@ window.addEventListener("load", (event) => {
     const contentBarFeed = document.querySelectorAll('.content-bar')
 
 
-    // centerFeed.addEventListener('click', () => {
+    centerFeed.addEventListener('click', () => {
 
-    //     menu[0].style.display = 'none'
+        menu[0].style.display = 'none'
     
 
-    // })
+    })
 
     contentBarFeed.forEach((el) => {
         el.addEventListener('click', () => {    
@@ -36,13 +36,13 @@ window.addEventListener("load", (event) => {
     
 
 
-    // const centerUser = document.getElementsByClassName('centerHolderUser')[0]
+    const centerUser = document.getElementsByClassName('centerHolderUser')[0]
 
-    // centerUser.addEventListener('click', () => {
+    centerUser.addEventListener('click', () => {
         
-    //     menu[0].style.display = 'none'
+        menu[0].style.display = 'none'
 
-    // });
+    });
 
 
     
