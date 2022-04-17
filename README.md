@@ -37,9 +37,11 @@ Large is built on Node JS, HTML, and CSS for its frontend, Express and Sequelize
 # Features Highlight
 
 ## Dynamic Clap, Comment, and Edit Bio Rendering
-&ensp;Users are able to like and comment on a story without being redirected from the page. This allows for a seamless reading and interactive experience.
+&ensp;Users are able to clap and comment on a story without being redirected from the page. They are also able to edit their biography from their user profile page. This allows for a seamless reading and interactive experience.
 
 ![](https://media.giphy.com/media/ndjICdYqwbQ7WnkJNx/giphy.gif)
+
+![](https://media.giphy.com/media/lk0fwNXiWWgw1DFcfm/giphy.gif)
 
 ## User Following/Followers Feature
 &ensp;Users are able to follow and unfollow other users. This involved associated User instances with other User instances in a self-joining association: 
