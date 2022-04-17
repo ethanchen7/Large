@@ -12,13 +12,13 @@ div(class="story-content-bar")
             p(class="user-follower-count-text") #{followerCount} Followers
         div(class="story-user-bio")
             p(class="story-user-bio-text") #{story.User.bio}
-        div(class="story-user-buttons-container")
-            if follows
-                button(id="story-user-follow-btn" data-userid=`${story.User.id}` data-follows=`${follows}` class="state-following-btn") Following 
-            else
-                button(id="story-user-follow-btn" data-userid=`${story.User.id}` data-follows=`${follows}` class="state-follow-btn") Follow
-            button(id="story-user-email-btn")
-                img(src="/images/mail.png")
+    div(class="story-user-buttons-container")
+        if follows
+            button(id="story-user-follow-btn" data-userid=`${story.User.id}` data-follows=`${follows}` class="state-following-btn") Following 
+        else
+            button(id="story-user-follow-btn" data-userid=`${story.User.id}` data-follows=`${follows}` class="state-follow-btn") Follow
+        button(id="story-user-email-btn")
+            img(src="/images/mail.png")
     div(class="more-from-medium-container")
         div(class="currently-reading-title")
             h2(class="recent-article-text") More from Medium 

@@ -1,7 +1,7 @@
 link(rel='stylesheet' href='/stylesheets/feed.css')
 div(class='centerHolder')
     div(id='keepup')
-        a(href="#") +
+        a(href="/thanks") +
         p Keep up with the latest in any topic
 
     div(id='feedChoice')
@@ -26,8 +26,8 @@ div(class='centerHolder')
                                 a(href=`/tags/${story.Tag.id}`)= story.Tag.name 
                                 p #{story.readTime} min · selected for you 
                             div(class='underRight')
-                                img(src="/images/save.png", alt="")
-                                strong(href='#') ···
+                                img(src="/images/save3.png", alt="")
+                                strong(href='/thanks') ···
                     div(class='imgDiv')
                         img(class='imgPreview' src= `https://picsum.photos/20${n}`)
         div(id='followingStories')

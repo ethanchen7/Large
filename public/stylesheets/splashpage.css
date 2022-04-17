@@ -167,8 +167,47 @@ a:hover {
     padding-right: 8.3%;
 }
 
-.topInfo {
+.slashTopInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     padding-bottom: .4em;
+    padding-right: 2px;
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.slashTopInfo > a {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    color: rgba(41, 41, 41, 1);
+    padding-right: 2px;
+}
+
+.splashstoryDiv {
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    justify-content: space-between;
+    overflow-wrap: normal;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+.splashfeedprofile-img {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.splashstoryTitle {
+    font-weight: 700;
+    font-size: 22px;
+    max-height: 56px;
+    letter-spacing: 0;
+    line-height: 28px;
+    overflow: hidden;
 }
 
 .splash-storyContent {
@@ -214,8 +253,15 @@ a:hover {
     -webkit-font-smoothing: antialiased;
 }
 
-.storyPreview > p {
+
+.splashstoryPreview > p {
     width: 75%;
+    font-size: 16px;
+    color: rgba(117, 117, 117, 1);
+    text-overflow: ellipsis;
+    /* max-height: 40px; */
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 0.003em;
 }
 
 #scroll-information {
