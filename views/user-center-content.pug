@@ -6,9 +6,14 @@ div(class='centerHolderUser')
         a(id='homeButton' href=`/users/${user.id}`) Home 
         a(id='aboutButton' href=`/users/${user.id}/about`) About 
     div(id= 'contentDisplayed')
-        if (userStories.length === 0)
-            div(class='noStoriesToShow')
-                a(href='/my-stories/new') Create your first story
+        if (currUser.id === user.id)
+            if (userStories.length === 0)
+                div(class='noStoriesToShow')
+                    a(href='/my-stories/new') Create your first story
+        else 
+            if (userStories.length === 0)
+                div(class='noStoriesToShowUser')
+                    p This user has no stories
         div(id= 'userStories')
             each story in userStories
                 div(class='storyDivUser')
