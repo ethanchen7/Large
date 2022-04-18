@@ -3,7 +3,7 @@ const startWritingBtn = document.getElementById("start-writing-btn");
 const recommendedTopicsTags = document.querySelector(
   ".recommend-topics-tags"
 ).children;
-const closeBoxButton = document.querySelector('close-box-button')
+const closeBoxButton = document.querySelector('.close-box-button')
 const writingOnMediumCont = document.querySelector('writing-on-medium-container')
 
 unlimitedAccessBtn.addEventListener("click", (e) => {
@@ -25,24 +25,24 @@ for (let i = 0; i < recommendedTopicsTags.length; i++) {
 
 const followButtons = document.getElementsByClassName('follow-btn')
 
-followButtons[0].addEventListener('click', async(e) =>{
+followButtons[0].addEventListener('click', async (e) => {
   let btn = followButtons[0]
   const followUserId = followButtons[0].getAttribute('id').split('-')[0]
 
   const currentColor = window.getComputedStyle(btn).backgroundColor
 
-  if (currentColor === 'rgb(255, 255, 255)'){
+  if (currentColor === 'rgb(255, 255, 255)') {
     fetch(`/users/${followUserId}/follow`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       }
     })
-  
+
     followButtons[0].innerHTML = 'Following'
-    followButtons[0].style.backgroundColor= 'black'
+    followButtons[0].style.backgroundColor = 'black'
     followButtons[0].style.color = 'white'
-  }else{
+  } else {
     fetch(`/users/${followUserId}/follow`, {
       method: 'DELETE',
       headers: {
@@ -116,4 +116,9 @@ followButtons[2].addEventListener('click', async (e) => {
     followButtons[2].style.backgroundColor = 'white'
     followButtons[2].style.color = 'black'
   }
+})
+
+closeBoxButton.addEventListener("click", () => {
+  const blueBox = document.getElementsByClassName("writing-container")[0];
+  blueBox.remove();
 })
