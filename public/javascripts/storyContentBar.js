@@ -53,7 +53,6 @@ emailBtn.addEventListener('click', e => {
 
 function updateFollowCount(following) {
   let count = followerCount.innerText.split(" ")[0];
-  console.log(count);
 
   if (following) {
     count++
