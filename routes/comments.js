@@ -15,7 +15,6 @@ router.post("/comment", restoreUser, requireAuth, asyncHandler(async (req, res) 
     const user = await db.User.findByPk(userId);
     const comments = await db.Comment.findAll();
     const newCommentId = comments[comments.length - 1].id;
-    console.log("****************", newCommentId)
     const response = {
         message: "success",
         user,
@@ -27,9 +26,7 @@ router.post("/comment", restoreUser, requireAuth, asyncHandler(async (req, res) 
 router.put("/comment/:commentId", asyncHandler(async (req, res) => {
 
     const { text } = req.body;
-    console.log("*********** text in router", text)
     const commentId = parseInt(req.params.commentId);
-    console.log("*********** id in router", commentId)
     const comment = await db.Comment.findByPk(commentId);
 
     comment.text = text;

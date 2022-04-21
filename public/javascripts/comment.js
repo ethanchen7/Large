@@ -67,12 +67,10 @@ addEventListener("DOMContentLoaded", e => {
                 // comment container
                 const newComment = document.createElement("div");
                 newComment.setAttribute("class", "comment-container");
+                newComment.setAttribute("id", `comment-container-${newCommentId}`);
                 // comment header
                 const commentHeader = document.createElement("div");
                 commentHeader.setAttribute("class", "comment-container-header");
-                // comment user image container
-                // const commentUserImg = document.createElement("div");
-                // commentUserImg.setAttribute("class", "comment-user-img");
                 // actual image
                 const img = document.createElement("img");
                 img.setAttribute("src", `https://picsum.photos/${Math.floor(Math.random() * 50)}`);
@@ -111,8 +109,9 @@ addEventListener("DOMContentLoaded", e => {
                 // footer delete
                 const footerDelete = document.createElement("div");
                 footerDelete.setAttribute("class", "footer-delete");
+                footerDelete.setAttribute("id", `delete-${newCommentId}`);
                 footerDelete.innerText = "Delete";
-                footerDelete.addEventListener("click", deleteComment);
+                footerDelete.addEventListener("click", confirmDelete);
                 // footer edit-save
                 const saveCancelFooter = document.createElement("div");
                 saveCancelFooter.setAttribute("class", `save-cancel-footer hiddenOnComments sc-footer-${newCommentId}`)
@@ -128,13 +127,13 @@ addEventListener("DOMContentLoaded", e => {
                 editCancelButton.innerText = "Cancel";
                 // footer yes-cancel
                 const yesCancelFooter = document.createElement("div");
-                yesCancelFooter.setAttribute("class", `hiddenOnComments yc-footer-${newCommentId}`)
+                yesCancelFooter.setAttribute("class", `yes-cancel-footer hiddenOnComments yc-footer-${newCommentId}`)
                 // delete confirm button
                 const confirmDeleteButton = document.createElement("div");
                 confirmDeleteButton.setAttribute("class", "footer-save");
                 confirmDeleteButton.setAttribute("id", `yc-save-${newCommentId}`);
                 confirmDeleteButton.innerText = "Delete";
-                confirmDeleteButton.addEventListener("click", confirmDelete);
+                confirmDeleteButton.addEventListener("click", deleteComment);
                 // delete cancel button
                 const cancelDelete = document.createElement("div");
                 cancelDelete.setAttribute("class", "footer-cancel");
@@ -273,12 +272,10 @@ const toggleFooters = (className) => {
 
 const fetchEditComment = async (e) => {
     const commentId = e.target.id.split("-")[1]
-    // console.log(commentId)
 
     // get value from new comment box
     const editedTextArea = document.getElementById(`edit-${commentId}`);
     const text = editedTextArea.value;
-    // console.log(text);
 
     // remove edit comment container
     const editContainer = document.getElementById(`edit-container-${commentId}`);
