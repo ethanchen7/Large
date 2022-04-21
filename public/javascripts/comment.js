@@ -71,8 +71,8 @@ addEventListener("DOMContentLoaded", e => {
                 const commentHeader = document.createElement("div");
                 commentHeader.setAttribute("class", "comment-container-header");
                 // comment user image container
-                const commentUserImg = document.createElement("div");
-                commentUserImg.setAttribute("class", "comment-user-img");
+                // const commentUserImg = document.createElement("div");
+                // commentUserImg.setAttribute("class", "comment-user-img");
                 // actual image
                 const img = document.createElement("img");
                 img.setAttribute("src", `https://picsum.photos/${Math.floor(Math.random() * 50)}`);
@@ -88,17 +88,24 @@ addEventListener("DOMContentLoaded", e => {
                 // days ago
                 const commentDaysAgo = document.createElement("div");
                 commentDaysAgo.setAttribute("class", "comment-daysAgo");
+                commentDaysAgo.setAttribute("id", `daysAgo-${newCommentId}`);
                 commentDaysAgo.innerText = "posted just now.";
+                // comment content container
+                const commentContainer = document.createElement("div")
+                commentContainer.setAttribute("class", "comment-content-container")
+                commentContainer.setAttribute("id", `content-container-${newCommentId}`)
                 // comment content
                 const commentContent = document.createElement("div");
                 commentContent.setAttribute("class", "comment-content");
+                commentContent.setAttribute("id", `comment-${newCommentId}`);
                 commentContent.innerText = text;
                 // comment footer
                 const editDeleteFooter = document.createElement("div");
-                editDeleteFooter.setAttribute("class", "edit-delete-footer");
+                editDeleteFooter.setAttribute("class", `edit-delete-footer sc-footer-${newCommentId} yc-footer-${newCommentId}`);
                 // footer edit
                 const footerEdit = document.createElement("div");
                 footerEdit.setAttribute("class", "footer-edit");
+                footerEdit.setAttribute("id", `edit-${newCommentId}`);
                 footerEdit.innerText = "Edit";
                 footerEdit.addEventListener("click", editComment);
                 // footer delete
@@ -108,8 +115,7 @@ addEventListener("DOMContentLoaded", e => {
                 footerDelete.addEventListener("click", deleteComment);
                 // footer edit-save
                 const saveCancelFooter = document.createElement("div");
-                saveCancelFooter.setAttribute("class", "save-cancel-footer")
-                saveCancelFooter.setAttribute("class", `hiddenOnComments sc-footer-${comment.id}`)
+                saveCancelFooter.setAttribute("class", `save-cancel-footer hiddenOnComments sc-footer-${newCommentId}`)
                 // save button
                 const saveButton = document.createElement("div");
                 saveButton.setAttribute("class", "footer-save");
@@ -124,10 +130,11 @@ addEventListener("DOMContentLoaded", e => {
                 const yesCancelFooter = document.createElement("div");
                 yesCancelFooter.setAttribute("class", `hiddenOnComments yc-footer-${newCommentId}`)
                 // delete confirm button
-                const confirmDelete = document.createElement("div");
-                confirmDelete.setAttribute("class", "footer-save");
-                confirmDelete.setAttribute("id", `yc-save-${newCommentId}`);
-                confirmDelete.innerText = "Delete";
+                const confirmDeleteButton = document.createElement("div");
+                confirmDeleteButton.setAttribute("class", "footer-save");
+                confirmDeleteButton.setAttribute("id", `yc-save-${newCommentId}`);
+                confirmDeleteButton.innerText = "Delete";
+                confirmDeleteButton.addEventListener("click", confirmDelete);
                 // delete cancel button
                 const cancelDelete = document.createElement("div");
                 cancelDelete.setAttribute("class", "footer-cancel");
@@ -136,20 +143,21 @@ addEventListener("DOMContentLoaded", e => {
 
                 // append children as necessary
                 newComment.appendChild(commentHeader);
-                newComment.appendChild(commentContent);
+                newComment.appendChild(commentContainer);
                 newComment.appendChild(editDeleteFooter);
                 newComment.appendChild(saveCancelFooter);
                 newComment.appendChild(yesCancelFooter);
-                commentHeader.appendChild(commentUserImg);
+                commentHeader.appendChild(img);
                 commentHeader.appendChild(commentUserInfo);
-                commentUserImg.appendChild(img);
+                // commentUserImg.appendChild(img);
                 commentUserInfo.appendChild(commentAuthor);
                 commentUserInfo.appendChild(commentDaysAgo);
+                commentContainer.appendChild(commentContent);
                 editDeleteFooter.appendChild(footerEdit);
                 editDeleteFooter.appendChild(footerDelete);
                 saveCancelFooter.appendChild(saveButton);
                 saveCancelFooter.appendChild(editCancelButton);
-                yesCancelFooter.appendChild(confirmDelete);
+                yesCancelFooter.appendChild(confirmDeleteButton);
                 yesCancelFooter.appendChild(cancelDelete);
 
                 // put this new comment at top of list
@@ -265,10 +273,12 @@ const toggleFooters = (className) => {
 
 const fetchEditComment = async (e) => {
     const commentId = e.target.id.split("-")[1]
+    // console.log(commentId)
 
     // get value from new comment box
     const editedTextArea = document.getElementById(`edit-${commentId}`);
     const text = editedTextArea.value;
+    // console.log(text);
 
     // remove edit comment container
     const editContainer = document.getElementById(`edit-container-${commentId}`);

@@ -21,7 +21,7 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     story.readTime = assignReadTime(story);
 
     const currUser = await db.User.findByPk(userId);
-    const comments = story.Comments.reverse();
+    const comments = story.Comments.sort((a, b) => b.updatedAt - a.updatedAt);
 
     const nonFollowedAccounts = await getRecommended(userId)
 
