@@ -161,7 +161,8 @@
 }
 
 .edit-delete-footer,
-.save-cancel-footer {
+.save-cancel-footer,
+.yes-cancel-footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;

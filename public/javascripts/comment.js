@@ -57,7 +57,7 @@ addEventListener("DOMContentLoaded", e => {
 
             // create DOM content
             const data = await res.json();
-            const { message, user } = data;
+            const { message, user, newCommentId } = data;
 
             if (message === 'success') {
                 comment.value = "";
@@ -94,31 +94,63 @@ addEventListener("DOMContentLoaded", e => {
                 commentContent.setAttribute("class", "comment-content");
                 commentContent.innerText = text;
                 // comment footer
-                const commentFooter = document.createElement("div");
-                commentFooter.setAttribute("class", "comment-footer");
+                const editDeleteFooter = document.createElement("div");
+                editDeleteFooter.setAttribute("class", "edit-delete-footer");
                 // footer edit
                 const footerEdit = document.createElement("div");
-                footerEdit.setAttribute("class", "comment-footer-edit");
+                footerEdit.setAttribute("class", "footer-edit");
                 footerEdit.innerText = "Edit";
                 footerEdit.addEventListener("click", editComment);
                 // footer delete
                 const footerDelete = document.createElement("div");
-                footerDelete.setAttribute("class", "comment-footer-delete");
+                footerDelete.setAttribute("class", "footer-delete");
                 footerDelete.innerText = "Delete";
                 footerDelete.addEventListener("click", deleteComment);
-
+                // footer edit-save
+                const saveCancelFooter = document.createElement("div");
+                saveCancelFooter.setAttribute("class", "save-cancel-footer")
+                saveCancelFooter.setAttribute("class", `hiddenOnComments sc-footer-${comment.id}`)
+                // save button
+                const saveButton = document.createElement("div");
+                saveButton.setAttribute("class", "footer-save");
+                saveButton.setAttribute("id", `save-${newCommentId}`);
+                saveButton.innerText = "Save";
+                // cancel button
+                const editCancelButton = document.createElement("div");
+                editCancelButton.setAttribute("class", "footer-cancel");
+                editCancelButton.setAttribute("id", `cancel-${newCommentId}`);
+                editCancelButton.innerText = "Cancel";
+                // footer yes-cancel
+                const yesCancelFooter = document.createElement("div");
+                yesCancelFooter.setAttribute("class", `hiddenOnComments yc-footer-${newCommentId}`)
+                // delete confirm button
+                const confirmDelete = document.createElement("div");
+                confirmDelete.setAttribute("class", "footer-save");
+                confirmDelete.setAttribute("id", `yc-save-${newCommentId}`);
+                confirmDelete.innerText = "Delete";
+                // delete cancel button
+                const cancelDelete = document.createElement("div");
+                cancelDelete.setAttribute("class", "footer-cancel");
+                cancelDelete.setAttribute("id", `yc-cancel-${newCommentId}`);
+                cancelDelete.innerText = "Cancel";
 
                 // append children as necessary
                 newComment.appendChild(commentHeader);
                 newComment.appendChild(commentContent);
-                newComment.appendChild(commentFooter);
+                newComment.appendChild(editDeleteFooter);
+                newComment.appendChild(saveCancelFooter);
+                newComment.appendChild(yesCancelFooter);
                 commentHeader.appendChild(commentUserImg);
                 commentHeader.appendChild(commentUserInfo);
                 commentUserImg.appendChild(img);
                 commentUserInfo.appendChild(commentAuthor);
                 commentUserInfo.appendChild(commentDaysAgo);
-                commentFooter.appendChild(footerEdit);
-                commentFooter.appendChild(footerDelete);
+                editDeleteFooter.appendChild(footerEdit);
+                editDeleteFooter.appendChild(footerDelete);
+                saveCancelFooter.appendChild(saveButton);
+                saveCancelFooter.appendChild(editCancelButton);
+                yesCancelFooter.appendChild(confirmDelete);
+                yesCancelFooter.appendChild(cancelDelete);
 
                 // put this new comment at top of list
                 const commentList = document.getElementById("comment-list");
@@ -130,8 +162,8 @@ addEventListener("DOMContentLoaded", e => {
                 }
 
                 removeWowEmpty();
-                updateResponseNumber();
-                updateCommentCount();
+                updateResponseNumber(true);
+                updateCommentCount(true);
             };
         };
     });
@@ -183,13 +215,13 @@ const handleCRUD = () => {
         node.addEventListener("click", editComment)
     });
     deleteNodes.forEach(node => {
-        node.addEventListener("click", () => deleteComment(node))
+        node.addEventListener("click", confirmDelete)
     });
 }
 
 const editComment = (e) => {
     // get commentId from edit button's id
-    const commentId = e.target.id;
+    const commentId = e.target.id.split("-")[1];
     // get container div using commentId
     const contentContainer = document.getElementById(`content-container-${commentId}`);
     // get the comment using commentId
@@ -200,7 +232,7 @@ const editComment = (e) => {
     // create a container
     const commentContainer = document.createElement("div");
     commentContainer.setAttribute("class", "new-comment-container");
-    commentContainer.setAttribute("id", "edit-comment-container");
+    commentContainer.setAttribute("id", `edit-container-${commentId}`);
     // create a padding container for the textarea
     const commentBoxContainer = document.createElement("div")
     commentBoxContainer.setAttribute("class", "new-comment-box-container");
@@ -215,7 +247,7 @@ const editComment = (e) => {
     commentBoxContainer.appendChild(newCommentInput);
 
     // toggle footers
-    toggleFooters(commentId);
+    toggleFooters(`sc-footer-${commentId}`);
 
     // make save or cancel click events
     const saveButtons = document.querySelectorAll(".footer-save");
@@ -224,14 +256,14 @@ const editComment = (e) => {
     cancelButtons.forEach(button => button.addEventListener('click', cancelEdit));
 }
 
-const toggleFooters = (commentId) => {
-    const footers = document.querySelectorAll(`.footer-${commentId}`);
+const toggleFooters = (className) => {
+    const footers = document.querySelectorAll(`.${className}`);
     footers.forEach(footer => {
         footer.classList.toggle("hiddenOnComments")
     });
 }
 
-const fetchEditComment = (e) => {
+const fetchEditComment = async (e) => {
     const commentId = e.target.id.split("-")[1]
 
     // get value from new comment box
@@ -239,7 +271,7 @@ const fetchEditComment = (e) => {
     const text = editedTextArea.value;
 
     // remove edit comment container
-    const editContainer = document.getElementById("edit-comment-container");
+    const editContainer = document.getElementById(`edit-container-${commentId}`);
     editContainer.remove();
 
     // add back hidden comment and update text
@@ -248,13 +280,24 @@ const fetchEditComment = (e) => {
     comment.classList.remove("hiddenOnComments");
 
     // toggle footers back
-    toggleFooters(commentId);
+    toggleFooters(`sc-footer-${commentId}`);
+
+    // update daysAgo
+    const daysAgo = document.getElementById(`daysAgo-${commentId}`);
+    daysAgo.innerText = 'Posted today'
+
+    // send fetch
+    const res = await fetch(`/comment/${commentId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text }),
+    });
 }
 
 const cancelEdit = (e) => {
     const commentId = e.target.id.split("-")[1]
     // remove edit comment container
-    const editContainer = document.getElementById("edit-comment-container");
+    const editContainer = document.getElementById(`edit-container-${commentId}`);
     editContainer.remove();
 
     // add back hidden comment
@@ -262,15 +305,43 @@ const cancelEdit = (e) => {
     comment.classList.remove("hiddenOnComments");
 
     // toggle footers back
-    toggleFooters(commentId);
+    toggleFooters(`sc-footer-${commentId}`);
 }
 
-const updateResponseNumber = () => {
+const confirmDelete = (e) => {
+    const commentId = e.target.id.split("-")[1];
+    toggleFooters(`yc-footer-${commentId}`);
+
+    const confirmDeleteButton = document.getElementById(`yc-save-${commentId}`);
+    confirmDeleteButton.addEventListener("click", deleteComment);
+
+}
+
+const deleteComment = async (e) => {
+    const commentId = e.target.id.split("-")[2];
+
+    const res = await fetch(`/comment/${commentId}`, {
+        method: "DELETE",
+    })
+
+    const container = document.getElementById(`comment-container-${commentId}`);
+    container.remove();
+    updateResponseNumber(false);
+    updateCommentCount(false);
+}
+
+const updateResponseNumber = (increase) => {
     const modalTitle = document.getElementById("comment-modal-title");
     const modalTitleText = modalTitle.innerText
     const openParen = modalTitleText.indexOf("(")
     const closeParen = modalTitleText.indexOf(")")
-    const number = parseInt(modalTitle.innerText.slice(openParen + 1, closeParen)) + 1;
+
+    let number;
+    if (increase) {
+        number = parseInt(modalTitle.innerText.slice(openParen + 1, closeParen)) + 1;
+    } else {
+        number = parseInt(modalTitle.innerText.slice(openParen + 1, closeParen)) - 1;
+    }
 
     modalTitle.innerText = `Responses (${number})`
 }
@@ -295,9 +366,14 @@ const toggleFooter = () => {
     }
 }
 
-const updateCommentCount = () => {
+const updateCommentCount = (increase) => {
     const commentCount = document.getElementById("comment-count");
-    const commentCountInt = parseInt(commentCount.innerText) + 1;
+    let commentCountInt
+    if (increase) {
+        commentCountInt = parseInt(commentCount.innerText) + 1;
+    } else {
+        commentCountInt = parseInt(commentCount.innerText) - 1;
+    }
     commentCount.innerText = commentCountInt;
 }
 
