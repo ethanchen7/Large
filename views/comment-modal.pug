@@ -2,9 +2,9 @@
     #comment-modal-header
         h1(id='comment-modal-title')= `Responses (${comments.length})` 
         Img#comment-close-out(src="/images/close.png")
-    #new-comment-container
-        #new-comment-box-container
-            textarea(type="text" placeholder="what are your thoughts?" spellcheck=true)#new-comment-box
+    .new-comment-container
+        .new-comment-box-container
+            textarea(type="text" placeholder="what are your thoughts?" spellcheck=true).new-comment-box#new-comment-box
         #new-comment-container-footer
             #new-comment-cancel Cancel
             #new-comment-submit Respond
@@ -19,7 +19,15 @@
                     .comment-user-info 
                         a.comment-author(href=`/users/${comment.userId}`)= `${comment.firstName} ${comment.lastName}`
                         .comment-daysAgo= `${comment.daysAgo}`
-                .comment-content= comment.text
+                .comment-content-container(id=`content-container-${comment.id}`) 
+                    .comment-content(id=`comment-${comment.id}`)= comment.text
+                - if (currUser.id === comment.userId)
+                    .edit-delete-footer(class=`footer-${comment.id}`)
+                        .footer-edit(id=comment.id) Edit
+                        .footer-delete Delete
+                    .save-cancel-footer.hiddenOnComments(class=`footer-${comment.id}`)
+                        .footer-save(id=`save-${comment.id}`) Save
+                        .footer-cancel(id=`cancel-${comment.id}`) Cancel
             //- .comment-container-footer 
             //-     .comment-clap
             //-         img(src="/images/clap.png", alt="")

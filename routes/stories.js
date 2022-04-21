@@ -20,7 +20,6 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     story.date = assignStoryDate(story);
     story.readTime = assignReadTime(story);
 
-
     const currUser = await db.User.findByPk(userId);
     const comments = story.Comments.reverse();
 
@@ -41,18 +40,18 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
     const contentBarTags = tags.slice(0, 7);
 
     const allClapsOfStory = await db.StoryClap.findAll({
-        where: {storyId}
+        where: { storyId }
     })
     const allClapsOfStoryCount = allClapsOfStory.length
 
     let follows = false;
     const followCheck = await db.Follow.findAll({
-        where: { 
-          followerId: userId,
-          followingId: story.User.id
-         },
-      })   
-    if(followCheck.length) follows = true; 
+        where: {
+            followerId: userId,
+            followingId: story.User.id
+        },
+    })
+    if (followCheck.length) follows = true;
 
     const followerCount = await getFollowerCount(story.User)
     res.render('single-story', {
@@ -63,7 +62,7 @@ router.get('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(asy
         contentBarTags,
         recommendedUsers,
         nonFollowedAccounts,
-        allClapsOfStoryCount, 
+        allClapsOfStoryCount,
         comments,
         follows,
         followerCount,
@@ -79,10 +78,10 @@ router.post('/stories/:id(\\d+)/clap/new', requireAuth, asyncHandler(async (req,
     })
     await newClap.save()
     const allClapsOfStory = await db.StoryClap.findAll({
-        where: {storyId}
+        where: { storyId }
     })
     updatedClapCount = allClapsOfStory.length
-    res.json({updatedClapCount})
+    res.json({ updatedClapCount })
 
 }))
 
