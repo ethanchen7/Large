@@ -89,14 +89,14 @@ router.post('/stories/:id(\\d+)/clap/new', requireAuth, asyncHandler(async (req,
 }))
 
 router.delete('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(async(req, res) => {
-    const storyId = req.params.id;
+    const storyId = req.params.storyId;
     const userId = req.session.auth.userId;
 
     const story = await db.Story.findByPk(storyId, {
         include: [db.User]
     });
 
-    const hasPermissions = story.userId === parseInt(userId)
+    const hasPermissions = story.User.id === parseInt(userId)
 
     if (hasPermissions) {
         story.destroy();
@@ -105,7 +105,6 @@ router.delete('/stories/:storyId(\\d+)', restoreUser, requireAuth, asyncHandler(
         res.status(403)
         res.json({message: 'not authorized'})
     }
-
 }))
 
 router.get('/stories/:storyId(\\d+)/edit', csrfProtection, restoreUser, requireAuth, asyncHandler(async(req, res) => {
