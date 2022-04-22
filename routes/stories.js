@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const { asyncHandler, assignDaysAgo, getFollowerCount } = require("./utils");
 const { restoreUser, requireAuth } = require('../auth')
+const {validationResult} = require('express-validator')
 
 const db = require("../db/models");
 const { csrfProtection, splashPageQueries, assignStoryDate, assignReadTime, getRecommended } = require('./utils');
@@ -113,9 +114,9 @@ router.get('/stories/:storyId(\\d+)/edit', csrfProtection, restoreUser, requireA
     const userId = req.session.auth.userId;
 
     const story = await db.Story.findByPk(storyId, {
-        include: [db.User]
+        include: [db.User, db.Tag]
     });
-    console.log(storyId)
+    const editing = true;
 
     const hasPermissions = story.User.id === parseInt(userId)
 
@@ -124,21 +125,22 @@ router.get('/stories/:storyId(\\d+)/edit', csrfProtection, restoreUser, requireA
     } else {
         res.render('new-story', {
             story,
+            editing,
             csrfToken: req.csrfToken()
         })
     }
 }))
 
-router.put('/stories/:storyId(\\d+)', storyValidators, csrfProtection, restoreUser, requireAuth, asyncHandler(async(req, res) => {
+router.post('/stories/:storyId(\\d+)/edit', storyValidators, csrfProtection, restoreUser, requireAuth, asyncHandler(async(req, res) => {
 
-    const storyId = req.params.id;
+    const storyId = req.params.storyId;
     const userId = req.session.auth.userId;
 
     const story = await db.Story.findByPk(storyId, {
         include: [db.User]
     });
 
-    const hasPermissions = story.userId === parseInt(userId)
+    const hasPermissions = story.User.id === parseInt(userId)
 
     if (hasPermissions) {
         const { title, article, tag } = req.body;
@@ -176,7 +178,7 @@ router.put('/stories/:storyId(\\d+)', storyValidators, csrfProtection, restoreUs
           }
     } else {
         res.status(403)
-        res.json({message: 'not authorized'})
+        res.redirect("/");
     }
 
 }))
