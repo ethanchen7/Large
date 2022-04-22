@@ -1,3 +1,13 @@
+const editStoryBtns = document.querySelectorAll('#story-edit-btn')
+const deleteStoryBtns = document.querySelectorAll('#story-delete-btn')
+
+for (let i = 0; i < editStoryBtns.length; i++) {
+    editStoryBtns[i].addEventListener('click', e => {
+        const storyId = editStoryBtns[i].dataset.index.split('-').at(-1)
+        location.href=`/stories/${storyId}/edit`
+    })
+}
+
 window.addEventListener('load', (event) => {
     let recommendedButton = document.getElementById('recommended')
     let followingButton = document.getElementById('following')

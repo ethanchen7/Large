@@ -26,8 +26,11 @@ div(class='centerHolder')
                                 a(href=`/tags/${story.Tag.id}`)= story.Tag.name 
                                 p #{story.readTime} min · selected for you 
                             div(class='underRight')
-                                img(src="/images/save3.png", alt="")
-                                strong(href='/thanks') ···
+                                img(src="/images/save3.png")
+                                if (currUser.id === story.User.id)
+                                    button(class="story-btn" id="story-edit-btn" data-index=`story-${story.id}`) Edit
+                                    button(class="story-btn" id="story-delete-btn" data-index=`story-${story.id}`) Delete
+                                
                     div(class='imgDiv')
                         img(class='imgPreview' src= `https://picsum.photos/20${n}`)
         div(id='followingStories')

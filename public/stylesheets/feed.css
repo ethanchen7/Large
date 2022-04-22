@@ -228,6 +228,20 @@
   cursor: pointer;
 }
 
+.story-btn {
+  background-color: white;
+  color: black;
+  border-radius: 25px;
+  border: 1px solid black;
+  width: 50px;
+  height: 25px;
+  font-size: 11px;
+  margin-left: 10px;
+}
+.story-btn:hover {
+  cursor: pointer;
+}
+
 .imgDiv {
   height: 100%;
   display: flex;
