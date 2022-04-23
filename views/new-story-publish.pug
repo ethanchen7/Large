@@ -24,7 +24,7 @@ block content
         span(class="publishing-second-half")=`${user.firstName} ${user.lastName}`
       div(class="add-tag-heading-section")
         p(class="add-tag-heading") Add or change a tag so readers know what your story is about
-        input(class="tag-input" id="tag-input-id" name="tag" placeholder="Add a tag..." value=story.Tag.name)
+        input(class="tag-input" id="tag-input-id" name="tag" placeholder="Add a tag..." value=`${story.Tag ? story.Tag.name : "" }`)
       div(class="learn-more-section")
         p(class="learn-more-text") Learn more about what happens to your post when you publish.
       div(class="publish-button-section")
