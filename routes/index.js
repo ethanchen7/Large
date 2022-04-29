@@ -44,7 +44,6 @@ router.get("/", csrfProtection, restoreUser, asyncHandler(async (req, res, next)
 
 
     const nonFollowedAccounts = await getRecommended(currUser.id)
-
     res.render("feed", {
       currUser,
       newStories,

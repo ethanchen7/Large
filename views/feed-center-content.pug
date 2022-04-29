@@ -1,5 +1,20 @@
 link(rel='stylesheet' href='/stylesheets/feed.css')
 div(class='centerHolder')
+
+    div(id="id01" class="delete-modal")
+        
+        div(class="delete-modal-content")
+            
+            div(class="delete-modal-container")
+                div(class="close-modal-btn")
+                    img(src="/images/close2.png" class="closebtn")
+                h1 Delete story
+                p Are you sure you want to delete this story?
+
+                div(class="clearfix")
+                    button(type="button" class="cancelbtn") Cancel
+                    button(type="button" class="deletebtn") Delete
+
     div(id='keepup')
         a(href="/thanks") +
         p Keep up with the latest in any topic
@@ -26,8 +41,11 @@ div(class='centerHolder')
                                 a(href=`/tags/${story.Tag.id}`)= story.Tag.name 
                                 p #{story.readTime} min · selected for you 
                             div(class='underRight')
-                                img(src="/images/save3.png", alt="")
-                                strong(href='/thanks') ···
+                                img(src="/images/save3.png")
+                                if (currUser.id === story.User.id)
+                                    button(class="story-btn" id="story-edit-btn" data-index=`story-${story.id}`) Edit
+                                    button(class="story-btn" id="story-delete-btn" data-index=`story-${story.id}`) Delete
+                                
                     div(class='imgDiv')
                         img(class='imgPreview' src= `https://picsum.photos/20${n}`)
         div(id='followingStories')
