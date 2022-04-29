@@ -169,6 +169,10 @@ addEventListener("DOMContentLoaded", e => {
                     commentList.appendChild(newComment);
                 }
 
+                // reset text and button color
+                text = null;
+                submit.style.backgroundColor = "rgba(27, 137, 23, .337)";
+
                 removeWowEmpty();
                 updateResponseNumber(true);
                 updateCommentCount(true);
