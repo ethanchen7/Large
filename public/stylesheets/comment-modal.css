@@ -103,6 +103,9 @@
     border-radius: 25px;
 }
 
+/* #new-comment-submit:hover {
+    cursor: pointer;
+} */
 #sort-by {
     font-size: .75em;
     font-weight: bold;

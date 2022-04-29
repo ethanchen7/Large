@@ -8,7 +8,6 @@ addEventListener("DOMContentLoaded", e => {
     const submit = document.getElementById("new-comment-submit");
     const cancel = document.getElementById("new-comment-cancel");
 
-    let text;
 
     cancel.addEventListener("click", (e) => {
         e.stopImmediatePropagation
@@ -18,11 +17,13 @@ addEventListener("DOMContentLoaded", e => {
     })
 
     comment.addEventListener("click", showFooter)
+    let text;
 
     comment.addEventListener("keyup", () => {
         text = comment.value;
         if (text) {
             submit.style.backgroundColor = "rgba(27, 137, 23)";
+            submit.style.cursor = "pointer"
         } else {
             submit.style.backgroundColor = "rgba(27, 137, 23, 0.339)";
         };
@@ -248,6 +249,10 @@ const editComment = (e) => {
     newCommentInput.setAttribute("class", "new-comment-box editTextArea")
     newCommentInput.setAttribute("id", `edit-${commentId}`)
 
+    // fill comment box with old comment content
+    const text = document.getElementById(`comment-${commentId}`).innerText
+    newCommentInput.innerText = text;
+
     // append children
     contentContainer.appendChild(commentContainer);
     commentContainer.appendChild(commentBoxContainer);
@@ -322,6 +327,15 @@ const confirmDelete = (e) => {
     const confirmDeleteButton = document.getElementById(`yc-save-${commentId}`);
     confirmDeleteButton.addEventListener("click", deleteComment);
 
+    const cancelDeleteButton = document.getElementById(`yc-cancel-${commentId}`);
+    cancelDeleteButton.addEventListener("click", cancelDelete)
+
+}
+
+const cancelDelete = (e) => {
+    const commentId = e.target.id.split("-")[2];
+
+    toggleFooters(`yc-footer-${commentId}`);
 }
 
 const deleteComment = async (e) => {
