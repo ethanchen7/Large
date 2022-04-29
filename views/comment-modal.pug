@@ -2,9 +2,9 @@
     #comment-modal-header
         h1(id='comment-modal-title')= `Responses (${comments.length})` 
         Img#comment-close-out(src="/images/close.png")
-    #new-comment-container
-        #new-comment-box-container
-            textarea(type="text" placeholder="what are your thoughts?" spellcheck=true)#new-comment-box
+    .new-comment-container
+        .new-comment-box-container
+            textarea(type="text" placeholder="what are your thoughts?" spellcheck=true).new-comment-box#new-comment-box
         #new-comment-container-footer
             #new-comment-cancel Cancel
             #new-comment-submit Respond
@@ -13,13 +13,24 @@
         - if (comments.length === 0)
             #wow-empty Wow, such empty :/
         each comment in comments
-            .comment-container 
+            .comment-container(id=`comment-container-${comment.id}`) 
                 .comment-container-header 
                     img.comment-user-img(src=`https://picsum.photos/${Math.floor(Math.random() * 50)}`)
                     .comment-user-info 
                         a.comment-author(href=`/users/${comment.userId}`)= `${comment.firstName} ${comment.lastName}`
-                        .comment-daysAgo= `${comment.daysAgo}`
-                .comment-content= comment.text
+                        .comment-daysAgo(id=`daysAgo-${comment.id}`)= `${comment.daysAgo}`
+                .comment-content-container(id=`content-container-${comment.id}`) 
+                    .comment-content(id=`comment-${comment.id}`)= comment.text
+                - if (currUser.id === comment.userId)
+                    .edit-delete-footer(class=`sc-footer-${comment.id} yc-footer-${comment.id}`)
+                        .footer-edit(id=`edit-${comment.id}`) Edit
+                        .footer-delete(id=`delete-${comment.id}`) Delete
+                    .save-cancel-footer.hiddenOnComments(class=`sc-footer-${comment.id}`)
+                        .footer-save(id=`save-${comment.id}`) Save
+                        .footer-cancel(id=`cancel-${comment.id}`) Cancel
+                    .yes-cancel-footer.hiddenOnComments(class=`yc-footer-${comment.id}`)
+                        .footer-save(id=`yc-save-${comment.id}`) Delete
+                        .footer-cancel(id=`yc-cancel-${comment.id}`) Cancel
             //- .comment-container-footer 
             //-     .comment-clap
             //-         img(src="/images/clap.png", alt="")

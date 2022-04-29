@@ -1,13 +1,13 @@
 addEventListener("DOMContentLoaded", e => {
 
     handleModalPopUp();
+    handleCRUD();
 
     // handle comment creation
     const comment = document.getElementById("new-comment-box");
     const submit = document.getElementById("new-comment-submit");
     const cancel = document.getElementById("new-comment-cancel");
 
-    let text;
 
     cancel.addEventListener("click", (e) => {
         e.stopImmediatePropagation
@@ -17,11 +17,13 @@ addEventListener("DOMContentLoaded", e => {
     })
 
     comment.addEventListener("click", showFooter)
+    let text;
 
     comment.addEventListener("keyup", () => {
         text = comment.value;
         if (text) {
             submit.style.backgroundColor = "rgba(27, 137, 23)";
+            submit.style.cursor = "pointer"
         } else {
             submit.style.backgroundColor = "rgba(27, 137, 23, 0.339)";
         };
@@ -56,7 +58,7 @@ addEventListener("DOMContentLoaded", e => {
 
             // create DOM content
             const data = await res.json();
-            const { message, user } = data;
+            const { message, user, newCommentId } = data;
 
             if (message === 'success') {
                 comment.value = "";
@@ -66,12 +68,10 @@ addEventListener("DOMContentLoaded", e => {
                 // comment container
                 const newComment = document.createElement("div");
                 newComment.setAttribute("class", "comment-container");
+                newComment.setAttribute("id", `comment-container-${newCommentId}`);
                 // comment header
                 const commentHeader = document.createElement("div");
                 commentHeader.setAttribute("class", "comment-container-header");
-                // comment user image container
-                const commentUserImg = document.createElement("div");
-                commentUserImg.setAttribute("class", "comment-user-img");
                 // actual image
                 const img = document.createElement("img");
                 img.setAttribute("src", `https://picsum.photos/${Math.floor(Math.random() * 50)}`);
@@ -87,20 +87,78 @@ addEventListener("DOMContentLoaded", e => {
                 // days ago
                 const commentDaysAgo = document.createElement("div");
                 commentDaysAgo.setAttribute("class", "comment-daysAgo");
+                commentDaysAgo.setAttribute("id", `daysAgo-${newCommentId}`);
                 commentDaysAgo.innerText = "posted just now.";
+                // comment content container
+                const commentContainer = document.createElement("div")
+                commentContainer.setAttribute("class", "comment-content-container")
+                commentContainer.setAttribute("id", `content-container-${newCommentId}`)
                 // comment content
                 const commentContent = document.createElement("div");
                 commentContent.setAttribute("class", "comment-content");
+                commentContent.setAttribute("id", `comment-${newCommentId}`);
                 commentContent.innerText = text;
+                // comment footer
+                const editDeleteFooter = document.createElement("div");
+                editDeleteFooter.setAttribute("class", `edit-delete-footer sc-footer-${newCommentId} yc-footer-${newCommentId}`);
+                // footer edit
+                const footerEdit = document.createElement("div");
+                footerEdit.setAttribute("class", "footer-edit");
+                footerEdit.setAttribute("id", `edit-${newCommentId}`);
+                footerEdit.innerText = "Edit";
+                footerEdit.addEventListener("click", editComment);
+                // footer delete
+                const footerDelete = document.createElement("div");
+                footerDelete.setAttribute("class", "footer-delete");
+                footerDelete.setAttribute("id", `delete-${newCommentId}`);
+                footerDelete.innerText = "Delete";
+                footerDelete.addEventListener("click", confirmDelete);
+                // footer edit-save
+                const saveCancelFooter = document.createElement("div");
+                saveCancelFooter.setAttribute("class", `save-cancel-footer hiddenOnComments sc-footer-${newCommentId}`)
+                // save button
+                const saveButton = document.createElement("div");
+                saveButton.setAttribute("class", "footer-save");
+                saveButton.setAttribute("id", `save-${newCommentId}`);
+                saveButton.innerText = "Save";
+                // cancel button
+                const editCancelButton = document.createElement("div");
+                editCancelButton.setAttribute("class", "footer-cancel");
+                editCancelButton.setAttribute("id", `cancel-${newCommentId}`);
+                editCancelButton.innerText = "Cancel";
+                // footer yes-cancel
+                const yesCancelFooter = document.createElement("div");
+                yesCancelFooter.setAttribute("class", `yes-cancel-footer hiddenOnComments yc-footer-${newCommentId}`)
+                // delete confirm button
+                const confirmDeleteButton = document.createElement("div");
+                confirmDeleteButton.setAttribute("class", "footer-save");
+                confirmDeleteButton.setAttribute("id", `yc-save-${newCommentId}`);
+                confirmDeleteButton.innerText = "Delete";
+                confirmDeleteButton.addEventListener("click", deleteComment);
+                // delete cancel button
+                const cancelDelete = document.createElement("div");
+                cancelDelete.setAttribute("class", "footer-cancel");
+                cancelDelete.setAttribute("id", `yc-cancel-${newCommentId}`);
+                cancelDelete.innerText = "Cancel";
 
                 // append children as necessary
                 newComment.appendChild(commentHeader);
-                newComment.appendChild(commentContent);
-                commentHeader.appendChild(commentUserImg);
+                newComment.appendChild(commentContainer);
+                newComment.appendChild(editDeleteFooter);
+                newComment.appendChild(saveCancelFooter);
+                newComment.appendChild(yesCancelFooter);
+                commentHeader.appendChild(img);
                 commentHeader.appendChild(commentUserInfo);
-                commentUserImg.appendChild(img);
+                // commentUserImg.appendChild(img);
                 commentUserInfo.appendChild(commentAuthor);
                 commentUserInfo.appendChild(commentDaysAgo);
+                commentContainer.appendChild(commentContent);
+                editDeleteFooter.appendChild(footerEdit);
+                editDeleteFooter.appendChild(footerDelete);
+                saveCancelFooter.appendChild(saveButton);
+                saveCancelFooter.appendChild(editCancelButton);
+                yesCancelFooter.appendChild(confirmDeleteButton);
+                yesCancelFooter.appendChild(cancelDelete);
 
                 // put this new comment at top of list
                 const commentList = document.getElementById("comment-list");
@@ -112,8 +170,8 @@ addEventListener("DOMContentLoaded", e => {
                 }
 
                 removeWowEmpty();
-                updateResponseNumber();
-                updateCommentCount();
+                updateResponseNumber(true);
+                updateCommentCount(true);
             };
         };
     });
@@ -157,12 +215,154 @@ const handleModalPopUp = () => {
     singleStory.addEventListener("click", closeCommentModalOnGreyClick, commentModal)
 }
 
-const updateResponseNumber = () => {
+const handleCRUD = () => {
+    const editNodes = document.querySelectorAll(".footer-edit");
+    const deleteNodes = document.querySelectorAll(".footer-delete");
+
+    editNodes.forEach(node => {
+        node.addEventListener("click", editComment)
+    });
+    deleteNodes.forEach(node => {
+        node.addEventListener("click", confirmDelete)
+    });
+}
+
+const editComment = (e) => {
+    // get commentId from edit button's id
+    const commentId = e.target.id.split("-")[1];
+    // get container div using commentId
+    const contentContainer = document.getElementById(`content-container-${commentId}`);
+    // get the comment using commentId
+    const comment = document.getElementById(`comment-${commentId}`)
+    // hide the comment
+    comment.classList.add("hiddenOnComments");
+
+    // create a container
+    const commentContainer = document.createElement("div");
+    commentContainer.setAttribute("class", "new-comment-container");
+    commentContainer.setAttribute("id", `edit-container-${commentId}`);
+    // create a padding container for the textarea
+    const commentBoxContainer = document.createElement("div")
+    commentBoxContainer.setAttribute("class", "new-comment-box-container");
+    // create a text box for new user input
+    const newCommentInput = document.createElement("textarea");
+    newCommentInput.setAttribute("class", "new-comment-box editTextArea")
+    newCommentInput.setAttribute("id", `edit-${commentId}`)
+
+    // fill comment box with old comment content
+    const text = document.getElementById(`comment-${commentId}`).innerText
+    newCommentInput.innerText = text;
+
+    // append children
+    contentContainer.appendChild(commentContainer);
+    commentContainer.appendChild(commentBoxContainer);
+    commentBoxContainer.appendChild(newCommentInput);
+
+    // toggle footers
+    toggleFooters(`sc-footer-${commentId}`);
+
+    // make save or cancel click events
+    const saveButtons = document.querySelectorAll(".footer-save");
+    saveButtons.forEach(button => button.addEventListener('click', fetchEditComment));
+    const cancelButtons = document.querySelectorAll(".footer-cancel");
+    cancelButtons.forEach(button => button.addEventListener('click', cancelEdit));
+}
+
+const toggleFooters = (className) => {
+    const footers = document.querySelectorAll(`.${className}`);
+    footers.forEach(footer => {
+        footer.classList.toggle("hiddenOnComments")
+    });
+}
+
+const fetchEditComment = async (e) => {
+    const commentId = e.target.id.split("-")[1]
+
+    // get value from new comment box
+    const editedTextArea = document.getElementById(`edit-${commentId}`);
+    const text = editedTextArea.value;
+
+    // remove edit comment container
+    const editContainer = document.getElementById(`edit-container-${commentId}`);
+    editContainer.remove();
+
+    // add back hidden comment and update text
+    const comment = document.getElementById(`comment-${commentId}`);
+    comment.innerText = text;
+    comment.classList.remove("hiddenOnComments");
+
+    // toggle footers back
+    toggleFooters(`sc-footer-${commentId}`);
+
+    // update daysAgo
+    const daysAgo = document.getElementById(`daysAgo-${commentId}`);
+    daysAgo.innerText = 'Posted today'
+
+    // send fetch
+    const res = await fetch(`/comment/${commentId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text }),
+    });
+}
+
+const cancelEdit = (e) => {
+    const commentId = e.target.id.split("-")[1]
+    // remove edit comment container
+    const editContainer = document.getElementById(`edit-container-${commentId}`);
+    editContainer.remove();
+
+    // add back hidden comment
+    const comment = document.getElementById(`comment-${commentId}`);
+    comment.classList.remove("hiddenOnComments");
+
+    // toggle footers back
+    toggleFooters(`sc-footer-${commentId}`);
+}
+
+const confirmDelete = (e) => {
+    const commentId = e.target.id.split("-")[1];
+    toggleFooters(`yc-footer-${commentId}`);
+
+    const confirmDeleteButton = document.getElementById(`yc-save-${commentId}`);
+    confirmDeleteButton.addEventListener("click", deleteComment);
+
+    const cancelDeleteButton = document.getElementById(`yc-cancel-${commentId}`);
+    cancelDeleteButton.addEventListener("click", cancelDelete)
+
+}
+
+const cancelDelete = (e) => {
+    const commentId = e.target.id.split("-")[2];
+
+    toggleFooters(`yc-footer-${commentId}`);
+}
+
+const deleteComment = async (e) => {
+    const commentId = e.target.id.split("-")[2];
+
+    const res = await fetch(`/comment/${commentId}`, {
+        method: "DELETE",
+    })
+
+    const container = document.getElementById(`comment-container-${commentId}`);
+    container.remove();
+    updateResponseNumber(false);
+    updateCommentCount(false);
+}
+
+const updateResponseNumber = (increase) => {
     const modalTitle = document.getElementById("comment-modal-title");
     const modalTitleText = modalTitle.innerText
     const openParen = modalTitleText.indexOf("(")
     const closeParen = modalTitleText.indexOf(")")
-    const number = parseInt(modalTitle.innerText.slice(openParen + 1, closeParen)) + 1;
+
+    let number;
+    if (increase) {
+        number = parseInt(modalTitle.innerText.slice(openParen + 1, closeParen)) + 1;
+    } else {
+        number = parseInt(modalTitle.innerText.slice(openParen + 1, closeParen)) - 1;
+    }
 
     modalTitle.innerText = `Responses (${number})`
 }
@@ -187,9 +387,14 @@ const toggleFooter = () => {
     }
 }
 
-const updateCommentCount = () => {
+const updateCommentCount = (increase) => {
     const commentCount = document.getElementById("comment-count");
-    const commentCountInt = parseInt(commentCount.innerText) + 1;
+    let commentCountInt
+    if (increase) {
+        commentCountInt = parseInt(commentCount.innerText) + 1;
+    } else {
+        commentCountInt = parseInt(commentCount.innerText) - 1;
+    }
     commentCount.innerText = commentCountInt;
 }
 

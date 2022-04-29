@@ -52,7 +52,7 @@
     cursor: pointer;
 }
 
-#new-comment-container {
+.new-comment-container {
     margin-left: 15px;
     margin-right: 15px;
     display: flex;
@@ -60,12 +60,12 @@
     box-shadow: 0px 0px 10px 2px #75757541;
 }
 
-#new-comment-box-container {
+.new-comment-box-container {
     width: 100%;
     height: 100px;
 }
 
-#new-comment-box {
+.new-comment-box {
     width: 90%;
     height: 90%;
     border: none;
@@ -103,6 +103,9 @@
     border-radius: 25px;
 }
 
+/* #new-comment-submit:hover {
+    cursor: pointer;
+} */
 #sort-by {
     font-size: .75em;
     font-weight: bold;
@@ -158,6 +161,59 @@
 .comment-content {
     padding-bottom: 1.5em;
     padding-left: 53px;
+}
+
+.edit-delete-footer,
+.save-cancel-footer,
+.yes-cancel-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.footer-edit,
+.footer-save {
+    padding: .5em;
+    border-radius: 25px;
+    width: 50px;
+    font-size: .75em;
+    color: rgb(2, 148, 2);
+    border: 1px solid rgb(2, 148, 2);
+    margin-right: 1em;
+    text-align: center;
+    font-weight: 450;
+}
+
+.footer-edit:hover,
+.footer-save:hover {
+    cursor: pointer;
+    font-weight: 450;
+    color: white;
+    background-color: rgb(2, 148, 2);
+}
+
+.footer-delete,
+.footer-cancel {
+    padding: .5em;
+    width: 60px;
+    border-radius: 25px;
+    font-size: .75em;
+    border: 1px solid rgb(0, 0, 0);
+    text-align: center;
+    font-weight: 450;
+}
+
+.footer-delete:hover,
+.footer-cancel:hover {
+    cursor: pointer;
+    font-weight: 450;
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+
+.editTextArea:focus {
+    outline: 0;
 }
 
 #wow-empty {

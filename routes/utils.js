@@ -113,7 +113,7 @@ const storiesByTags = async (tag) => {
 const assignDaysAgo = async (comment) => {
   const today = new Date();
 
-  const postDate = comment.createdAt;
+  const postDate = comment.updatedAt;
 
   const difference = today.getTime() - postDate.getTime();
 
@@ -124,30 +124,30 @@ const assignDaysAgo = async (comment) => {
 }
 
 
-const getRecommended = async (userId) =>{
+const getRecommended = async (userId) => {
   const recommendedUsers = await db.User.findAll({
     order: [["createdAt", "ASC"]],
   });
-  
+
   const following = await db.Follow.findAll({
     where: { followerId: userId }
   })
-  
+
   const followingArr = following.map(follow => {
     return follow.followingId
   })
-  
+
   let nonFollowedAccounts = recommendedUsers.filter(user1 => {
     return (followingArr.indexOf(user1.id) === -1)
   })
-  
+
   nonFollowedAccounts = nonFollowedAccounts.splice(0, 3)
 
   return nonFollowedAccounts
 
 }
 
-const getFollowerCount = async(user) => {
+const getFollowerCount = async (user) => {
   const follows = await db.Follow.findAll({
     where: {
       followingId: user.id
