@@ -2,16 +2,16 @@
 const faker = require("faker");
 const bcrypt = require("bcryptjs");
 
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      */
+    options.tableName = 'Users';
     return queryInterface.bulkInsert(
-      "Users",
+      options,
       [
         {
           firstName: faker.name.firstName(),
@@ -239,7 +239,7 @@ module.exports = {
           userName: faker.internet.userName(),
           email: faker.internet.email(),
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
-          bio:"Data Scientist",
+          bio: "Data Scientist",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -408,12 +408,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      */
-    return queryInterface.bulkDelete("Users", null, {});
+    options.tableName = 'Users';
+    return queryInterface.bulkDelete(options, null, {});
   },
 };

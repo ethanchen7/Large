@@ -1,4 +1,9 @@
 'use strict';
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Stories', {
@@ -18,12 +23,12 @@ module.exports = {
       },
       tagId: {
         allowNull: false,
-        references: {model: 'Tags'},
+        references: { model: 'Tags' },
         type: Sequelize.INTEGER
       },
       userId: {
         allowNull: false,
-        references: {model: 'Users'},
+        references: { model: 'Users' },
         type: Sequelize.INTEGER
       },
       state: {
@@ -39,9 +44,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    }, options);
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Stories');
+    return queryInterface.dropTable('Stories', options);
   }
 };

@@ -1,17 +1,16 @@
 'use strict';
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      */
-   return queryInterface.bulkInsert('Stories', [
-     {
-      title: '11 Absolutely Useful macOS Utility Apps You Never Knew Existed',
-       article: `AnyMirror
+    options.tableName = 'Stories'
+    return queryInterface.bulkInsert(options, [
+      {
+        title: '11 Absolutely Useful macOS Utility Apps You Never Knew Existed',
+        article: `AnyMirror
 AnyMirror is a great utility app for your Mac that lets you use your iPhone or Android phone as a webcam or a mic for your Mac.
 The use cases are plenty with AnyMirror. You can use it to join meetings with an ultra-high-resolution video, live stream videos to YouTube or Twitch, and even watch the videos and photos on your phone on a bigger screen.
 Apart from this, AnyMirror also supports multiple sources of screen sharing, screencasting locally saved files, screen recording, and even live annotating.
@@ -46,15 +45,15 @@ WeekToDo
 While there are a lot of great to-do list apps out there for your Mac, WeekToDo differs in a few ways that make it stand out from the crowd.
 The app has an intuitive design that lets you create and manage your tasks for the entire week and the default weekly view of your tasks is great to quickly glance at all the upcoming things for the week and be prepared.
 `,
-      tagId: 1,
-      userId: 1,
-      state: 'published',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    {
-      title: "Elon Musk: People Don’t Realize What’s Coming",
-      article: `Let’s talk about the future.
+        tagId: 1,
+        userId: 1,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: "Elon Musk: People Don’t Realize What’s Coming",
+        article: `Let’s talk about the future.
 I like the idea of decentralization amongst nations and want all countries to be as autonomous as possible; however, let’s say that we enter interstellar space and we discover there are hundreds of alien civilizations.
 Well, I don’t know about you but *someone* on Earth needs to be in charge and it sure as hell isn’t going to be a planet full-on individualism!
 In order to present a respectable image in the galactic playing field, we would need to represent our planet and our species, not our particular island.
@@ -98,15 +97,15 @@ But these problems will be front-page issues, eventually.
 Especially with terms like “WW3” and “nuclear war” floating around in the mainstream media lately, building up a ‘back-up’ plan is a salient idea.
 Becoming a multi-planetary species might seem like a waste now, but it will pay off.
 `,
-      tagId: 3,
-      userId: 6,
-      state: 'published',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    {
-      title: 'How we reached 1,000 email subscribers',
-      article: `Hey Indie Hackers.
+        tagId: 3,
+        userId: 6,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'How we reached 1,000 email subscribers',
+        article: `Hey Indie Hackers.
 
 Today I’m going to share my way from 0 to 1,000 subscribers.
 
@@ -186,15 +185,15 @@ The way was long and hard. Every activity helped us spread the word about the Mi
 We’ve made many mistakes, but we learned from them too.
 
 Soon I’d be happy to introduce you next project built by the Microns team, which will help startup founders promote their side projects.`,
-      tagId: 19,
-      userId: 2,
-      state: 'published',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-     {
-       title: '116K Reddit views, 0 subscribers. Lol',
-       article: `I write short stories. I post these stories with the hope people will sign up to my short stories newsletter.
+        tagId: 19,
+        userId: 2,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: '116K Reddit views, 0 subscribers. Lol',
+        article: `I write short stories. I post these stories with the hope people will sign up to my short stories newsletter.
 
 I don't know how I'm going to monetise it. I'm focused on improving as a writer.
 
@@ -203,15 +202,15 @@ My NFT story did well on reddit. I post the entire story as a text post and then
 But no one signed up.
 
 What can I do to increase subscribers? I'm using email subscribers as the metric to determine whether I should keep going or not.`,
-       tagId: 19,
-       userId: 3,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'What are the worst crypto mistakes to avoid in 2022? ',
-       article: `“The Market Report” with Cointelegraph is live right now. On this week’s show, Cointelegraph’s resident experts discuss the worst mistakes you should avoid making in crypto.
+        tagId: 19,
+        userId: 3,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'What are the worst crypto mistakes to avoid in 2022? ',
+        article: `“The Market Report” with Cointelegraph is live right now. On this week’s show, Cointelegraph’s resident experts discuss the worst mistakes you should avoid making in crypto.
 
 But first, market expert Marcel Pechman carefully examines the Bitcoin (BTC) and Ether (ETH) markets. Are the current market conditions bullish or bearish? What is the outlook for the next few months? Pechman is here to break it down.
 
@@ -226,15 +225,15 @@ After the showdown, we’ve got insights from Cointelegraph Markets Pro, a platf
 Do you have a question about a coin or topic not covered here? Don’t worry. Join the YouTube chat room, and write your questions there. The person with the most interesting comment or question will be given a free month of Cointelegraph Markets Pro, worth $100.
 
 The Market Report streams live every Tuesday at 12:00 pm ET (4:00 pm UTC), so be sure to head on over to Cointelegraph’s YouTube page and smash those like and subscribe buttons for all our future videos and updates.`,
-       tagId: 18,
-       userId: 5,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'What is the Bitcoin blockchain? A guide to the technology behind BTC',
-       article: `The Bitcoin blockchain is an amalgamation of Bitcoin (BTC) and blockchain. A person or a group of people known as Satoshi Nakamoto created the Bitcoin protocol in 2008 to decentralize control of money when centralized entities had failed the world. A publication called the Bitcoin white paper outlined a set of computational rules that determined a new type of distributed database: the blockchain. The network was launched in January 2009.
+        tagId: 18,
+        userId: 5,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'What is the Bitcoin blockchain? A guide to the technology behind BTC',
+        article: `The Bitcoin blockchain is an amalgamation of Bitcoin (BTC) and blockchain. A person or a group of people known as Satoshi Nakamoto created the Bitcoin protocol in 2008 to decentralize control of money when centralized entities had failed the world. A publication called the Bitcoin white paper outlined a set of computational rules that determined a new type of distributed database: the blockchain. The network was launched in January 2009.
 
 The most well-known cryptocurrency, Bitcoin, is the one for which blockchain technology was created. Like the United States dollar, a cryptocurrency is a digital means of exchange that uses encryption techniques to oversee the establishment of monetary units and verify financial transfers.
 
@@ -351,15 +350,15 @@ One of the most significant changes to the network is the substitution of Schnor
 By permitting discrete log contracts (DLCs), the Schnorr signature can help simplify complex smart contracts on the Bitcoin blockchain. The DLCs are a proposal to add a smart contract implementation to Bitcoin, allowing the establishment of simple, safe and easy-to-use blockchain oracles.
 
 It may also aid in the scaling of layer-two payment channels such as the Lightning Network, which allows for immediate transactions on the Bitcoin network.`,
-       tagId: 18,
-       userId: 1,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'Markets Are Ignoring 8.5% Inflation Spike And Watching This Number Instead',
-       article: `TOPLINE The stock market moved higher on Tuesday, even after consumer prices spiked 8.5% in the 12 months ending in March, as some investors hope that inflation is showing signs of moderating, with core inflation—excluding volatile food and energy prices—coming in lower than expected.
+        tagId: 18,
+        userId: 1,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'Markets Are Ignoring 8.5% Inflation Spike And Watching This Number Instead',
+        article: `TOPLINE The stock market moved higher on Tuesday, even after consumer prices spiked 8.5% in the 12 months ending in March, as some investors hope that inflation is showing signs of moderating, with core inflation—excluding volatile food and energy prices—coming in lower than expected.
        Stocks ticked higher early on Tuesday: The Dow Jones Industrial Average rose 0.8%, nearly 300 points, while the S&P 500 gained 1.1% and the tech-heavy Nasdaq Composite 1.6%.
 
 Consumer prices for March increased 1.2% from last month and 8.5% annually, according to data released Tuesday by the Labor Department, rising at the fastest pace in four decades.
@@ -376,15 +375,15 @@ The “silver lining” from today’s report is certainly the lower-than-expect
 WHAT TO WATCH FOR:
 “​​Inflation will soon likely peak, but the cooldown period could be painfully slow,” predicts Jeffrey Roach, chief economist for LPL Financial. “Food prices and vehicle prices will likely lead the way in releasing inflationary pressures.”
 `,
-       tagId: 17,
-       userId: 2,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'The 15 Best Franchise Opportunities of 2022',
-       article: `If you’re looking for a new business venture, but don’t want to take on the difficult work of developing your own brand image and identity, a franchise opportunity might be the best fit for you. Since there’s already a strong corporate and management framework in place as well as guidelines around everything including marketing, merchandising and production, owning a franchise can be a great choice for some.
+        tagId: 17,
+        userId: 2,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'The 15 Best Franchise Opportunities of 2022',
+        article: `If you’re looking for a new business venture, but don’t want to take on the difficult work of developing your own brand image and identity, a franchise opportunity might be the best fit for you. Since there’s already a strong corporate and management framework in place as well as guidelines around everything including marketing, merchandising and production, owning a franchise can be a great choice for some.
 
 Still, just knowing you’re interested in a franchise is only the beginning; in reality, finding the best franchise opportunities can be a challenge. There are more franchises out there than one can reasonably count and consider, making it tough to figure out which one is right for you.
 
@@ -609,15 +608,15 @@ All franchises come with some kind of investment, which usually comprises corpor
 
 Make sure you take into consideration where the capital to finance your franchise will be coming from. Many entrepreneurs choose to take advantage of a business loan, including SBA loans, business lines of credit, term loans and equipment financing. To begin, check out the best franchise financing options.
 `,
-       tagId: 17,
-       userId: 8,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'NYPD Briefs on Brooklyn Subway Shooting',
-       article: `At least eight people were shot Tuesday on a Brooklyn subway by a man in an orange construction vest, possibly wearing a gas mask, who may have tossed a smoke canister on the platform to distract the rush hour crowd, according to FDNY and senior law enforcement officials. They stress the investigation is preliminary.
+        tagId: 17,
+        userId: 8,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'NYPD Briefs on Brooklyn Subway Shooting',
+        article: `At least eight people were shot Tuesday on a Brooklyn subway by a man in an orange construction vest, possibly wearing a gas mask, who may have tossed a smoke canister on the platform to distract the rush hour crowd, according to FDNY and senior law enforcement officials. They stress the investigation is preliminary.
 
 The shooter was not in custody an hour and a half after he opened fire on the train at the 36th Street and Fourth Avenue station in Sunset Park around 8:30 a.m. All eight victims were believed to have been in the same car. The train was still moving.
 
@@ -647,15 +646,15 @@ Local schools were placed under a shelter in place order, a Department of Educat
 
 New York City Mayor Eric Adams has been briefed on the situation, a spokesperson said -- and pleaded with New Yorkers to avoid the area to assist in the investigation.
 `,
-       tagId: 8,
-       userId: 5,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'NJ Mayor Under Fire for Racist, Sexist Comments Apologizes',
-       article: `A New Jersey mayor who has faced calls to resign after allegedly making racist, sexist and hate-filled comments heard on tape issued his first apology for the remarks that shocked residents.
+        tagId: 8,
+        userId: 5,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'NJ Mayor Under Fire for Racist, Sexist Comments Apologizes',
+        article: `A New Jersey mayor who has faced calls to resign after allegedly making racist, sexist and hate-filled comments heard on tape issued his first apology for the remarks that shocked residents.
 
 "I've made mistakes. And I'd like to apologize for the pain I caused to the residents of Clark, my family, my friends, and all those that were offended by my comments," said Clark Mayor Sal Bonaccorso in an apology video. "They had a right to expect more from me. My words should not reflect on any of them."
 
@@ -705,15 +704,15 @@ Mayor Adrian Mapp of nearby Plainfield says Clark residents should demand Bonacc
 
 Back in 2020, the Union County Prosecutor took over the running of the Clark Police Department amid misconduct allegations, with the state attorney general promising a public report on the problems there. No word on when the attorney general's report will be released. 
 `,
-       tagId: 8,
-       userId: 6,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'The Best Relationship Advice, According to Experts',
-       article: `Relationship advice is a tricky thing. When it’s unsolicited, it can be annoying and sometimes even insulting (hey, we all have that friend). But when you actually seek it out, it can be hard to find what you're really looking for—like a definitive answer on whether or not yours is healthy, and what's truly important.
+        tagId: 8,
+        userId: 6,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'The Best Relationship Advice, According to Experts',
+        article: `Relationship advice is a tricky thing. When it’s unsolicited, it can be annoying and sometimes even insulting (hey, we all have that friend). But when you actually seek it out, it can be hard to find what you're really looking for—like a definitive answer on whether or not yours is healthy, and what's truly important.
 
 Sure, there’s your go-to advice like “don’t go to bed angry,” and “respect is important,” but we’ve all heard those before. That’s why we consulted expert therapists for the best tips they most regularly share with their patients.
 
@@ -757,15 +756,15 @@ Fight in a productive way.
 Every couple fights, but fighting in a way that moves the conversation forward and clearly explains why you're feeling a certain way can make a difference. Silvershein recommends being specific about how your partner’s actions impact you. For example, “When you forget to text when you'll be late, it makes me feel like you don't care.” “When we begin shifting our language to share how our partner's behavior makes us feel rather than just telling them what to do, I find that couples become more fluid and more aligned in their daily functioning,” she says.
 
 `,
-       tagId: 9,
-       userId: 3,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'The 3 Healthiest Leafy Green Vegetables',
-       article: `Leafy green vegetables are an important part of a healthy diet. They’re packed with vitamins, minerals and fiber but low in calories.
+        tagId: 9,
+        userId: 3,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'The 3 Healthiest Leafy Green Vegetables',
+        article: `Leafy green vegetables are an important part of a healthy diet. They’re packed with vitamins, minerals and fiber but low in calories.
 
 Eating a diet rich in leafy greens can offer numerous health benefits including reduced risk of obesity, heart disease, high blood pressure and mental decline (1Trusted Source).
 
@@ -800,15 +799,15 @@ Collard greens are a good source of calcium and the vitamins A, B9 (folate) and 
 Vitamin K is known for its role in blood clotting. In addition, more research is being done regarding its ability to improve bone health (7Trusted Source).
 
 One study in 72,327 women aged 38–63 found that those with vitamin K intakes below 109 mcg per day had a significantly increased risk of hip fractures, suggesting a link between this vitamin and bone health (8Trusted Source).`,
-       tagId: 13,
-       userId: 2,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'How we reached 1,000 email subscribers',
-       article: `Classical French cuisine has been extraordinarily influential in the culinary world.
+        tagId: 13,
+        userId: 2,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'How we reached 1,000 email subscribers',
+        article: `Classical French cuisine has been extraordinarily influential in the culinary world.
 
 Even if you don’t fancy yourself a chef, you’ve probably incorporated elements of classical French cooking into your home kitchen on more than one occasion.
 
@@ -946,15 +945,15 @@ Tomato sauces are remarkably versatile and can be served with stewed or roasted 
 Any chef will tell you the best tomato sauces are made with fresh, vine ripened tomatoes. Try making a big batch of sauce with fresh tomatoes while they’re in season, then can or freeze the leftovers so you can enjoy homemade tomato sauce year round.
 
 `,
-       tagId: 13,
-       userId: 6,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'TypeScript / How the compiler compiles',
-       article: `This article is inspired by the talk How the TypeScript compiler compiles◹, you should really check it out for a more in-depth understanding about the TypeScript’s compiling process.
+        tagId: 13,
+        userId: 6,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'TypeScript / How the compiler compiles',
+        article: `This article is inspired by the talk How the TypeScript compiler compiles◹, you should really check it out for a more in-depth understanding about the TypeScript’s compiling process.
 
 At a high level, the TypeScript compiler is a tool to help us analyze and compile the TypeScript code into JavaScript (*.js), as well as some type definition files (*.d.ts) or source maps (*.js.map).
 
@@ -996,15 +995,15 @@ In this article, I only illustrate the overview and the relation between each pa
 
 It is recommended to read the TypeScript Compiler Internals◹ document for a more in-depth version of this article (which also dives into which part of the code, and how things are called each other).
 `,
-       tagId: 12,
-       userId: 4,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'Algorithms / Sliding Window With Two Pointers',
-       article: `For the problems that require us to do something a stream of values, or a subsequence of an array, the typical approach is to use a sliding window.
+        tagId: 12,
+        userId: 4,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'Algorithms / Sliding Window With Two Pointers',
+        article: `For the problems that require us to do something a stream of values, or a subsequence of an array, the typical approach is to use a sliding window.
 
 
 
@@ -1069,15 +1068,15 @@ const CircularBuffer = function(size) {
         }
     }
 };`,
-       tagId: 12,
-       userId: 7,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'Emmanuel Macron Could Lose Frances Presidential Election',
-       article: `Five years ago, Emmanuel Macron won a sweeping victory to become the youngest president in France’s history. Running at the head of The Republic On The Move,1 a centrist and pro-European Union party he had founded in 2016, Macron defeated his far-right opponent, Marine Le Pen, by more than 30 percentage points and broke the hold of the traditional center-right and center-left parties over French politics.
+        tagId: 12,
+        userId: 7,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'Emmanuel Macron Could Lose Frances Presidential Election',
+        article: `Five years ago, Emmanuel Macron won a sweeping victory to become the youngest president in France’s history. Running at the head of The Republic On The Move,1 a centrist and pro-European Union party he had founded in 2016, Macron defeated his far-right opponent, Marine Le Pen, by more than 30 percentage points and broke the hold of the traditional center-right and center-left parties over French politics.
 
 But as France prepares for the first round of presidential voting on Sunday, Macron is fighting to maintain his centrist coalition in the face of more radical alternatives. Not totally unlike the United States and other parts of Europe, France has experienced deep political cleavages between its urban and rural, affluent and working class and native and immigrant populations. And a burgeoning political right has stoked anti-immigrant and nationalist sentiment in the ethnically and culturally diverse country. Add in concerns about the cost of living, and it’s no wonder Macron faces a tough reelection battle. Once again, it’s Le Pen who looks most likely to stand in his way, too.
 
@@ -1116,15 +1115,15 @@ Biden approval
 
 According to FiveThirtyEight’s presidential approval tracker,6 41.7 percent of Americans approve of the job Biden is doing as president, while 52.6 percent disapprove (a net approval rating of -11.0 points). At this time last week, 41.2 percent approved and 53.1 percent disapproved (a net approval rating of -11.9 points). One month ago, Biden had an approval rating of 42.1 percent and a disapproval rating of 51.9 percent, for a net approval rating of -9.8 points.
 `,
-       tagId: 14,
-       userId: 1,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'Does Alaskas Special Election Create An Opening For Sarah Palins Comeback?',
-       article: `On Friday, Sarah Palin returned from the political wilderness by announcing a bid for the U.S. House of Representatives, nearly 14 years since the then-governor of Alaska entered the national spotlight as the Republican vice presidential nominee. 
+        tagId: 14,
+        userId: 1,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'Does Alaskas Special Election Create An Opening For Sarah Palins Comeback?',
+        article: `On Friday, Sarah Palin returned from the political wilderness by announcing a bid for the U.S. House of Representatives, nearly 14 years since the then-governor of Alaska entered the national spotlight as the Republican vice presidential nominee. 
 
 It’s a curious reappearance, as Palin largely exited politics after her failed 2008 run with the late Sen. John McCain. She surprised many by then opting to not complete her term as governor, resigning in 2009 to then kickstart a media career. And although she never completely abandoned national politics — she backed former President Donald Trump ahead of the 2016 presidential primary, had her own political action committee and teased campaigns for president and Senate — up until now, she hadn’t taken the leap to run for another office.
 
@@ -1164,15 +1163,15 @@ One last wrinkle in the Alaska race is that the special general election will co
 
 As the first woman on a GOP presidential ticket, Palin has already made history. Palin was the second woman to ever run for vice president on one of the two major parties’ national tickets, after Democrat Geraldine Ferraro in 1984, and it’s possible that’s not all Palin will end up having in common with Ferraro. Ferraro also lost her vice presidential campaign and then years later sought to make a political comeback, running for New York’s U.S. Senate seat in 1992. But Ferraro came up short in that race, losing by less than 1 point in an ugly Democratic primary; she also mounted another unsuccessful Senate bid in 1998 where she lost the primary by a much larger margin. How Palin’s comeback plays out remains to be seen — it’s definitely possible that Palin is victorious, but it’s also not without risks, as Ferraro knew all too well.
 `,
-       tagId: 14,
-       userId: 4,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'TIFU by talking my wife into getting 23&me',
-       article: `TIFU Current wife and I were both married previously and both had 3 children each. We went to hs together in a small town. Both of our families are well known in the area with deep roots (both families been here a long time). Last year I got my wife a ancestry DNA kit as a gift because she wanted to know more about her European roots then her sister decided to do the same. When their results were posted it started making family connections which included my mother, my oldest son, my uncle etc. Wife's mom comes in the room so they ask her how we could be related. Her mom starts crying and says that when she was very young she overheard someone say "Tom"" isn't your father, "Jimmy" is. Her mom being from older generation says she just put it out of her mind and convinced herself it's just rumor.
+        tagId: 14,
+        userId: 4,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'TIFU by talking my wife into getting 23&me',
+        article: `TIFU Current wife and I were both married previously and both had 3 children each. We went to hs together in a small town. Both of our families are well known in the area with deep roots (both families been here a long time). Last year I got my wife a ancestry DNA kit as a gift because she wanted to know more about her European roots then her sister decided to do the same. When their results were posted it started making family connections which included my mother, my oldest son, my uncle etc. Wife's mom comes in the room so they ask her how we could be related. Her mom starts crying and says that when she was very young she overheard someone say "Tom"" isn't your father, "Jimmy" is. Her mom being from older generation says she just put it out of her mind and convinced herself it's just rumor.
 
 I call my mom asked if she's ever heard a rumor that her father could be my wife's mother's father as well. She gets quite for a moment and says yes I have and it was believed to be true by her mom as well and that her dad (my grandfather) was a well known cheater/womanizer.
 
@@ -1198,15 +1197,15 @@ We're definitely not in Alabama but we may have to move there now.
 
 Yes we're very much in love and will be staying that way. Although we probably won't be sharing this information with too many other people...guess we'll keep in the family.
 `,
-       tagId: 6,
-       userId: 7,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'I invited the wrong woman to a Green Day concert and trip to Ireland',
-       article: `So I've been single for a couple years now, out of a ten year relationship. A complete Tinder noob. That shit wasn't a thing back when I was on the dating circuit. Suffice to say I hate it. Being a guy, it feels like handing out CV's (hundreds of likes vs 1 match) I had a few dozen matches but was a bit too depressed in the last 2 years to meet anyone. Keep in mind, I live alone in a foreign country and rarely get unsolicited calls or texts.
+        tagId: 6,
+        userId: 7,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'I invited the wrong woman to a Green Day concert and trip to Ireland',
+        article: `So I've been single for a couple years now, out of a ten year relationship. A complete Tinder noob. That shit wasn't a thing back when I was on the dating circuit. Suffice to say I hate it. Being a guy, it feels like handing out CV's (hundreds of likes vs 1 match) I had a few dozen matches but was a bit too depressed in the last 2 years to meet anyone. Keep in mind, I live alone in a foreign country and rarely get unsolicited calls or texts.
 
 I pull myself out of this 2 year bummer and say to myself, 'Jim, it's time to catch yourself on and get over this shit, the world has changed, Tinder is just how dating is now, it's depressing but fucking get on with it man.
 
@@ -1248,27 +1247,27 @@ Renata is nice btw but fuck my life, I hadn't planned on going to Green day and 
 
 TLDR: Went on a tinder date, catfished myself and invited the wrong woman on an expense free trip to Ireland + Green Day concert
 `,
-       tagId: 6,
-       userId: 2,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'How would you rank major tech companies research labs for prestige ?',
-       article: `This is just for fun, not to be taken too seriously. But I'm curious what are the reputations among the community for various research divisions (specifically AIML) of major companies, ie: Google, Facebook/Meta, Microsoft, Amazon, NVIDIA, IBM, etc.
+        tagId: 6,
+        userId: 2,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'How would you rank major tech companies research labs for prestige ?',
+        article: `This is just for fun, not to be taken too seriously. But I'm curious what are the reputations among the community for various research divisions (specifically AIML) of major companies, ie: Google, Facebook/Meta, Microsoft, Amazon, NVIDIA, IBM, etc.
 
 My perceived (albeit naive) view is Google > Facebook > MSR are top tier. Don't know much about the others. But I've read that some people consider MSR most prestigious due to their academic environment. But I've seen that Google and FB dominate in terms of major publications, ie: vision transformers are associated with Google.
 `,
-       tagId: 15,
-       userId: 4,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'Squirrel: A new OS library for fast & flexible large-scale data loading',
-       article: `Hi all,
+        tagId: 15,
+        userId: 4,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'Squirrel: A new OS library for fast & flexible large-scale data loading',
+        article: `Hi all,
 
 Today we open-sourced Squirrel, a data infrastructure library that my colleagues and I have been working on over the past 1.5 years: https://github.com/merantix-momentum/squirrel-core
 
@@ -1279,15 +1278,15 @@ Squirrel has already proven its value in our deep learning projects at Merantix 
 We’re super excited to share it with the OSS community and hope that you can benefit from it as well!
 
 Looking forward to hearing your feedback and questions :)`,
-       tagId: 15,
-       userId: 5,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'How do I get myself to start working before the sun rises?',
-       article: `I'm a student and I have to wake up at 5am every morning on my homework days. The issue is that I'm very slow to wake up and I end up "waking up" for 2 hours and wasting all that time.
+        tagId: 15,
+        userId: 5,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'How do I get myself to start working before the sun rises?',
+        article: `I'm a student and I have to wake up at 5am every morning on my homework days. The issue is that I'm very slow to wake up and I end up "waking up" for 2 hours and wasting all that time.
 
 Why do I take so long?
 
@@ -1298,15 +1297,15 @@ I'm groggy waking up, but this only lasts for ~1hr
 I'm intimidated by my work. It's probably a procrastination thing. I'm trying to do the super easy stuff first though, so that I can overcome this.
 
 `,
-       tagId: 10,
-       userId: 9,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'Drag and Drop Hiearchical List to Calendar System?',
-       article: `Hi Everyone,I've tried a million "productivity" sites and am pretty frustrated that what seems like would be the most natural flow for my brain is missing from all of them.I've been hoping to find something that lets me have a hiearchichal list (think nested outliner or sub-sub-sub tasks) to quickly add tasks, and then in the same window the ability to drag and drop those directly onto an hourly calender.
+        tagId: 10,
+        userId: 9,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'Drag and Drop Hiearchical List to Calendar System?',
+        article: `Hi Everyone,I've tried a million "productivity" sites and am pretty frustrated that what seems like would be the most natural flow for my brain is missing from all of them.I've been hoping to find something that lets me have a hiearchichal list (think nested outliner or sub-sub-sub tasks) to quickly add tasks, and then in the same window the ability to drag and drop those directly onto an hourly calender.
 
 I like the feel of Planyway, but because it's tied to Trello it also has Trello's limitations of only one level deep subtasks.
 
@@ -1317,15 +1316,15 @@ I like Clickup mostly, but again wish I could more intuitively drag directly fro
 Amazing Marvin is close, but I hate how they differentiate between tasks and projects, it really breaks up my flow as I have to decide what something will be, and they behave differently when dropped in different areas.
 
 Moodo / Legend is also close, but every version has felt super buggy.`,
-       tagId: 10,
-       userId: 7,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: '7 Sports of Ancient Greece',
-       article: `The ancient Greeks, who staged the first formal Olympic Games in 776 B.C., gave the world the idea of organized big-time sports events as entertainment for arenas full of spectators. More than that, they were the first culture in which people idolized their favorite athletic superstars, to a level that even today’s most fanatical sports fans might find extreme.
+        tagId: 10,
+        userId: 7,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: '7 Sports of Ancient Greece',
+        article: `The ancient Greeks, who staged the first formal Olympic Games in 776 B.C., gave the world the idea of organized big-time sports events as entertainment for arenas full of spectators. More than that, they were the first culture in which people idolized their favorite athletic superstars, to a level that even today’s most fanatical sports fans might find extreme.
 
 “The Greeks believed that athletes had special powers,” explains David Lunt, an associate professor of history at Southern Utah University who is an expert on ancient Greek athletics and author of The Crown Games of Ancient Greece: Archaeology, Athletes and Heroes. “They commissioned poems to be sung about them, and they told stories about statues of athletes that could heal people." 
 
@@ -1408,15 +1407,15 @@ Instead of the octagon, with its padded surface, competitors fought in a sand pi
 Ancient Greek athletes didn’t earn anything comparable to the astronomical salaries that NBA and NFL players receive today, though they did have an opportunity to win prizes. At the Panathenaea, the games held to honor Athens and Athena, the winner of a foot race got 200 large, ornate jars filled with olive oil.
 
 “I guess he could sell it, or else it would be a lifetime supply,” Lunt says. But for many ancient competitors, the adulation of the crowd, and the chance to achieve immortality because of their ability, may have been enough of a payoff.`,
-       tagId: 4,
-       userId: 9,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'This Day in History: Civil War begins',
-       article: `The bloodiest four years in American history begin when Confederate shore batteries under General P.G.T. Beauregard open fire on Union-held Fort Sumter in South Carolina’s Charleston Harbor on April 12, 1861. During the next 34 hours, 50 Confederate guns and mortars launched more than 4,000 rounds at the poorly supplied fort. On April 13, U.S. Major Robert Anderson surrendered the fort. Two days later, U.S. President Abraham Lincoln issued a proclamation calling for 75,000 volunteer soldiers to quell the Southern “insurrection.”
+        tagId: 4,
+        userId: 9,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'This Day in History: Civil War begins',
+        article: `The bloodiest four years in American history begin when Confederate shore batteries under General P.G.T. Beauregard open fire on Union-held Fort Sumter in South Carolina’s Charleston Harbor on April 12, 1861. During the next 34 hours, 50 Confederate guns and mortars launched more than 4,000 rounds at the poorly supplied fort. On April 13, U.S. Major Robert Anderson surrendered the fort. Two days later, U.S. President Abraham Lincoln issued a proclamation calling for 75,000 volunteer soldiers to quell the Southern “insurrection.”
 
 As early as 1858, the ongoing conflict between North and South over the issue of slavery had led Southern leadership to discuss a unified separation from the United States. By 1860, the majority of the slave states were publicly threatening secession if the Republicans, the anti-slavery party, won the presidency. Following Republican Abraham Lincoln’s victory over the divided Democratic Party in November 1860, South Carolina immediately initiated secession proceedings. On December 20, the South Carolina legislature passed the “Ordinance of Secession,” which declared that “the Union now subsisting between South Carolina and other states, under the name of the United States of America, is hereby dissolved.” After the declaration, South Carolina set about seizing forts, arsenals, and other strategic locations within the state. Within six weeks, five more Southern states–Mississippi, Florida, Alabama, Georgia and Louisiana–had followed South Carolina’s lead.
 
@@ -1424,15 +1423,15 @@ As early as 1858, the ongoing conflict between North and South over the issue of
 In February 1861, delegates from those states convened to establish a unified government. Jefferson Davis of Mississippi was subsequently elected the first president of the Confederate States of America. When Abraham Lincoln was inaugurated on March 4, 1861, a total of seven states (Texas had joined the pack) had seceded from the Union, and federal troops held only Fort Sumter in South Carolina, Fort Pickens off the Florida coast, and a handful of minor outposts in the South. Four years after the Confederate attack on Fort Sumter, the Confederacy was defeated at the total cost of 620,000 Union and Confederate soldiers dead.
 
 `,
-       tagId: 4,
-       userId: 10,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'Getting Started With TikTok Ads',
-       article: `Looking to diversify your social advertising? Wondering if TikTok might do the trick but you’re not sure how to get started?
+        tagId: 4,
+        userId: 10,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'Getting Started With TikTok Ads',
+        article: `Looking to diversify your social advertising? Wondering if TikTok might do the trick but you’re not sure how to get started?
 
 In this article, you’ll discover everything you need to know including the key elements of TikTok ads and a simple process for crafting ad creative that works.
 
@@ -1550,15 +1549,15 @@ Because the learning phase is 50 conversions over a 7-day window, start your bud
 Once you exit learning and you’re within a good CPA range, you can start making some optimization tweaks. You can also start increasing the budget if you want. A good rule of thumb is a 20%-30% budget increase every 48 hours.
 
 `,
-       tagId: 7,
-       userId: 11,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'How to Moderate a Discord Server for Business',
-       article: `Do you run a Discord server for your company or product? Want to keep the community positive and engaged?
+        tagId: 7,
+        userId: 11,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'How to Moderate a Discord Server for Business',
+        article: `Do you run a Discord server for your company or product? Want to keep the community positive and engaged?
 
 In this article, you’ll discover how and why to use built-in moderation settings, tools, and bots to efficiently manage your Discord community.
 
@@ -1736,15 +1735,15 @@ This channel is run by Discord. They’re planning to use it for platform update
 Conclusion
 Discord provides many opportunities for businesses to build their communities and connect with their target audiences. Through a combination of settings, moderator tools, and bots, you can keep your Discord server a positive, engaged community.
 `,
-       tagId: 7,
-       userId: 12,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'The ultimate guide on how to create customizable Angular components',
-       article: `Angular is inspired by the core concepts of web components. Therefore it uses components and the core ideas of Shadow DOM.
+        tagId: 7,
+        userId: 12,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'The ultimate guide on how to create customizable Angular components',
+        article: `Angular is inspired by the core concepts of web components. Therefore it uses components and the core ideas of Shadow DOM.
 For historical reasons, by default, Angular provides its own implementation of Shadow DOM. However, we can still use the encapsulation property on the components class decorator to switch to native Shadow DOM or even disable encapsulation completely.
 Whenever we implement or use a component with native Shadow DOM or emulated Shadow DOM, we should always consider the style of our components as private.
 Think of styles in the same way as code. Would you try to overwrite a components TypeScript code? Probably not!
@@ -1790,15 +1789,15 @@ One way to solve it is to change the styles in our my-chips component. Instead o
 Once we adjusted the component, we can make the CSS selector in our mixin more specific by adding an extra div to the selector.
 
 `,
-       tagId: 12,
-       userId: 7,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-     {
-       title: 'My productive morning routine',
-       article: `I was a total mess and studied whenever I felt like and did things in a very sloppy manner and as a result, I was having trouble focusing on my studies and productivity was at its worst until I came up with a routine that worked wonders for me. Well, my motto was whatever routine I follow I needed to get the majority of my things done early. My routine may not be resonating with you. Everyone is unique and everyone works according to what suits them.
+        tagId: 12,
+        userId: 7,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'My productive morning routine',
+        article: `I was a total mess and studied whenever I felt like and did things in a very sloppy manner and as a result, I was having trouble focusing on my studies and productivity was at its worst until I came up with a routine that worked wonders for me. Well, my motto was whatever routine I follow I needed to get the majority of my things done early. My routine may not be resonating with you. Everyone is unique and everyone works according to what suits them.
 My morning routine is from 4:30 AM to 10 AM.
 Yeah, I am a morning person so let's begin.
 1.Wake up at 4:30 Am.
@@ -1828,22 +1827,17 @@ In the morning I usually read topics that I think is difficult to comprehend. Th
 Right from 6:30 to 10 AM I study with 30 minutes break in between.
 So this was my morning routine. I know it may not be perfect according to many but routine for me must be productive and not perfect. As long as it is serving the purpose it's good. Make a timetable you are comfortable with and makes you happy and gets more work done.
 THANK YOU❤️`,
-       tagId: 10,
-       userId: 10,
-       state: 'published',
-       createdAt: new Date(),
-       updatedAt: new Date()
-     },
-  ], {});
+        tagId: 10,
+        userId: 10,
+        state: 'published',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      */
-   return queryInterface.bulkDelete('Stories', null, {});
+    options.tableName = 'Stories';
+    return queryInterface.bulkDelete(options);
   }
 };
